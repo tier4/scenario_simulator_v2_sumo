@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes>
+    <vType id="npc" accel="2.6" decel="4.5" sigma="0.5" length="4.5" minGap="2.5" maxSpeed="13.89" guiShape="passenger"/>
+    <vType id="ego_shadow" accel="4.0" decel="8.0" sigma="0.0" length="4.5" minGap="0.0" maxSpeed="50.0" guiShape="passenger"/>
+
+    <route id="straight_route" edges="straight"/>
+
+    <vehicle id="npc_0" type="npc" route="straight_route" depart="0.0" departSpeed="8.0" departLane="0"/>
+</routes>
