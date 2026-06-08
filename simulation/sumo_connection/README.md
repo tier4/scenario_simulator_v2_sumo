@@ -7,12 +7,15 @@ plain CMake to build it.
 ## Files
 
 - `scenarios/straight/`: SUMO straight-road network, route, and config files.
+- `scenarios/lanelet2_simple_cross/`: generated Lanelet2-derived SUMO network, route, and config files.
 - `src/sumo_adapter.hpp`: minimal public adapter interface and `VehicleState` struct.
 - `src/sumo_adapter.cpp`: owns direct `libtraci` calls, SUMO startup/shutdown, stepping, and shadow ego sync.
 - `src/probe_libtraci.cpp`: small CLI probe using `SumoAdapter`.
 - `src/probe_ego_shadow_sync.cpp`: keeps ego stopped at x=50 and checks NPC following behavior.
 - `CMakeLists.txt`: standalone build file for the probe.
 - `COLCON_IGNORE`: prevents this prototype from affecting `scenario_simulator_v2` colcon builds.
+- `scripts/convert_lanelet2_to_sumo.py`: converts an Autoware Lanelet2 OSM map (`local_x`/`local_y` tags) into a minimal SUMO scenario.
+- `docs/lanelet2_to_sumo_conversion.md`: reproducible Lanelet2-to-SUMO conversion workflow and design note.
 
 ## Adapter Boundary
 
@@ -88,6 +91,19 @@ netconvert \
 ```bash
 sumo-gui -c scenarios/straight/straight.sumocfg
 ```
+
+## Generate a Lanelet2-Derived Network
+
+Run this from `scenario_simulator_v2/simulation/sumo_connection`. The converter
+reads the Autoware Lanelet2 OSM map, writes SUMO plain XML, and runs `netconvert`:
+
+```bash
+python3 -B scripts/convert_lanelet2_to_sumo.py
+sumo -c scenarios/lanelet2_simple_cross/converted_map.sumocfg
+```
+
+See `docs/lanelet2_to_sumo_conversion.md` for the exact inputs, `netconvert`
+command, generated files, coordinate handling, and current manual-fix notes.
 
 ## Build the C++ Probe
 
