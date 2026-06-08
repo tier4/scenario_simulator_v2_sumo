@@ -1,25 +1,29 @@
 #pragma once
 
 #include <filesystem>
+#include <ostream>
 #include <string>
 #include <vector>
 
 struct VehicleState
 {
+  // Simulator-neutral SUMO vehicle snapshot. This will later be converted to
+  // OSI TrafficUpdate or traffic_simulator EntityStatus at the integration boundary.
   std::string id;
   std::string type_id;
-  double x = 0.0;
-  double y = 0.0;
-  double angle_deg = 0.0;
-  double yaw_deg = 0.0;
-  double speed = 0.0;
+  double x_m = 0.0;
+  double y_m = 0.0;
+  double z_m = 0.0;
+  double yaw_rad = 0.0;
+  double speed_mps = 0.0;
+  double acceleration_mps2 = 0.0;
   std::string road_id;
   std::string lane_id;
-  double lane_position = 0.0;
-  bool has_leader = false;
-  std::string leader_id;
-  double leader_gap = 0.0;
+  double lane_position_m = 0.0;
+  bool is_ego = false;
 };
+
+std::ostream & operator<<(std::ostream & os, const VehicleState & state);
 
 class SumoAdapter
 {
@@ -40,6 +44,7 @@ public:
   void sync_ego(double x, double y, double yaw_rad, double speed);
 
   double simulation_time() const;
+  std::vector<VehicleState> getVehicleStates() const;
   std::vector<VehicleState> get_vehicle_states() const;
 
 private:

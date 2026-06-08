@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <cmath>
+#include <ostream>
 #include <stdexcept>
 #include <utility>
 
@@ -16,7 +17,7 @@ double world_yaw_rad_to_sumo_angle_deg(double yaw_rad)
   return std::fmod(90.0 - yaw_rad * 180.0 / kPi + 360.0, 360.0);
 }
 
-double sumo_angle_deg_to_world_yaw_deg(double angle_deg)
+double sumo_angle_deg_to_world_yaw_rad(double angle_deg)
 {
   double yaw = std::fmod(90.0 - angle_deg, 360.0);
   if (yaw < 0.0) {
@@ -25,9 +26,25 @@ double sumo_angle_deg_to_world_yaw_deg(double angle_deg)
   if (yaw >= 180.0) {
     yaw -= 360.0;
   }
-  return yaw;
+  return yaw * kPi / 180.0;
+}
+
+double normalize_sumo_z(double z)
+{
+  return z == libsumo::INVALID_DOUBLE_VALUE ? 0.0 : z;
 }
 }  // namespace
+
+std::ostream & operator<<(std::ostream & os, const VehicleState & state)
+{
+  os << "VehicleState{id=" << state.id << ", type_id=" << state.type_id
+     << ", x_m=" << state.x_m << ", y_m=" << state.y_m << ", z_m=" << state.z_m
+     << ", yaw_rad=" << state.yaw_rad << ", speed_mps=" << state.speed_mps
+     << ", acceleration_mps2=" << state.acceleration_mps2 << ", road_id=" << state.road_id
+     << ", lane_id=" << state.lane_id << ", lane_position_m=" << state.lane_position_m
+     << ", is_ego=" << (state.is_ego ? "true" : "false") << "}";
+  return os;
+}
 
 SumoAdapter::SumoAdapter(
   std::string sumo_binary, std::filesystem::path sumocfg, double step_length, std::string ego_id,
@@ -104,7 +121,7 @@ double SumoAdapter::simulation_time() const
   return libtraci::Simulation::getTime();
 }
 
-std::vector<VehicleState> SumoAdapter::get_vehicle_states() const
+std::vector<VehicleState> SumoAdapter::getVehicleStates() const
 {
   require_initialized();
   auto vehicle_ids = libtraci::Vehicle::getIDList();
@@ -113,30 +130,33 @@ std::vector<VehicleState> SumoAdapter::get_vehicle_states() const
   std::vector<VehicleState> states;
   states.reserve(vehicle_ids.size());
   for (const auto & vehicle_id : vehicle_ids) {
-    const auto position = libtraci::Vehicle::getPosition(vehicle_id);
+    const auto position = libtraci::Vehicle::getPosition3D(vehicle_id);
     const double angle = libtraci::Vehicle::getAngle(vehicle_id);
     VehicleState state;
     state.id = vehicle_id;
     state.type_id = libtraci::Vehicle::getTypeID(vehicle_id);
-    state.x = position.x;
-    state.y = position.y;
-    state.angle_deg = angle;
-    state.yaw_deg = sumo_angle_deg_to_world_yaw_deg(angle);
-    state.speed = libtraci::Vehicle::getSpeed(vehicle_id);
+    state.x_m = position.x;
+    state.y_m = position.y;
+    state.z_m = normalize_sumo_z(position.z);
+    state.yaw_rad = sumo_angle_deg_to_world_yaw_rad(angle);
+    state.speed_mps = libtraci::Vehicle::getSpeed(vehicle_id);
+    try {
+      state.acceleration_mps2 = libtraci::Vehicle::getAcceleration(vehicle_id);
+    } catch (...) {
+      state.acceleration_mps2 = 0.0;
+    }
     state.road_id = libtraci::Vehicle::getRoadID(vehicle_id);
     state.lane_id = libtraci::Vehicle::getLaneID(vehicle_id);
-    state.lane_position = libtraci::Vehicle::getLanePosition(vehicle_id);
-    try {
-      const auto leader = libtraci::Vehicle::getLeader(vehicle_id);
-      state.has_leader = !leader.first.empty();
-      state.leader_id = leader.first;
-      state.leader_gap = leader.second;
-    } catch (...) {
-      state.has_leader = false;
-    }
+    state.lane_position_m = libtraci::Vehicle::getLanePosition(vehicle_id);
+    state.is_ego = state.id == ego_id_;
     states.push_back(std::move(state));
   }
   return states;
+}
+
+std::vector<VehicleState> SumoAdapter::get_vehicle_states() const
+{
+  return getVehicleStates();
 }
 
 void SumoAdapter::require_initialized() const

@@ -56,6 +56,12 @@ public:
       return name;
     }
 
+    static auto externalControl() noexcept -> const std::string &
+    {
+      static const std::string name = "external_control_plugin/ExternalControlPlugin";
+      return name;
+    }
+
     static auto defaultBehavior() -> const std::string & { return behaviorTree(); }
   };
 

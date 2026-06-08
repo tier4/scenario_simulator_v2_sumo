@@ -83,9 +83,7 @@ void print_vehicle_states(int step, double sim_time, const std::vector<VehicleSt
 {
   for (const auto & state : states) {
     std::cout << step << "," << std::fixed << std::setprecision(2) << sim_time << ","
-              << state.id << "," << state.type_id << "," << std::setprecision(3) << state.x
-              << "," << state.y << "," << state.yaw_deg << "," << state.speed << ","
-              << state.road_id << "\n";
+              << std::setprecision(3) << state << "\n";
   }
 }
 
@@ -99,13 +97,13 @@ int main(int argc, char * argv[])
     SumoAdapter adapter(options.sumo_binary, sumocfg, options.step_length);
     adapter.initialize();
 
-    std::cout << "step,time,vehicle_id,type_id,x,y,yaw_deg,speed,road_id\n";
+    std::cout << "step,time,vehicle_state\n";
     for (int step = 0; step < options.steps; ++step) {
       const double sim_time = adapter.simulation_time();
       const double ego_x = std::min(490.0, options.ego_speed * sim_time);
       adapter.sync_ego(ego_x, options.ego_y, 0.0, options.ego_speed);
       adapter.step();
-      print_vehicle_states(step, adapter.simulation_time(), adapter.get_vehicle_states());
+      print_vehicle_states(step, adapter.simulation_time(), adapter.getVehicleStates());
     }
 
     return 0;

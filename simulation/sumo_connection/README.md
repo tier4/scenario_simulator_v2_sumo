@@ -19,12 +19,17 @@ plain CMake to build it.
 `SumoAdapter` is intentionally small. It isolates direct `libtraci` calls while
 keeping the public interface independent from SUMO types:
 
-- `initialize()` starts SUMO and creates the shadow ego vehicle.
+- `initialize()` starts SUMO.
 - `close()` shuts SUMO down; the destructor also closes it.
 - `step()` owns `Simulation::step()`.
 - `syncEgo(x, y, angle_deg, speed)` creates the shadow ego if needed and moves it before stepping.
 - `sync_ego(x, y, yaw_rad, speed)` is a compatibility helper for the original moving-ego probe.
-- `get_vehicle_states()` returns `std::vector<VehicleState>`.
+- `getVehicleStates()` returns `std::vector<VehicleState>` using simulator-neutral units.
+- `get_vehicle_states()` remains as a compatibility wrapper.
+
+`VehicleState` is the stable output boundary for this sandbox. It intentionally
+contains no SUMO types, and will later be converted to OSI `TrafficUpdate` or
+traffic_simulator `EntityStatus` when this work moves into scenario_simulator_v2.
 
 ## Dependencies
 
@@ -101,12 +106,12 @@ cmake --build build
 ./build/probe_libtraci
 ```
 
-The probe prints CSV-like rows:
+The probe prints one neutral `VehicleState` log line per vehicle:
 
 ```text
-step,time,vehicle_id,type_id,x,y,yaw_deg,speed,road_id
-0,0.30,ego,ego_shadow,1.200,0.000,0.000,6.000,straight
-0,0.30,npc_0,npc,6.100,-1.600,0.000,8.100,straight
+step,time,vehicle_state
+0,0.30,VehicleState{id=ego, type_id=ego_shadow, x_m=1.200, y_m=0.000, z_m=0.000, yaw_rad=0.000, speed_mps=6.000, acceleration_mps2=0.000, road_id=straight, lane_id=straight_0, lane_position_m=1.200, is_ego=true}
+0,0.30,VehicleState{id=npc_0, type_id=npc, x_m=6.100, y_m=-1.600, z_m=0.000, yaw_rad=0.000, speed_mps=8.100, acceleration_mps2=1.000, road_id=straight, lane_id=straight_0, lane_position_m=6.100, is_ego=false}
 ```
 
 Useful options:
@@ -115,9 +120,9 @@ Useful options:
 ./build/probe_libtraci --sumo-binary sumo-gui --steps 200 --ego-speed 10.0
 ```
 
-The probe-facing yaw uses the usual world-frame convention in degrees:
-`yaw_deg=0.0` points along +X. The probe handles SUMO's internal angle
-convention at the boundary.
+The probe-facing yaw uses the usual world-frame convention in radians:
+`yaw_rad=0.0` points along +X. The probe handles SUMO's internal angle
+convention at the adapter boundary.
 
 ```bash
 ./build/probe_libtraci --help
@@ -134,8 +139,9 @@ and does not pass ego.
 ./build/probe_ego_shadow_sync --steps 120
 ```
 
-The probe prints:
+The probe prints neutral vehicle-state lines plus an `npc_0` gap/speed summary
+when both expected vehicles are present:
 
 ```text
-step,time,id,x,y,angle,speed,road_id,lane_id,lane_position,npc_0_sees_ego_as_leader,leader_id,leader_gap
+step,time,vehicle_state,npc_0_gap_to_ego_m,npc_0_speed_mps
 ```

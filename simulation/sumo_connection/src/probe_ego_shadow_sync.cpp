@@ -71,19 +71,30 @@ Options parse_args(int argc, char * argv[])
 
 void print_vehicle_states(int step, double sim_time, const std::vector<VehicleState> & states)
 {
+  const VehicleState * ego = nullptr;
+  const VehicleState * npc_0 = nullptr;
+  for (const auto & state : states) {
+    if (state.is_ego) {
+      ego = &state;
+    }
+    if (state.id == "npc_0") {
+      npc_0 = &state;
+    }
+  }
+
   for (const auto & state : states) {
     std::cout << step << "," << std::fixed << std::setprecision(2) << sim_time << ","
-              << state.id << "," << std::setprecision(3) << state.x << "," << state.y << ","
-              << state.angle_deg << "," << state.speed << "," << state.road_id << ","
-              << state.lane_id << "," << state.lane_position;
-    if (state.id == "npc_0") {
-      std::cout << "," << (state.has_leader && state.leader_id == "ego" ? "yes" : "no") << ","
-                << (state.has_leader ? state.leader_id : "") << ","
-                << (state.has_leader ? state.leader_gap : 0.0);
-    } else {
-      std::cout << ",,,";
+              << std::setprecision(3) << state;
+    if (state.id == "npc_0" && ego != nullptr) {
+      std::cout << ",npc_0_gap_to_ego_m=" << (ego->lane_position_m - state.lane_position_m)
+                << ",npc_0_speed_mps=" << state.speed_mps;
     }
     std::cout << "\n";
+  }
+
+  if (ego == nullptr || npc_0 == nullptr) {
+    std::cerr << "missing expected vehicles: ego=" << (ego == nullptr ? "no" : "yes")
+              << ", npc_0=" << (npc_0 == nullptr ? "no" : "yes") << "\n";
   }
 }
 }  // namespace
@@ -97,12 +108,11 @@ int main(int argc, char * argv[])
     SumoAdapter adapter(options.sumo_binary, sumocfg, options.step_length);
     adapter.initialize();
 
-    std::cout << "step,time,id,x,y,angle,speed,road_id,lane_id,lane_position,"
-                 "npc_0_sees_ego_as_leader,leader_id,leader_gap\n";
+    std::cout << "step,time,vehicle_state,npc_0_gap_to_ego_m,npc_0_speed_mps\n";
     for (int step = 0; step < options.steps; ++step) {
       adapter.syncEgo(50.0, 0.0, 90.0, 0.0);
       adapter.step();
-      print_vehicle_states(step, adapter.simulation_time(), adapter.get_vehicle_states());
+      print_vehicle_states(step, adapter.simulation_time(), adapter.getVehicleStates());
     }
 
     return 0;

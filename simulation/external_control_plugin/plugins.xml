@@ -1,0 +1,9 @@
+<library path="external_control_plugin">
+  <class name="external_control_plugin/ExternalControlPlugin"
+         type="entity_behavior::ExternalControlPlugin"
+         base_class_type="entity_behavior::BehaviorPluginBase">
+    <description>
+      A prototype behavior plugin that updates vehicle NPC status from an external controller.
+    </description>
+  </class>
+</library>
