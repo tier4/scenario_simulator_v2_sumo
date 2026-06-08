@@ -20,6 +20,7 @@
 #include <rclcpp/rclcpp.hpp>
 #include <string>
 #include <traffic_simulator/behavior/behavior_plugin_base.hpp>
+#include <unordered_set>
 #include <vector>
 
 namespace entity_behavior
@@ -39,6 +40,7 @@ class ExternalNpcController
 public:
   virtual ~ExternalNpcController() = default;
   virtual void setEgoState(const std::optional<ExternalVehicleState> &) {}
+  virtual void setKnownEntityNames(const std::unordered_set<std::string> &) {}
   virtual void update(double current_time_s, double step_time_s) = 0;
   virtual std::vector<ExternalVehicleState> getVehicleStates() const = 0;
 };
@@ -143,6 +145,7 @@ private:                                                               \
 
   auto applyState(const ExternalVehicleState & state, double status_time) -> void;
   auto getEgoState() const -> std::optional<ExternalVehicleState>;
+  auto getKnownEntityNames() const -> std::unordered_set<std::string>;
 
   std::unique_ptr<ExternalNpcController> controller_;
   rclcpp::Logger logger_{rclcpp::get_logger("external_control_plugin")};

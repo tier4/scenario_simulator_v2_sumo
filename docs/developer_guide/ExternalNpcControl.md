@@ -78,7 +78,7 @@ Run the mock scenario in SUMO mode:
 
 ```bash
 EXTERNAL_CONTROL_NPC_MODE=sumo \
-EXTERNAL_CONTROL_SUMO_BINARY=sumo \
+EXTERNAL_CONTROL_SUMO_USE_GUI=false \
 EXTERNAL_CONTROL_SUMOCFG=$PWD/src/scenario_simulator_v2/simulation/sumo_connection/scenarios/straight/straight.sumocfg \
 colcon test --packages-select cpp_mock_scenarios --ctest-args -R external_npc_control
 ```
@@ -88,15 +88,31 @@ scenario_simulator_v2 entity named `npc_0`; it does not apply SUMO's `ego` vehic
 If an ego entity status is available in `other_entity_status`, the SUMO ego shadow is synchronized
 before each SUMO step.
 
+If the real ego is not present in `other_entity_status`, SUMO mode uses a temporary static fallback
+ego at `x=50.0`, `y=0.0`, `z=0.0`, `yaw=0.0`, `speed=0.0`. This keeps the straight-road prototype
+useful because `npc_0` starts behind the stopped shadow ego and can slow or stop in response. The
+real ego hook is `ExternalControlPlugin::getEgoState()`; production use should provide the ego in
+`OtherEntityStatus` instead of relying on the fallback.
+
+SUMO vehicle ids are matched directly against scenario entity names. A SUMO vehicle without a
+matching scenario entity is logged and ignored.
+
 Useful environment variables:
 
 - `EXTERNAL_CONTROL_NPC_MODE`: `dummy` or `sumo`.
 - `EXTERNAL_CONTROL_SUMOCFG`: SUMO `.sumocfg` path.
-- `EXTERNAL_CONTROL_SUMO_BINARY`: SUMO executable, default `sumo`.
+- `EXTERNAL_CONTROL_SUMO_BINARY`: explicit SUMO executable. If unset, defaults to `sumo` or
+  `sumo-gui` based on `EXTERNAL_CONTROL_SUMO_USE_GUI`.
+- `EXTERNAL_CONTROL_SUMO_USE_GUI`: `true`/`false`, default `false`.
 - `EXTERNAL_CONTROL_SUMO_STEP_LENGTH`: override SUMO step length; default is the simulator step.
 - `EXTERNAL_CONTROL_SUMO_EGO_ID`: SUMO/scenario ego id, default `ego`.
 - `EXTERNAL_CONTROL_SUMO_ROUTE_ID`: route for the ego shadow, default `straight_route`.
 - `EXTERNAL_CONTROL_SUMO_EDGE_ID`: edge for ego shadow `moveToXY`, default `straight`.
+- `EXTERNAL_CONTROL_SUMO_FALLBACK_EGO_X`: fallback ego x, default `50.0`.
+- `EXTERNAL_CONTROL_SUMO_FALLBACK_EGO_Y`: fallback ego y, default `0.0`.
+- `EXTERNAL_CONTROL_SUMO_FALLBACK_EGO_Z`: fallback ego z, default `0.0`.
+- `EXTERNAL_CONTROL_SUMO_FALLBACK_EGO_YAW`: fallback ego yaw in radians, default `0.0`.
+- `EXTERNAL_CONTROL_SUMO_FALLBACK_EGO_SPEED`: fallback ego speed, default `0.0`.
 
 ## Limitations
 

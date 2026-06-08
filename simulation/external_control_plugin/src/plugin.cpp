@@ -34,6 +34,7 @@
 #include <optional>
 #include <stdexcept>
 #include <string>
+#include <unordered_set>
 
 namespace entity_behavior
 {
@@ -43,10 +44,16 @@ constexpr const char * kModeEnv = "EXTERNAL_CONTROL_NPC_MODE";
 constexpr const char * kLegacyModeEnv = "EXTERNAL_CONTROL_MODE";
 constexpr const char * kSumocfgEnv = "EXTERNAL_CONTROL_SUMOCFG";
 constexpr const char * kSumoBinaryEnv = "EXTERNAL_CONTROL_SUMO_BINARY";
+constexpr const char * kSumoUseGuiEnv = "EXTERNAL_CONTROL_SUMO_USE_GUI";
 constexpr const char * kSumoStepLengthEnv = "EXTERNAL_CONTROL_SUMO_STEP_LENGTH";
 constexpr const char * kSumoEgoIdEnv = "EXTERNAL_CONTROL_SUMO_EGO_ID";
 constexpr const char * kSumoRouteIdEnv = "EXTERNAL_CONTROL_SUMO_ROUTE_ID";
 constexpr const char * kSumoEdgeIdEnv = "EXTERNAL_CONTROL_SUMO_EDGE_ID";
+constexpr const char * kFallbackEgoXEnv = "EXTERNAL_CONTROL_SUMO_FALLBACK_EGO_X";
+constexpr const char * kFallbackEgoYEnv = "EXTERNAL_CONTROL_SUMO_FALLBACK_EGO_Y";
+constexpr const char * kFallbackEgoZEnv = "EXTERNAL_CONTROL_SUMO_FALLBACK_EGO_Z";
+constexpr const char * kFallbackEgoYawEnv = "EXTERNAL_CONTROL_SUMO_FALLBACK_EGO_YAW";
+constexpr const char * kFallbackEgoSpeedEnv = "EXTERNAL_CONTROL_SUMO_FALLBACK_EGO_SPEED";
 constexpr const char * kDummyMode = "dummy";
 constexpr const char * kSumoMode = "sumo";
 
@@ -75,6 +82,15 @@ auto externalStateFromCanonicalizedStatus(
 }
 
 #ifdef EXTERNAL_CONTROL_PLUGIN_HAS_SUMO
+auto getEnvBool(const char * name, const bool default_value) -> bool
+{
+  const auto value = getEnvString(name, "");
+  if (value.empty()) {
+    return default_value;
+  }
+  return value == "1" || value == "true" || value == "TRUE" || value == "on" || value == "ON";
+}
+
 auto getEnvDouble(const char * name, const double default_value) -> double
 {
   const char * value = std::getenv(name);
@@ -94,6 +110,21 @@ auto externalStateFromSumoState(const VehicleState & state) -> ExternalVehicleSt
     state.z_m, state.yaw_rad, state.speed_mps};
 }
 
+auto egoStateFromExternalState(const ExternalVehicleState & state) -> SumoAdapter::EgoState
+{
+  return SumoAdapter::EgoState{
+    state.x_m, state.y_m, state.z_m, state.yaw_rad, state.speed_mps};
+}
+
+auto resolveSumoBinary() -> std::string
+{
+  const auto configured_binary = getEnvString(kSumoBinaryEnv, "");
+  if (!configured_binary.empty()) {
+    return configured_binary;
+  }
+  return getEnvBool(kSumoUseGuiEnv, false) ? "sumo-gui" : "sumo";
+}
+
 class SumoExternalNpcController : public ExternalNpcController
 {
 public:
@@ -103,7 +134,14 @@ public:
     const double step_length_s, std::string ego_id,
     std::string route_id, std::string edge_id,
     const rclcpp::Logger & logger)
-  : ego_id_(std::move(ego_id)), logger_(logger)
+  : fallback_ego_state_{
+      getEnvDouble(kFallbackEgoXEnv, 50.0),
+      getEnvDouble(kFallbackEgoYEnv, 0.0),
+      getEnvDouble(kFallbackEgoZEnv, 0.0),
+      getEnvDouble(kFallbackEgoYawEnv, 0.0),
+      getEnvDouble(kFallbackEgoSpeedEnv, 0.0)},
+    ego_id_(std::move(ego_id)),
+    logger_(logger)
   {
     adapter_ = std::make_unique<SumoAdapter>(
       std::move(sumo_binary), std::move(sumocfg), step_length_s, ego_id_,
@@ -117,13 +155,41 @@ public:
     ego_state_ = ego_state;
   }
 
+  void setKnownEntityNames(const std::unordered_set<std::string> & known_entity_names) override
+  {
+    known_entity_names_ = known_entity_names;
+  }
+
   void update(const double, const double) override
   {
-    if (ego_state_) {
-      adapter_->sync_ego(
-        ego_state_->x_m, ego_state_->y_m, ego_state_->yaw_rad,
-        ego_state_->speed_mps);
+    const auto ego_state = ego_state_
+      ? egoStateFromExternalState(*ego_state_)
+      : fallback_ego_state_;
+    if (!ego_state_) {
+      RCLCPP_WARN(
+        logger_,
+        "scenario ego state unavailable; using temporary static SUMO ego fallback "
+        "x=%.3f y=%.3f z=%.3f yaw=%.3f speed=%.3f. "
+        "Connect the real Ego hook through ExternalControlPlugin::getEgoState() "
+        "and OtherEntityStatus.",
+        fallback_ego_state_.x_m, fallback_ego_state_.y_m,
+        fallback_ego_state_.z_m, fallback_ego_state_.yaw_rad,
+        fallback_ego_state_.speed_mps);
     }
+    if (ego_state_) {
+      RCLCPP_INFO(
+        logger_,
+        "scenario ego state selected id=%s x=%.3f y=%.3f z=%.3f "
+        "yaw=%.3f speed=%.3f",
+        ego_state_->name.c_str(), ego_state_->x_m, ego_state_->y_m,
+        ego_state_->z_m, ego_state_->yaw_rad, ego_state_->speed_mps);
+    }
+    RCLCPP_INFO(
+      logger_,
+      "syncing SUMO ego shadow id=%s x=%.3f y=%.3f z=%.3f yaw=%.3f speed=%.3f",
+      ego_id_.c_str(), ego_state.x_m, ego_state.y_m, ego_state.z_m,
+      ego_state.yaw_rad, ego_state.speed_mps);
+    adapter_->syncEgo(ego_state);
 
     adapter_->step();
     RCLCPP_INFO(logger_, "SUMO step executed");
@@ -135,10 +201,26 @@ public:
     current_states_.reserve(sumo_states.size());
     for (const auto & state : sumo_states) {
       if (state.is_ego || state.id == ego_id_) {
+        RCLCPP_INFO(logger_, "ignored SUMO ego vehicle id=%s", state.id.c_str());
+        continue;
+      }
+      if (known_entity_names_.count(state.id) == 0) {
+        RCLCPP_WARN(
+          logger_,
+          "missing entity mapping for SUMO vehicle id=%s speed=%.3f lane_position=%.3f "
+          "lane_id=%s",
+          state.id.c_str(), state.speed_mps, state.lane_position_m,
+          state.lane_id.c_str());
         continue;
       }
       current_states_.push_back(externalStateFromSumoState(state));
-      RCLCPP_INFO(logger_, "mapped SUMO vehicle id=%s", state.id.c_str());
+      RCLCPP_INFO(
+        logger_,
+        "SUMO NPC vehicle state ready id=%s x=%.3f y=%.3f z=%.3f yaw=%.3f "
+        "speed=%.3f lane_position=%.3f lane_id=%s road_id=%s",
+        state.id.c_str(), state.x_m, state.y_m, state.z_m,
+        state.yaw_rad, state.speed_mps, state.lane_position_m,
+        state.lane_id.c_str(), state.road_id.c_str());
     }
   }
 
@@ -150,7 +232,9 @@ public:
 private:
   std::unique_ptr<SumoAdapter> adapter_;
   std::optional<ExternalVehicleState> ego_state_;
+  SumoAdapter::EgoState fallback_ego_state_;
   std::vector<ExternalVehicleState> current_states_;
+  std::unordered_set<std::string> known_entity_names_;
   std::string ego_id_;
   rclcpp::Logger logger_;
 };
@@ -196,6 +280,7 @@ void ExternalControlPlugin::configure(const rclcpp::Logger & logger)
       controller_mode_.c_str());
     controller_mode_ = kDummyMode;
   }
+  RCLCPP_INFO(logger_, "external_control selected controller mode=%s", controller_mode_.c_str());
 }
 
 void ExternalControlPlugin::update(
@@ -213,7 +298,25 @@ void ExternalControlPlugin::update(
     return;
   }
 
-  controller_->setEgoState(getEgoState());
+  const auto ego_state = getEgoState();
+  if (controller_mode_ == kSumoMode) {
+    if (ego_state) {
+      RCLCPP_INFO(
+        logger_,
+        "read scenario_simulator_v2 Ego state id=%s x=%.3f y=%.3f z=%.3f "
+        "yaw=%.3f speed=%.3f",
+        ego_state->name.c_str(), ego_state->x_m, ego_state->y_m,
+        ego_state->z_m, ego_state->yaw_rad, ego_state->speed_mps);
+    } else {
+      RCLCPP_WARN(
+        logger_,
+        "scenario_simulator_v2 Ego state id=%s not found in OtherEntityStatus; "
+        "SUMO mode will use the documented temporary fallback",
+        ego_name_.c_str());
+    }
+  }
+  controller_->setEgoState(ego_state);
+  controller_->setKnownEntityNames(getKnownEntityNames());
   controller_->update(current_time, step_time);
   const auto states = controller_->getVehicleStates();
   const auto & entity_name = canonicalized_entity_status_->getName();
@@ -235,10 +338,11 @@ void ExternalControlPlugin::update(
   applyState(*state_iter, current_time + step_time);
   RCLCPP_INFO(
     logger_,
-    "external_control time=%.3f entity=%s x=%.3f y=%.3f yaw=%.3f "
-    "speed=%.3f updated=true",
+    "applied NPC vehicle state from external controller time=%.3f entity=%s "
+    "x=%.3f y=%.3f z=%.3f yaw=%.3f speed=%.3f updated=true",
     current_time, state_iter->name.c_str(), state_iter->x_m,
-    state_iter->y_m, state_iter->yaw_rad, state_iter->speed_mps);
+    state_iter->y_m, state_iter->z_m, state_iter->yaw_rad,
+    state_iter->speed_mps);
 }
 
 auto ExternalControlPlugin::getCurrentAction() const -> const std::string &
@@ -286,14 +390,16 @@ auto ExternalControlPlugin::ensureControllerInitialized(
               "SUMO mode requires EXTERNAL_CONTROL_SUMOCFG or "
               "a configured default SUMO scenario");
     }
+    const auto sumo_binary = resolveSumoBinary();
     controller_ = std::make_unique<SumoExternalNpcController>(
-      getEnvString(kSumoBinaryEnv, "sumo"), sumocfg,
+      sumo_binary, sumocfg,
       getEnvDouble(kSumoStepLengthEnv, step_time), ego_name_,
       getEnvString(kSumoRouteIdEnv, "straight_route"),
       getEnvString(kSumoEdgeIdEnv, "straight"), logger_);
     RCLCPP_INFO(
-      logger_, "external_control initialized mode=sumo entity=%s sumocfg=%s",
-      canonicalized_entity_status_->getName().c_str(), sumocfg.c_str());
+      logger_, "external_control initialized mode=sumo entity=%s binary=%s sumocfg=%s ego_id=%s",
+      canonicalized_entity_status_->getName().c_str(), sumo_binary.c_str(), sumocfg.c_str(),
+      ego_name_.c_str());
     return true;
   } catch (const std::exception & error) {
     controller_initialization_failed_ = true;
@@ -374,6 +480,18 @@ auto ExternalControlPlugin::getEgoState() const -> std::optional<ExternalVehicle
     return std::nullopt;
   }
   return externalStateFromCanonicalizedStatus(iter->second);
+}
+
+auto ExternalControlPlugin::getKnownEntityNames() const -> std::unordered_set<std::string>
+{
+  std::unordered_set<std::string> entity_names;
+  if (canonicalized_entity_status_) {
+    entity_names.insert(canonicalized_entity_status_->getName());
+  }
+  for (const auto & entity : other_entity_status_) {
+    entity_names.insert(entity.first);
+  }
+  return entity_names;
 }
 }  // namespace entity_behavior
 

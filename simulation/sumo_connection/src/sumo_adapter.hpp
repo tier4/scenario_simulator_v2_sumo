@@ -28,6 +28,15 @@ std::ostream & operator<<(std::ostream & os, const VehicleState & state);
 class SumoAdapter
 {
 public:
+  struct EgoState
+  {
+    double x_m = 0.0;
+    double y_m = 0.0;
+    double z_m = 0.0;
+    double yaw_rad = 0.0;
+    double speed_mps = 0.0;
+  };
+
   SumoAdapter(
     std::string sumo_binary, std::filesystem::path sumocfg, double step_length,
     std::string ego_id = "ego", std::string ego_type_id = "ego_shadow",
@@ -40,6 +49,7 @@ public:
   void initialize();
   void close() noexcept;
   void step();
+  void syncEgo(const EgoState & ego_state);
   void syncEgo(double x, double y, double angle_deg, double speed);
   void sync_ego(double x, double y, double yaw_rad, double speed);
 

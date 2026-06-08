@@ -107,6 +107,11 @@ void SumoAdapter::sync_ego(double x, double y, double yaw_rad, double speed)
   syncEgo(x, y, world_yaw_rad_to_sumo_angle_deg(yaw_rad), speed);
 }
 
+void SumoAdapter::syncEgo(const EgoState & ego_state)
+{
+  sync_ego(ego_state.x_m, ego_state.y_m, ego_state.yaw_rad, ego_state.speed_mps);
+}
+
 void SumoAdapter::syncEgo(double x, double y, double angle_deg, double speed)
 {
   require_initialized();
