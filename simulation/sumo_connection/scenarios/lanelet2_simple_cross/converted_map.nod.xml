@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<nodes>
+  <node id="j_0" x="3699.802" y="73714.186" type="priority" />
+  <node id="j_1" x="3754.716" y="73742.527" type="priority" />
+  <node id="j_10" x="3768.312" y="73749.543" type="priority" />
+  <node id="j_11" x="3813.542" y="73772.886" type="priority" />
+  <node id="j_2" x="3778.687" y="73712.083" type="priority" />
+  <node id="j_3" x="3764.566" y="73738.950" type="priority" />
+  <node id="j_4" x="3701.178" y="73711.521" type="priority" />
+  <node id="j_5" x="3814.917" y="73770.221" type="priority" />
+  <node id="j_6" x="3781.341" y="73713.478" type="priority" />
+  <node id="j_7" x="3745.292" y="73782.065" type="priority" />
+  <node id="j_8" x="3757.469" y="73752.453" type="priority" />
+  <node id="j_9" x="3742.639" y="73780.670" type="priority" />
+</nodes>

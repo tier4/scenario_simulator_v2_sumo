@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<connections>
+  <connection from="lanelet_7" to="lanelet_147" />
+  <connection from="lanelet_14" to="lanelet_133" />
+  <connection from="lanelet_133" to="lanelet_140" />
+  <connection from="lanelet_147" to="lanelet_154" />
+</connections>

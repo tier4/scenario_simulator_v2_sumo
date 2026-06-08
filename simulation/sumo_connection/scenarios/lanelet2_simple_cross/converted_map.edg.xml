@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<edges>
+  <edge id="lanelet_7" to="j_1" priority="1" numLanes="1" speed="2.778" shape="3699.802,73714.186 3754.716,73742.527" from="j_0" />
+  <edge id="lanelet_14" to="j_3" priority="1" numLanes="1" speed="2.778" shape="3778.687,73712.083 3764.566,73738.950" from="j_2" />
+  <edge id="lanelet_18" to="j_5" priority="1" numLanes="1" speed="2.778" shape="3701.178,73711.521 3758.048,73740.871 3814.917,73770.221" from="j_4" />
+  <edge id="lanelet_22" to="j_7" priority="1" numLanes="1" speed="2.778" shape="3781.341,73713.478 3763.317,73747.771 3745.292,73782.065" from="j_6" />
+  <edge id="lanelet_133" to="j_8" priority="1" numLanes="1" speed="2.778" shape="3764.566,73738.950 3757.469,73752.453" from="j_3" />
+  <edge id="lanelet_140" to="j_9" priority="1" numLanes="1" speed="2.778" shape="3757.469,73752.453 3742.639,73780.670" from="j_8" />
+  <edge id="lanelet_147" to="j_10" priority="1" numLanes="1" speed="2.778" shape="3754.716,73742.527 3768.312,73749.543" from="j_1" />
+  <edge id="lanelet_154" to="j_11" priority="1" numLanes="1" speed="2.778" shape="3768.312,73749.543 3813.542,73772.886" from="j_10" />
+</edges>
