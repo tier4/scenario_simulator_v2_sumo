@@ -51,11 +51,9 @@ public:
   void step();
   void syncEgo(const EgoState & ego_state);
   void syncEgo(double x, double y, double angle_deg, double speed);
-  void sync_ego(double x, double y, double yaw_rad, double speed);
 
   double simulation_time() const;
   std::vector<VehicleState> getVehicleStates() const;
-  std::vector<VehicleState> get_vehicle_states() const;
 
 private:
   void require_initialized() const;

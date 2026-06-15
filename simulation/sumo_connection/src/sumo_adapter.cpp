@@ -102,14 +102,11 @@ void SumoAdapter::step()
   libtraci::Simulation::step();
 }
 
-void SumoAdapter::sync_ego(double x, double y, double yaw_rad, double speed)
-{
-  syncEgo(x, y, world_yaw_rad_to_sumo_angle_deg(yaw_rad), speed);
-}
-
 void SumoAdapter::syncEgo(const EgoState & ego_state)
 {
-  sync_ego(ego_state.x_m, ego_state.y_m, ego_state.yaw_rad, ego_state.speed_mps);
+  syncEgo(
+    ego_state.x_m, ego_state.y_m, world_yaw_rad_to_sumo_angle_deg(ego_state.yaw_rad),
+    ego_state.speed_mps);
 }
 
 void SumoAdapter::syncEgo(double x, double y, double angle_deg, double speed)
@@ -157,11 +154,6 @@ std::vector<VehicleState> SumoAdapter::getVehicleStates() const
     states.push_back(std::move(state));
   }
   return states;
-}
-
-std::vector<VehicleState> SumoAdapter::get_vehicle_states() const
-{
-  return getVehicleStates();
 }
 
 void SumoAdapter::require_initialized() const

@@ -101,7 +101,7 @@ int main(int argc, char * argv[])
     for (int step = 0; step < options.steps; ++step) {
       const double sim_time = adapter.simulation_time();
       const double ego_x = std::min(490.0, options.ego_speed * sim_time);
-      adapter.sync_ego(ego_x, options.ego_y, 0.0, options.ego_speed);
+      adapter.syncEgo(SumoAdapter::EgoState{ego_x, options.ego_y, 0.0, 0.0, options.ego_speed});
       adapter.step();
       print_vehicle_states(step, adapter.simulation_time(), adapter.getVehicleStates());
     }
