@@ -5,5 +5,6 @@
 
     <route id="straight_route" edges="straight"/>
 
-    <vehicle id="npc_0" type="npc" route="straight_route" depart="0.0" departSpeed="8.0" departLane="0"/>
+    <vehicle id="npc_0" type="npc" route="straight_route" depart="0.0" departPos="0.0" departSpeed="8.0" departLane="0"/>
+    <vehicle id="npc_1" type="npc" route="straight_route" depart="5.0" departPos="20.0" departSpeed="8.0" departLane="0"/>
 </routes>
