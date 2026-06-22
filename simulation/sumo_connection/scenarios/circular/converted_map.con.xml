@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<connections>
+  <connection from="lanelet_1" to="lanelet_2" />
+  <connection from="lanelet_2" to="lanelet_3" />
+  <connection from="lanelet_3" to="lanelet_4" />
+  <connection from="lanelet_4" to="lanelet_5" />
+  <connection from="lanelet_5" to="lanelet_6" />
+  <connection from="lanelet_6" to="lanelet_7" />
+  <connection from="lanelet_7" to="lanelet_8" />
+  <connection from="lanelet_8" to="lanelet_9" />
+  <connection from="lanelet_9" to="lanelet_10" />
+  <connection from="lanelet_10" to="lanelet_11" />
+  <connection from="lanelet_11" to="lanelet_12" />
+  <connection from="lanelet_12" to="lanelet_13" />
+  <connection from="lanelet_13" to="lanelet_14" />
+  <connection from="lanelet_14" to="lanelet_15" />
+  <connection from="lanelet_15" to="lanelet_16" />
+  <connection from="lanelet_16" to="lanelet_17" />
+  <connection from="lanelet_17" to="lanelet_18" />
+  <connection from="lanelet_18" to="lanelet_19" />
+  <connection from="lanelet_19" to="lanelet_20" />
+  <connection from="lanelet_20" to="lanelet_21" />
+  <connection from="lanelet_21" to="lanelet_22" />
+  <connection from="lanelet_22" to="lanelet_23" />
+  <connection from="lanelet_23" to="lanelet_24" />
+  <connection from="lanelet_24" to="lanelet_25" />
+  <connection from="lanelet_25" to="lanelet_26" />
+  <connection from="lanelet_26" to="lanelet_27" />
+  <connection from="lanelet_27" to="lanelet_28" />
+  <connection from="lanelet_28" to="lanelet_29" />
+  <connection from="lanelet_29" to="lanelet_30" />
+  <connection from="lanelet_30" to="lanelet_31" />
+  <connection from="lanelet_31" to="lanelet_32" />
+  <connection from="lanelet_32" to="lanelet_1" />
+</connections>

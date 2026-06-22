@@ -1,0 +1,5 @@
+projector_type: TransverseMercator
+map_origin:
+  latitude: 35.68123600000
+  longitude: 139.76712500000
+scale_factor: 1.0

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2026-05-25T17:16:30.199616+09:00 by Eclipse SUMO netconvert 1.27.0
+<!-- generated on 2026-06-22T17:33:57.362627+09:00 by Eclipse SUMO netconvert 1.27.0
 <netconvertConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/netconvertConfiguration.xsd">
 
     <input>
@@ -12,6 +12,15 @@
         <output-file value="straight.net.xml"/>
     </output>
 
+    <processing>
+        <offset.disable-normalization value="true"/>
+    </processing>
+
+    <report>
+        <log value="straight.netconvert.log"/>
+        <error-log value="straight.netconvert.err.log"/>
+    </report>
+
 </netconvertConfiguration>
 -->
 
@@ -19,11 +28,11 @@
 
     <location netOffset="0.00,0.00" convBoundary="0.00,0.00,500.00,0.00" origBoundary="0.00,0.00,500.00,0.00" projParameter="!"/>
 
-    <edge id="straight" from="start" to="end" priority="1">
-        <lane id="straight_0" index="0" speed="13.89" length="500.00" shape="0.00,-1.60 500.00,-1.60"/>
+    <edge id="straight" from="start" to="end" priority="1" spreadType="center">
+        <lane id="straight_0" index="0" speed="13.89" length="500.00" shape="0.00,0.00 500.00,0.00"/>
     </edge>
 
-    <junction id="end" type="dead_end" x="500.00" y="0.00" incLanes="straight_0" intLanes="" shape="500.00,-3.20 500.00,0.00"/>
-    <junction id="start" type="dead_end" x="0.00" y="0.00" incLanes="" intLanes="" shape="0.00,0.00 0.00,-3.20"/>
+    <junction id="end" type="dead_end" x="500.00" y="0.00" incLanes="straight_0" intLanes="" shape="500.00,-1.60 500.00,1.60"/>
+    <junction id="start" type="dead_end" x="0.00" y="0.00" incLanes="" intLanes="" shape="0.00,1.60 0.00,-1.60"/>
 
 </net>

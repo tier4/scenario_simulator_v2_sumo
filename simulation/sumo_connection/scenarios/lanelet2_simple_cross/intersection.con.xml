@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<connections>
+  <!-- route path (major) -->
+  <connection from="lanelet_7"    to="lanelet_147a" />
+  <connection from="lanelet_147a" to="lanelet_147b" />
+  <connection from="lanelet_147b" to="lanelet_154" />
+  <!-- crossing path (minor, yields at j_cross) -->
+  <connection from="lanelet_14"   to="lanelet_133a" />
+  <connection from="lanelet_133a" to="lanelet_133b" />
+  <connection from="lanelet_133b" to="lanelet_140" />
+</connections>

@@ -242,6 +242,7 @@ def plain_edges(lanelets: list[Lanelet], node_ids: dict[tuple[int, int], str]) -
             priority="1",
             numLanes="1",
             speed=f"{lanelet.speed_mps:.3f}",
+            spreadType="center",
             shape=shape,
         )
     for edge in root.findall("edge"):
@@ -385,7 +386,9 @@ def write_report(
                 f"- Network coordinate bounds: x={min_x:.3f}..{max_x:.3f}, y={min_y:.3f}..{max_y:.3f}",
                 f"- SUMO location: `{location}`",
                 "- Coordinate handling: node `local_x`/`local_y` tags were copied into SUMO coordinates and "
-                "`netconvert --offset.disable-normalization` was used.",
+                "`netconvert --offset.disable-normalization` was used. Edges use `spreadType=\"center\"` so "
+                "single-lane SUMO lane geometry stays on the Lanelet2 centerline instead of being shifted to "
+                "the right of it.",
                 "- Traffic lights: not converted or synchronized in this phase.",
                 "",
                 "## Connections",

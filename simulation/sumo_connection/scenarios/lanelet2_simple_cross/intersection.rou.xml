@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<routes>
+  <vType id="npc" vClass="passenger" length="4.5" accel="2.0" decel="4.5" maxSpeed="8.0" />
+  <vType id="ego_shadow" vClass="passenger" length="4.5" accel="2.0" decel="4.5" maxSpeed="8.0" />
+
+  <!-- major road: ego shadow + npc_0 drive lanelet_7 -> 147a -> 147b -> 154 -->
+  <route id="straight_route" edges="lanelet_7 lanelet_147a lanelet_147b lanelet_154" />
+  <route id="npc_route" edges="lanelet_7 lanelet_147a lanelet_147b lanelet_154" />
+  <!-- minor road: npc_cross drives lanelet_14 -> 133a -> 133b -> 140, yields at j_cross -->
+  <route id="npc_cross_route" edges="lanelet_14 lanelet_133a lanelet_133b lanelet_140" />
+
+  <vehicle id="npc_0"     type="npc" route="npc_route"       depart="0.0" departLane="0" departPos="0.0" departSpeed="2.0" />
+  <vehicle id="npc_cross" type="npc" route="npc_cross_route" depart="4.0" departLane="0" departPos="0.0" departSpeed="2.0" />
+</routes>

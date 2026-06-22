@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<routes>
+  <vType id="npc" vClass="passenger" accel="2.6" decel="4.5" sigma="0.5" length="4.5" minGap="2.5" maxSpeed="13.89" guiShape="passenger"/>
+  <vType id="ego_shadow" vClass="passenger" accel="4.0" decel="8.0" sigma="0.0" length="4.5" minGap="0.0" maxSpeed="50.0" guiShape="passenger"/>
+
+  <route id="loop" edges="lanelet_1 lanelet_2 lanelet_3 lanelet_4 lanelet_5 lanelet_6 lanelet_7 lanelet_8 lanelet_9 lanelet_10 lanelet_11 lanelet_12 lanelet_13 lanelet_14 lanelet_15 lanelet_16 lanelet_17 lanelet_18 lanelet_19 lanelet_20 lanelet_21 lanelet_22 lanelet_23 lanelet_24 lanelet_25 lanelet_26 lanelet_27 lanelet_28 lanelet_29 lanelet_30 lanelet_31 lanelet_32" repeat="1000"/>
+
+  <vehicle id="npc_0" type="npc" route="loop" depart="0.0" departLane="0" departPos="0.0" departSpeed="8.0"/>
+  <vehicle id="npc_1" type="npc" route="loop" depart="5.0" departLane="0" departPos="0.0" departSpeed="8.0"/>
+  <vehicle id="npc_2" type="npc" route="loop" depart="10.0" departLane="0" departPos="0.0" departSpeed="8.0"/>
+</routes>

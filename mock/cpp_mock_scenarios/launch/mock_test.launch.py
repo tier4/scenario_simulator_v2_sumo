@@ -97,7 +97,7 @@ def default_autoware_launch_file_of(architecture_type):
 
 
 def default_rviz_config_file():
-    return Path(get_package_share_directory("traffic_simulator")) / "config/scenario_simulator_v2.rviz"
+    return Path(get_package_share_directory("cpp_mock_scenarios")) / "rviz/mock_test.rviz"
 
 
 def launch_setup(context, *args, **kwargs):
@@ -281,9 +281,10 @@ def launch_setup(context, *args, **kwargs):
             name="rviz2",
             output={"stderr": "log", "stdout": "log"},
             condition=IfCondition(launch_rviz),
-            arguments=["-d", str(default_rviz_config_file())],
+            arguments=["-d", rviz_config],
             remappings=[
                 ("/simulation/lanelet/marker", "/lanelet/marker"),
+                ("/entity/marker", "/simulation/entity/marker"),
                 ("/simulation/debug_marker", "/debug_marker"),
             ],
         ),

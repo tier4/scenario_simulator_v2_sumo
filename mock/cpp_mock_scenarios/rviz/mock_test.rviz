@@ -46,7 +46,10 @@ Visualization Manager:
           Enabled: true
           Name: Entity
           Namespaces:
-            {}
+            __sumo_lifecycle_manager: true
+            npc_0: true
+            npc_1: true
+            npc_2: true
           Topic:
             Depth: 5
             Durability Policy: Volatile
@@ -167,26 +170,21 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Class: rviz_default_plugins/ThirdPersonFollower
-      Distance: 10
+      Angle: 0
+      Class: rviz_default_plugins/TopDownOrtho
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
-      Focal Point:
-        X: 0
-        Y: 0
-        Z: 0
-      Focal Shape Fixed Size: false
-      Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.7853981852531433
+      Scale: 80
       Target Frame: entities
-      Value: ThirdPersonFollower (rviz_default_plugins)
-      Yaw: 0.7853981852531433
+      Value: TopDownOrtho (rviz_default_plugins)
+      X: 0
+      Y: 0
     Saved: ~
 Window Geometry:
   Displays:

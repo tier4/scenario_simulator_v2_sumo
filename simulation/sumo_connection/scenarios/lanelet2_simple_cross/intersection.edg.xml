@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+  Route path (lanelet_7 -> lanelet_147a -> lanelet_147b -> lanelet_154) is the major
+  road (priority="2"); the crossing path (lanelet_14 -> lanelet_133a -> lanelet_133b
+  -> lanelet_140) is the minor road (priority="1") and yields at j_cross.
+-->
+<edges>
+  <edge id="lanelet_7"    from="j_0" to="j_1"     priority="2" numLanes="1" speed="2.778" spreadType="center" shape="3699.802,73714.186 3754.716,73742.527" />
+  <edge id="lanelet_147a" from="j_1" to="j_cross" priority="2" numLanes="1" speed="2.778" spreadType="center" shape="3754.716,73742.527 3760.986,73745.763" />
+  <edge id="lanelet_147b" from="j_cross" to="j_10" priority="2" numLanes="1" speed="2.778" spreadType="center" shape="3760.986,73745.763 3768.312,73749.543" />
+  <edge id="lanelet_154"  from="j_10" to="j_11"   priority="2" numLanes="1" speed="2.778" spreadType="center" shape="3768.312,73749.543 3813.542,73772.886" />
+
+  <edge id="lanelet_14"   from="j_2" to="j_3"     priority="1" numLanes="1" speed="2.778" spreadType="center" shape="3778.687,73712.083 3764.566,73738.950" />
+  <edge id="lanelet_133a" from="j_3" to="j_cross" priority="1" numLanes="1" speed="2.778" spreadType="center" shape="3764.566,73738.950 3760.986,73745.763" />
+  <edge id="lanelet_133b" from="j_cross" to="j_8" priority="1" numLanes="1" speed="2.778" spreadType="center" shape="3760.986,73745.763 3757.469,73752.453" />
+  <edge id="lanelet_140"  from="j_8" to="j_9"     priority="1" numLanes="1" speed="2.778" spreadType="center" shape="3757.469,73752.453 3742.639,73780.670" />
+
+  <edge id="lanelet_18"   from="j_4" to="j_5"     priority="1" numLanes="1" speed="2.778" spreadType="center" shape="3701.178,73711.521 3758.048,73740.871 3814.917,73770.221" />
+  <edge id="lanelet_22"   from="j_6" to="j_7"     priority="1" numLanes="1" speed="2.778" spreadType="center" shape="3781.341,73713.478 3763.317,73747.771 3745.292,73782.065" />
+</edges>

@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<routes>
+  <vType id="npc" vClass="passenger" length="4.5" accel="2.0" decel="4.5" maxSpeed="8.0" />
+  <vType id="ego_shadow" vClass="passenger" length="4.5" accel="2.0" decel="4.5" maxSpeed="8.0" />
+  <route id="straight_route" edges="lanelet_3 lanelet_4 lanelet_5 lanelet_6 lanelet_7 lanelet_8 lanelet_9 lanelet_10 lanelet_11 lanelet_12 lanelet_13 lanelet_14 lanelet_15 lanelet_16 lanelet_17 lanelet_18 lanelet_19 lanelet_20 lanelet_21 lanelet_22 lanelet_23 lanelet_24 lanelet_25 lanelet_26 lanelet_27 lanelet_28 lanelet_29 lanelet_30 lanelet_31 lanelet_32 lanelet_1 lanelet_2" />
+  <route id="npc_route" edges="lanelet_3 lanelet_4 lanelet_5 lanelet_6 lanelet_7 lanelet_8 lanelet_9 lanelet_10 lanelet_11 lanelet_12 lanelet_13 lanelet_14 lanelet_15 lanelet_16 lanelet_17 lanelet_18 lanelet_19 lanelet_20 lanelet_21 lanelet_22 lanelet_23 lanelet_24 lanelet_25 lanelet_26 lanelet_27 lanelet_28 lanelet_29 lanelet_30 lanelet_31 lanelet_32 lanelet_1 lanelet_2" />
+  <vehicle id="npc_0" type="npc" route="npc_route" depart="0.0" departLane="0" departPos="0.0" departSpeed="2.0" />
+</routes>

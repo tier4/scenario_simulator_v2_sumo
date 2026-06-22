@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8'?>
+<edges>
+  <edge id="lanelet_1" to="j_1" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="50.000,-0.000 49.039,-9.755" from="j_0" />
+  <edge id="lanelet_2" to="j_2" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="49.039,-9.755 46.194,-19.134" from="j_1" />
+  <edge id="lanelet_3" to="j_3" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="46.194,-19.134 41.573,-27.779" from="j_2" />
+  <edge id="lanelet_4" to="j_4" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="41.573,-27.779 35.355,-35.355" from="j_3" />
+  <edge id="lanelet_5" to="j_5" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="35.355,-35.355 27.779,-41.573" from="j_4" />
+  <edge id="lanelet_6" to="j_6" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="27.779,-41.573 19.134,-46.194" from="j_5" />
+  <edge id="lanelet_7" to="j_7" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="19.134,-46.194 9.755,-49.039" from="j_6" />
+  <edge id="lanelet_8" to="j_8" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="9.755,-49.039 0.000,-50.000" from="j_7" />
+  <edge id="lanelet_9" to="j_9" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="0.000,-50.000 -9.755,-49.039" from="j_8" />
+  <edge id="lanelet_10" to="j_10" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="-9.755,-49.039 -19.134,-46.194" from="j_9" />
+  <edge id="lanelet_11" to="j_11" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="-19.134,-46.194 -27.779,-41.573" from="j_10" />
+  <edge id="lanelet_12" to="j_12" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="-27.779,-41.573 -35.355,-35.355" from="j_11" />
+  <edge id="lanelet_13" to="j_13" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="-35.355,-35.355 -41.573,-27.779" from="j_12" />
+  <edge id="lanelet_14" to="j_14" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="-41.573,-27.779 -46.194,-19.134" from="j_13" />
+  <edge id="lanelet_15" to="j_15" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="-46.194,-19.134 -49.039,-9.755" from="j_14" />
+  <edge id="lanelet_16" to="j_16" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="-49.039,-9.755 -50.000,0.000" from="j_15" />
+  <edge id="lanelet_17" to="j_17" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="-50.000,0.000 -49.039,9.755" from="j_16" />
+  <edge id="lanelet_18" to="j_18" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="-49.039,9.755 -46.194,19.134" from="j_17" />
+  <edge id="lanelet_19" to="j_19" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="-46.194,19.134 -41.573,27.779" from="j_18" />
+  <edge id="lanelet_20" to="j_20" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="-41.573,27.779 -35.355,35.355" from="j_19" />
+  <edge id="lanelet_21" to="j_21" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="-35.355,35.355 -27.779,41.573" from="j_20" />
+  <edge id="lanelet_22" to="j_22" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="-27.779,41.573 -19.134,46.194" from="j_21" />
+  <edge id="lanelet_23" to="j_23" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="-19.134,46.194 -9.755,49.039" from="j_22" />
+  <edge id="lanelet_24" to="j_24" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="-9.755,49.039 0.000,50.000" from="j_23" />
+  <edge id="lanelet_25" to="j_25" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="0.000,50.000 9.755,49.039" from="j_24" />
+  <edge id="lanelet_26" to="j_26" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="9.755,49.039 19.134,46.194" from="j_25" />
+  <edge id="lanelet_27" to="j_27" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="19.134,46.194 27.779,41.573" from="j_26" />
+  <edge id="lanelet_28" to="j_28" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="27.779,41.573 35.355,35.355" from="j_27" />
+  <edge id="lanelet_29" to="j_29" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="35.355,35.355 41.573,27.779" from="j_28" />
+  <edge id="lanelet_30" to="j_30" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="41.573,27.779 46.194,19.134" from="j_29" />
+  <edge id="lanelet_31" to="j_31" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="46.194,19.134 49.039,9.755" from="j_30" />
+  <edge id="lanelet_32" to="j_0" priority="1" numLanes="1" speed="13.889" spreadType="center" shape="49.039,9.755 50.000,0.000" from="j_31" />
+</edges>

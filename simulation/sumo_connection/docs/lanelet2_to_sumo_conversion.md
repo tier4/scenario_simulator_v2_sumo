@@ -178,13 +178,39 @@ projParameter="!"
 `local_x`/`local_y` values in SUMO. This means SUMO vehicle `x/y` are intended to
 be in the same local map frame as the source Lanelet2 file for this map.
 
+The generated SUMO edges use `spreadType="center"`. This is important for
+Lanelet2 conversion: the converter writes a lanelet centerline as each SUMO edge
+shape, and SUMO's default lane spread shifts a one-lane edge to the right of the
+edge shape. `spreadType="center"` keeps the SUMO lane centerline on the Lanelet2
+centerline, avoiding a lateral offset when SUMO vehicle poses are mirrored back
+into RViz.
+
 No intermediate CommonRoad XML is generated, so there is no
 `geoTransformation` or CommonRoad translation value to extract in this workflow.
-For scenario_simulator_v2 integration, the remaining coordinate issue is to
-confirm that the simulator entity poses use the same local map frame and yaw
-convention as these `local_x`/`local_y` values. If a future converter normalizes
-SUMO coordinates or emits a CommonRoad translation, the inverse offset must be
-applied at the `SumoExternalNpcController` boundary.
+
+**Resolved (measured during the cross-map demo):** the SUMO net is in the OSM
+`local_x`/`local_y` frame, but traffic_simulator does **not** load the map in that
+frame — it projects `simple_cross_map` into **MGRS** (the OSM carries `mgrs_code`
+tags). So the simulator entity poses differ from the SUMO `local_x`/`local_y`
+values by a constant offset: for this map an Ego on `lanelet_7` reads
+`(71670.8, 73652.1)` in the simulator vs `(3726.5, 73727.9)` on the SUMO
+centerline. The relationship is a **pure translation** (headings already match —
+SUMO heading of `lanelet_7` ≈ 0.476 rad equals the simulator yaw 0.478 rad), so no
+rotation is needed:
+
+```text
+scenario_x = sumo_x + 67944.34
+scenario_y = sumo_y - 75.87
+scenario_z = sumo_z + 0.757   (SUMO is 2D; z_offset ≈ ground elevation)
+scenario_yaw = sumo_yaw + 0.0
+```
+
+This offset is applied at the `SumoExternalNpcController` boundary via the
+`EXTERNAL_CONTROL_SUMO_TRANSFORM_*` environment variables (see
+`external_control_plugin/README.md`). It is **required** — without it the Ego
+shadow is placed ~68 km outside the network and SUMO aborts with a
+`SocketException`. A future converter that emits MGRS-projected coordinates (or a
+CommonRoad translation) would make these offsets `0`.
 
 ## Manual Fixes And Warnings
 
