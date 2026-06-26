@@ -32,10 +32,17 @@ from openscenario_utility.conversion import convert
 from pathlib import Path
 from rclpy.executors import ExternalShutdownException
 from shutil import rmtree
+from subprocess import run as subprocess_run
 from sys import exit
 from typing import List
 from scenario import Scenario
 from scenario import substitute_ros_package
+
+# Workaround: diffusion planner model switching via symlink.
+# The launcher hardcodes the model path below and cannot be modified.
+# When this path becomes configurable, remove all model-switching code
+# (search for MODEL_SYMLINK_PATH to find all related code).
+MODEL_SYMLINK_PATH = Path("/opt/autoware/mlmodels/diffusion_planner_for_x2")
 
 
 def convert_scenario_to_xosc(scenario: Scenario, output_directory: Path):
@@ -71,7 +78,8 @@ class ScenarioTestRunner(LifecycleController):
         global_real_time_factor: float,
         global_timeout: int,  # [sec]
         output_directory: Path,
-        override_parameters: str
+        override_parameters: str,
+        models_path: str = "",
     ):
         """
         Initialize the class ScenarioTestRunner.
@@ -142,6 +150,8 @@ class ScenarioTestRunner(LifecycleController):
                     self.print_debug('/simulation/openscenario_preprocessor/set_parameter: timeout')
                     exit(1)
 
+        self.models_path = Path(models_path) if models_path else None
+        self.model_backup_path = None  # MODEL_SYMLINK_PATH workaround
 
     def spin(self):
         """Run scenario."""
@@ -159,8 +169,7 @@ class ScenarioTestRunner(LifecycleController):
                 else:
                     time.sleep(self.SLEEP_RATE)
 
-    def run_scenario(self, scenario: Scenario):
-
+    def execute_scenario(self, scenario: Scenario):
         # convert t4v2/xosc to xosc
         xosc_scenarios = convert_scenario_to_xosc(scenario, self.output_directory)
 
@@ -186,6 +195,8 @@ class ScenarioTestRunner(LifecycleController):
             else:
                 exit(1)
 
+    def run_scenario(self, scenario: Scenario):
+        self.execute_scenario(scenario)
         self.shutdown()
         self.destroy_node()
 
@@ -274,6 +285,66 @@ class ScenarioTestRunner(LifecycleController):
     def print_debug(self, message: str):
         self.get_logger().info(message)
 
+    def collect_models_paths(self):
+        if not self.models_path or not self.models_path.is_dir():
+            raise RuntimeError(f"Model directory does not exist: {self.models_path}")
+        dirs = sorted([d for d in self.models_path.iterdir() if d.is_dir()])
+        if not dirs:
+            raise RuntimeError(f"No model subdirectories found in: {self.models_path}")
+        self.get_logger().info(
+            f"[Model Switch] Found {len(dirs)} models: {[d.name for d in dirs]}"
+        )
+        return dirs
+
+    # --- MODEL_SYMLINK_PATH workaround: begin ---
+
+    def setup_model_symlink(self, model_path):
+        symlink = MODEL_SYMLINK_PATH
+        if self.model_backup_path is None and symlink.exists() and not symlink.is_symlink():
+            self.model_backup_path = Path("/tmp") / (symlink.name + ".backup")
+            subprocess_run(
+                ["sudo", "mv", str(symlink), str(self.model_backup_path)], check=True
+            )
+            self.get_logger().info(
+                f"[Model Switch] Backed up {symlink} -> {self.model_backup_path}"
+            )
+        if symlink.is_symlink():
+            subprocess_run(["sudo", "rm", str(symlink)], check=True)
+        subprocess_run(
+            ["sudo", "ln", "-s", str(model_path), str(symlink)], check=True
+        )
+        self.get_logger().info(f"[Model Switch] {symlink} -> {model_path}")
+
+    def teardown_model_symlink(self):
+        symlink = MODEL_SYMLINK_PATH
+        if symlink.is_symlink():
+            subprocess_run(["sudo", "rm", str(symlink)], check=True)
+        if self.model_backup_path and self.model_backup_path.exists():
+            subprocess_run(
+                ["sudo", "mv", str(self.model_backup_path), str(symlink)], check=True
+            )
+            self.get_logger().info(
+                f"[Model Switch] Restored {symlink} from {self.model_backup_path}"
+            )
+            self.model_backup_path = None
+
+    # --- MODEL_SYMLINK_PATH workaround: end ---
+
+    def run_scenario_per_model(self, scenario):
+        models_paths = self.collect_models_paths()
+        original_output_dir = self.output_directory
+        try:
+            for models_path in models_paths:
+                self.setup_model_symlink(models_path)
+                self.output_directory = original_output_dir / models_path.name
+                self.output_directory.mkdir(parents=True, exist_ok=True)
+                self.execute_scenario(scenario)
+        finally:
+            self.output_directory = original_output_dir
+            self.teardown_model_symlink()
+        self.shutdown()
+        self.destroy_node()
+
 
 def main(args=None):
 
@@ -293,6 +364,8 @@ def main(args=None):
 
     parser.add_argument("-s", "--scenario", default="/dev/null", type=Path)
 
+    parser.add_argument("--models-path", default="", type=str)
+
     parser.add_argument("--ros-args", nargs="*")  # XXX DIRTY HACK
     parser.add_argument("-r", nargs="*")  # XXX DIRTY HACK
 
@@ -304,15 +377,18 @@ def main(args=None):
         global_timeout=args.global_timeout,
         output_directory=args.output_directory / "scenario_test_runner",
         override_parameters=args.override_parameters,
+        models_path=args.models_path,
     )
 
     if args.scenario != Path("/dev/null"):
-        test_runner.run_scenario(
-            Scenario(
-                substitute_ros_package(args.scenario).resolve(),
-                args.global_frame_rate,
-            )
+        scenario = Scenario(
+            substitute_ros_package(args.scenario).resolve(),
+            args.global_frame_rate,
         )
+        if args.models_path:
+            test_runner.run_scenario_per_model(scenario)
+        else:
+            test_runner.run_scenario(scenario)
     else:
         print("No scenario is specified. Specify one.")
 
