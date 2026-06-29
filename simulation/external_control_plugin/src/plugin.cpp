@@ -22,6 +22,7 @@
 #include <geometry_msgs/msg/twist.hpp>
 #include <geometry_msgs/msg/vector3.hpp>
 #include <pluginlib/class_list_macros.hpp>
+#include <traffic_simulator_msgs/msg/bounding_box.hpp>
 
 #ifdef EXTERNAL_CONTROL_PLUGIN_HAS_SUMO
 #include "sumo_adapter.hpp"
@@ -70,6 +71,10 @@ constexpr const char *kSumoTransformZOffsetEnv =
     "EXTERNAL_CONTROL_SUMO_TRANSFORM_Z_OFFSET";
 constexpr const char *kSumoTransformYawOffsetEnv =
     "EXTERNAL_CONTROL_SUMO_TRANSFORM_YAW_OFFSET";
+constexpr const char *kSumoReferencePointConversionEnv =
+    "EXTERNAL_CONTROL_SUMO_REFERENCE_POINT_CONVERSION";
+constexpr const char *kSumoScenarioReferenceToFrontEnv =
+    "EXTERNAL_CONTROL_SUMO_SCENARIO_REFERENCE_TO_FRONT";
 constexpr const char *kSumoRouteIdEnv = "EXTERNAL_CONTROL_SUMO_ROUTE_ID";
 constexpr const char *kSumoEdgeIdEnv = "EXTERNAL_CONTROL_SUMO_EDGE_ID";
 constexpr const char *kFallbackEgoXEnv = "EXTERNAL_CONTROL_SUMO_FALLBACK_EGO_X";
@@ -80,9 +85,9 @@ constexpr const char *kFallbackEgoYawEnv =
 constexpr const char *kFallbackEgoSpeedEnv =
     "EXTERNAL_CONTROL_SUMO_FALLBACK_EGO_SPEED";
 // When false, the plugin does not inject/move an ego shadow into SUMO at all.
-// Useful for pure traffic-flow demos with no Ego (e.g. the circular ring course),
-// where a pinned shadow would otherwise either block the lane or, if placed
-// off-network, be discarded by SUMO after one step.
+// Useful for pure traffic-flow demos with no Ego (e.g. the circular ring
+// course), where a pinned shadow would otherwise either block the lane or, if
+// placed off-network, be discarded by SUMO after one step.
 constexpr const char *kSumoEgoShadowEnv = "EXTERNAL_CONTROL_SUMO_EGO_SHADOW";
 constexpr const char *kDummyMode = "dummy";
 constexpr const char *kSumoMode = "sumo";
@@ -117,9 +122,16 @@ auto externalStateFromCanonicalizedStatus(
   const auto &pose = status.getMapPose();
   const auto rpy =
       math::geometry::convertQuaternionToEulerAngle(pose.orientation);
-  return ExternalVehicleState{
-      status.getName(), pose.position.x, pose.position.y,
-      pose.position.z,  rpy.z,           status.getTwist().linear.x};
+  const auto &bounding_box = status.getBoundingBox();
+  return ExternalVehicleState{status.getName(),
+                              pose.position.x,
+                              pose.position.y,
+                              pose.position.z,
+                              rpy.z,
+                              status.getTwist().linear.x,
+                              bounding_box.dimensions.x,
+                              bounding_box.dimensions.y,
+                              bounding_box.dimensions.z};
 }
 
 #ifdef EXTERNAL_CONTROL_PLUGIN_HAS_SUMO
@@ -141,6 +153,18 @@ auto getEnvDouble(const char *name, const double default_value) -> double {
     return std::stod(value);
   } catch (const std::exception &) {
     return default_value;
+  }
+}
+
+auto getEnvOptionalDouble(const char *name) -> std::optional<double> {
+  const char *value = std::getenv(name);
+  if (value == nullptr || std::string(value).empty()) {
+    return std::nullopt;
+  }
+  try {
+    return std::stod(value);
+  } catch (const std::exception &) {
+    return std::nullopt;
   }
 }
 
@@ -195,46 +219,93 @@ auto normalizeYaw(const double yaw_rad) -> double {
   return std::atan2(std::sin(yaw_rad), std::cos(yaw_rad));
 }
 
+auto isPositiveFinite(const double value) -> bool {
+  return std::isfinite(value) && value > 0.0;
+}
+
+struct VehicleGeometry {
+  double reference_to_front_m{0.0};
+  double length_m{0.0};
+  double width_m{0.0};
+  double height_m{0.0};
+};
+
+auto vehicleGeometryFromBoundingBox(
+    const traffic_simulator_msgs::msg::BoundingBox &bounding_box)
+    -> VehicleGeometry {
+  const auto reference_to_front_m =
+      bounding_box.center.x + 0.5 * bounding_box.dimensions.x;
+  return VehicleGeometry{reference_to_front_m, bounding_box.dimensions.x,
+                         bounding_box.dimensions.y, bounding_box.dimensions.z};
+}
+
 struct SumoCoordinateTransform {
   bool enabled{true};
   double x_offset_m{0.0};
   double y_offset_m{0.0};
   double z_offset_m{0.0};
   double yaw_offset_rad{0.0};
+  bool reference_point_conversion_enabled{true};
+  double scenario_reference_to_front_m{0.0};
 
   auto sumoToScenario(const ExternalVehicleState &sumo_state) const
       -> ExternalVehicleState {
-    if (!enabled) {
-      return sumo_state;
-    }
     auto scenario_state = sumo_state;
-    scenario_state.x_m = sumo_state.x_m + x_offset_m;
-    scenario_state.y_m = sumo_state.y_m + y_offset_m;
-    scenario_state.z_m = sumo_state.z_m + z_offset_m;
-    scenario_state.yaw_rad = normalizeYaw(sumo_state.yaw_rad + yaw_offset_rad);
+    if (enabled) {
+      scenario_state.x_m = sumo_state.x_m + x_offset_m;
+      scenario_state.y_m = sumo_state.y_m + y_offset_m;
+      scenario_state.z_m = sumo_state.z_m + z_offset_m;
+      scenario_state.yaw_rad =
+          normalizeYaw(sumo_state.yaw_rad + yaw_offset_rad);
+    }
+    if (reference_point_conversion_enabled &&
+        isPositiveFinite(scenario_reference_to_front_m)) {
+      scenario_state.x_m -=
+          scenario_reference_to_front_m * std::cos(scenario_state.yaw_rad);
+      scenario_state.y_m -=
+          scenario_reference_to_front_m * std::sin(scenario_state.yaw_rad);
+    }
     return scenario_state;
   }
 
   auto scenarioToSumo(const ExternalVehicleState &scenario_state) const
       -> ExternalVehicleState {
-    if (!enabled) {
-      return scenario_state;
-    }
     auto sumo_state = scenario_state;
-    sumo_state.x_m = scenario_state.x_m - x_offset_m;
-    sumo_state.y_m = scenario_state.y_m - y_offset_m;
-    sumo_state.z_m = scenario_state.z_m - z_offset_m;
-    sumo_state.yaw_rad = normalizeYaw(scenario_state.yaw_rad - yaw_offset_rad);
+    if (enabled) {
+      sumo_state.x_m = scenario_state.x_m - x_offset_m;
+      sumo_state.y_m = scenario_state.y_m - y_offset_m;
+      sumo_state.z_m = scenario_state.z_m - z_offset_m;
+      sumo_state.yaw_rad =
+          normalizeYaw(scenario_state.yaw_rad - yaw_offset_rad);
+    }
+    if (reference_point_conversion_enabled &&
+        isPositiveFinite(scenario_reference_to_front_m)) {
+      sumo_state.x_m +=
+          scenario_reference_to_front_m * std::cos(sumo_state.yaw_rad);
+      sumo_state.y_m +=
+          scenario_reference_to_front_m * std::sin(sumo_state.yaw_rad);
+    }
     return sumo_state;
   }
 };
 
-auto getSumoCoordinateTransformFromEnv() -> SumoCoordinateTransform {
-  return SumoCoordinateTransform{getEnvBool(kSumoTransformEnabledEnv, true),
-                                 getEnvDouble(kSumoTransformXOffsetEnv, 0.0),
-                                 getEnvDouble(kSumoTransformYOffsetEnv, 0.0),
-                                 getEnvDouble(kSumoTransformZOffsetEnv, 0.0),
-                                 getEnvDouble(kSumoTransformYawOffsetEnv, 0.0)};
+auto getSumoCoordinateTransformFromEnv(const VehicleGeometry &geometry)
+    -> SumoCoordinateTransform {
+  auto scenario_reference_to_front_m = geometry.reference_to_front_m;
+  const auto configured_reference_to_front =
+      getEnvString(kSumoScenarioReferenceToFrontEnv, "");
+  if (!configured_reference_to_front.empty()) {
+    scenario_reference_to_front_m = getEnvDouble(
+        kSumoScenarioReferenceToFrontEnv, geometry.reference_to_front_m);
+  }
+  return SumoCoordinateTransform{
+      getEnvBool(kSumoTransformEnabledEnv, true),
+      getEnvDouble(kSumoTransformXOffsetEnv, 0.0),
+      getEnvDouble(kSumoTransformYOffsetEnv, 0.0),
+      getEnvDouble(kSumoTransformZOffsetEnv, 0.0),
+      getEnvDouble(kSumoTransformYawOffsetEnv, 0.0),
+      getEnvBool(kSumoReferencePointConversionEnv, true),
+      scenario_reference_to_front_m};
 }
 
 auto externalStateFromSumoState(const VehicleState &state,
@@ -243,16 +314,19 @@ auto externalStateFromSumoState(const VehicleState &state,
                                 const rclcpp::Logger &logger)
     -> ExternalVehicleState {
   const auto raw_sumo_state = ExternalVehicleState{
-      scenario_entity_name, state.x_m,      state.y_m, state.z_m,
-      state.yaw_rad,        state.speed_mps};
+      scenario_entity_name, state.x_m,       state.y_m,      state.z_m,
+      state.yaw_rad,        state.speed_mps, state.length_m, state.width_m,
+      state.height_m};
   const auto external_state = transform.sumoToScenario(raw_sumo_state);
   RCLCPP_INFO(
       logger,
       "SUMO raw pose id=%s x=%.3f y=%.3f z=%.3f yaw=%.3f; "
-      "scenario transformed pose entity=%s x=%.3f y=%.3f z=%.3f yaw=%.3f",
+      "scenario transformed pose entity=%s x=%.3f y=%.3f z=%.3f yaw=%.3f "
+      "length=%.3f width=%.3f height=%.3f",
       state.id.c_str(), state.x_m, state.y_m, state.z_m, state.yaw_rad,
       external_state.name.c_str(), external_state.x_m, external_state.y_m,
-      external_state.z_m, external_state.yaw_rad);
+      external_state.z_m, external_state.yaw_rad, external_state.length_m,
+      external_state.width_m, external_state.height_m);
   return external_state;
 }
 
@@ -264,12 +338,16 @@ auto egoStateFromExternalState(const ExternalVehicleState &state,
   RCLCPP_INFO(
       logger,
       "scenario Ego raw pose id=%s x=%.3f y=%.3f z=%.3f yaw=%.3f speed=%.3f; "
-      "SUMO transformed ego x=%.3f y=%.3f z=%.3f yaw=%.3f speed=%.3f",
+      "SUMO transformed ego x=%.3f y=%.3f z=%.3f yaw=%.3f speed=%.3f "
+      "length=%.3f width=%.3f height=%.3f",
       state.name.c_str(), state.x_m, state.y_m, state.z_m, state.yaw_rad,
       state.speed_mps, sumo_state.x_m, sumo_state.y_m, sumo_state.z_m,
-      sumo_state.yaw_rad, sumo_state.speed_mps);
-  return SumoAdapter::EgoState{sumo_state.x_m, sumo_state.y_m, sumo_state.z_m,
-                               sumo_state.yaw_rad, sumo_state.speed_mps};
+      sumo_state.yaw_rad, sumo_state.speed_mps, sumo_state.length_m,
+      sumo_state.width_m, sumo_state.height_m);
+  return SumoAdapter::EgoState{sumo_state.x_m,       sumo_state.y_m,
+                               sumo_state.z_m,       sumo_state.yaw_rad,
+                               sumo_state.speed_mps, sumo_state.length_m,
+                               sumo_state.width_m,   sumo_state.height_m};
 }
 
 auto resolveSumoBinary() -> std::string {
@@ -281,7 +359,7 @@ auto resolveSumoBinary() -> std::string {
 }
 
 class SumoExternalNpcController : public ExternalNpcController {
- public:
+public:
   SumoExternalNpcController(
       std::string sumo_binary, std::filesystem::path sumocfg,
       const double step_length_s, std::string ego_id, std::string route_id,
@@ -299,7 +377,7 @@ class SumoExternalNpcController : public ExternalNpcController {
         ego_shadow_enabled_(getEnvBool(kSumoEgoShadowEnv, true)),
         id_mapping_(std::move(id_mapping)),
         explicit_mapping_enabled_(!id_mapping_.empty()),
-        transform_(std::move(transform)),
+        transform_(std::move(transform)), sumo_step_length_s_(step_length_s),
         auto_spawn_enabled_(auto_spawn_enabled),
         auto_despawn_enabled_(auto_despawn_enabled),
         scenario_entity_prefix_(std::move(scenario_entity_prefix)),
@@ -318,12 +396,17 @@ class SumoExternalNpcController : public ExternalNpcController {
                 auto_despawn_enabled_ ? "true" : "false",
                 scenario_entity_prefix_.c_str(),
                 default_vehicle_model_.c_str());
-    RCLCPP_INFO(logger_,
-                "SUMO coordinate transform loaded enabled=%s x_offset=%.3f "
-                "y_offset=%.3f z_offset=%.3f yaw_offset=%.3f",
-                transform_.enabled ? "true" : "false", transform_.x_offset_m,
-                transform_.y_offset_m, transform_.z_offset_m,
-                transform_.yaw_offset_rad);
+    RCLCPP_INFO(
+        logger_,
+        "SUMO coordinate transform loaded enabled=%s x_offset=%.3f "
+        "y_offset=%.3f z_offset=%.3f yaw_offset=%.3f "
+        "reference_point_conversion=%s scenario_reference_to_front=%.3f",
+        transform_.enabled ? "true" : "false", transform_.x_offset_m,
+        transform_.y_offset_m, transform_.z_offset_m, transform_.yaw_offset_rad,
+        transform_.reference_point_conversion_enabled ? "true" : "false",
+        transform_.scenario_reference_to_front_m);
+    RCLCPP_INFO(logger_, "SUMO timestep locked to simulator tick step=%.6f s",
+                sumo_step_length_s_);
     RCLCPP_INFO(logger_, "SUMO id mapping table loaded mode=%s entries=%zu",
                 explicit_mapping_enabled_ ? "explicit" : "direct_fallback",
                 id_mapping_.size());
@@ -333,14 +416,13 @@ class SumoExternalNpcController : public ExternalNpcController {
                     scenario_entity.c_str());
       }
     } else {
-      RCLCPP_INFO(logger_,
-                  "SUMO id mapping table empty; using direct fallback "
-                  "SUMO id == scenario entity name");
+      RCLCPP_INFO(logger_, "SUMO id mapping table empty; using direct fallback "
+                           "SUMO id == scenario entity name");
     }
   }
 
-  void setEgoState(
-      const std::optional<ExternalVehicleState> &ego_state) override {
+  void
+  setEgoState(const std::optional<ExternalVehicleState> &ego_state) override {
     ego_state_ = ego_state;
   }
 
@@ -350,6 +432,16 @@ class SumoExternalNpcController : public ExternalNpcController {
   }
 
   void update(const double current_time_s, const double step_time_s) override {
+    if (std::abs(step_time_s - sumo_step_length_s_) > 1.0e-6) {
+      RCLCPP_ERROR(
+          logger_,
+          "SUMO step length mismatch: configured=%.6f s simulator_tick=%.6f "
+          "s. Keep EXTERNAL_CONTROL_SUMO_STEP_LENGTH equal to the scenario "
+          "tick.",
+          sumo_step_length_s_, step_time_s);
+      return;
+    }
+
     if (last_update_time_s_ && *last_update_time_s_ == current_time_s &&
         last_step_time_s_ && *last_step_time_s_ == step_time_s) {
       RCLCPP_INFO(logger_,
@@ -371,23 +463,25 @@ class SumoExternalNpcController : public ExternalNpcController {
               ? egoStateFromExternalState(*ego_state_, transform_, logger_)
               : fallback_ego_state_;
       if (!ego_state_) {
-        RCLCPP_WARN(logger_,
-                    "scenario ego state unavailable; using temporary static SUMO "
-                    "ego fallback "
-                    "x=%.3f y=%.3f z=%.3f yaw=%.3f speed=%.3f. "
-                    "Connect the real Ego hook through "
-                    "ExternalControlPlugin::getEgoState() "
-                    "and OtherEntityStatus.",
-                    fallback_ego_state_.x_m, fallback_ego_state_.y_m,
-                    fallback_ego_state_.z_m, fallback_ego_state_.yaw_rad,
-                    fallback_ego_state_.speed_mps);
+        RCLCPP_WARN(
+            logger_,
+            "scenario ego state unavailable; using temporary static SUMO "
+            "ego fallback "
+            "x=%.3f y=%.3f z=%.3f yaw=%.3f speed=%.3f. "
+            "Connect the real Ego hook through "
+            "ExternalControlPlugin::getEgoState() "
+            "and OtherEntityStatus.",
+            fallback_ego_state_.x_m, fallback_ego_state_.y_m,
+            fallback_ego_state_.z_m, fallback_ego_state_.yaw_rad,
+            fallback_ego_state_.speed_mps);
       }
       if (ego_state_) {
         RCLCPP_INFO(logger_,
                     "scenario ego state selected id=%s x=%.3f y=%.3f z=%.3f "
                     "yaw=%.3f speed=%.3f",
                     ego_state_->name.c_str(), ego_state_->x_m, ego_state_->y_m,
-                    ego_state_->z_m, ego_state_->yaw_rad, ego_state_->speed_mps);
+                    ego_state_->z_m, ego_state_->yaw_rad,
+                    ego_state_->speed_mps);
       }
       RCLCPP_INFO(logger_,
                   "syncing SUMO ego shadow id=%s x=%.3f y=%.3f z=%.3f yaw=%.3f "
@@ -416,9 +510,11 @@ class SumoExternalNpcController : public ExternalNpcController {
     for (const auto &state : sumo_states) {
       RCLCPP_INFO(logger_,
                   "raw SUMO vehicle state id=%s type_id=%s x=%.3f y=%.3f "
-                  "z=%.3f yaw=%.3f speed=%.3f",
+                  "z=%.3f yaw=%.3f speed=%.3f length=%.3f width=%.3f "
+                  "height=%.3f",
                   state.id.c_str(), state.type_id.c_str(), state.x_m, state.y_m,
-                  state.z_m, state.yaw_rad, state.speed_mps);
+                  state.z_m, state.yaw_rad, state.speed_mps, state.length_m,
+                  state.width_m, state.height_m);
       if (state.is_ego || state.id == ego_id_) {
         RCLCPP_INFO(logger_, "ignored SUMO ego vehicle id=%s",
                     state.id.c_str());
@@ -517,9 +613,11 @@ class SumoExternalNpcController : public ExternalNpcController {
       RCLCPP_INFO(logger_,
                   "SUMO NPC vehicle state ready sumo_id=%s scenario_entity=%s "
                   "x=%.3f y=%.3f z=%.3f yaw=%.3f "
-                  "speed=%.3f lane_position=%.3f lane_id=%s road_id=%s",
+                  "speed=%.3f length=%.3f width=%.3f height=%.3f "
+                  "lane_position=%.3f lane_id=%s road_id=%s",
                   state.id.c_str(), scenario_entity_name->c_str(), state.x_m,
                   state.y_m, state.z_m, state.yaw_rad, state.speed_mps,
+                  state.length_m, state.width_m, state.height_m,
                   state.lane_position_m, state.lane_id.c_str(),
                   state.road_id.c_str());
     }
@@ -589,7 +687,7 @@ class SumoExternalNpcController : public ExternalNpcController {
     return current_states_;
   }
 
- private:
+private:
   std::unique_ptr<SumoAdapter> adapter_;
   std::optional<ExternalVehicleState> ego_state_;
   SumoAdapter::EgoState fallback_ego_state_;
@@ -600,6 +698,7 @@ class SumoExternalNpcController : public ExternalNpcController {
   std::unordered_map<std::string, std::string> id_mapping_;
   bool explicit_mapping_enabled_;
   SumoCoordinateTransform transform_;
+  double sumo_step_length_s_;
   bool auto_spawn_enabled_;
   bool auto_despawn_enabled_;
   std::string scenario_entity_prefix_;
@@ -637,7 +736,7 @@ auto getSharedSumoExternalNpcController(
   return controller;
 }
 #endif
-}  // namespace
+} // namespace
 
 auto ExternalNpcLifecycleBridge::getSnapshot() -> ExternalNpcLifecycleSnapshot {
   const std::lock_guard<std::mutex> lock(lifecycle_bridge_mutex);
@@ -651,8 +750,7 @@ auto ExternalNpcLifecycleBridge::reset() -> void {
 
 DummyExternalNpcController::DummyExternalNpcController(
     const ExternalVehicleState &initial_state, const double start_time_s)
-    : initial_state_(initial_state),
-      current_state_(initial_state),
+    : initial_state_(initial_state), current_state_(initial_state),
       start_time_s_(start_time_s) {}
 
 void DummyExternalNpcController::update(const double current_time_s,
@@ -668,8 +766,8 @@ void DummyExternalNpcController::update(const double current_time_s,
                                                 elapsed_time_s;
 }
 
-std::vector<ExternalVehicleState> DummyExternalNpcController::getVehicleStates()
-    const {
+std::vector<ExternalVehicleState>
+DummyExternalNpcController::getVehicleStates() const {
   return {current_state_};
 }
 
@@ -723,9 +821,10 @@ void ExternalControlPlugin::update(const double current_time,
   controller_->update(current_time, step_time);
   const auto states = controller_->getVehicleStates();
   const auto &entity_name = canonicalized_entity_status_->getName();
-  const auto state_iter = std::find_if(
-      states.begin(), states.end(),
-      [&](const auto &state) { return state.name == entity_name; });
+  const auto state_iter =
+      std::find_if(states.begin(), states.end(), [&](const auto &state) {
+        return state.name == entity_name;
+      });
 
   if (state_iter == states.end()) {
     RCLCPP_WARN(logger_,
@@ -782,32 +881,44 @@ auto ExternalControlPlugin::ensureControllerInitialized(
     const auto sumocfg = getEnvString(
         kSumocfgEnv, std::string(EXTERNAL_CONTROL_PLUGIN_DEFAULT_SUMOCFG));
     if (sumocfg.empty()) {
-      throw std::runtime_error(
-          "SUMO mode requires EXTERNAL_CONTROL_SUMOCFG or "
-          "a configured default SUMO scenario");
+      throw std::runtime_error("SUMO mode requires EXTERNAL_CONTROL_SUMOCFG or "
+                               "a configured default SUMO scenario");
     }
     const auto sumo_binary = resolveSumoBinary();
     const auto id_mapping =
         parseSumoIdMapping(getEnvString(kSumoIdMappingEnv, ""));
-    const auto transform = getSumoCoordinateTransformFromEnv();
+    const auto vehicle_geometry = vehicleGeometryFromBoundingBox(
+        canonicalized_entity_status_->getBoundingBox());
+    const auto transform = getSumoCoordinateTransformFromEnv(vehicle_geometry);
     const auto auto_spawn_enabled = getEnvBool(kSumoAutoSpawnEnv, true);
     const auto auto_despawn_enabled = getEnvBool(kSumoAutoDespawnEnv, true);
     const auto scenario_entity_prefix = getEnvString(kSumoEntityPrefixEnv, "");
     const auto default_vehicle_model =
         getEnvString(kSumoDefaultVehicleModelEnv, "");
+    const auto configured_sumo_step_length =
+        getEnvOptionalDouble(kSumoStepLengthEnv);
+    const auto sumo_step_length =
+        configured_sumo_step_length.value_or(step_time);
+    if (std::abs(sumo_step_length - step_time) > 1.0e-6) {
+      throw std::runtime_error(
+          "EXTERNAL_CONTROL_SUMO_STEP_LENGTH must match the simulator "
+          "step_time; SUMO and scenario_simulator_v2 are stepped in lockstep");
+    }
     RCLCPP_INFO(logger_,
                 "external_control SUMO config binary=%s sumocfg=%s "
                 "ego_id=%s route_id=%s edge_id=%s auto_spawn=%s "
-                "auto_despawn=%s entity_prefix=%s default_vehicle_model=%s",
+                "auto_despawn=%s entity_prefix=%s default_vehicle_model=%s "
+                "step_length=%.6f scenario_reference_to_front=%.3f",
                 sumo_binary.c_str(), sumocfg.c_str(), ego_name_.c_str(),
                 getEnvString(kSumoRouteIdEnv, "straight_route").c_str(),
                 getEnvString(kSumoEdgeIdEnv, "straight").c_str(),
                 auto_spawn_enabled ? "true" : "false",
                 auto_despawn_enabled ? "true" : "false",
-                scenario_entity_prefix.c_str(), default_vehicle_model.c_str());
+                scenario_entity_prefix.c_str(), default_vehicle_model.c_str(),
+                sumo_step_length, transform.scenario_reference_to_front_m);
     controller_ = getSharedSumoExternalNpcController(
-        sumo_binary, sumocfg, getEnvDouble(kSumoStepLengthEnv, step_time),
-        ego_name_, getEnvString(kSumoRouteIdEnv, "straight_route"),
+        sumo_binary, sumocfg, sumo_step_length, ego_name_,
+        getEnvString(kSumoRouteIdEnv, "straight_route"),
         getEnvString(kSumoEdgeIdEnv, "straight"), id_mapping, transform,
         auto_spawn_enabled, auto_despawn_enabled, scenario_entity_prefix,
         default_vehicle_model, logger_);
@@ -899,7 +1010,7 @@ auto ExternalControlPlugin::getKnownEntityNames() const
   }
   return entity_names;
 }
-}  // namespace entity_behavior
+} // namespace entity_behavior
 
 PLUGINLIB_EXPORT_CLASS(entity_behavior::ExternalControlPlugin,
                        entity_behavior::BehaviorPluginBase)

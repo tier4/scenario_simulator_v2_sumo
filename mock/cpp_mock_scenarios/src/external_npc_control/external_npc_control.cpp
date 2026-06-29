@@ -118,6 +118,37 @@ private:
                model);
   }
 
+  static auto vehicleParametersFromExternalState(
+      const entity_behavior::ExternalVehicleState &state)
+      -> traffic_simulator_msgs::msg::VehicleParameters {
+    auto parameters = getVehicleParameters();
+    const auto reference_to_front = parameters.bounding_box.center.x +
+                                    0.5 * parameters.bounding_box.dimensions.x;
+    if (state.length_m > 0.0) {
+      parameters.bounding_box.dimensions.x = state.length_m;
+      parameters.bounding_box.center.x =
+          reference_to_front - 0.5 * state.length_m;
+    }
+    if (state.width_m > 0.0) {
+      parameters.bounding_box.dimensions.y = state.width_m;
+    }
+    if (state.height_m > 0.0) {
+      parameters.bounding_box.dimensions.z = state.height_m;
+    }
+    return parameters;
+  }
+
+  void
+  spawnExternalControlNpc(const std::string &name,
+                          const entity_behavior::ExternalVehicleState &state,
+                          const std::string &model) {
+    api_.spawn(name, poseFromExternalState(state),
+               vehicleParametersFromExternalState(state),
+               traffic_simulator::entity::VehicleEntity::BuiltinBehavior::
+                   externalControl(),
+               model);
+  }
+
   void applySumoLifecycleRequests() {
     const auto snapshot =
         entity_behavior::ExternalNpcLifecycleBridge::getSnapshot();
@@ -134,7 +165,7 @@ private:
         continue;
       }
       spawnExternalControlNpc(request.scenario_entity_name,
-                              poseFromExternalState(request.initial_state),
+                              request.initial_state,
                               request.default_vehicle_model);
       RCLCPP_INFO(get_logger(),
                   "SUMO lifecycle spawned scenario NPC sumo_id=%s type_id=%s "

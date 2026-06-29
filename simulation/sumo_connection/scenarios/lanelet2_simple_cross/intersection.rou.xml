@@ -10,5 +10,5 @@
   <route id="npc_cross_route" edges="lanelet_14 lanelet_133a lanelet_133b lanelet_140" />
 
   <vehicle id="npc_0"     type="npc" route="npc_route"       depart="0.0" departLane="0" departPos="0.0" departSpeed="2.0" />
-  <vehicle id="npc_cross" type="npc" route="npc_cross_route" depart="4.0" departLane="0" departPos="0.0" departSpeed="2.0" />
+  <vehicle id="npc_cross" type="npc" route="npc_cross_route" depart="3.0" departLane="0" departPos="0.0" departSpeed="2.0" />
 </routes>

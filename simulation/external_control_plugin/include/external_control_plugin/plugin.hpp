@@ -32,6 +32,9 @@ struct ExternalVehicleState {
   double z_m{};
   double yaw_rad{};
   double speed_mps{};
+  double length_m{};
+  double width_m{};
+  double height_m{};
 };
 
 struct ExternalNpcSpawnRequest {

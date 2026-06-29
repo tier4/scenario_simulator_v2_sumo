@@ -44,6 +44,13 @@ Known limitations:
 - Explicit mapping mode ignores SUMO vehicles that are not present in the mapping table.
 - The coordinate transform is manual and offset-based. Defaults are identity:
   `x=0`, `y=0`, `z=0`, `yaw=0`, enabled.
+- SUMO poses use the front-bumper center; scenario poses use the simulator vehicle reference point.
+  The plugin shifts between those points with the scenario bounding-box front offset
+  (`center.x + length / 2`) unless `EXTERNAL_CONTROL_SUMO_REFERENCE_POINT_CONVERSION=off`.
+- SUMO vehicle length/width/height are copied through `ExternalVehicleState`; the mock lifecycle
+  bridge applies them when auto-spawning scenario NPCs.
+- SUMO is stepped in lockstep with the scenario tick. If `EXTERNAL_CONTROL_SUMO_STEP_LENGTH` is
+  set, it must equal the simulator step time.
 - No Lanelet2-to-SUMO conversion.
 - No traffic light synchronization.
 - The prototype uses one shared SUMO controller inside the process so multiple external-control NPC
@@ -231,6 +238,8 @@ Runtime configuration:
 - `EXTERNAL_CONTROL_SUMOCFG`: SUMO `.sumocfg` path.
 - `EXTERNAL_CONTROL_SUMO_BINARY`: explicit SUMO executable.
 - `EXTERNAL_CONTROL_SUMO_USE_GUI`: `true`/`false`, default `false`.
+- `EXTERNAL_CONTROL_SUMO_STEP_LENGTH`: SUMO step length; default is the simulator step and any
+  explicit value must match the simulator step.
 - `EXTERNAL_CONTROL_SUMO_ID_MAPPING`: comma-separated `SUMO_ID:SCENARIO_ENTITY` pairs. Empty means
   direct-id fallback.
 - `EXTERNAL_CONTROL_SUMO_EGO_ID`: ego id, default `ego`.
@@ -247,6 +256,12 @@ Runtime configuration:
 - `EXTERNAL_CONTROL_SUMO_TRANSFORM_Y_OFFSET`: scenario y = SUMO y + offset, default `0.0`.
 - `EXTERNAL_CONTROL_SUMO_TRANSFORM_Z_OFFSET`: scenario z = SUMO z + offset, default `0.0`.
 - `EXTERNAL_CONTROL_SUMO_TRANSFORM_YAW_OFFSET`: scenario yaw = SUMO yaw + offset, default `0.0`.
+- `EXTERNAL_CONTROL_SUMO_REFERENCE_POINT_CONVERSION`: `on` (default) converts SUMO front-bumper
+  poses to/from the scenario vehicle reference point; set `off` only if both sides already use the
+  same vehicle reference point.
+- `EXTERNAL_CONTROL_SUMO_SCENARIO_REFERENCE_TO_FRONT`: override the scenario reference-point to
+  front-bumper distance in meters. Default is `bounding_box.center.x + bounding_box.dimensions.x / 2`
+  from the scenario entity that initializes the shared SUMO controller.
 - `EXTERNAL_CONTROL_SUMO_ROUTE_ID`: ego shadow route, default `straight_route`.
 - `EXTERNAL_CONTROL_SUMO_EDGE_ID`: ego shadow edge for `moveToXY`, default `straight`.
 - `EXTERNAL_CONTROL_SUMO_FALLBACK_EGO_X`: fallback ego x, default `50.0`.
