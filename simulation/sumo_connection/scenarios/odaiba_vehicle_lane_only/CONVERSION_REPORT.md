@@ -1,0 +1,5269 @@
+# Lanelet2-to-SUMO Conversion Report
+
+- Input archive: `/home/koki/Downloads/odaiba/2231_2231-20260623050126981897_lanelet2_map.zip`
+- Input member: `lanelet2_map.osm`
+- Road lanelets converted: 5235
+- Generated route: not generated
+- End-to-end conversion time: 4.70 seconds
+- Network coordinate bounds: x=85660.542..90986.475, y=40702.848..45261.477
+- SUMO location: `{'netOffset': '0.00,0.00', 'convBoundary': '85660.54,40702.85,90986.47,45261.48', 'origBoundary': '85660.54,40702.85,90986.48,45261.48', 'projParameter': '!'}`
+- Coordinate handling: node `local_x`/`local_y` tags were copied into SUMO coordinates and `netconvert --offset.disable-normalization` was used. Edges use `spreadType="center"` so single-lane SUMO lane geometry stays on the Lanelet2 centerline instead of being shifted to the right of it.
+- Traffic lights: not converted or synchronized in this phase.
+
+## Connections
+
+- `lanelet_32` -> `lanelet_792`
+- `lanelet_33` -> `lanelet_36`
+- `lanelet_34` -> `lanelet_37`
+- `lanelet_35` -> `lanelet_38`
+- `lanelet_36` -> `lanelet_793`
+- `lanelet_37` -> `lanelet_794`
+- `lanelet_38` -> `lanelet_2224346`, `lanelet_2224347`
+- `lanelet_39` -> `lanelet_2224348`
+- `lanelet_40` -> `lanelet_1087`, `lanelet_173423`
+- `lanelet_41` -> `lanelet_1161`, `lanelet_1165`
+- `lanelet_42` -> `lanelet_1163`
+- `lanelet_43` -> `lanelet_1164`
+- `lanelet_44` -> `lanelet_47`
+- `lanelet_45` -> `lanelet_48`
+- `lanelet_46` -> `lanelet_50`
+- `lanelet_47` -> `lanelet_1166`, `lanelet_1167`
+- `lanelet_48` -> `lanelet_1169`
+- `lanelet_50` -> `lanelet_1170`
+- `lanelet_51` -> `lanelet_55`
+- `lanelet_52` -> `lanelet_56`
+- `lanelet_53` -> `lanelet_57`
+- `lanelet_54` -> `lanelet_58`
+- `lanelet_55` -> `lanelet_1002`, `lanelet_1172`, `lanelet_1282`
+- `lanelet_56` -> `lanelet_1013`, `lanelet_1014`
+- `lanelet_57` -> `lanelet_1009`
+- `lanelet_58` -> `lanelet_1011`
+- `lanelet_70` -> `lanelet_72`
+- `lanelet_71` -> `lanelet_73`
+- `lanelet_72` -> `lanelet_1145`, `lanelet_1146`, `lanelet_1147`
+- `lanelet_73` -> `lanelet_1148`
+- `lanelet_74` -> `lanelet_76`
+- `lanelet_75` -> `lanelet_77`, `lanelet_78`
+- `lanelet_76` -> `lanelet_79`
+- `lanelet_77` -> `lanelet_80`
+- `lanelet_78` -> `lanelet_81`
+- `lanelet_79` -> `lanelet_1114`, `lanelet_1115`
+- `lanelet_80` -> `lanelet_1122`
+- `lanelet_81` -> `lanelet_1117`
+- `lanelet_82` -> `lanelet_84`
+- `lanelet_83` -> `lanelet_85`
+- `lanelet_84` -> `lanelet_1150`, `lanelet_1152`
+- `lanelet_85` -> `lanelet_1151`
+- `lanelet_86` -> `lanelet_88`
+- `lanelet_87` -> `lanelet_89`, `lanelet_90`
+- `lanelet_88` -> `lanelet_91`
+- `lanelet_89` -> `lanelet_92`
+- `lanelet_90` -> `lanelet_93`
+- `lanelet_91` -> `lanelet_1099`, `lanelet_1100`
+- `lanelet_92` -> `lanelet_1105`
+- `lanelet_93` -> `lanelet_1098`
+- `lanelet_94` -> `lanelet_2306282`
+- `lanelet_95` -> `lanelet_2306287`
+- `lanelet_96` -> `lanelet_99`
+- `lanelet_97` -> `lanelet_101`
+- `lanelet_98` -> `lanelet_100`
+- `lanelet_99` -> `lanelet_1090`, `lanelet_1092`, `lanelet_1094`
+- `lanelet_100` -> `lanelet_2224377`
+- `lanelet_101` -> `lanelet_2224378`, `lanelet_2224390`
+- `lanelet_104` -> `lanelet_1158`, `lanelet_1910425`
+- `lanelet_105` -> `lanelet_1096`, `lanelet_1102`
+- `lanelet_106` -> `lanelet_1154`, `lanelet_1155`
+- `lanelet_107` -> `lanelet_1157`
+- `lanelet_108` -> `lanelet_110`
+- `lanelet_109` -> `lanelet_111`
+- `lanelet_110` -> `lanelet_112`
+- `lanelet_111` -> `lanelet_113`
+- `lanelet_112` -> `lanelet_114`
+- `lanelet_113` -> `lanelet_115`, `lanelet_116`
+- `lanelet_114` -> `lanelet_117`
+- `lanelet_115` -> `lanelet_118`
+- `lanelet_116` -> `lanelet_119`
+- `lanelet_117` -> `lanelet_1110`, `lanelet_1149`
+- `lanelet_118` -> `lanelet_1116`
+- `lanelet_119` -> `lanelet_1113`
+- `lanelet_120` -> `lanelet_2224814`, `lanelet_2224815`
+- `lanelet_121` -> `lanelet_2224817`
+- `lanelet_122` -> `lanelet_2224816`
+- `lanelet_123` -> `lanelet_1130`
+- `lanelet_124` -> `lanelet_1126`
+- `lanelet_125` -> `lanelet_1144`
+- `lanelet_126` -> `lanelet_785`
+- `lanelet_127` -> `lanelet_129`
+- `lanelet_128` -> `lanelet_130`
+- `lanelet_129` -> `lanelet_133`
+- `lanelet_130` -> (none)
+- `lanelet_131` -> `lanelet_784`
+- `lanelet_132` -> `lanelet_134`
+- `lanelet_133` -> `lanelet_135`, `lanelet_136`
+- `lanelet_134` -> `lanelet_783`
+- `lanelet_135` -> `lanelet_137`
+- `lanelet_136` -> `lanelet_138`
+- `lanelet_137` -> `lanelet_140`
+- `lanelet_138` -> (none)
+- `lanelet_139` -> `lanelet_141`
+- `lanelet_140` -> `lanelet_142`
+- `lanelet_141` -> `lanelet_1133`
+- `lanelet_142` -> `lanelet_1136`
+- `lanelet_143` -> `lanelet_146`
+- `lanelet_144` -> `lanelet_148`
+- `lanelet_145` -> `lanelet_147`
+- `lanelet_146` -> `lanelet_1003`, `lanelet_1008`
+- `lanelet_147` -> `lanelet_1012`
+- `lanelet_148` -> `lanelet_1010`, `lanelet_173378`, `lanelet_175348`
+- `lanelet_162` -> `lanelet_164`
+- `lanelet_163` -> `lanelet_165`
+- `lanelet_164` -> `lanelet_166`
+- `lanelet_165` -> `lanelet_167`
+- `lanelet_166` -> `lanelet_168`
+- `lanelet_167` -> `lanelet_169`
+- `lanelet_168` -> `lanelet_1128`, `lanelet_1129`, `lanelet_1281`
+- `lanelet_169` -> `lanelet_1127`
+- `lanelet_170` -> `lanelet_172`
+- `lanelet_171` -> `lanelet_173`
+- `lanelet_172` -> `lanelet_174`
+- `lanelet_173` -> `lanelet_175`
+- `lanelet_174` -> `lanelet_190162`
+- `lanelet_175` -> `lanelet_190167`, `lanelet_190186`
+- `lanelet_176` -> `lanelet_1142`, `lanelet_1143`
+- `lanelet_177` -> `lanelet_1138`
+- `lanelet_178` -> `lanelet_1139`
+- `lanelet_179` -> `lanelet_1140`
+- `lanelet_180` -> `lanelet_182`
+- `lanelet_181` -> `lanelet_183`
+- `lanelet_182` -> `lanelet_1135`
+- `lanelet_183` -> `lanelet_1131`, `lanelet_1132`
+- `lanelet_184` -> `lanelet_187`
+- `lanelet_185` -> `lanelet_188`
+- `lanelet_186` -> `lanelet_189`
+- `lanelet_187` -> `lanelet_1255`, `lanelet_1257`
+- `lanelet_188` -> `lanelet_1256`
+- `lanelet_189` -> `lanelet_1026`, `lanelet_1027`
+- `lanelet_190` -> `lanelet_193`
+- `lanelet_191` -> `lanelet_194`
+- `lanelet_192` -> `lanelet_195`, `lanelet_2305379`
+- `lanelet_193` -> `lanelet_197`
+- `lanelet_194` -> `lanelet_198`
+- `lanelet_195` -> `lanelet_199`
+- `lanelet_197` -> `lanelet_1042`, `lanelet_1043`
+- `lanelet_198` -> `lanelet_1236`
+- `lanelet_199` -> `lanelet_1237`
+- `lanelet_200` -> `lanelet_1038`, `lanelet_2119250`, `lanelet_2314917`
+- `lanelet_201` -> `lanelet_2118608`
+- `lanelet_202` -> `lanelet_2118621`
+- `lanelet_203` -> `lanelet_2303577`
+- `lanelet_204` -> `lanelet_209`
+- `lanelet_205` -> `lanelet_208`
+- `lanelet_206` -> `lanelet_207`
+- `lanelet_207` -> `lanelet_2119627`
+- `lanelet_208` -> `lanelet_2119622`
+- `lanelet_209` -> `lanelet_2119617`
+- `lanelet_211` -> `lanelet_1032`
+- `lanelet_212` -> `lanelet_1034`
+- `lanelet_213` -> `lanelet_1247`
+- `lanelet_214` -> `lanelet_1248`
+- `lanelet_215` -> `lanelet_218`
+- `lanelet_216` -> `lanelet_219`
+- `lanelet_217` -> `lanelet_221`, `lanelet_2314787`, `lanelet_2314804`
+- `lanelet_218` -> `lanelet_225`
+- `lanelet_219` -> `lanelet_224`
+- `lanelet_221` -> `lanelet_222`
+- `lanelet_222` -> `lanelet_1228`
+- `lanelet_223` -> `lanelet_1048`
+- `lanelet_224` -> `lanelet_1227`
+- `lanelet_225` -> `lanelet_1051`, `lanelet_1052`
+- `lanelet_226` -> `lanelet_229`
+- `lanelet_227` -> `lanelet_230`
+- `lanelet_228` -> `lanelet_231`, `lanelet_232`
+- `lanelet_229` -> `lanelet_233`
+- `lanelet_230` -> `lanelet_234`
+- `lanelet_231` -> `lanelet_235`
+- `lanelet_232` -> `lanelet_236`
+- `lanelet_233` -> `lanelet_1045`, `lanelet_2118602`, `lanelet_2316344`
+- `lanelet_234` -> `lanelet_1234`
+- `lanelet_235` -> `lanelet_1235`
+- `lanelet_236` -> `lanelet_1041`
+- `lanelet_237` -> `lanelet_1229`, `lanelet_1233`
+- `lanelet_238` -> `lanelet_1230`
+- `lanelet_239` -> `lanelet_1231`
+- `lanelet_240` -> `lanelet_243`
+- `lanelet_241` -> `lanelet_244`
+- `lanelet_242` -> `lanelet_245`, `lanelet_246`
+- `lanelet_243` -> `lanelet_247`
+- `lanelet_244` -> `lanelet_248`
+- `lanelet_245` -> `lanelet_250`
+- `lanelet_246` -> `lanelet_249`
+- `lanelet_247` -> `lanelet_1047`, `lanelet_1057`
+- `lanelet_248` -> `lanelet_1224`
+- `lanelet_249` -> `lanelet_1225`
+- `lanelet_250` -> `lanelet_1053`
+- `lanelet_251` -> `lanelet_1219`, `lanelet_1222`
+- `lanelet_252` -> `lanelet_1220`
+- `lanelet_253` -> `lanelet_1221`
+- `lanelet_254` -> `lanelet_257`
+- `lanelet_255` -> `lanelet_256`
+- `lanelet_256` -> `lanelet_260`
+- `lanelet_257` -> `lanelet_261`
+- `lanelet_258` -> `lanelet_262`
+- `lanelet_259` -> `lanelet_263`
+- `lanelet_260` -> `lanelet_1059`, `lanelet_1060`
+- `lanelet_261` -> `lanelet_1205`
+- `lanelet_262` -> `lanelet_1206`
+- `lanelet_263` -> `lanelet_1066`
+- `lanelet_264` -> `lanelet_2303911`
+- `lanelet_265` -> `lanelet_267`
+- `lanelet_266` -> `lanelet_385`
+- `lanelet_267` -> `lanelet_787`
+- `lanelet_270` -> `lanelet_274`
+- `lanelet_271` -> `lanelet_275`
+- `lanelet_272` -> `lanelet_1020`, `lanelet_2314583`
+- `lanelet_273` -> `lanelet_1024`
+- `lanelet_274` -> `lanelet_1212`
+- `lanelet_275` -> `lanelet_1217`
+- `lanelet_302` -> `lanelet_1208`, `lanelet_1210`
+- `lanelet_303` -> `lanelet_1209`
+- `lanelet_306` -> `lanelet_2303976`
+- `lanelet_307` -> `lanelet_1184`
+- `lanelet_308` -> `lanelet_1186`
+- `lanelet_309` -> `lanelet_389`, `lanelet_390`
+- `lanelet_310` -> `lanelet_311`
+- `lanelet_311` -> `lanelet_786`
+- `lanelet_312` -> `lanelet_2297026`
+- `lanelet_313` -> (none)
+- `lanelet_314` -> `lanelet_316`
+- `lanelet_315` -> `lanelet_317`
+- `lanelet_316` -> `lanelet_178801`
+- `lanelet_317` -> `lanelet_178806`
+- `lanelet_318` -> `lanelet_2303582`, `lanelet_2303618`
+- `lanelet_319` -> `lanelet_2303587`
+- `lanelet_320` -> `lanelet_2303592`
+- `lanelet_321` -> `lanelet_2303597`
+- `lanelet_322` -> `lanelet_1182`, `lanelet_177124`
+- `lanelet_323` -> `lanelet_1016`, `lanelet_1177`
+- `lanelet_324` -> `lanelet_1178`, `lanelet_1179`
+- `lanelet_325` -> `lanelet_1259`
+- `lanelet_326` -> `lanelet_1063`, `lanelet_1064`
+- `lanelet_327` -> `lanelet_1202`
+- `lanelet_328` -> `lanelet_1203`
+- `lanelet_329` -> `lanelet_1058`
+- `lanelet_330` -> `lanelet_2303806`
+- `lanelet_331` -> `lanelet_2303811`
+- `lanelet_332` -> `lanelet_2303871`
+- `lanelet_333` -> `lanelet_2303876`
+- `lanelet_334` -> `lanelet_338`
+- `lanelet_335` -> `lanelet_339`
+- `lanelet_336` -> `lanelet_340`
+- `lanelet_337` -> `lanelet_341`
+- `lanelet_338` -> `lanelet_1190`
+- `lanelet_339` -> `lanelet_1191`
+- `lanelet_340` -> `lanelet_1071`
+- `lanelet_341` -> `lanelet_1073`, `lanelet_2225792`, `lanelet_2226145`
+- `lanelet_342` -> `lanelet_791`
+- `lanelet_343` -> `lanelet_346`
+- `lanelet_344` -> `lanelet_790`
+- `lanelet_345` -> `lanelet_347`
+- `lanelet_346` -> `lanelet_349`
+- `lanelet_347` -> (none)
+- `lanelet_348` -> `lanelet_351`, `lanelet_352`
+- `lanelet_349` -> `lanelet_350`
+- `lanelet_350` -> `lanelet_355`, `lanelet_356`
+- `lanelet_351` -> `lanelet_353`
+- `lanelet_352` -> `lanelet_354`
+- `lanelet_353` -> `lanelet_178811`
+- `lanelet_354` -> `lanelet_178816`
+- `lanelet_355` -> `lanelet_178821`
+- `lanelet_356` -> `lanelet_360`
+- `lanelet_357` -> `lanelet_1006`, `lanelet_178971`, `lanelet_179049`
+- `lanelet_358` -> `lanelet_1001`, `lanelet_179112`, `lanelet_179182`, `lanelet_179228`
+- `lanelet_359` -> `lanelet_1173`
+- `lanelet_360` -> `lanelet_1007`, `lanelet_2314776`
+- `lanelet_361` -> `lanelet_363`
+- `lanelet_362` -> `lanelet_364`
+- `lanelet_363` -> `lanelet_788`
+- `lanelet_364` -> `lanelet_365`
+- `lanelet_365` -> `lanelet_370`
+- `lanelet_366` -> `lanelet_371`
+- `lanelet_367` -> `lanelet_366`
+- `lanelet_368` -> `lanelet_789`
+- `lanelet_369` -> `lanelet_1197`, `lanelet_2225883`, `lanelet_2226168`
+- `lanelet_370` -> `lanelet_1195`
+- `lanelet_371` -> `lanelet_1193`
+- `lanelet_372` -> `lanelet_1194`
+- `lanelet_373` -> `lanelet_376`
+- `lanelet_374` -> `lanelet_377`
+- `lanelet_375` -> `lanelet_378`, `lanelet_379`
+- `lanelet_376` -> `lanelet_380`
+- `lanelet_377` -> `lanelet_381`
+- `lanelet_378` -> `lanelet_382`
+- `lanelet_379` -> `lanelet_383`
+- `lanelet_380` -> `lanelet_1031`
+- `lanelet_381` -> `lanelet_1249`
+- `lanelet_382` -> `lanelet_1250`
+- `lanelet_383` -> `lanelet_1033`
+- `lanelet_384` -> `lanelet_2118517`
+- `lanelet_385` -> `lanelet_387`
+- `lanelet_387` -> `lanelet_393`
+- `lanelet_388` -> `lanelet_2303971`
+- `lanelet_389` -> `lanelet_391`
+- `lanelet_390` -> `lanelet_392`
+- `lanelet_391` -> `lanelet_314`, `lanelet_315`
+- `lanelet_392` -> `lanelet_312`
+- `lanelet_393` -> `lanelet_395`
+- `lanelet_394` -> `lanelet_396`, `lanelet_397`
+- `lanelet_395` -> `lanelet_2018246`
+- `lanelet_396` -> `lanelet_271`
+- `lanelet_397` -> `lanelet_270`
+- `lanelet_398` -> `lanelet_258`, `lanelet_259`
+- `lanelet_399` -> `lanelet_2303816`
+- `lanelet_400` -> `lanelet_2303866`
+- `lanelet_783` -> `lanelet_139`
+- `lanelet_784` -> (none)
+- `lanelet_785` -> `lanelet_132`
+- `lanelet_786` -> `lanelet_313`
+- `lanelet_787` -> `lanelet_394`
+- `lanelet_788` -> `lanelet_369`
+- `lanelet_789` -> `lanelet_372`
+- `lanelet_790` -> (none)
+- `lanelet_791` -> `lanelet_348`
+- `lanelet_792` -> `lanelet_35`
+- `lanelet_793` -> `lanelet_39`
+- `lanelet_794` -> `lanelet_40`
+- `lanelet_1001` -> `lanelet_162`
+- `lanelet_1002` -> `lanelet_1506`
+- `lanelet_1003` -> `lanelet_1506`
+- `lanelet_1004` -> `lanelet_162`
+- `lanelet_1005` -> `lanelet_32`
+- `lanelet_1006` -> `lanelet_32`
+- `lanelet_1007` -> `lanelet_1506`
+- `lanelet_1008` -> `lanelet_361`
+- `lanelet_1009` -> `lanelet_361`
+- `lanelet_1010` -> `lanelet_32`
+- `lanelet_1011` -> `lanelet_362`
+- `lanelet_1012` -> `lanelet_362`
+- `lanelet_1013` -> `lanelet_1508`
+- `lanelet_1014` -> `lanelet_1507`
+- `lanelet_1015` -> `lanelet_1480`
+- `lanelet_1016` -> `lanelet_126`
+- `lanelet_1017` -> `lanelet_126`
+- `lanelet_1018` -> `lanelet_1484`
+- `lanelet_1019` -> `lanelet_1483`
+- `lanelet_1020` -> (none)
+- `lanelet_1021` -> (none)
+- `lanelet_1022` -> (none)
+- `lanelet_1023` -> `lanelet_302`
+- `lanelet_1024` -> `lanelet_302`
+- `lanelet_1026` -> `lanelet_2308550`
+- `lanelet_1027` -> `lanelet_2308551`
+- `lanelet_1028` -> `lanelet_264`
+- `lanelet_1029` -> `lanelet_264`
+- `lanelet_1031` -> `lanelet_190`
+- `lanelet_1032` -> `lanelet_1910696`
+- `lanelet_1033` -> `lanelet_1910696`
+- `lanelet_1034` -> `lanelet_184`
+- `lanelet_1035` -> `lanelet_184`
+- `lanelet_1036` -> `lanelet_201`
+- `lanelet_1037` -> `lanelet_215`
+- `lanelet_1038` -> `lanelet_215`
+- `lanelet_1039` -> `lanelet_215`
+- `lanelet_1040` -> `lanelet_2119301`
+- `lanelet_1041` -> `lanelet_2119301`
+- `lanelet_1042` -> `lanelet_2119301`
+- `lanelet_1043` -> (none)
+- `lanelet_1044` -> (none)
+- `lanelet_1045` -> `lanelet_201`
+- `lanelet_1046` -> `lanelet_201`
+- `lanelet_1047` -> (none)
+- `lanelet_1048` -> (none)
+- `lanelet_1049` -> `lanelet_255`
+- `lanelet_1050` -> (none)
+- `lanelet_1051` -> `lanelet_255`
+- `lanelet_1052` -> (none)
+- `lanelet_1053` -> (none)
+- `lanelet_1054` -> `lanelet_237`
+- `lanelet_1055` -> (none)
+- `lanelet_1056` -> `lanelet_237`
+- `lanelet_1057` -> `lanelet_237`
+- `lanelet_1058` -> (none)
+- `lanelet_1059` -> `lanelet_400`
+- `lanelet_1060` -> (none)
+- `lanelet_1061` -> `lanelet_400`
+- `lanelet_1062` -> `lanelet_251`
+- `lanelet_1063` -> `lanelet_251`
+- `lanelet_1064` -> (none)
+- `lanelet_1065` -> (none)
+- `lanelet_1066` -> (none)
+- `lanelet_1067` -> `lanelet_326`
+- `lanelet_1068` -> `lanelet_326`
+- `lanelet_1069` -> `lanelet_329`
+- `lanelet_1070` -> `lanelet_328`
+- `lanelet_1071` -> `lanelet_345`
+- `lanelet_1072` -> `lanelet_345`
+- `lanelet_1073` -> `lanelet_2224310`
+- `lanelet_1087` -> `lanelet_1265`
+- `lanelet_1090` -> `lanelet_41`
+- `lanelet_1092` -> `lanelet_42`
+- `lanelet_1094` -> `lanelet_43`
+- `lanelet_1096` -> `lanelet_107`
+- `lanelet_1097` -> `lanelet_2224317`
+- `lanelet_1098` -> `lanelet_2224317`
+- `lanelet_1099` -> `lanelet_1324`
+- `lanelet_1100` -> `lanelet_94`
+- `lanelet_1101` -> `lanelet_1324`
+- `lanelet_1102` -> `lanelet_1324`
+- `lanelet_1103` -> `lanelet_107`
+- `lanelet_1104` -> `lanelet_106`, `lanelet_173833`
+- `lanelet_1105` -> `lanelet_95`
+- `lanelet_1106` -> `lanelet_95`
+- `lanelet_1107` -> `lanelet_95`
+- `lanelet_1108` -> `lanelet_94`
+- `lanelet_1109` -> `lanelet_94`
+- `lanelet_1110` -> `lanelet_120`, `lanelet_121`
+- `lanelet_1111` -> `lanelet_1272`
+- `lanelet_1112` -> `lanelet_120`, `lanelet_121`
+- `lanelet_1113` -> `lanelet_1272`
+- `lanelet_1114` -> `lanelet_82`
+- `lanelet_1115` -> `lanelet_1272`
+- `lanelet_1116` -> `lanelet_122`, `lanelet_178300`
+- `lanelet_1117` -> `lanelet_2224335`
+- `lanelet_1118` -> `lanelet_82`
+- `lanelet_1119` -> `lanelet_83`
+- `lanelet_1120` -> `lanelet_2224335`
+- `lanelet_1121` -> `lanelet_82`
+- `lanelet_1122` -> `lanelet_83`
+- `lanelet_1123` -> `lanelet_83`
+- `lanelet_1124` -> `lanelet_122`, `lanelet_178300`
+- `lanelet_1125` -> `lanelet_120`, `lanelet_121`
+- `lanelet_1126` -> `lanelet_178`
+- `lanelet_1127` -> `lanelet_178`
+- `lanelet_1128` -> `lanelet_74`
+- `lanelet_1129` -> `lanelet_176`
+- `lanelet_1130` -> `lanelet_176`
+- `lanelet_1131` -> `lanelet_1414`
+- `lanelet_1132` -> `lanelet_1415`
+- `lanelet_1133` -> `lanelet_70`
+- `lanelet_1134` -> `lanelet_70`
+- `lanelet_1135` -> `lanelet_1413`
+- `lanelet_1136` -> `lanelet_1415`
+- `lanelet_1137` -> `lanelet_71`
+- `lanelet_1138` -> `lanelet_180`
+- `lanelet_1139` -> `lanelet_180`
+- `lanelet_1140` -> `lanelet_181`
+- `lanelet_1141` -> `lanelet_177`
+- `lanelet_1142` -> `lanelet_177`
+- `lanelet_1143` -> (none)
+- `lanelet_1144` -> `lanelet_179`
+- `lanelet_1145` -> `lanelet_170`
+- `lanelet_1146` -> `lanelet_171`
+- `lanelet_1147` -> `lanelet_74`
+- `lanelet_1148` -> `lanelet_75`
+- `lanelet_1149` -> `lanelet_2224335`
+- `lanelet_1150` -> `lanelet_2224312`, `lanelet_2224313`
+- `lanelet_1151` -> `lanelet_87`
+- `lanelet_1152` -> `lanelet_86`
+- `lanelet_1153` -> `lanelet_86`
+- `lanelet_1154` -> `lanelet_1322`
+- `lanelet_1155` -> `lanelet_108`
+- `lanelet_1156` -> `lanelet_108`
+- `lanelet_1157` -> `lanelet_109`
+- `lanelet_1158` -> `lanelet_106`, `lanelet_173833`
+- `lanelet_1161` -> `lanelet_44`
+- `lanelet_1162` -> `lanelet_44`
+- `lanelet_1163` -> `lanelet_45`
+- `lanelet_1164` -> `lanelet_46`
+- `lanelet_1165` -> `lanelet_2224305`
+- `lanelet_1166` -> `lanelet_1276`
+- `lanelet_1167` -> `lanelet_51`
+- `lanelet_1168` -> `lanelet_51`
+- `lanelet_1169` -> `lanelet_52`
+- `lanelet_1170` -> `lanelet_53`
+- `lanelet_1171` -> `lanelet_54`
+- `lanelet_1172` -> `lanelet_162`
+- `lanelet_1173` -> `lanelet_163`
+- `lanelet_1174` -> `lanelet_33`
+- `lanelet_1175` -> `lanelet_34`
+- `lanelet_1176` -> `lanelet_126`
+- `lanelet_1177` -> `lanelet_127`
+- `lanelet_1178` -> `lanelet_128`
+- `lanelet_1179` -> `lanelet_131`
+- `lanelet_1180` -> `lanelet_1478`
+- `lanelet_1181` -> `lanelet_1479`
+- `lanelet_1182` -> `lanelet_1481`
+- `lanelet_1183` -> `lanelet_1482`
+- `lanelet_1184` -> `lanelet_309`
+- `lanelet_1185` -> `lanelet_309`
+- `lanelet_1186` -> `lanelet_310`
+- `lanelet_1187` -> `lanelet_2224282`
+- `lanelet_1188` -> `lanelet_307`
+- `lanelet_1189` -> `lanelet_308`
+- `lanelet_1190` -> `lanelet_342`
+- `lanelet_1191` -> `lanelet_343`
+- `lanelet_1192` -> `lanelet_344`
+- `lanelet_1193` -> `lanelet_331`
+- `lanelet_1194` -> `lanelet_399`
+- `lanelet_1195` -> `lanelet_330`
+- `lanelet_1196` -> `lanelet_330`
+- `lanelet_1197` -> `lanelet_2224307`
+- `lanelet_1198` -> (none)
+- `lanelet_1199` -> `lanelet_327`
+- `lanelet_1200` -> (none)
+- `lanelet_1201` -> `lanelet_251`
+- `lanelet_1202` -> `lanelet_252`
+- `lanelet_1203` -> `lanelet_253`
+- `lanelet_1204` -> `lanelet_400`
+- `lanelet_1205` -> `lanelet_332`
+- `lanelet_1206` -> `lanelet_333`
+- `lanelet_1207` -> (none)
+- `lanelet_1208` -> (none)
+- `lanelet_1209` -> `lanelet_306`
+- `lanelet_1210` -> `lanelet_388`
+- `lanelet_1211` -> `lanelet_388`
+- `lanelet_1212` -> `lanelet_303`
+- `lanelet_1213` -> (none)
+- `lanelet_1214` -> (none)
+- `lanelet_1215` -> (none)
+- `lanelet_1216` -> (none)
+- `lanelet_1217` -> (none)
+- `lanelet_1218` -> (none)
+- `lanelet_1219` -> (none)
+- `lanelet_1220` -> `lanelet_241`
+- `lanelet_1221` -> `lanelet_242`
+- `lanelet_1222` -> `lanelet_240`
+- `lanelet_1223` -> `lanelet_240`
+- `lanelet_1224` -> `lanelet_238`
+- `lanelet_1225` -> `lanelet_239`
+- `lanelet_1226` -> `lanelet_255`
+- `lanelet_1227` -> `lanelet_254`
+- `lanelet_1228` -> `lanelet_398`
+- `lanelet_1229` -> (none)
+- `lanelet_1230` -> `lanelet_227`
+- `lanelet_1231` -> `lanelet_228`
+- `lanelet_1232` -> `lanelet_226`
+- `lanelet_1233` -> `lanelet_226`
+- `lanelet_1234` -> (none)
+- `lanelet_1235` -> (none)
+- `lanelet_1236` -> `lanelet_2119302`
+- `lanelet_1237` -> `lanelet_2119303`
+- `lanelet_1238` -> `lanelet_216`
+- `lanelet_1239` -> `lanelet_217`
+- `lanelet_1240` -> `lanelet_202`
+- `lanelet_1241` -> `lanelet_203`
+- `lanelet_1242` -> `lanelet_204`
+- `lanelet_1243` -> `lanelet_204`
+- `lanelet_1244` -> `lanelet_205`
+- `lanelet_1245` -> `lanelet_206`
+- `lanelet_1246` -> (none)
+- `lanelet_1247` -> `lanelet_185`
+- `lanelet_1248` -> `lanelet_186`
+- `lanelet_1249` -> `lanelet_191`
+- `lanelet_1250` -> `lanelet_192`
+- `lanelet_1251` -> `lanelet_373`
+- `lanelet_1252` -> `lanelet_373`
+- `lanelet_1253` -> `lanelet_374`
+- `lanelet_1254` -> `lanelet_375`
+- `lanelet_1255` -> `lanelet_2308548`
+- `lanelet_1256` -> `lanelet_2308549`
+- `lanelet_1257` -> `lanelet_264`
+- `lanelet_1258` -> `lanelet_361`
+- `lanelet_1259` -> `lanelet_1480`
+- `lanelet_1260` -> `lanelet_1261`
+- `lanelet_1261` -> `lanelet_105`
+- `lanelet_1262` -> `lanelet_2307067`
+- `lanelet_1263` -> `lanelet_1268`, `lanelet_1269`
+- `lanelet_1264` -> (none)
+- `lanelet_1265` -> `lanelet_2307062`
+- `lanelet_1266` -> `lanelet_1267`
+- `lanelet_1267` -> `lanelet_104`
+- `lanelet_1268` -> `lanelet_1267`
+- `lanelet_1269` -> `lanelet_1261`
+- `lanelet_1270` -> `lanelet_1264`
+- `lanelet_1271` -> `lanelet_1264`
+- `lanelet_1272` -> `lanelet_178766`
+- `lanelet_1273` -> `lanelet_1274`
+- `lanelet_1274` -> `lanelet_1168`, `lanelet_176532`, `lanelet_2316490`
+- `lanelet_1276` -> `lanelet_1277`
+- `lanelet_1277` -> `lanelet_1278`
+- `lanelet_1278` -> `lanelet_179471`
+- `lanelet_1281` -> `lanelet_75`
+- `lanelet_1282` -> `lanelet_163`
+- `lanelet_1288` -> `lanelet_1118`, `lanelet_1119`, `lanelet_1120`
+- `lanelet_1290` -> `lanelet_1124`, `lanelet_1125`
+- `lanelet_1321` -> `lanelet_1156`
+- `lanelet_1322` -> `lanelet_178001`
+- `lanelet_1323` -> `lanelet_1097`, `lanelet_1106`, `lanelet_1108`
+- `lanelet_1324` -> `lanelet_175403`
+- `lanelet_1331` -> `lanelet_1416`
+- `lanelet_1332` -> `lanelet_1417`
+- `lanelet_1333` -> `lanelet_2224086`
+- `lanelet_1334` -> `lanelet_1418`
+- `lanelet_1335` -> `lanelet_1419`
+- `lanelet_1336` -> `lanelet_2224086`
+- `lanelet_1337` -> `lanelet_2224087`
+- `lanelet_1338` -> `lanelet_2224128`
+- `lanelet_1339` -> `lanelet_1423`
+- `lanelet_1340` -> `lanelet_1420`
+- `lanelet_1341` -> `lanelet_1421`
+- `lanelet_1342` -> `lanelet_2224128`
+- `lanelet_1343` -> `lanelet_1420`
+- `lanelet_1344` -> `lanelet_1424`
+- `lanelet_1345` -> `lanelet_2224128`
+- `lanelet_1346` -> `lanelet_1423`
+- `lanelet_1347` -> `lanelet_1422`
+- `lanelet_1348` -> `lanelet_1424`
+- `lanelet_1349` -> `lanelet_1422`
+- `lanelet_1350` -> `lanelet_1428`
+- `lanelet_1351` -> `lanelet_1425`
+- `lanelet_1352` -> `lanelet_1428`
+- `lanelet_1353` -> `lanelet_1429`
+- `lanelet_1354` -> `lanelet_2224141`
+- `lanelet_1355` -> `lanelet_2224141`
+- `lanelet_1356` -> `lanelet_1426`
+- `lanelet_1357` -> `lanelet_2224141`
+- `lanelet_1358` -> `lanelet_1425`
+- `lanelet_1359` -> `lanelet_1427`
+- `lanelet_1360` -> `lanelet_1426`
+- `lanelet_1361` -> `lanelet_1427`
+- `lanelet_1362` -> `lanelet_1499`
+- `lanelet_1363` -> `lanelet_1489`
+- `lanelet_1364` -> `lanelet_175955`
+- `lanelet_1365` -> `lanelet_1499`
+- `lanelet_1366` -> `lanelet_1500`
+- `lanelet_1367` -> `lanelet_1501`
+- `lanelet_1368` -> `lanelet_1489`
+- `lanelet_1369` -> `lanelet_1490`
+- `lanelet_1370` -> `lanelet_1491`
+- `lanelet_1371` -> `lanelet_175955`
+- `lanelet_1372` -> `lanelet_1490`
+- `lanelet_1373` -> `lanelet_1491`
+- `lanelet_1374` -> `lanelet_1432`
+- `lanelet_1375` -> `lanelet_1430`
+- `lanelet_1376` -> `lanelet_1431`
+- `lanelet_1377` -> `lanelet_2223987`
+- `lanelet_1378` -> `lanelet_2223988`
+- `lanelet_1379` -> `lanelet_1434`
+- `lanelet_1380` -> `lanelet_2223987`
+- `lanelet_1381` -> `lanelet_2223989`
+- `lanelet_1382` -> `lanelet_1434`
+- `lanelet_1383` -> `lanelet_1430`
+- `lanelet_1384` -> `lanelet_2223987`
+- `lanelet_1385` -> `lanelet_2223988`
+- `lanelet_1386` -> `lanelet_2223989`
+- `lanelet_1387` -> `lanelet_1432`
+- `lanelet_1388` -> `lanelet_1431`
+- `lanelet_1389` -> `lanelet_1430`
+- `lanelet_1390` -> `lanelet_1433`
+- `lanelet_1391` -> `lanelet_1433`
+- `lanelet_1392` -> `lanelet_2223988`
+- `lanelet_1393` -> `lanelet_1432`
+- `lanelet_1394` -> `lanelet_1438`
+- `lanelet_1395` -> `lanelet_2224036`
+- `lanelet_1396` -> `lanelet_1476`
+- `lanelet_1397` -> `lanelet_1477`
+- `lanelet_1398` -> `lanelet_1438`
+- `lanelet_1399` -> `lanelet_2224035`
+- `lanelet_1400` -> `lanelet_2224036`
+- `lanelet_1401` -> `lanelet_1475`
+- `lanelet_1402` -> `lanelet_1476`
+- `lanelet_1403` -> `lanelet_1477`
+- `lanelet_1404` -> `lanelet_2224035`
+- `lanelet_1405` -> `lanelet_1475`
+- `lanelet_1406` -> `lanelet_2224035`
+- `lanelet_1407` -> `lanelet_1441`
+- `lanelet_1408` -> `lanelet_1440`
+- `lanelet_1409` -> `lanelet_1439`
+- `lanelet_1410` -> `lanelet_1334`
+- `lanelet_1411` -> `lanelet_1335`
+- `lanelet_1412` -> `lanelet_1333`, `lanelet_1337`
+- `lanelet_1413` -> `lanelet_1410`
+- `lanelet_1414` -> `lanelet_1411`
+- `lanelet_1415` -> `lanelet_1412`
+- `lanelet_1416` -> `lanelet_1446`
+- `lanelet_1417` -> `lanelet_1447`
+- `lanelet_1418` -> `lanelet_1528`, `lanelet_1529`
+- `lanelet_1419` -> `lanelet_1530`
+- `lanelet_1420` -> `lanelet_1458`
+- `lanelet_1421` -> `lanelet_1459`
+- `lanelet_1422` -> `lanelet_1352`
+- `lanelet_1423` -> `lanelet_1353`
+- `lanelet_1424` -> `lanelet_1354`
+- `lanelet_1425` -> `lanelet_1340`
+- `lanelet_1426` -> `lanelet_1341`
+- `lanelet_1427` -> `lanelet_1342`
+- `lanelet_1428` -> `lanelet_1464`
+- `lanelet_1429` -> `lanelet_1465`, `lanelet_1513`
+- `lanelet_1430` -> `lanelet_1469`
+- `lanelet_1431` -> `lanelet_1470`
+- `lanelet_1432` -> `lanelet_1435`
+- `lanelet_1433` -> `lanelet_1436`
+- `lanelet_1434` -> `lanelet_1437`
+- `lanelet_1435` -> `lanelet_1401`, `lanelet_1406`
+- `lanelet_1436` -> `lanelet_1402`
+- `lanelet_1437` -> `lanelet_1403`
+- `lanelet_1438` -> `lanelet_1442`
+- `lanelet_1439` -> `lanelet_1443`
+- `lanelet_1440` -> `lanelet_1444`
+- `lanelet_1441` -> `lanelet_1445`
+- `lanelet_1442` -> `lanelet_1383`
+- `lanelet_1443` -> `lanelet_1384`
+- `lanelet_1444` -> `lanelet_1385`
+- `lanelet_1445` -> `lanelet_1386`
+- `lanelet_1446` -> `lanelet_1134`
+- `lanelet_1447` -> `lanelet_1137`
+- `lanelet_1448` -> `lanelet_1517`
+- `lanelet_1450` -> `lanelet_1516`
+- `lanelet_1452` -> `lanelet_1455`
+- `lanelet_1453` -> `lanelet_1454`
+- `lanelet_1454` -> `lanelet_1456`
+- `lanelet_1455` -> `lanelet_1457`
+- `lanelet_1456` -> `lanelet_1338`, `lanelet_1349`
+- `lanelet_1457` -> `lanelet_1339`, `lanelet_1348`
+- `lanelet_1458` -> `lanelet_1460`
+- `lanelet_1459` -> `lanelet_1461`
+- `lanelet_1460` -> `lanelet_1462`
+- `lanelet_1461` -> `lanelet_1463`
+- `lanelet_1462` -> `lanelet_1331`, `lanelet_1336`
+- `lanelet_1463` -> `lanelet_1332`
+- `lanelet_1464` -> `lanelet_1466`
+- `lanelet_1465` -> `lanelet_1467`
+- `lanelet_1466` -> `lanelet_1380`, `lanelet_1392`
+- `lanelet_1467` -> `lanelet_1382`, `lanelet_1391`, `lanelet_1393`
+- `lanelet_1468` -> `lanelet_1381`
+- `lanelet_1469` -> `lanelet_1355`, `lanelet_1358`
+- `lanelet_1470` -> `lanelet_1356`, `lanelet_1359`
+- `lanelet_1471` -> `lanelet_1394`, `lanelet_1404`
+- `lanelet_1472` -> `lanelet_1395`
+- `lanelet_1473` -> `lanelet_1396`, `lanelet_1405`
+- `lanelet_1474` -> `lanelet_1397`
+- `lanelet_1475` -> `lanelet_1183`
+- `lanelet_1476` -> `lanelet_1018`, `lanelet_1019`
+- `lanelet_1477` -> `lanelet_1017`
+- `lanelet_1478` -> `lanelet_1398`
+- `lanelet_1479` -> `lanelet_1399`, `lanelet_1407`, `lanelet_1408`, `lanelet_1409`
+- `lanelet_1480` -> `lanelet_1400`
+- `lanelet_1481` -> `lanelet_1485`
+- `lanelet_1482` -> `lanelet_1486`
+- `lanelet_1483` -> `lanelet_1487`
+- `lanelet_1484` -> `lanelet_1488`
+- `lanelet_1485` -> `lanelet_1364`
+- `lanelet_1486` -> `lanelet_1365`
+- `lanelet_1487` -> `lanelet_1366`
+- `lanelet_1488` -> `lanelet_1367`
+- `lanelet_1489` -> `lanelet_1492`
+- `lanelet_1490` -> `lanelet_1493`
+- `lanelet_1491` -> `lanelet_1494`, `lanelet_1514`
+- `lanelet_1492` -> `lanelet_1495`
+- `lanelet_1493` -> `lanelet_1496`
+- `lanelet_1494` -> `lanelet_1498`
+- `lanelet_1495` -> `lanelet_1176`
+- `lanelet_1496` -> `lanelet_1180`
+- `lanelet_1497` -> `lanelet_1181`
+- `lanelet_1498` -> `lanelet_1015`
+- `lanelet_1499` -> `lanelet_1524`
+- `lanelet_1500` -> `lanelet_1525`
+- `lanelet_1501` -> `lanelet_1526`, `lanelet_1527`
+- `lanelet_1502` -> `lanelet_1005`, `lanelet_1258`, `lanelet_2118984`
+- `lanelet_1503` -> `lanelet_1174`
+- `lanelet_1504` -> `lanelet_1175`
+- `lanelet_1505` -> `lanelet_1004`, `lanelet_190095`, `lanelet_190425`, `lanelet_2314304`
+- `lanelet_1506` -> `lanelet_176321`
+- `lanelet_1507` -> `lanelet_176322`
+- `lanelet_1508` -> `lanelet_176323`, `lanelet_176324`
+- `lanelet_1509` -> `lanelet_1368`
+- `lanelet_1510` -> `lanelet_1369`
+- `lanelet_1511` -> `lanelet_1370`
+- `lanelet_1512` -> `lanelet_1371`
+- `lanelet_1513` -> `lanelet_1468`
+- `lanelet_1514` -> `lanelet_1497`
+- `lanelet_1516` -> `lanelet_1453`
+- `lanelet_1517` -> `lanelet_1452`
+- `lanelet_1520` -> `lanelet_1509`
+- `lanelet_1522` -> `lanelet_1511`
+- `lanelet_1523` -> `lanelet_1512`
+- `lanelet_1524` -> `lanelet_1502`
+- `lanelet_1525` -> `lanelet_1503`
+- `lanelet_1526` -> `lanelet_1504`
+- `lanelet_1527` -> `lanelet_1505`
+- `lanelet_1528` -> `lanelet_178771`
+- `lanelet_1529` -> `lanelet_178776`
+- `lanelet_1530` -> `lanelet_178781`
+- `lanelet_173378` -> `lanelet_33`
+- `lanelet_173423` -> `lanelet_1262`
+- `lanelet_173560` -> `lanelet_1433`
+- `lanelet_173648` -> `lanelet_1434`
+- `lanelet_173833` -> `lanelet_1101`, `lanelet_175066`
+- `lanelet_175066` -> `lanelet_107`
+- `lanelet_175348` -> `lanelet_34`
+- `lanelet_175378` -> `lanelet_175395`, `lanelet_175413`
+- `lanelet_175395` -> `lanelet_1323`
+- `lanelet_175399` -> `lanelet_1103`, `lanelet_1104`
+- `lanelet_175403` -> `lanelet_175406`
+- `lanelet_175406` -> `lanelet_2224332`, `lanelet_2224333`
+- `lanelet_175413` -> `lanelet_175399`
+- `lanelet_175748` -> `lanelet_175753`, `lanelet_175826`
+- `lanelet_175753` -> `lanelet_175758`
+- `lanelet_175758` -> `lanelet_175764`
+- `lanelet_175764` -> `lanelet_322`
+- `lanelet_175826` -> (none)
+- `lanelet_175955` -> `lanelet_175960`
+- `lanelet_175960` -> `lanelet_175965`
+- `lanelet_175965` -> `lanelet_176640`
+- `lanelet_176046` -> `lanelet_179318`
+- `lanelet_176079` -> `lanelet_2314081`
+- `lanelet_176126` -> `lanelet_2314486`
+- `lanelet_176185` -> `lanelet_176191`
+- `lanelet_176187` -> `lanelet_176185`
+- `lanelet_176191` -> `lanelet_176193`
+- `lanelet_176193` -> `lanelet_1362`, `lanelet_176472`, `lanelet_190336`
+- `lanelet_176313` -> `lanelet_1510`
+- `lanelet_176321` -> `lanelet_1520`, `lanelet_190217`
+- `lanelet_176322` -> `lanelet_176313`
+- `lanelet_176323` -> `lanelet_1522`
+- `lanelet_176324` -> `lanelet_1523`
+- `lanelet_176423` -> `lanelet_176432`
+- `lanelet_176432` -> `lanelet_176437`
+- `lanelet_176437` -> `lanelet_176443`, `lanelet_2224285`
+- `lanelet_176443` -> `lanelet_2302662`
+- `lanelet_176472` -> `lanelet_1500`
+- `lanelet_176532` -> `lanelet_52`
+- `lanelet_176640` -> `lanelet_176670`, `lanelet_2313998`
+- `lanelet_176670` -> `lanelet_176046`
+- `lanelet_177124` -> `lanelet_1482`
+- `lanelet_177585` -> `lanelet_179452`
+- `lanelet_178001` -> `lanelet_2224336`, `lanelet_2224344`
+- `lanelet_178143` -> `lanelet_178161`
+- `lanelet_178161` -> `lanelet_178187`
+- `lanelet_178187` -> `lanelet_178196`
+- `lanelet_178196` -> `lanelet_2226177`
+- `lanelet_178300` -> `lanelet_1111`, `lanelet_1112`, `lanelet_1121`, `lanelet_1123`
+- `lanelet_178412` -> `lanelet_1321`
+- `lanelet_178481` -> `lanelet_1910618`, `lanelet_2323007`
+- `lanelet_178506` -> (none)
+- `lanelet_178670` -> `lanelet_178693`
+- `lanelet_178693` -> `lanelet_178698`
+- `lanelet_178698` -> `lanelet_178703`
+- `lanelet_178703` -> `lanelet_178725`
+- `lanelet_178725` -> (none)
+- `lanelet_178766` -> `lanelet_177585`, `lanelet_179473`
+- `lanelet_178771` -> `lanelet_178786`
+- `lanelet_178776` -> `lanelet_178791`
+- `lanelet_178781` -> `lanelet_178796`
+- `lanelet_178786` -> `lanelet_2224088`
+- `lanelet_178791` -> `lanelet_1450`
+- `lanelet_178796` -> `lanelet_1448`
+- `lanelet_178801` -> `lanelet_318`, `lanelet_319`
+- `lanelet_178806` -> `lanelet_320`, `lanelet_321`
+- `lanelet_178811` -> `lanelet_357`
+- `lanelet_178816` -> `lanelet_358`
+- `lanelet_178821` -> `lanelet_359`
+- `lanelet_178971` -> `lanelet_33`
+- `lanelet_179049` -> `lanelet_34`
+- `lanelet_179112` -> `lanelet_32`
+- `lanelet_179182` -> `lanelet_33`
+- `lanelet_179228` -> `lanelet_34`
+- `lanelet_179280` -> `lanelet_178481`, `lanelet_178506`
+- `lanelet_179318` -> `lanelet_190498`
+- `lanelet_179335` -> `lanelet_2314474`
+- `lanelet_179452` -> `lanelet_179280`, `lanelet_2304971`
+- `lanelet_179471` -> `lanelet_2306272`, `lanelet_2307310`
+- `lanelet_179473` -> `lanelet_179475`
+- `lanelet_179475` -> `lanelet_1273`
+- `lanelet_190095` -> `lanelet_1506`
+- `lanelet_190162` -> `lanelet_143`
+- `lanelet_190167` -> `lanelet_144`, `lanelet_145`
+- `lanelet_190186` -> `lanelet_190191`
+- `lanelet_190191` -> (none)
+- `lanelet_190217` -> `lanelet_190222`
+- `lanelet_190222` -> (none)
+- `lanelet_190336` -> `lanelet_1501`
+- `lanelet_190425` -> `lanelet_1507`
+- `lanelet_190498` -> `lanelet_176079`
+- `lanelet_1910425` -> `lanelet_2224317`
+- `lanelet_1910618` -> `lanelet_179475`
+- `lanelet_1910696` -> `lanelet_2305101`
+- `lanelet_1910786` -> `lanelet_2119822`, `lanelet_2307039`, `lanelet_2307052`
+- `lanelet_1910791` -> `lanelet_1914451`
+- `lanelet_1910806` -> `lanelet_2308566`
+- `lanelet_1910851` -> `lanelet_1914809`
+- `lanelet_1910873` -> `lanelet_2305095`
+- `lanelet_1910874` -> `lanelet_2305090`
+- `lanelet_1914451` -> `lanelet_2015852`
+- `lanelet_1914809` -> `lanelet_2305022`, `lanelet_2305067`, `lanelet_2305243`
+- `lanelet_2015802` -> `lanelet_1910791`
+- `lanelet_2015852` -> `lanelet_1910806`
+- `lanelet_2017536` -> `lanelet_2118635`
+- `lanelet_2017604` -> `lanelet_1910851`
+- `lanelet_2018246` -> `lanelet_273`
+- `lanelet_2018247` -> `lanelet_272`
+- `lanelet_2118418` -> `lanelet_302`
+- `lanelet_2118445` -> `lanelet_303`
+- `lanelet_2118517` -> (none)
+- `lanelet_2118602` -> `lanelet_202`
+- `lanelet_2118608` -> `lanelet_1243`, `lanelet_1246`
+- `lanelet_2118610` -> `lanelet_1171`
+- `lanelet_2118621` -> `lanelet_1244`
+- `lanelet_2118635` -> `lanelet_2017604`
+- `lanelet_2118984` -> `lanelet_362`
+- `lanelet_2119150` -> `lanelet_192`
+- `lanelet_2119250` -> `lanelet_216`
+- `lanelet_2119264` -> `lanelet_211`
+- `lanelet_2119275` -> `lanelet_2119264`
+- `lanelet_2119277` -> `lanelet_2305421`
+- `lanelet_2119278` -> `lanelet_2305422`
+- `lanelet_2119288` -> `lanelet_2305423`
+- `lanelet_2119292` -> `lanelet_1036`, `lanelet_1037`
+- `lanelet_2119301` -> (none)
+- `lanelet_2119302` -> (none)
+- `lanelet_2119303` -> (none)
+- `lanelet_2119617` -> `lanelet_212`
+- `lanelet_2119622` -> `lanelet_213`
+- `lanelet_2119627` -> `lanelet_214`
+- `lanelet_2119750` -> `lanelet_2305181`
+- `lanelet_2119822` -> `lanelet_2017536`
+- `lanelet_2119836` -> `lanelet_1453`
+- `lanelet_2223157` -> `lanelet_2223159`
+- `lanelet_2223158` -> `lanelet_2223160`, `lanelet_2223161`
+- `lanelet_2223159` -> `lanelet_2223162`
+- `lanelet_2223160` -> `lanelet_2223163`
+- `lanelet_2223161` -> `lanelet_2223213`
+- `lanelet_2223162` -> `lanelet_2223164`
+- `lanelet_2223163` -> `lanelet_2223165`
+- `lanelet_2223164` -> `lanelet_2224838`
+- `lanelet_2223165` -> `lanelet_2224839`
+- `lanelet_2223166` -> (none)
+- `lanelet_2223167` -> `lanelet_2223169`
+- `lanelet_2223168` -> `lanelet_2223170`, `lanelet_2223171`
+- `lanelet_2223169` -> `lanelet_2223172`
+- `lanelet_2223170` -> `lanelet_2223173`
+- `lanelet_2223171` -> `lanelet_2223174`
+- `lanelet_2223172` -> `lanelet_2223175`, `lanelet_2223178`, `lanelet_2223225`
+- `lanelet_2223173` -> `lanelet_2223176`
+- `lanelet_2223174` -> `lanelet_2223177`
+- `lanelet_2223175` -> `lanelet_2223179`
+- `lanelet_2223176` -> `lanelet_2223181`
+- `lanelet_2223177` -> (none)
+- `lanelet_2223178` -> `lanelet_2223180`
+- `lanelet_2223179` -> `lanelet_2304011`
+- `lanelet_2223180` -> `lanelet_2304016`
+- `lanelet_2223181` -> `lanelet_2304021`
+- `lanelet_2223182` -> `lanelet_2223829`, `lanelet_2223835`
+- `lanelet_2223183` -> `lanelet_2223830`
+- `lanelet_2223184` -> `lanelet_2223831`, `lanelet_2223836`
+- `lanelet_2223185` -> `lanelet_2223229`
+- `lanelet_2223186` -> `lanelet_2223187`, `lanelet_2223230`
+- `lanelet_2223187` -> `lanelet_2223189`
+- `lanelet_2223188` -> `lanelet_2223191`, `lanelet_2223232`
+- `lanelet_2223189` -> `lanelet_2223192`
+- `lanelet_2223190` -> `lanelet_2223193`
+- `lanelet_2223191` -> `lanelet_2223194`
+- `lanelet_2223192` -> `lanelet_2223195`
+- `lanelet_2223193` -> (none)
+- `lanelet_2223194` -> `lanelet_2304226`
+- `lanelet_2223195` -> `lanelet_2304221`
+- `lanelet_2223196` -> `lanelet_2223198`
+- `lanelet_2223197` -> `lanelet_2223199`
+- `lanelet_2223198` -> `lanelet_2223201`, `lanelet_2223235`
+- `lanelet_2223199` -> `lanelet_2223202`
+- `lanelet_2223200` -> `lanelet_2223203`
+- `lanelet_2223201` -> `lanelet_2224843`
+- `lanelet_2223202` -> `lanelet_2224844`
+- `lanelet_2223203` -> (none)
+- `lanelet_2223204` -> `lanelet_2223206`
+- `lanelet_2223205` -> `lanelet_2223207`
+- `lanelet_2223206` -> `lanelet_2223208`
+- `lanelet_2223207` -> `lanelet_2223209`, `lanelet_2223238`
+- `lanelet_2223208` -> `lanelet_2223210`
+- `lanelet_2223209` -> `lanelet_2223211`
+- `lanelet_2223210` -> `lanelet_2223348`, `lanelet_2223351`
+- `lanelet_2223211` -> `lanelet_2223349`
+- `lanelet_2223212` -> `lanelet_2223350`, `lanelet_2223352`
+- `lanelet_2223213` -> `lanelet_2223214`
+- `lanelet_2223214` -> (none)
+- `lanelet_2223215` -> `lanelet_2223206`
+- `lanelet_2223216` -> `lanelet_2224838`
+- `lanelet_2223217` -> `lanelet_2224839`
+- `lanelet_2223218` -> (none)
+- `lanelet_2223219` -> `lanelet_2223167`
+- `lanelet_2223220` -> `lanelet_2223168`
+- `lanelet_2223221` -> `lanelet_2224843`
+- `lanelet_2223222` -> `lanelet_2223167`
+- `lanelet_2223223` -> `lanelet_2223179`
+- `lanelet_2223224` -> `lanelet_2223194`
+- `lanelet_2223225` -> (none)
+- `lanelet_2223226` -> `lanelet_2223179`
+- `lanelet_2223227` -> `lanelet_2223180`
+- `lanelet_2223228` -> `lanelet_2223181`
+- `lanelet_2223229` -> `lanelet_2223188`
+- `lanelet_2223230` -> `lanelet_2223190`
+- `lanelet_2223231` -> `lanelet_2223194`
+- `lanelet_2223232` -> (none)
+- `lanelet_2223233` -> `lanelet_2223195`
+- `lanelet_2223234` -> `lanelet_2223200`
+- `lanelet_2223235` -> (none)
+- `lanelet_2223236` -> `lanelet_2224843`
+- `lanelet_2223237` -> `lanelet_2224844`
+- `lanelet_2223238` -> `lanelet_2223212`
+- `lanelet_2223239` -> `lanelet_2223398`, `lanelet_2223404`
+- `lanelet_2223240` -> `lanelet_2223239`
+- `lanelet_2223241` -> `lanelet_2223399`
+- `lanelet_2223242` -> `lanelet_2223411`
+- `lanelet_2223243` -> `lanelet_2223242`
+- `lanelet_2223244` -> `lanelet_2223241`
+- `lanelet_2223245` -> `lanelet_2223330`
+- `lanelet_2223246` -> `lanelet_2223329`, `lanelet_2223331`, `lanelet_2306592`
+- `lanelet_2223247` -> `lanelet_2223246`
+- `lanelet_2223248` -> `lanelet_2223245`
+- `lanelet_2223249` -> `lanelet_2223251`
+- `lanelet_2223250` -> `lanelet_2223252`
+- `lanelet_2223251` -> `lanelet_2223293`, `lanelet_2223295`
+- `lanelet_2223252` -> `lanelet_2223294`
+- `lanelet_2223253` -> `lanelet_2223256`
+- `lanelet_2223254` -> `lanelet_2223255`, `lanelet_2223260`
+- `lanelet_2223255` -> `lanelet_2223258`
+- `lanelet_2223256` -> `lanelet_2223257`
+- `lanelet_2223257` -> `lanelet_2223334`
+- `lanelet_2223258` -> `lanelet_2223333`, `lanelet_2224836`
+- `lanelet_2223259` -> `lanelet_2223332`, `lanelet_2223335`
+- `lanelet_2223260` -> `lanelet_2223259`
+- `lanelet_2223261` -> `lanelet_2223263`
+- `lanelet_2223262` -> `lanelet_2223264`, `lanelet_2223265`
+- `lanelet_2223263` -> `lanelet_2223303`, `lanelet_2223304`
+- `lanelet_2223264` -> `lanelet_2223306`
+- `lanelet_2223265` -> `lanelet_2223307`
+- `lanelet_2223266` -> `lanelet_2223308`, `lanelet_2223311`
+- `lanelet_2223267` -> `lanelet_2223309`
+- `lanelet_2223268` -> `lanelet_2223310`
+- `lanelet_2223269` -> `lanelet_2223271`
+- `lanelet_2223270` -> `lanelet_2223272`, `lanelet_2223276`
+- `lanelet_2223271` -> `lanelet_2223273`
+- `lanelet_2223272` -> `lanelet_2223274`
+- `lanelet_2223273` -> `lanelet_2223299`
+- `lanelet_2223274` -> `lanelet_2223300`
+- `lanelet_2223275` -> `lanelet_2223301`, `lanelet_2223302`
+- `lanelet_2223276` -> `lanelet_2223275`
+- `lanelet_2223277` -> `lanelet_2223316`, `lanelet_2223320`
+- `lanelet_2223278` -> `lanelet_2223317`
+- `lanelet_2223279` -> `lanelet_2223318`, `lanelet_2223319`
+- `lanelet_2223280` -> `lanelet_2223277`
+- `lanelet_2223281` -> `lanelet_2223278`
+- `lanelet_2223282` -> `lanelet_2223279`
+- `lanelet_2223283` -> `lanelet_2223280`
+- `lanelet_2223284` -> `lanelet_2223281`, `lanelet_2223282`
+- `lanelet_2223285` -> `lanelet_2223289`
+- `lanelet_2223286` -> `lanelet_2223287`, `lanelet_2223288`
+- `lanelet_2223287` -> `lanelet_2223291`
+- `lanelet_2223288` -> `lanelet_2223292`
+- `lanelet_2223289` -> `lanelet_2223290`
+- `lanelet_2223290` -> `lanelet_2223338`, `lanelet_2223340`
+- `lanelet_2223291` -> `lanelet_2223339`
+- `lanelet_2223292` -> `lanelet_2223353`, `lanelet_2223354`
+- `lanelet_2223293` -> `lanelet_2223261`
+- `lanelet_2223294` -> `lanelet_2223262`
+- `lanelet_2223295` -> (none)
+- `lanelet_2223296` -> `lanelet_2223261`
+- `lanelet_2223297` -> `lanelet_2223253`
+- `lanelet_2223298` -> `lanelet_2223254`
+- `lanelet_2223299` -> `lanelet_2223253`
+- `lanelet_2223300` -> `lanelet_2223254`
+- `lanelet_2223301` -> (none)
+- `lanelet_2223302` -> (none)
+- `lanelet_2223303` -> `lanelet_2223266`
+- `lanelet_2223304` -> (none)
+- `lanelet_2223305` -> `lanelet_2223266`
+- `lanelet_2223306` -> `lanelet_2223267`
+- `lanelet_2223307` -> `lanelet_2223268`
+- `lanelet_2223308` -> `lanelet_2223285`
+- `lanelet_2223309` -> `lanelet_2223286`
+- `lanelet_2223310` -> (none)
+- `lanelet_2223311` -> (none)
+- `lanelet_2223312` -> `lanelet_2223285`
+- `lanelet_2223313` -> `lanelet_2223286`
+- `lanelet_2223314` -> `lanelet_2223269`
+- `lanelet_2223315` -> (none)
+- `lanelet_2223316` -> `lanelet_2223269`
+- `lanelet_2223317` -> `lanelet_2223270`
+- `lanelet_2223318` -> (none)
+- `lanelet_2223319` -> (none)
+- `lanelet_2223320` -> (none)
+- `lanelet_2223321` -> `lanelet_2223269`
+- `lanelet_2223322` -> `lanelet_2223285`
+- `lanelet_2223323` -> `lanelet_2223286`
+- `lanelet_2223324` -> (none)
+- `lanelet_2223325` -> `lanelet_2223270`
+- `lanelet_2223326` -> (none)
+- `lanelet_2223327` -> `lanelet_2223249`
+- `lanelet_2223328` -> `lanelet_2223240`
+- `lanelet_2223329` -> `lanelet_2223249`
+- `lanelet_2223330` -> `lanelet_2223250`
+- `lanelet_2223331` -> (none)
+- `lanelet_2223332` -> (none)
+- `lanelet_2223333` -> `lanelet_2223244`
+- `lanelet_2223334` -> `lanelet_2223240`
+- `lanelet_2223335` -> (none)
+- `lanelet_2223336` -> `lanelet_2223244`
+- `lanelet_2223337` -> `lanelet_2223243`
+- `lanelet_2223338` -> `lanelet_2223157`
+- `lanelet_2223339` -> `lanelet_2223158`
+- `lanelet_2223340` -> (none)
+- `lanelet_2223341` -> (none)
+- `lanelet_2223342` -> (none)
+- `lanelet_2223343` -> `lanelet_2223283`
+- `lanelet_2223344` -> (none)
+- `lanelet_2223345` -> (none)
+- `lanelet_2223346` -> `lanelet_2223283`
+- `lanelet_2223347` -> `lanelet_2223157`
+- `lanelet_2223348` -> `lanelet_2223283`
+- `lanelet_2223349` -> `lanelet_2223284`
+- `lanelet_2223350` -> (none)
+- `lanelet_2223351` -> (none)
+- `lanelet_2223352` -> (none)
+- `lanelet_2223353` -> (none)
+- `lanelet_2223354` -> (none)
+- `lanelet_2223355` -> `lanelet_2223157`
+- `lanelet_2223356` -> `lanelet_2223158`
+- `lanelet_2223357` -> `lanelet_2223284`
+- `lanelet_2223358` -> `lanelet_2223380`, `lanelet_2223382`
+- `lanelet_2223359` -> `lanelet_2223386`, `lanelet_2223388`
+- `lanelet_2223360` -> `lanelet_2223369`, `lanelet_2223370`
+- `lanelet_2223361` -> `lanelet_2223372`, `lanelet_2223373`
+- `lanelet_2223362` -> `lanelet_2323280`
+- `lanelet_2223363` -> `lanelet_2303631`
+- `lanelet_2223364` -> `lanelet_2224848`
+- `lanelet_2223365` -> `lanelet_2223391`, `lanelet_2223394`
+- `lanelet_2223366` -> `lanelet_2223387`, `lanelet_2223389`
+- `lanelet_2223367` -> `lanelet_2223396`, `lanelet_2223403`, `lanelet_2223409`, `lanelet_2223410`, `lanelet_2224820`
+- `lanelet_2223368` -> `lanelet_2223390`, `lanelet_2223392`
+- `lanelet_2223369` -> `lanelet_2223361`
+- `lanelet_2223370` -> (none)
+- `lanelet_2223371` -> `lanelet_2223361`
+- `lanelet_2223372` -> (none)
+- `lanelet_2223373` -> `lanelet_2223362`
+- `lanelet_2223374` -> (none)
+- `lanelet_2223375` -> `lanelet_2223364`
+- `lanelet_2223376` -> `lanelet_2223364`
+- `lanelet_2223377` -> (none)
+- `lanelet_2223378` -> `lanelet_2223524`
+- `lanelet_2223379` -> `lanelet_2223524`
+- `lanelet_2223380` -> `lanelet_2223589`
+- `lanelet_2223381` -> `lanelet_2223359`
+- `lanelet_2223382` -> `lanelet_2223363`
+- `lanelet_2223383` -> `lanelet_2223359`
+- `lanelet_2223384` -> `lanelet_2223363`
+- `lanelet_2223385` -> `lanelet_2223589`
+- `lanelet_2223386` -> `lanelet_2223365`
+- `lanelet_2223387` -> `lanelet_2223358`
+- `lanelet_2223388` -> `lanelet_2223360`
+- `lanelet_2223389` -> `lanelet_2223360`
+- `lanelet_2223390` -> `lanelet_2223366`
+- `lanelet_2223391` -> `lanelet_2223367`
+- `lanelet_2223392` -> (none)
+- `lanelet_2223393` -> `lanelet_2223367`
+- `lanelet_2223394` -> (none)
+- `lanelet_2223395` -> `lanelet_2223366`
+- `lanelet_2223396` -> `lanelet_2223523`
+- `lanelet_2223397` -> `lanelet_2223368`
+- `lanelet_2223398` -> `lanelet_2293023`
+- `lanelet_2223399` -> (none)
+- `lanelet_2223400` -> `lanelet_2223247`
+- `lanelet_2223401` -> `lanelet_2223248`
+- `lanelet_2223402` -> `lanelet_2223368`
+- `lanelet_2223403` -> `lanelet_2223247`
+- `lanelet_2223404` -> `lanelet_2223523`
+- `lanelet_2223405` -> `lanelet_2293023`
+- `lanelet_2223406` -> `lanelet_2223523`
+- `lanelet_2223407` -> `lanelet_2223247`
+- `lanelet_2223408` -> `lanelet_2223248`
+- `lanelet_2223409` -> (none)
+- `lanelet_2223410` -> `lanelet_2293023`
+- `lanelet_2223411` -> `lanelet_2223368`
+- `lanelet_2223412` -> `lanelet_2223624`
+- `lanelet_2223413` -> `lanelet_2223625`
+- `lanelet_2223414` -> `lanelet_2223626`
+- `lanelet_2223415` -> `lanelet_2223559`, `lanelet_2223560`, `lanelet_2223568`
+- `lanelet_2223416` -> `lanelet_2223573`, `lanelet_2223574`, `lanelet_2224826`
+- `lanelet_2223417` -> `lanelet_2223555`, `lanelet_2223557`
+- `lanelet_2223418` -> `lanelet_2223556`
+- `lanelet_2223419` -> `lanelet_2223561`, `lanelet_2223570`
+- `lanelet_2223420` -> `lanelet_2223562`, `lanelet_2223563`
+- `lanelet_2223421` -> `lanelet_2223575`
+- `lanelet_2223422` -> `lanelet_2303656`
+- `lanelet_2223423` -> `lanelet_2303651`
+- `lanelet_2223426` -> `lanelet_2223544`, `lanelet_2223548`, `lanelet_2306116`, `lanelet_2306119`
+- `lanelet_2223427` -> `lanelet_2223545`
+- `lanelet_2223432` -> `lanelet_2223434`
+- `lanelet_2223433` -> `lanelet_2223591`
+- `lanelet_2223434` -> (none)
+- `lanelet_2223435` -> `lanelet_2308948`
+- `lanelet_2223436` -> `lanelet_2308866`
+- `lanelet_2223437` -> `lanelet_2303311`
+- `lanelet_2223438` -> `lanelet_2303316`
+- `lanelet_2223439` -> `lanelet_2303432`
+- `lanelet_2223440` -> `lanelet_2223443`, `lanelet_2223446`
+- `lanelet_2223441` -> `lanelet_2223444`
+- `lanelet_2223442` -> `lanelet_2223445`
+- `lanelet_2223443` -> `lanelet_2223448`
+- `lanelet_2223444` -> `lanelet_2223449`
+- `lanelet_2223445` -> `lanelet_2223450`
+- `lanelet_2223446` -> `lanelet_2223447`
+- `lanelet_2223447` -> `lanelet_2223451`
+- `lanelet_2223448` -> `lanelet_2223452`
+- `lanelet_2223449` -> `lanelet_2223453`
+- `lanelet_2223450` -> `lanelet_2223454`
+- `lanelet_2223451` -> `lanelet_2223585`, `lanelet_2224393`
+- `lanelet_2223452` -> `lanelet_2223455`
+- `lanelet_2223453` -> `lanelet_2303736`
+- `lanelet_2223454` -> `lanelet_2303741`
+- `lanelet_2223455` -> `lanelet_2223456`
+- `lanelet_2223456` -> `lanelet_2224063`
+- `lanelet_2223457` -> `lanelet_2224062`
+- `lanelet_2223458` -> `lanelet_2223459`
+- `lanelet_2223459` -> `lanelet_2223462`
+- `lanelet_2223460` -> `lanelet_2223463`
+- `lanelet_2223461` -> `lanelet_2223464`
+- `lanelet_2223462` -> `lanelet_2224308`
+- `lanelet_2223463` -> `lanelet_2224309`
+- `lanelet_2223464` -> `lanelet_2224306`
+- `lanelet_2223465` -> `lanelet_2223468`
+- `lanelet_2223466` -> `lanelet_2223469`
+- `lanelet_2223467` -> `lanelet_2223470`
+- `lanelet_2223468` -> `lanelet_176423`
+- `lanelet_2223469` -> `lanelet_2223608`
+- `lanelet_2223470` -> `lanelet_2223609`
+- `lanelet_2223471` -> `lanelet_2223472`
+- `lanelet_2223472` -> `lanelet_2223848`
+- `lanelet_2223473` -> `lanelet_2223613`
+- `lanelet_2223474` -> `lanelet_2223614`
+- `lanelet_2223475` -> `lanelet_2223482`
+- `lanelet_2223476` -> `lanelet_2223481`
+- `lanelet_2223477` -> `lanelet_2223480`
+- `lanelet_2223478` -> `lanelet_2223479`
+- `lanelet_2223479` -> `lanelet_2223483`
+- `lanelet_2223480` -> `lanelet_2223484`
+- `lanelet_2223481` -> `lanelet_2223484`
+- `lanelet_2223482` -> `lanelet_2223485`
+- `lanelet_2223483` -> `lanelet_2223486`
+- `lanelet_2223484` -> `lanelet_2223487`
+- `lanelet_2223485` -> `lanelet_2223488`
+- `lanelet_2223486` -> `lanelet_2223489`
+- `lanelet_2223487` -> `lanelet_2223490`
+- `lanelet_2223488` -> `lanelet_2223491`
+- `lanelet_2223489` -> `lanelet_2223579`, `lanelet_2223580`
+- `lanelet_2223490` -> `lanelet_2223616`
+- `lanelet_2223491` -> `lanelet_2223617`
+- `lanelet_2223492` -> `lanelet_2223601`
+- `lanelet_2223493` -> `lanelet_2303557`
+- `lanelet_2223494` -> `lanelet_2303563`
+- `lanelet_2223495` -> `lanelet_2309534`
+- `lanelet_2223496` -> `lanelet_2309539`
+- `lanelet_2223497` -> `lanelet_2223512`
+- `lanelet_2223498` -> `lanelet_2223511`
+- `lanelet_2223500` -> `lanelet_2305553`, `lanelet_2305554`
+- `lanelet_2223507` -> `lanelet_2223510`
+- `lanelet_2223510` -> `lanelet_2223513`
+- `lanelet_2223511` -> `lanelet_2223532`
+- `lanelet_2223512` -> `lanelet_2223531`
+- `lanelet_2223513` -> `lanelet_2223537`
+- `lanelet_2223514` -> `lanelet_2223538`, `lanelet_2306201`
+- `lanelet_2223515` -> `lanelet_2223534`
+- `lanelet_2223516` -> `lanelet_2223533`, `lanelet_2223535`
+- `lanelet_2223517` -> `lanelet_2223542`, `lanelet_2223543`
+- `lanelet_2223518` -> `lanelet_2223515`
+- `lanelet_2223519` -> `lanelet_2223517`
+- `lanelet_2223520` -> `lanelet_2223516`
+- `lanelet_2223521` -> `lanelet_2223525`
+- `lanelet_2223522` -> `lanelet_2223526`, `lanelet_2223527`
+- `lanelet_2223523` -> (none)
+- `lanelet_2223524` -> `lanelet_2224722`, `lanelet_2224726`
+- `lanelet_2223525` -> `lanelet_2223530`
+- `lanelet_2223526` -> `lanelet_2223529`
+- `lanelet_2223527` -> `lanelet_2223528`
+- `lanelet_2223528` -> (none)
+- `lanelet_2223529` -> (none)
+- `lanelet_2223530` -> (none)
+- `lanelet_2223531` -> `lanelet_2223522`
+- `lanelet_2223532` -> `lanelet_2223521`
+- `lanelet_2223533` -> `lanelet_2223433`
+- `lanelet_2223534` -> `lanelet_2223432`
+- `lanelet_2223535` -> `lanelet_2223588`
+- `lanelet_2223537` -> `lanelet_2223422`
+- `lanelet_2223538` -> `lanelet_2223423`
+- `lanelet_2223542` -> `lanelet_2223423`
+- `lanelet_2223543` -> `lanelet_2223422`
+- `lanelet_2223544` -> `lanelet_2223433`
+- `lanelet_2223545` -> `lanelet_2223588`
+- `lanelet_2223548` -> (none)
+- `lanelet_2223550` -> `lanelet_2223419`
+- `lanelet_2223551` -> `lanelet_2223420`
+- `lanelet_2223552` -> `lanelet_2223421`
+- `lanelet_2223553` -> (none)
+- `lanelet_2223554` -> `lanelet_2223419`
+- `lanelet_2223555` -> `lanelet_2304265`
+- `lanelet_2223556` -> `lanelet_2304266`
+- `lanelet_2223557` -> (none)
+- `lanelet_2223558` -> `lanelet_2304265`
+- `lanelet_2223559` -> `lanelet_2223417`
+- `lanelet_2223560` -> `lanelet_2223418`
+- `lanelet_2223561` -> `lanelet_2223412`
+- `lanelet_2223562` -> `lanelet_2223413`
+- `lanelet_2223563` -> `lanelet_2223414`
+- `lanelet_2223564` -> (none)
+- `lanelet_2223565` -> (none)
+- `lanelet_2223566` -> (none)
+- `lanelet_2223567` -> `lanelet_2223412`
+- `lanelet_2223568` -> (none)
+- `lanelet_2223569` -> `lanelet_2223417`
+- `lanelet_2223570` -> (none)
+- `lanelet_2223571` -> `lanelet_2223417`
+- `lanelet_2223572` -> `lanelet_2223418`
+- `lanelet_2223573` -> (none)
+- `lanelet_2223574` -> (none)
+- `lanelet_2223575` -> (none)
+- `lanelet_2223576` -> `lanelet_2223414`
+- `lanelet_2223577` -> `lanelet_2223412`
+- `lanelet_2223578` -> `lanelet_2223413`
+- `lanelet_2223579` -> `lanelet_2223581`
+- `lanelet_2223580` -> `lanelet_2223582`
+- `lanelet_2223581` -> (none)
+- `lanelet_2223582` -> (none)
+- `lanelet_2223583` -> `lanelet_2223602`
+- `lanelet_2223584` -> `lanelet_2223603`
+- `lanelet_2223585` -> `lanelet_2223457`
+- `lanelet_2223586` -> `lanelet_2223524`
+- `lanelet_2223587` -> `lanelet_2223472`
+- `lanelet_2223588` -> `lanelet_2223592`
+- `lanelet_2223589` -> `lanelet_2295444`, `lanelet_2295446`, `lanelet_2295447`
+- `lanelet_2223590` -> `lanelet_2223381`, `lanelet_2223384`
+- `lanelet_2223591` -> `lanelet_2223593`
+- `lanelet_2223592` -> `lanelet_2223594`
+- `lanelet_2223593` -> `lanelet_2223596`
+- `lanelet_2223594` -> `lanelet_2223595`
+- `lanelet_2223595` -> `lanelet_2223436`
+- `lanelet_2223596` -> `lanelet_2223435`
+- `lanelet_2223597` -> `lanelet_2309424`
+- `lanelet_2223598` -> `lanelet_2309429`
+- `lanelet_2223599` -> `lanelet_2223437`
+- `lanelet_2223600` -> `lanelet_2223438`
+- `lanelet_2223601` -> `lanelet_2223604`
+- `lanelet_2223602` -> `lanelet_2223605`
+- `lanelet_2223603` -> `lanelet_2223606`
+- `lanelet_2223604` -> `lanelet_2223440`
+- `lanelet_2223605` -> `lanelet_2223441`
+- `lanelet_2223606` -> `lanelet_2223442`
+- `lanelet_2223607` -> `lanelet_2223473`
+- `lanelet_2223608` -> `lanelet_2226441`
+- `lanelet_2223609` -> `lanelet_2303661`
+- `lanelet_2223610` -> `lanelet_2223474`
+- `lanelet_2223611` -> `lanelet_2223476`
+- `lanelet_2223612` -> `lanelet_2223477`, `lanelet_2223478`
+- `lanelet_2223613` -> `lanelet_2223611`
+- `lanelet_2223614` -> `lanelet_2223615`
+- `lanelet_2223615` -> `lanelet_2223475`
+- `lanelet_2223616` -> `lanelet_2303447`
+- `lanelet_2223617` -> `lanelet_2303452`
+- `lanelet_2223618` -> `lanelet_2223494`
+- `lanelet_2223619` -> `lanelet_2223493`
+- `lanelet_2223620` -> `lanelet_2223498`, `lanelet_2223500`
+- `lanelet_2223621` -> `lanelet_2223620`
+- `lanelet_2223622` -> `lanelet_2223623`
+- `lanelet_2223623` -> `lanelet_2223497`
+- `lanelet_2223624` -> `lanelet_2223664`, `lanelet_2223665`
+- `lanelet_2223625` -> `lanelet_2223666`
+- `lanelet_2223626` -> `lanelet_2223667`, `lanelet_2223668`, `lanelet_2223669`
+- `lanelet_2223627` -> `lanelet_2223670`
+- `lanelet_2223628` -> `lanelet_2223671`
+- `lanelet_2223629` -> `lanelet_2223631`
+- `lanelet_2223630` -> `lanelet_2223632`
+- `lanelet_2223631` -> `lanelet_2223673`
+- `lanelet_2223632` -> `lanelet_2223674`, `lanelet_2223675`, `lanelet_2223676`
+- `lanelet_2223633` -> `lanelet_2223753`, `lanelet_2223815`
+- `lanelet_2223634` -> `lanelet_2223754`
+- `lanelet_2223635` -> `lanelet_2223755`, `lanelet_2223813`
+- `lanelet_2223636` -> `lanelet_2223652`, `lanelet_2223653`
+- `lanelet_2223637` -> `lanelet_2223654`
+- `lanelet_2223638` -> `lanelet_2223640`
+- `lanelet_2223639` -> `lanelet_2223641`
+- `lanelet_2223640` -> `lanelet_2223655`, `lanelet_2223656`
+- `lanelet_2223641` -> `lanelet_2223657`
+- `lanelet_2223642` -> `lanelet_2223644`
+- `lanelet_2223643` -> `lanelet_2223645`, `lanelet_2223646`
+- `lanelet_2223644` -> `lanelet_2223647`
+- `lanelet_2223645` -> `lanelet_2223648`
+- `lanelet_2223646` -> `lanelet_2223649`
+- `lanelet_2223647` -> `lanelet_2223658`, `lanelet_2223691`
+- `lanelet_2223648` -> `lanelet_2223659`
+- `lanelet_2223649` -> `lanelet_2223660`, `lanelet_2223692`, `lanelet_2223693`
+- `lanelet_2223650` -> `lanelet_2223661`
+- `lanelet_2223651` -> `lanelet_2223662`
+- `lanelet_2223652` -> (none)
+- `lanelet_2223653` -> `lanelet_2223638`
+- `lanelet_2223654` -> `lanelet_2223639`
+- `lanelet_2223655` -> `lanelet_2223642`
+- `lanelet_2223656` -> (none)
+- `lanelet_2223657` -> `lanelet_2223643`
+- `lanelet_2223658` -> `lanelet_2223650`
+- `lanelet_2223659` -> `lanelet_2223651`
+- `lanelet_2223660` -> (none)
+- `lanelet_2223661` -> `lanelet_2223415`
+- `lanelet_2223662` -> `lanelet_2223416`
+- `lanelet_2223663` -> `lanelet_2223415`
+- `lanelet_2223664` -> `lanelet_2223627`
+- `lanelet_2223665` -> (none)
+- `lanelet_2223666` -> `lanelet_2223628`
+- `lanelet_2223667` -> (none)
+- `lanelet_2223668` -> (none)
+- `lanelet_2223669` -> (none)
+- `lanelet_2223670` -> `lanelet_2223629`
+- `lanelet_2223671` -> `lanelet_2223630`
+- `lanelet_2223672` -> `lanelet_2223629`
+- `lanelet_2223673` -> `lanelet_2223694`
+- `lanelet_2223674` -> `lanelet_2223696`
+- `lanelet_2223675` -> `lanelet_2223695`
+- `lanelet_2223676` -> (none)
+- `lanelet_2223677` -> `lanelet_2223642`
+- `lanelet_2223678` -> `lanelet_2223694`
+- `lanelet_2223679` -> `lanelet_2223696`
+- `lanelet_2223680` -> `lanelet_2223695`
+- `lanelet_2223681` -> `lanelet_2223627`
+- `lanelet_2223682` -> `lanelet_2223628`
+- `lanelet_2223683` -> (none)
+- `lanelet_2223684` -> (none)
+- `lanelet_2223685` -> (none)
+- `lanelet_2223686` -> (none)
+- `lanelet_2223687` -> (none)
+- `lanelet_2223688` -> (none)
+- `lanelet_2223689` -> `lanelet_2223650`
+- `lanelet_2223690` -> `lanelet_2223651`
+- `lanelet_2223691` -> (none)
+- `lanelet_2223692` -> (none)
+- `lanelet_2223693` -> (none)
+- `lanelet_2223694` -> `lanelet_2223633`
+- `lanelet_2223695` -> `lanelet_2223635`
+- `lanelet_2223696` -> `lanelet_2223634`
+- `lanelet_2223697` -> `lanelet_2223698`
+- `lanelet_2223698` -> `lanelet_2223701`
+- `lanelet_2223699` -> `lanelet_2223700`, `lanelet_2223714`
+- `lanelet_2223700` -> `lanelet_2223703`
+- `lanelet_2223701` -> `lanelet_2223704`
+- `lanelet_2223702` -> `lanelet_2223705`
+- `lanelet_2223703` -> `lanelet_2223706`
+- `lanelet_2223704` -> `lanelet_2223707`
+- `lanelet_2223705` -> `lanelet_2223792`
+- `lanelet_2223706` -> `lanelet_2223793`
+- `lanelet_2223707` -> `lanelet_2223709`, `lanelet_2223803`
+- `lanelet_2223708` -> `lanelet_2223710`
+- `lanelet_2223709` -> `lanelet_2223712`
+- `lanelet_2223710` -> `lanelet_2223715`
+- `lanelet_2223711` -> `lanelet_2223712`
+- `lanelet_2223712` -> `lanelet_2223713`
+- `lanelet_2223713` -> `lanelet_2223718`
+- `lanelet_2223714` -> `lanelet_2223702`
+- `lanelet_2223715` -> `lanelet_2223716`, `lanelet_2223717`
+- `lanelet_2223716` -> `lanelet_2223720`
+- `lanelet_2223717` -> `lanelet_2223719`
+- `lanelet_2223718` -> `lanelet_2223721`, `lanelet_2223805`
+- `lanelet_2223719` -> `lanelet_2223722`
+- `lanelet_2223720` -> `lanelet_2223723`
+- `lanelet_2223721` -> `lanelet_2223726`
+- `lanelet_2223722` -> `lanelet_2223727`
+- `lanelet_2223723` -> (none)
+- `lanelet_2223724` -> `lanelet_2223726`
+- `lanelet_2223725` -> (none)
+- `lanelet_2223726` -> `lanelet_2223728`, `lanelet_2223809`
+- `lanelet_2223727` -> `lanelet_2223729`
+- `lanelet_2223728` -> `lanelet_2223801`
+- `lanelet_2223729` -> `lanelet_2223731`
+- `lanelet_2223730` -> `lanelet_2223801`
+- `lanelet_2223731` -> `lanelet_2223734`, `lanelet_2223735`
+- `lanelet_2223733` -> (none)
+- `lanelet_2223734` -> `lanelet_2223739`
+- `lanelet_2223735` -> `lanelet_2223738`
+- `lanelet_2223736` -> `lanelet_2223737`
+- `lanelet_2223737` -> `lanelet_2307894`
+- `lanelet_2223738` -> `lanelet_2307899`
+- `lanelet_2223739` -> `lanelet_2307904`
+- `lanelet_2223740` -> `lanelet_2223744`
+- `lanelet_2223741` -> `lanelet_2223745`
+- `lanelet_2223742` -> `lanelet_2223746`
+- `lanelet_2223743` -> `lanelet_2223744`
+- `lanelet_2223744` -> `lanelet_2223747`, `lanelet_2223814`
+- `lanelet_2223745` -> `lanelet_2223748`
+- `lanelet_2223746` -> `lanelet_2223749`
+- `lanelet_2223747` -> `lanelet_2223636`
+- `lanelet_2223748` -> `lanelet_2223637`
+- `lanelet_2223749` -> (none)
+- `lanelet_2223750` -> `lanelet_2223636`
+- `lanelet_2223751` -> (none)
+- `lanelet_2223752` -> `lanelet_2223761`
+- `lanelet_2223753` -> `lanelet_2223760`
+- `lanelet_2223754` -> `lanelet_2223761`
+- `lanelet_2223755` -> (none)
+- `lanelet_2223756` -> `lanelet_2223760`
+- `lanelet_2223757` -> (none)
+- `lanelet_2223758` -> (none)
+- `lanelet_2223759` -> `lanelet_2223637`
+- `lanelet_2223760` -> `lanelet_2307909`
+- `lanelet_2223761` -> `lanelet_2307914`
+- `lanelet_2223762` -> `lanelet_2223765`
+- `lanelet_2223763` -> `lanelet_2223766`, `lanelet_2223767`
+- `lanelet_2223764` -> `lanelet_2223765`
+- `lanelet_2223765` -> `lanelet_2223768`
+- `lanelet_2223766` -> `lanelet_2223770`
+- `lanelet_2223767` -> `lanelet_2223769`
+- `lanelet_2223768` -> `lanelet_2223771`, `lanelet_2223804`
+- `lanelet_2223769` -> `lanelet_2223772`
+- `lanelet_2223770` -> `lanelet_2223773`
+- `lanelet_2223771` -> (none)
+- `lanelet_2223772` -> `lanelet_2223778`
+- `lanelet_2223773` -> (none)
+- `lanelet_2223774` -> `lanelet_2223777`
+- `lanelet_2223775` -> `lanelet_2223727`
+- `lanelet_2223776` -> (none)
+- `lanelet_2223777` -> `lanelet_2223779`
+- `lanelet_2223778` -> `lanelet_2223780`, `lanelet_2223781`
+- `lanelet_2223779` -> `lanelet_2223782`
+- `lanelet_2223780` -> `lanelet_2223784`
+- `lanelet_2223781` -> `lanelet_2223783`
+- `lanelet_2223782` -> `lanelet_2223785`, `lanelet_2224821`, `lanelet_2224822`
+- `lanelet_2223783` -> `lanelet_2223786`
+- `lanelet_2223784` -> `lanelet_2223787`
+- `lanelet_2223785` -> `lanelet_2223791`
+- `lanelet_2223786` -> `lanelet_2223797`
+- `lanelet_2223787` -> `lanelet_2223798`
+- `lanelet_2223788` -> `lanelet_2223789`, `lanelet_2223790`, `lanelet_2223802`
+- `lanelet_2223789` -> `lanelet_2223798`
+- `lanelet_2223790` -> `lanelet_2223797`
+- `lanelet_2223791` -> `lanelet_2304036`
+- `lanelet_2223792` -> `lanelet_2304031`
+- `lanelet_2223793` -> `lanelet_2304026`
+- `lanelet_2223794` -> `lanelet_2223797`
+- `lanelet_2223795` -> `lanelet_2223707`
+- `lanelet_2223796` -> `lanelet_2223708`
+- `lanelet_2223797` -> `lanelet_2304041`
+- `lanelet_2223798` -> `lanelet_2304046`
+- `lanelet_2223799` -> (none)
+- `lanelet_2223800` -> (none)
+- `lanelet_2223801` -> `lanelet_2223733`
+- `lanelet_2223802` -> `lanelet_2223791`
+- `lanelet_2223803` -> (none)
+- `lanelet_2223804` -> `lanelet_2223777`
+- `lanelet_2223805` -> (none)
+- `lanelet_2223806` -> `lanelet_2223777`
+- `lanelet_2223807` -> `lanelet_2223778`
+- `lanelet_2223808` -> `lanelet_2223726`
+- `lanelet_2223809` -> (none)
+- `lanelet_2223810` -> `lanelet_2223737`
+- `lanelet_2223811` -> (none)
+- `lanelet_2223812` -> (none)
+- `lanelet_2223813` -> (none)
+- `lanelet_2223814` -> (none)
+- `lanelet_2223815` -> (none)
+- `lanelet_2223816` -> `lanelet_2223636`
+- `lanelet_2223817` -> `lanelet_2223760`
+- `lanelet_2223818` -> `lanelet_2223794`
+- `lanelet_2223819` -> `lanelet_2223818`
+- `lanelet_2223820` -> `lanelet_2223795`
+- `lanelet_2223821` -> `lanelet_2223820`
+- `lanelet_2223822` -> `lanelet_2223796`
+- `lanelet_2223823` -> `lanelet_2223822`
+- `lanelet_2223824` -> (none)
+- `lanelet_2223825` -> (none)
+- `lanelet_2223826` -> (none)
+- `lanelet_2223827` -> (none)
+- `lanelet_2223828` -> `lanelet_2223819`
+- `lanelet_2223829` -> `lanelet_2223819`
+- `lanelet_2223830` -> `lanelet_2223821`
+- `lanelet_2223831` -> `lanelet_2223823`
+- `lanelet_2223832` -> (none)
+- `lanelet_2223833` -> `lanelet_2223185`
+- `lanelet_2223834` -> `lanelet_2223186`
+- `lanelet_2223835` -> (none)
+- `lanelet_2223836` -> (none)
+- `lanelet_2223837` -> `lanelet_2224852`
+- `lanelet_2223838` -> `lanelet_2223185`
+- `lanelet_2223839` -> `lanelet_2223186`
+- `lanelet_2223840` -> `lanelet_2224852`
+- `lanelet_2223841` -> (none)
+- `lanelet_2223842` -> `lanelet_2223819`
+- `lanelet_2223843` -> `lanelet_2223821`
+- `lanelet_2223844` -> `lanelet_2223823`
+- `lanelet_2223845` -> `lanelet_2224852`
+- `lanelet_2223846` -> (none)
+- `lanelet_2223847` -> (none)
+- `lanelet_2223848` -> `lanelet_2223612`
+- `lanelet_2223849` -> `lanelet_2223850`, `lanelet_2223851`
+- `lanelet_2223850` -> `lanelet_2224395`
+- `lanelet_2223851` -> `lanelet_2223859`
+- `lanelet_2223852` -> `lanelet_2223854`
+- `lanelet_2223853` -> `lanelet_2223855`
+- `lanelet_2223854` -> `lanelet_2223856`
+- `lanelet_2223855` -> `lanelet_2223857`
+- `lanelet_2223856` -> `lanelet_2223859`
+- `lanelet_2223857` -> `lanelet_2223858`
+- `lanelet_2223858` -> `lanelet_2223920`
+- `lanelet_2223859` -> `lanelet_2223860`, `lanelet_2223861`
+- `lanelet_2223860` -> `lanelet_2223866`
+- `lanelet_2223861` -> `lanelet_2223862`
+- `lanelet_2223862` -> `lanelet_2223903`
+- `lanelet_2223863` -> `lanelet_2304066`
+- `lanelet_2223864` -> `lanelet_2224395`
+- `lanelet_2223865` -> `lanelet_2223858`
+- `lanelet_2223866` -> `lanelet_2223902`
+- `lanelet_2223867` -> `lanelet_2223869`, `lanelet_2223870`
+- `lanelet_2223868` -> `lanelet_2223871`, `lanelet_2223872`, `lanelet_2223873`, `lanelet_2223908`
+- `lanelet_2223869` -> `lanelet_2223874`
+- `lanelet_2223870` -> `lanelet_2223875`
+- `lanelet_2223871` -> `lanelet_2223876`
+- `lanelet_2223872` -> `lanelet_2223877`
+- `lanelet_2223873` -> `lanelet_2223883`
+- `lanelet_2223874` -> `lanelet_2224408`
+- `lanelet_2223875` -> `lanelet_2223863`
+- `lanelet_2223876` -> `lanelet_2224409`
+- `lanelet_2223877` -> `lanelet_2223878`, `lanelet_2223879`
+- `lanelet_2223878` -> `lanelet_2223880`
+- `lanelet_2223879` -> `lanelet_2223881`
+- `lanelet_2223880` -> `lanelet_2224042`
+- `lanelet_2223881` -> `lanelet_2224043`
+- `lanelet_2223882` -> `lanelet_2224277`
+- `lanelet_2223883` -> `lanelet_2224278`
+- `lanelet_2223884` -> `lanelet_2223886`
+- `lanelet_2223885` -> `lanelet_2223890`, `lanelet_2223891`
+- `lanelet_2223886` -> `lanelet_2223887`
+- `lanelet_2223887` -> `lanelet_2223888`, `lanelet_2223889`, `lanelet_2224831`
+- `lanelet_2223888` -> `lanelet_2224412`
+- `lanelet_2223889` -> `lanelet_2223882`
+- `lanelet_2223890` -> `lanelet_2223892`
+- `lanelet_2223891` -> `lanelet_2223893`
+- `lanelet_2223892` -> `lanelet_2223894`
+- `lanelet_2223893` -> `lanelet_2223895`
+- `lanelet_2223894` -> `lanelet_2224413`
+- `lanelet_2223895` -> `lanelet_2223875`
+- `lanelet_2223896` -> `lanelet_2223898`, `lanelet_2223899`, `lanelet_2224830`
+- `lanelet_2223897` -> `lanelet_2223900`, `lanelet_2223901`, `lanelet_2223909`
+- `lanelet_2223898` -> `lanelet_2223875`
+- `lanelet_2223899` -> `lanelet_2224412`
+- `lanelet_2223900` -> `lanelet_2223877`
+- `lanelet_2223901` -> `lanelet_2223876`
+- `lanelet_2223902` -> `lanelet_2223904`, `lanelet_2223905`, `lanelet_2223910`, `lanelet_2224828`, `lanelet_2224829`
+- `lanelet_2223903` -> `lanelet_2223906`, `lanelet_2223907`
+- `lanelet_2223904` -> `lanelet_2223882`
+- `lanelet_2223905` -> `lanelet_2223883`
+- `lanelet_2223906` -> `lanelet_2224413`
+- `lanelet_2223907` -> `lanelet_2224412`
+- `lanelet_2223908` -> `lanelet_2223882`
+- `lanelet_2223909` -> `lanelet_2223874`
+- `lanelet_2223910` -> `lanelet_2223874`
+- `lanelet_2223911` -> `lanelet_2223912`, `lanelet_2223913`
+- `lanelet_2223912` -> `lanelet_2223914`
+- `lanelet_2223913` -> `lanelet_2223915`
+- `lanelet_2223914` -> `lanelet_2223916`
+- `lanelet_2223915` -> `lanelet_2223917`
+- `lanelet_2223916` -> `lanelet_2223918`
+- `lanelet_2223917` -> `lanelet_2223919`
+- `lanelet_2223918` -> `lanelet_2223849`
+- `lanelet_2223919` -> `lanelet_2223946`
+- `lanelet_2223920` -> `lanelet_2223921`, `lanelet_2223926`
+- `lanelet_2223921` -> `lanelet_2223922`
+- `lanelet_2223922` -> `lanelet_2304071`
+- `lanelet_2223923` -> `lanelet_2223924`, `lanelet_2223925`
+- `lanelet_2223924` -> `lanelet_2223922`
+- `lanelet_2223925` -> `lanelet_2223918`
+- `lanelet_2223926` -> `lanelet_2223919`
+- `lanelet_2223927` -> `lanelet_2223929`
+- `lanelet_2223928` -> `lanelet_2223930`
+- `lanelet_2223929` -> `lanelet_2223931`, `lanelet_2223950`
+- `lanelet_2223930` -> `lanelet_2223932`
+- `lanelet_2223931` -> `lanelet_2223945`
+- `lanelet_2223932` -> `lanelet_2224415`
+- `lanelet_2223933` -> `lanelet_2223936`
+- `lanelet_2223934` -> `lanelet_2223937`
+- `lanelet_2223935` -> `lanelet_2223938`
+- `lanelet_2223936` -> `lanelet_2223939`
+- `lanelet_2223937` -> `lanelet_2223940`
+- `lanelet_2223938` -> `lanelet_2223941`
+- `lanelet_2223939` -> `lanelet_2223942`
+- `lanelet_2223940` -> `lanelet_2223944`
+- `lanelet_2223941` -> `lanelet_2223945`
+- `lanelet_2223942` -> `lanelet_2223999`
+- `lanelet_2223943` -> `lanelet_2223998`
+- `lanelet_2223944` -> `lanelet_2224000`
+- `lanelet_2223945` -> `lanelet_2223923`
+- `lanelet_2223946` -> `lanelet_2223947`, `lanelet_2223948`, `lanelet_2223949`
+- `lanelet_2223947` -> `lanelet_2223942`
+- `lanelet_2223948` -> `lanelet_2223944`
+- `lanelet_2223949` -> `lanelet_2224414`
+- `lanelet_2223950` -> `lanelet_2224414`
+- `lanelet_2223951` -> `lanelet_2223952`
+- `lanelet_2223952` -> `lanelet_2223953`, `lanelet_2223954`
+- `lanelet_2223953` -> `lanelet_2223955`
+- `lanelet_2223954` -> `lanelet_2223956`
+- `lanelet_2223955` -> `lanelet_2223957`
+- `lanelet_2223956` -> `lanelet_2223958`
+- `lanelet_2223957` -> `lanelet_2223981`
+- `lanelet_2223958` -> `lanelet_2223982`
+- `lanelet_2223959` -> `lanelet_2223960`
+- `lanelet_2223960` -> `lanelet_2223911`
+- `lanelet_2223961` -> `lanelet_2223962`
+- `lanelet_2223962` -> `lanelet_2223983`, `lanelet_2223984`
+- `lanelet_2223963` -> `lanelet_2223964`
+- `lanelet_2223964` -> `lanelet_2223965`
+- `lanelet_2223965` -> `lanelet_2223966`
+- `lanelet_2223966` -> `lanelet_2223967`
+- `lanelet_2223967` -> `lanelet_2224117`
+- `lanelet_2223968` -> `lanelet_2223969`, `lanelet_2223970`
+- `lanelet_2223969` -> `lanelet_2223973`
+- `lanelet_2223970` -> `lanelet_2223974`
+- `lanelet_2223973` -> `lanelet_2223985`
+- `lanelet_2223974` -> `lanelet_2223986`
+- `lanelet_2223975` -> `lanelet_2223977`
+- `lanelet_2223977` -> `lanelet_2223978`
+- `lanelet_2223978` -> `lanelet_2223979`, `lanelet_2223980`
+- `lanelet_2223979` -> `lanelet_2223963`
+- `lanelet_2223980` -> `lanelet_2223959`
+- `lanelet_2223981` -> `lanelet_2223959`
+- `lanelet_2223982` -> `lanelet_2223968`
+- `lanelet_2223983` -> `lanelet_2223968`
+- `lanelet_2223984` -> `lanelet_2223963`
+- `lanelet_2223985` -> `lanelet_1378`, `lanelet_1387`, `lanelet_1390`
+- `lanelet_2223986` -> `lanelet_1379`, `lanelet_1388`, `lanelet_1389`
+- `lanelet_2223987` -> `lanelet_2223975`
+- `lanelet_2223988` -> `lanelet_2223990`
+- `lanelet_2223989` -> `lanelet_2223991`
+- `lanelet_2223990` -> `lanelet_2223992`
+- `lanelet_2223991` -> `lanelet_2223993`
+- `lanelet_2223992` -> `lanelet_2223994`
+- `lanelet_2223993` -> `lanelet_2223995`
+- `lanelet_2223994` -> `lanelet_2223996`
+- `lanelet_2223995` -> `lanelet_2223997`
+- `lanelet_2223996` -> `lanelet_2223927`
+- `lanelet_2223997` -> `lanelet_2223928`
+- `lanelet_2223998` -> `lanelet_2224013`
+- `lanelet_2223999` -> `lanelet_2224014`
+- `lanelet_2224000` -> `lanelet_2224015`, `lanelet_2224016`
+- `lanelet_2224013` -> `lanelet_2224017`
+- `lanelet_2224014` -> `lanelet_2224018`
+- `lanelet_2224015` -> `lanelet_2224019`
+- `lanelet_2224016` -> `lanelet_2224020`
+- `lanelet_2224017` -> `lanelet_2224021`
+- `lanelet_2224018` -> `lanelet_2224022`
+- `lanelet_2224019` -> `lanelet_2224023`
+- `lanelet_2224020` -> `lanelet_2224024`
+- `lanelet_2224021` -> `lanelet_1374`, `lanelet_173560`, `lanelet_173648`
+- `lanelet_2224022` -> `lanelet_1375`
+- `lanelet_2224023` -> `lanelet_1376`
+- `lanelet_2224024` -> `lanelet_1377`
+- `lanelet_2224025` -> `lanelet_2224031`
+- `lanelet_2224026` -> `lanelet_2224032`, `lanelet_2224033`, `lanelet_2224034`
+- `lanelet_2224027` -> `lanelet_1471`
+- `lanelet_2224028` -> `lanelet_1472`
+- `lanelet_2224029` -> `lanelet_1473`
+- `lanelet_2224030` -> `lanelet_1474`
+- `lanelet_2224031` -> `lanelet_2224027`
+- `lanelet_2224032` -> `lanelet_2224028`
+- `lanelet_2224033` -> `lanelet_2224029`
+- `lanelet_2224034` -> `lanelet_2224030`
+- `lanelet_2224035` -> `lanelet_2224037`
+- `lanelet_2224036` -> `lanelet_2224038`
+- `lanelet_2224037` -> `lanelet_2224039`
+- `lanelet_2224038` -> `lanelet_2224039`
+- `lanelet_2224039` -> `lanelet_2224257`
+- `lanelet_2224040` -> `lanelet_2224044`
+- `lanelet_2224041` -> `lanelet_2224045`
+- `lanelet_2224042` -> `lanelet_2224046`
+- `lanelet_2224043` -> `lanelet_2224047`
+- `lanelet_2224044` -> `lanelet_2224059`
+- `lanelet_2224045` -> `lanelet_2224060`
+- `lanelet_2224046` -> `lanelet_2224078`
+- `lanelet_2224047` -> `lanelet_2224079`
+- `lanelet_2224048` -> `lanelet_2224077`
+- `lanelet_2224049` -> `lanelet_2224068`
+- `lanelet_2224050` -> `lanelet_2224058`
+- `lanelet_2224051` -> `lanelet_2224068`
+- `lanelet_2224052` -> `lanelet_2224058`
+- `lanelet_2224053` -> `lanelet_2224059`
+- `lanelet_2224054` -> `lanelet_2224060`
+- `lanelet_2224055` -> `lanelet_2224058`
+- `lanelet_2224056` -> `lanelet_2224059`
+- `lanelet_2224057` -> `lanelet_2224060`
+- `lanelet_2224058` -> `lanelet_2223884`
+- `lanelet_2224059` -> `lanelet_2223587`
+- `lanelet_2224060` -> `lanelet_2223471`
+- `lanelet_2224061` -> `lanelet_2224048`
+- `lanelet_2224062` -> `lanelet_2224049`, `lanelet_2224050`
+- `lanelet_2224063` -> `lanelet_2224080`
+- `lanelet_2224064` -> `lanelet_2224066`
+- `lanelet_2224065` -> `lanelet_2224067`
+- `lanelet_2224066` -> `lanelet_2224055`, `lanelet_2224056`, `lanelet_2224832`
+- `lanelet_2224067` -> `lanelet_2224057`
+- `lanelet_2224068` -> `lanelet_2224300`
+- `lanelet_2224069` -> `lanelet_2224071`
+- `lanelet_2224070` -> `lanelet_2224072`, `lanelet_2224073`
+- `lanelet_2224071` -> `lanelet_2224074`
+- `lanelet_2224072` -> `lanelet_2224075`
+- `lanelet_2224073` -> `lanelet_2224076`
+- `lanelet_2224074` -> `lanelet_2224051`, `lanelet_2224052`
+- `lanelet_2224075` -> `lanelet_2224053`, `lanelet_2224082`
+- `lanelet_2224076` -> `lanelet_2224054`, `lanelet_2224083`
+- `lanelet_2224077` -> (none)
+- `lanelet_2224078` -> (none)
+- `lanelet_2224079` -> (none)
+- `lanelet_2224080` -> `lanelet_2224081`
+- `lanelet_2224081` -> `lanelet_2223885`
+- `lanelet_2224082` -> `lanelet_2224060`
+- `lanelet_2224083` -> `lanelet_2224059`
+- `lanelet_2224086` -> `lanelet_2224090`
+- `lanelet_2224087` -> `lanelet_2224093`
+- `lanelet_2224088` -> `lanelet_2224135`
+- `lanelet_2224089` -> `lanelet_2119836`
+- `lanelet_2224090` -> `lanelet_2224099`
+- `lanelet_2224091` -> `lanelet_2224101`
+- `lanelet_2224092` -> `lanelet_2224105`
+- `lanelet_2224093` -> `lanelet_2224100`
+- `lanelet_2224094` -> `lanelet_2224102`
+- `lanelet_2224095` -> `lanelet_2224103`
+- `lanelet_2224096` -> `lanelet_2224104`
+- `lanelet_2224097` -> `lanelet_2224126`
+- `lanelet_2224098` -> `lanelet_2224127`
+- `lanelet_2224099` -> `lanelet_2224091`, `lanelet_2224095`, `lanelet_2224096`
+- `lanelet_2224100` -> `lanelet_2224094`
+- `lanelet_2224101` -> `lanelet_2224092`
+- `lanelet_2224102` -> `lanelet_2224092`
+- `lanelet_2224103` -> `lanelet_2224097`
+- `lanelet_2224104` -> `lanelet_2224098`
+- `lanelet_2224105` -> `lanelet_2224107`
+- `lanelet_2224106` -> `lanelet_2224113`
+- `lanelet_2224107` -> `lanelet_2224112`
+- `lanelet_2224108` -> `lanelet_2224111`
+- `lanelet_2224109` -> `lanelet_2224110`
+- `lanelet_2224110` -> `lanelet_2224026`
+- `lanelet_2224111` -> `lanelet_2224112`
+- `lanelet_2224112` -> `lanelet_2224106`
+- `lanelet_2224113` -> `lanelet_2224025`
+- `lanelet_2224114` -> `lanelet_2224115`
+- `lanelet_2224115` -> `lanelet_2224116`
+- `lanelet_2224116` -> `lanelet_2223951`
+- `lanelet_2224117` -> `lanelet_2224118`, `lanelet_2224119`, `lanelet_2224827`
+- `lanelet_2224118` -> `lanelet_2224121`
+- `lanelet_2224119` -> `lanelet_2224120`
+- `lanelet_2224120` -> `lanelet_2224138`
+- `lanelet_2224121` -> `lanelet_2224142`
+- `lanelet_2224122` -> `lanelet_2224144`
+- `lanelet_2224123` -> `lanelet_2224122`
+- `lanelet_2224124` -> `lanelet_2224123`, `lanelet_2224125`
+- `lanelet_2224125` -> `lanelet_2224121`
+- `lanelet_2224126` -> `lanelet_1343`, `lanelet_1345`
+- `lanelet_2224127` -> `lanelet_1344`, `lanelet_1346`, `lanelet_1347`
+- `lanelet_2224128` -> `lanelet_2224137`
+- `lanelet_2224129` -> `lanelet_2224124`
+- `lanelet_2224130` -> `lanelet_2224114`
+- `lanelet_2224131` -> `lanelet_2224136`
+- `lanelet_2224132` -> `lanelet_2224139`, `lanelet_2224140`
+- `lanelet_2224133` -> `lanelet_2224136`
+- `lanelet_2224134` -> `lanelet_2224139`, `lanelet_2224140`
+- `lanelet_2224135` -> `lanelet_2224134`
+- `lanelet_2224136` -> `lanelet_2224089`
+- `lanelet_2224137` -> `lanelet_2224131`, `lanelet_2224132`
+- `lanelet_2224138` -> `lanelet_2304076`
+- `lanelet_2224139` -> `lanelet_2224130`
+- `lanelet_2224140` -> `lanelet_2224129`
+- `lanelet_2224141` -> `lanelet_2224108`
+- `lanelet_2224142` -> `lanelet_2224143`
+- `lanelet_2224143` -> `lanelet_1350`, `lanelet_1357`
+- `lanelet_2224144` -> `lanelet_2224145`
+- `lanelet_2224145` -> `lanelet_1351`, `lanelet_1360`, `lanelet_1361`
+- `lanelet_2224146` -> `lanelet_2224147`, `lanelet_2224148`
+- `lanelet_2224147` -> `lanelet_2224149`
+- `lanelet_2224148` -> `lanelet_2224151`, `lanelet_2224152`
+- `lanelet_2224149` -> `lanelet_2224150`
+- `lanelet_2224150` -> (none)
+- `lanelet_2224151` -> `lanelet_2224154`
+- `lanelet_2224152` -> `lanelet_2224153`
+- `lanelet_2224153` -> `lanelet_2224221`
+- `lanelet_2224154` -> `lanelet_2224222`
+- `lanelet_2224155` -> `lanelet_2224156`, `lanelet_2224157`
+- `lanelet_2224156` -> `lanelet_2224153`
+- `lanelet_2224157` -> `lanelet_2224163`
+- `lanelet_2224158` -> `lanelet_2224159`, `lanelet_2224160`
+- `lanelet_2224159` -> `lanelet_2224161`
+- `lanelet_2224160` -> `lanelet_2224162`
+- `lanelet_2224161` -> `lanelet_2224163`
+- `lanelet_2224162` -> `lanelet_2224150`
+- `lanelet_2224163` -> `lanelet_2304081`
+- `lanelet_2224164` -> `lanelet_2224165`, `lanelet_2224180`
+- `lanelet_2224165` -> `lanelet_2224166`
+- `lanelet_2224166` -> `lanelet_2304086`
+- `lanelet_2224167` -> `lanelet_2224168`, `lanelet_2224169`
+- `lanelet_2224168` -> `lanelet_2224171`
+- `lanelet_2224169` -> `lanelet_2224170`
+- `lanelet_2224170` -> `lanelet_2224172`
+- `lanelet_2224171` -> `lanelet_2224181`
+- `lanelet_2224172` -> `lanelet_2304096`
+- `lanelet_2224173` -> `lanelet_2304106`
+- `lanelet_2224174` -> `lanelet_2224177`
+- `lanelet_2224175` -> `lanelet_2224176`
+- `lanelet_2224176` -> `lanelet_2224178`
+- `lanelet_2224177` -> `lanelet_2224179`
+- `lanelet_2224178` -> `lanelet_2224181`
+- `lanelet_2224179` -> `lanelet_2224166`
+- `lanelet_2224180` -> `lanelet_2224172`
+- `lanelet_2224181` -> (none)
+- `lanelet_2224182` -> `lanelet_2224231`
+- `lanelet_2224183` -> `lanelet_2224232`
+- `lanelet_2224184` -> `lanelet_2224233`
+- `lanelet_2224185` -> `lanelet_2224234`
+- `lanelet_2224186` -> `lanelet_2224401`, `lanelet_2224402`, `lanelet_2224403`
+- `lanelet_2224187` -> `lanelet_2224193`
+- `lanelet_2224189` -> `lanelet_2224359`
+- `lanelet_2224190` -> `lanelet_2224360`
+- `lanelet_2224191` -> `lanelet_2224361`
+- `lanelet_2224193` -> `lanelet_2224194`
+- `lanelet_2224194` -> (none)
+- `lanelet_2224195` -> (none)
+- `lanelet_2224196` -> `lanelet_2224195`
+- `lanelet_2224197` -> `lanelet_2224200`
+- `lanelet_2224198` -> `lanelet_2224199`
+- `lanelet_2224199` -> `lanelet_2224202`
+- `lanelet_2224200` -> `lanelet_2224406`
+- `lanelet_2224201` -> `lanelet_2224406`
+- `lanelet_2224202` -> `lanelet_2224203`
+- `lanelet_2224203` -> `lanelet_2224204`
+- `lanelet_2224204` -> `lanelet_2224238`
+- `lanelet_2224205` -> `lanelet_2224237`
+- `lanelet_2224206` -> (none)
+- `lanelet_2224207` -> (none)
+- `lanelet_2224208` -> (none)
+- `lanelet_2224209` -> (none)
+- `lanelet_2224210` -> `lanelet_2224213`
+- `lanelet_2224211` -> `lanelet_2224212`
+- `lanelet_2224212` -> `lanelet_2304231`
+- `lanelet_2224213` -> `lanelet_2224214`
+- `lanelet_2224214` -> `lanelet_2224215`
+- `lanelet_2224215` -> `lanelet_2224239`
+- `lanelet_2224216` -> `lanelet_2224240`
+- `lanelet_2224217` -> (none)
+- `lanelet_2224218` -> (none)
+- `lanelet_2224219` -> `lanelet_2224220`
+- `lanelet_2224220` -> `lanelet_2224158`
+- `lanelet_2224221` -> `lanelet_2224223`, `lanelet_2224230`
+- `lanelet_2224222` -> `lanelet_2224224`
+- `lanelet_2224223` -> `lanelet_2224225`
+- `lanelet_2224224` -> `lanelet_2224226`
+- `lanelet_2224225` -> `lanelet_2224241`
+- `lanelet_2224226` -> `lanelet_2224242`, `lanelet_2224243`, `lanelet_2224244`
+- `lanelet_2224227` -> `lanelet_2224225`
+- `lanelet_2224228` -> `lanelet_2224226`
+- `lanelet_2224229` -> `lanelet_2224201`
+- `lanelet_2224230` -> (none)
+- `lanelet_2224231` -> (none)
+- `lanelet_2224232` -> `lanelet_2224186`
+- `lanelet_2224233` -> `lanelet_2224187`
+- `lanelet_2224234` -> `lanelet_2224398`
+- `lanelet_2224235` -> `lanelet_2224186`
+- `lanelet_2224236` -> `lanelet_2224187`
+- `lanelet_2224237` -> `lanelet_2224206`
+- `lanelet_2224238` -> `lanelet_2224207`
+- `lanelet_2224239` -> `lanelet_2224208`
+- `lanelet_2224240` -> `lanelet_2224209`
+- `lanelet_2224241` -> `lanelet_2224206`
+- `lanelet_2224242` -> `lanelet_2224398`
+- `lanelet_2224243` -> `lanelet_2224186`
+- `lanelet_2224244` -> `lanelet_2224187`
+- `lanelet_2224245` -> `lanelet_2224206`
+- `lanelet_2224246` -> `lanelet_2224207`
+- `lanelet_2224247` -> `lanelet_2224208`
+- `lanelet_2224248` -> `lanelet_2224209`
+- `lanelet_2224249` -> `lanelet_2224206`
+- `lanelet_2224250` -> `lanelet_2224207`
+- `lanelet_2224251` -> `lanelet_2224208`
+- `lanelet_2224252` -> `lanelet_2224209`
+- `lanelet_2224253` -> `lanelet_2224255`
+- `lanelet_2224254` -> `lanelet_2224256`
+- `lanelet_2224255` -> `lanelet_2224288`
+- `lanelet_2224256` -> `lanelet_2224289`
+- `lanelet_2224257` -> `lanelet_2224258`
+- `lanelet_2224258` -> `lanelet_2224259`
+- `lanelet_2224259` -> `lanelet_2304182`
+- `lanelet_2224260` -> `lanelet_2224261`
+- `lanelet_2224261` -> `lanelet_2304187`
+- `lanelet_2224262` -> `lanelet_2224264`, `lanelet_2224265`
+- `lanelet_2224263` -> `lanelet_2224266`
+- `lanelet_2224264` -> `lanelet_2224267`
+- `lanelet_2224265` -> `lanelet_2224268`
+- `lanelet_2224266` -> `lanelet_2224269`
+- `lanelet_2224267` -> `lanelet_2224272`, `lanelet_2224273`
+- `lanelet_2224268` -> `lanelet_2224270`
+- `lanelet_2224269` -> `lanelet_2224271`
+- `lanelet_2224270` -> `lanelet_2224255`
+- `lanelet_2224271` -> `lanelet_2224256`
+- `lanelet_2224272` -> `lanelet_2224275`
+- `lanelet_2224273` -> `lanelet_2224276`
+- `lanelet_2224274` -> `lanelet_2223896`
+- `lanelet_2224275` -> `lanelet_2224274`
+- `lanelet_2224276` -> `lanelet_2224279`
+- `lanelet_2224277` -> `lanelet_2224280`
+- `lanelet_2224278` -> `lanelet_2224281`
+- `lanelet_2224279` -> `lanelet_2223897`
+- `lanelet_2224280` -> `lanelet_2224253`
+- `lanelet_2224281` -> `lanelet_2224254`
+- `lanelet_2224282` -> `lanelet_2224283`
+- `lanelet_2224283` -> `lanelet_2224284`
+- `lanelet_2224284` -> `lanelet_2223458`
+- `lanelet_2224285` -> `lanelet_2224286`
+- `lanelet_2224286` -> `lanelet_2224287`
+- `lanelet_2224287` -> `lanelet_2224284`
+- `lanelet_2224288` -> `lanelet_2224291`, `lanelet_2224292`, `lanelet_2224293`
+- `lanelet_2224289` -> `lanelet_2224290`
+- `lanelet_2224290` -> `lanelet_2224297`
+- `lanelet_2224291` -> `lanelet_2224294`
+- `lanelet_2224292` -> `lanelet_2224295`
+- `lanelet_2224293` -> `lanelet_2224296`
+- `lanelet_2224294` -> `lanelet_2224064`
+- `lanelet_2224295` -> `lanelet_2224065`
+- `lanelet_2224296` -> `lanelet_2224298`
+- `lanelet_2224297` -> `lanelet_2224299`
+- `lanelet_2224298` -> `lanelet_2224302`
+- `lanelet_2224299` -> `lanelet_2224303`
+- `lanelet_2224300` -> `lanelet_2224301`
+- `lanelet_2224301` -> `lanelet_2224302`
+- `lanelet_2224302` -> `lanelet_2303931`
+- `lanelet_2224303` -> `lanelet_2303936`
+- `lanelet_2224304` -> `lanelet_1162`
+- `lanelet_2224305` -> `lanelet_2224328`
+- `lanelet_2224306` -> `lanelet_1192`
+- `lanelet_2224307` -> `lanelet_2223465`
+- `lanelet_2224308` -> `lanelet_1196`
+- `lanelet_2224309` -> `lanelet_1072`
+- `lanelet_2224310` -> `lanelet_2223466`
+- `lanelet_2224311` -> `lanelet_2223467`
+- `lanelet_2224312` -> `lanelet_2224314`
+- `lanelet_2224313` -> `lanelet_2224315`
+- `lanelet_2224314` -> `lanelet_2224323`
+- `lanelet_2224315` -> `lanelet_2224324`
+- `lanelet_2224316` -> `lanelet_2304111`
+- `lanelet_2224317` -> `lanelet_2304116`
+- `lanelet_2224318` -> `lanelet_2224319`, `lanelet_2224320`
+- `lanelet_2224319` -> `lanelet_2224321`
+- `lanelet_2224320` -> `lanelet_2224322`
+- `lanelet_2224321` -> `lanelet_1101`, `lanelet_175066`
+- `lanelet_2224322` -> `lanelet_1107`, `lanelet_1109`
+- `lanelet_2224323` -> `lanelet_2224325`
+- `lanelet_2224324` -> `lanelet_2224327`
+- `lanelet_2224325` -> `lanelet_2224326`
+- `lanelet_2224326` -> `lanelet_2224304`
+- `lanelet_2224327` -> `lanelet_175378`
+- `lanelet_2224328` -> `lanelet_2224329`, `lanelet_2224331`
+- `lanelet_2224329` -> `lanelet_2224330`
+- `lanelet_2224330` -> `lanelet_2224316`
+- `lanelet_2224331` -> `lanelet_175378`
+- `lanelet_2224332` -> `lanelet_2224330`
+- `lanelet_2224333` -> `lanelet_2224326`
+- `lanelet_2224334` -> `lanelet_1111`, `lanelet_1112`, `lanelet_1121`, `lanelet_1123`
+- `lanelet_2224335` -> `lanelet_2224341`
+- `lanelet_2224336` -> `lanelet_2224337`
+- `lanelet_2224337` -> `lanelet_2304131`
+- `lanelet_2224338` -> `lanelet_2304126`
+- `lanelet_2224339` -> `lanelet_2224340`
+- `lanelet_2224340` -> `lanelet_178670`, `lanelet_2226182`
+- `lanelet_2224341` -> `lanelet_2304141`
+- `lanelet_2224342` -> `lanelet_2224337`
+- `lanelet_2224343` -> `lanelet_178412`
+- `lanelet_2224344` -> `lanelet_2224340`
+- `lanelet_2224345` -> `lanelet_178412`
+- `lanelet_2224346` -> `lanelet_2224372`
+- `lanelet_2224347` -> `lanelet_2224379`
+- `lanelet_2224348` -> `lanelet_2224373`
+- `lanelet_2224349` -> `lanelet_2224350`, `lanelet_2224351`, `lanelet_2224386`
+- `lanelet_2224350` -> `lanelet_2224352`
+- `lanelet_2224351` -> `lanelet_2224354`
+- `lanelet_2224352` -> `lanelet_2224355`, `lanelet_2224389`, `lanelet_2316558`
+- `lanelet_2224353` -> `lanelet_2224391`
+- `lanelet_2224354` -> `lanelet_2224356`, `lanelet_2224357`, `lanelet_2224358`
+- `lanelet_2224355` -> `lanelet_2224372`
+- `lanelet_2224356` -> `lanelet_43`
+- `lanelet_2224357` -> `lanelet_42`
+- `lanelet_2224358` -> `lanelet_41`
+- `lanelet_2224359` -> `lanelet_2224362`
+- `lanelet_2224360` -> `lanelet_2224363`, `lanelet_2224387`, `lanelet_2224388`
+- `lanelet_2224361` -> `lanelet_2224364`
+- `lanelet_2224362` -> `lanelet_2224380`
+- `lanelet_2224363` -> `lanelet_2224374`
+- `lanelet_2224364` -> `lanelet_2224365`
+- `lanelet_2224365` -> `lanelet_2224366`
+- `lanelet_2224366` -> `lanelet_2224367`
+- `lanelet_2224367` -> `lanelet_2224198`
+- `lanelet_2224368` -> `lanelet_2224197`
+- `lanelet_2224369` -> `lanelet_2224229`
+- `lanelet_2224370` -> `lanelet_2224369`
+- `lanelet_2224371` -> `lanelet_2224368`
+- `lanelet_2224372` -> `lanelet_2224370`
+- `lanelet_2224373` -> `lanelet_2224371`
+- `lanelet_2224374` -> `lanelet_2224384`
+- `lanelet_2224375` -> `lanelet_2224376`
+- `lanelet_2224376` -> `lanelet_2224379`
+- `lanelet_2224377` -> `lanelet_2224379`
+- `lanelet_2224378` -> `lanelet_2224372`
+- `lanelet_2224379` -> `lanelet_2304151`
+- `lanelet_2224380` -> `lanelet_2224382`, `lanelet_2224385`, `lanelet_2224833`
+- `lanelet_2224381` -> `lanelet_2224383`
+- `lanelet_2224382` -> `lanelet_1265`
+- `lanelet_2224383` -> `lanelet_42`
+- `lanelet_2224384` -> `lanelet_43`
+- `lanelet_2224385` -> `lanelet_41`
+- `lanelet_2224386` -> `lanelet_2224353`
+- `lanelet_2224387` -> `lanelet_2224375`
+- `lanelet_2224388` -> `lanelet_2224381`
+- `lanelet_2224389` -> `lanelet_1265`
+- `lanelet_2224390` -> `lanelet_2224373`
+- `lanelet_2224391` -> `lanelet_1262`
+- `lanelet_2224392` -> `lanelet_2224061`
+- `lanelet_2224393` -> `lanelet_2224392`
+- `lanelet_2224394` -> `lanelet_2304176`
+- `lanelet_2224395` -> `lanelet_2304156`
+- `lanelet_2224396` -> `lanelet_2304193`
+- `lanelet_2224397` -> `lanelet_2224396`
+- `lanelet_2224398` -> `lanelet_2224196`
+- `lanelet_2224400` -> `lanelet_2224189`
+- `lanelet_2224401` -> `lanelet_2224400`
+- `lanelet_2224402` -> `lanelet_2224404`
+- `lanelet_2224403` -> `lanelet_2224405`
+- `lanelet_2224404` -> `lanelet_2224190`
+- `lanelet_2224405` -> `lanelet_2224191`
+- `lanelet_2224406` -> `lanelet_2224407`
+- `lanelet_2224407` -> `lanelet_2224205`
+- `lanelet_2224408` -> `lanelet_2224410`
+- `lanelet_2224409` -> `lanelet_2224411`
+- `lanelet_2224410` -> `lanelet_2224040`
+- `lanelet_2224411` -> `lanelet_2224041`
+- `lanelet_2224412` -> `lanelet_2223933`
+- `lanelet_2224413` -> `lanelet_2223934`, `lanelet_2223935`
+- `lanelet_2224414` -> `lanelet_2223867`
+- `lanelet_2224415` -> `lanelet_2223868`
+- `lanelet_2224416` -> `lanelet_2223518`
+- `lanelet_2224417` -> `lanelet_2223519`, `lanelet_2223520`
+- `lanelet_2224575` -> (none)
+- `lanelet_2224584` -> (none)
+- `lanelet_2224585` -> `lanelet_2304202`
+- `lanelet_2224586` -> `lanelet_2224584`, `lanelet_2224585`, `lanelet_2314037`, `lanelet_2314038`
+- `lanelet_2224588` -> (none)
+- `lanelet_2224589` -> (none)
+- `lanelet_2224592` -> `lanelet_2224678`
+- `lanelet_2224593` -> `lanelet_2224674`, `lanelet_2224675`
+- `lanelet_2224596` -> `lanelet_2224599`
+- `lanelet_2224597` -> `lanelet_2224600`, `lanelet_2224601`
+- `lanelet_2224599` -> `lanelet_2224603`
+- `lanelet_2224600` -> `lanelet_2224604`
+- `lanelet_2224601` -> `lanelet_2224605`
+- `lanelet_2224603` -> `lanelet_2224666`, `lanelet_2224667`
+- `lanelet_2224604` -> `lanelet_2224668`
+- `lanelet_2224605` -> `lanelet_2224669`
+- `lanelet_2224607` -> `lanelet_2224729`
+- `lanelet_2224608` -> `lanelet_2224691`
+- `lanelet_2224610` -> `lanelet_2224613`
+- `lanelet_2224611` -> (none)
+- `lanelet_2224613` -> `lanelet_2224693`, `lanelet_2224695`
+- `lanelet_2224614` -> `lanelet_2224694`
+- `lanelet_2224617` -> `lanelet_2224710`, `lanelet_2224711`
+- `lanelet_2224618` -> (none)
+- `lanelet_2224621` -> `lanelet_2295239`
+- `lanelet_2224622` -> `lanelet_2295240`
+- `lanelet_2224625` -> `lanelet_2224629`
+- `lanelet_2224626` -> (none)
+- `lanelet_2224629` -> `lanelet_2224632`
+- `lanelet_2224630` -> `lanelet_2224626`
+- `lanelet_2224632` -> `lanelet_2224681`, `lanelet_2224686`
+- `lanelet_2224633` -> `lanelet_2224685`
+- `lanelet_2224635` -> `lanelet_2224673`, `lanelet_2224676`
+- `lanelet_2224636` -> `lanelet_2224677`
+- `lanelet_2224638` -> (none)
+- `lanelet_2224639` -> (none)
+- `lanelet_2224640` -> `lanelet_2223375`, `lanelet_2223378`
+- `lanelet_2224641` -> (none)
+- `lanelet_2224642` -> (none)
+- `lanelet_2224643` -> (none)
+- `lanelet_2224644` -> (none)
+- `lanelet_2224645` -> (none)
+- `lanelet_2224648` -> (none)
+- `lanelet_2224649` -> `lanelet_2223327`
+- `lanelet_2224650` -> `lanelet_2223328`, `lanelet_2223336`, `lanelet_2223337`
+- `lanelet_2224654` -> `lanelet_2224649`
+- `lanelet_2224655` -> (none)
+- `lanelet_2224659` -> `lanelet_2224607`
+- `lanelet_2224660` -> `lanelet_2224608`
+- `lanelet_2224661` -> (none)
+- `lanelet_2224663` -> (none)
+- `lanelet_2224664` -> (none)
+- `lanelet_2224665` -> `lanelet_2224659`
+- `lanelet_2224666` -> `lanelet_2224664`
+- `lanelet_2224667` -> `lanelet_2224659`
+- `lanelet_2224668` -> `lanelet_2224660`
+- `lanelet_2224669` -> `lanelet_2224661`
+- `lanelet_2224671` -> `lanelet_2224654`
+- `lanelet_2224672` -> `lanelet_2224597`
+- `lanelet_2224673` -> (none)
+- `lanelet_2224674` -> (none)
+- `lanelet_2224675` -> `lanelet_2224597`
+- `lanelet_2224676` -> `lanelet_2224654`
+- `lanelet_2224677` -> (none)
+- `lanelet_2224678` -> `lanelet_2224596`
+- `lanelet_2224681` -> (none)
+- `lanelet_2224684` -> `lanelet_2224635`
+- `lanelet_2224685` -> `lanelet_2224636`
+- `lanelet_2224686` -> `lanelet_2224635`
+- `lanelet_2224689` -> `lanelet_2224610`
+- `lanelet_2224691` -> (none)
+- `lanelet_2224692` -> `lanelet_2224617`
+- `lanelet_2224693` -> `lanelet_2224640`
+- `lanelet_2224694` -> (none)
+- `lanelet_2224695` -> `lanelet_2224617`
+- `lanelet_2224699` -> (none)
+- `lanelet_2224700` -> `lanelet_2224704`
+- `lanelet_2224701` -> `lanelet_2224705`, `lanelet_2224708`
+- `lanelet_2224702` -> (none)
+- `lanelet_2224703` -> (none)
+- `lanelet_2224704` -> (none)
+- `lanelet_2224705` -> `lanelet_2224625`
+- `lanelet_2224706` -> `lanelet_2224700`
+- `lanelet_2224707` -> `lanelet_2224701`
+- `lanelet_2224708` -> (none)
+- `lanelet_2224709` -> `lanelet_2224701`
+- `lanelet_2224710` -> (none)
+- `lanelet_2224711` -> `lanelet_2224621`
+- `lanelet_2224712` -> `lanelet_2224622`
+- `lanelet_2224718` -> (none)
+- `lanelet_2224720` -> `lanelet_2295173`
+- `lanelet_2224721` -> `lanelet_2224720`
+- `lanelet_2224722` -> `lanelet_2224718`
+- `lanelet_2224726` -> `lanelet_2224720`
+- `lanelet_2224727` -> `lanelet_2224718`
+- `lanelet_2224728` -> `lanelet_2224608`
+- `lanelet_2224729` -> `lanelet_2224610`
+- `lanelet_2224732` -> `lanelet_2224737`
+- `lanelet_2224733` -> `lanelet_2224813`, `lanelet_2224834`, `lanelet_2224835`
+- `lanelet_2224737` -> (none)
+- `lanelet_2224738` -> `lanelet_2224733`
+- `lanelet_2224741` -> (none)
+- `lanelet_2224742` -> `lanelet_2224738`
+- `lanelet_2224745` -> (none)
+- `lanelet_2224746` -> (none)
+- `lanelet_2224749` -> (none)
+- `lanelet_2224750` -> (none)
+- `lanelet_2224752` -> `lanelet_2224757`, `lanelet_2224769`
+- `lanelet_2224754` -> `lanelet_2224749`
+- `lanelet_2224755` -> `lanelet_2224749`
+- `lanelet_2224756` -> `lanelet_2224750`
+- `lanelet_2224757` -> `lanelet_2224750`
+- `lanelet_2224758` -> `lanelet_2224770`, `lanelet_2224789`
+- `lanelet_2224759` -> `lanelet_2224756`
+- `lanelet_2224760` -> `lanelet_2224755`
+- `lanelet_2224761` -> `lanelet_2224764`
+- `lanelet_2224762` -> (none)
+- `lanelet_2224763` -> (none)
+- `lanelet_2224764` -> `lanelet_2224759`
+- `lanelet_2224765` -> `lanelet_2224759`
+- `lanelet_2224766` -> (none)
+- `lanelet_2224767` -> `lanelet_2224768`
+- `lanelet_2224768` -> (none)
+- `lanelet_2224769` -> `lanelet_2224755`
+- `lanelet_2224770` -> `lanelet_2224767`
+- `lanelet_2224771` -> `lanelet_2224767`
+- `lanelet_2224773` -> `lanelet_2224774`
+- `lanelet_2224774` -> `lanelet_2224775`
+- `lanelet_2224775` -> `lanelet_2224776`
+- `lanelet_2224776` -> `lanelet_2224777`
+- `lanelet_2224777` -> `lanelet_2224799`, `lanelet_2224805`
+- `lanelet_2224778` -> `lanelet_2224779`
+- `lanelet_2224779` -> `lanelet_2224780`
+- `lanelet_2224780` -> `lanelet_2224781`
+- `lanelet_2224781` -> (none)
+- `lanelet_2224786` -> `lanelet_2224771`, `lanelet_2224790`
+- `lanelet_2224787` -> `lanelet_2224773`
+- `lanelet_2224789` -> `lanelet_2224787`
+- `lanelet_2224790` -> `lanelet_2224752`
+- `lanelet_2224791` -> (none)
+- `lanelet_2224792` -> (none)
+- `lanelet_2224793` -> (none)
+- `lanelet_2224794` -> (none)
+- `lanelet_2224795` -> (none)
+- `lanelet_2224796` -> (none)
+- `lanelet_2224797` -> (none)
+- `lanelet_2224798` -> (none)
+- `lanelet_2224799` -> (none)
+- `lanelet_2224800` -> (none)
+- `lanelet_2224801` -> (none)
+- `lanelet_2224802` -> (none)
+- `lanelet_2224803` -> `lanelet_2224802`
+- `lanelet_2224804` -> `lanelet_2224806`
+- `lanelet_2224805` -> `lanelet_2224804`
+- `lanelet_2224806` -> (none)
+- `lanelet_2224810` -> `lanelet_125`
+- `lanelet_2224811` -> `lanelet_123`
+- `lanelet_2224812` -> `lanelet_124`
+- `lanelet_2224813` -> `lanelet_2224811`
+- `lanelet_2224814` -> `lanelet_2224732`
+- `lanelet_2224815` -> `lanelet_2224811`
+- `lanelet_2224816` -> `lanelet_2224810`
+- `lanelet_2224817` -> `lanelet_2224812`
+- `lanelet_2224820` -> `lanelet_2223248`
+- `lanelet_2224821` -> `lanelet_2223792`
+- `lanelet_2224822` -> `lanelet_2223793`
+- `lanelet_2224826` -> `lanelet_2223418`
+- `lanelet_2224827` -> `lanelet_2224122`
+- `lanelet_2224828` -> `lanelet_2223876`
+- `lanelet_2224829` -> `lanelet_2223877`
+- `lanelet_2224830` -> `lanelet_2224413`
+- `lanelet_2224831` -> `lanelet_2223883`
+- `lanelet_2224832` -> `lanelet_2224081`
+- `lanelet_2224833` -> `lanelet_1262`
+- `lanelet_2224834` -> `lanelet_2224812`
+- `lanelet_2224835` -> `lanelet_2224810`
+- `lanelet_2224836` -> `lanelet_2223243`
+- `lanelet_2224838` -> `lanelet_2303249`
+- `lanelet_2224839` -> `lanelet_2303254`
+- `lanelet_2224840` -> `lanelet_2223166`
+- `lanelet_2224841` -> `lanelet_2223167`
+- `lanelet_2224842` -> `lanelet_2223168`
+- `lanelet_2224843` -> `lanelet_2303279`
+- `lanelet_2224844` -> `lanelet_2303284`
+- `lanelet_2224846` -> `lanelet_2224848`
+- `lanelet_2224847` -> `lanelet_2224848`
+- `lanelet_2224848` -> `lanelet_2223383`, `lanelet_2223385`
+- `lanelet_2224849` -> `lanelet_2224848`
+- `lanelet_2224850` -> `lanelet_2224848`
+- `lanelet_2224851` -> `lanelet_2226993`
+- `lanelet_2224852` -> `lanelet_2224853`
+- `lanelet_2224853` -> (none)
+- `lanelet_2225792` -> `lanelet_2224311`
+- `lanelet_2225883` -> `lanelet_2224310`
+- `lanelet_2226145` -> `lanelet_2224307`
+- `lanelet_2226168` -> `lanelet_2224311`
+- `lanelet_2226177` -> `lanelet_2304146`
+- `lanelet_2226182` -> `lanelet_2226177`
+- `lanelet_2226187` -> `lanelet_2224342`, `lanelet_2224345`
+- `lanelet_2226441` -> `lanelet_2303666`
+- `lanelet_2226993` -> (none)
+- `lanelet_2227000` -> `lanelet_2223376`, `lanelet_2223377`, `lanelet_2223586`
+- `lanelet_2292433` -> `lanelet_2292437`
+- `lanelet_2292434` -> `lanelet_2292438`
+- `lanelet_2292437` -> `lanelet_2293559`
+- `lanelet_2292438` -> `lanelet_2293558`
+- `lanelet_2292441` -> `lanelet_2292433`
+- `lanelet_2292442` -> `lanelet_2292434`
+- `lanelet_2292444` -> `lanelet_2292434`
+- `lanelet_2292485` -> `lanelet_2293577`
+- `lanelet_2292488` -> (none)
+- `lanelet_2292489` -> `lanelet_2292507`
+- `lanelet_2292506` -> `lanelet_2292488`
+- `lanelet_2292507` -> `lanelet_2292511`
+- `lanelet_2292509` -> `lanelet_2292515`
+- `lanelet_2292510` -> `lanelet_2292506`
+- `lanelet_2292511` -> `lanelet_2292517`
+- `lanelet_2292512` -> `lanelet_2292518`
+- `lanelet_2292515` -> `lanelet_2292521`
+- `lanelet_2292516` -> `lanelet_2292510`
+- `lanelet_2292517` -> `lanelet_2292523`
+- `lanelet_2292518` -> `lanelet_2292523`
+- `lanelet_2292521` -> `lanelet_2292528`
+- `lanelet_2292522` -> `lanelet_2292527`
+- `lanelet_2292523` -> `lanelet_2292526`
+- `lanelet_2292526` -> (none)
+- `lanelet_2292527` -> (none)
+- `lanelet_2292528` -> `lanelet_2292529`
+- `lanelet_2292529` -> `lanelet_2292532`
+- `lanelet_2292532` -> `lanelet_2292485`
+- `lanelet_2292557` -> `lanelet_2292562`
+- `lanelet_2292559` -> (none)
+- `lanelet_2292561` -> `lanelet_2292580`
+- `lanelet_2292562` -> (none)
+- `lanelet_2292564` -> (none)
+- `lanelet_2292566` -> (none)
+- `lanelet_2292568` -> `lanelet_2292564`
+- `lanelet_2292569` -> `lanelet_2292566`
+- `lanelet_2292571` -> `lanelet_2292568`
+- `lanelet_2292574` -> `lanelet_2292569`
+- `lanelet_2292576` -> `lanelet_2292571`
+- `lanelet_2292578` -> `lanelet_2292574`
+- `lanelet_2292579` -> `lanelet_2292576`
+- `lanelet_2292580` -> `lanelet_2295675`
+- `lanelet_2292581` -> `lanelet_2295676`
+- `lanelet_2292582` -> `lanelet_2295677`
+- `lanelet_2292584` -> `lanelet_2292581`
+- `lanelet_2292585` -> `lanelet_2292582`
+- `lanelet_2292586` -> (none)
+- `lanelet_2292587` -> `lanelet_2292561`
+- `lanelet_2292588` -> `lanelet_2292584`
+- `lanelet_2292589` -> `lanelet_2292585`
+- `lanelet_2292590` -> `lanelet_2292586`
+- `lanelet_2292591` -> `lanelet_2292587`
+- `lanelet_2292592` -> `lanelet_2292588`
+- `lanelet_2292593` -> `lanelet_2292589`
+- `lanelet_2292597` -> `lanelet_2292590`
+- `lanelet_2292598` -> `lanelet_2292591`
+- `lanelet_2292599` -> `lanelet_2292592`
+- `lanelet_2292600` -> `lanelet_2292593`
+- `lanelet_2292603` -> `lanelet_2292610`
+- `lanelet_2292604` -> `lanelet_2292611`
+- `lanelet_2292605` -> `lanelet_2292612`
+- `lanelet_2292606` -> `lanelet_2292613`
+- `lanelet_2292610` -> `lanelet_2292615`
+- `lanelet_2292611` -> `lanelet_2292616`
+- `lanelet_2292612` -> `lanelet_2292617`
+- `lanelet_2292613` -> `lanelet_2292618`
+- `lanelet_2292615` -> `lanelet_2295721`
+- `lanelet_2292616` -> `lanelet_2292621`
+- `lanelet_2292617` -> `lanelet_2292622`
+- `lanelet_2292618` -> `lanelet_2292623`
+- `lanelet_2292621` -> `lanelet_2295682`
+- `lanelet_2292622` -> `lanelet_2295681`
+- `lanelet_2292623` -> `lanelet_2295680`
+- `lanelet_2292628` -> (none)
+- `lanelet_2292629` -> `lanelet_2292634`
+- `lanelet_2292633` -> `lanelet_2292628`
+- `lanelet_2292634` -> `lanelet_2292725`
+- `lanelet_2292636` -> `lanelet_2292641`
+- `lanelet_2292638` -> `lanelet_2292642`
+- `lanelet_2292641` -> (none)
+- `lanelet_2292642` -> (none)
+- `lanelet_2292644` -> `lanelet_2304208`
+- `lanelet_2292646` -> `lanelet_2300631`
+- `lanelet_2292649` -> `lanelet_2293638`
+- `lanelet_2292650` -> `lanelet_2293639`
+- `lanelet_2292653` -> (none)
+- `lanelet_2292654` -> (none)
+- `lanelet_2292656` -> (none)
+- `lanelet_2292657` -> (none)
+- `lanelet_2292660` -> `lanelet_2292663`
+- `lanelet_2292661` -> `lanelet_2292657`
+- `lanelet_2292663` -> (none)
+- `lanelet_2292664` -> (none)
+- `lanelet_2292667` -> (none)
+- `lanelet_2292668` -> (none)
+- `lanelet_2292670` -> `lanelet_2292667`
+- `lanelet_2292671` -> `lanelet_2292670`, `lanelet_2292674`, `lanelet_2292675`
+- `lanelet_2292674` -> (none)
+- `lanelet_2292675` -> (none)
+- `lanelet_2292678` -> (none)
+- `lanelet_2292679` -> (none)
+- `lanelet_2292682` -> `lanelet_2292679`
+- `lanelet_2292685` -> `lanelet_2292678`
+- `lanelet_2292687` -> (none)
+- `lanelet_2292688` -> (none)
+- `lanelet_2292690` -> (none)
+- `lanelet_2292691` -> (none)
+- `lanelet_2292692` -> `lanelet_2292696`, `lanelet_2292698`
+- `lanelet_2292693` -> (none)
+- `lanelet_2292696` -> `lanelet_2292700`
+- `lanelet_2292697` -> (none)
+- `lanelet_2292698` -> (none)
+- `lanelet_2292699` -> (none)
+- `lanelet_2292700` -> (none)
+- `lanelet_2292701` -> (none)
+- `lanelet_2292702` -> (none)
+- `lanelet_2292704` -> (none)
+- `lanelet_2292705` -> `lanelet_2292710`
+- `lanelet_2292706` -> `lanelet_2292711`
+- `lanelet_2292709` -> `lanelet_2292715`
+- `lanelet_2292710` -> `lanelet_2292714`
+- `lanelet_2292711` -> `lanelet_2292716`
+- `lanelet_2292714` -> `lanelet_2292739`
+- `lanelet_2292715` -> `lanelet_2292719`
+- `lanelet_2292716` -> `lanelet_2292720`
+- `lanelet_2292719` -> `lanelet_2292730`, `lanelet_2292733`
+- `lanelet_2292720` -> `lanelet_2292737`, `lanelet_2292738`
+- `lanelet_2292723` -> `lanelet_2292606`
+- `lanelet_2292724` -> (none)
+- `lanelet_2292725` -> (none)
+- `lanelet_2292726` -> (none)
+- `lanelet_2292727` -> (none)
+- `lanelet_2292728` -> `lanelet_2292654`
+- `lanelet_2292729` -> (none)
+- `lanelet_2292730` -> `lanelet_2292604`
+- `lanelet_2292731` -> (none)
+- `lanelet_2292732` -> `lanelet_2292605`
+- `lanelet_2292733` -> `lanelet_2292603`
+- `lanelet_2292734` -> (none)
+- `lanelet_2292735` -> `lanelet_2292606`
+- `lanelet_2292737` -> (none)
+- `lanelet_2292738` -> (none)
+- `lanelet_2292739` -> `lanelet_2292732`
+- `lanelet_2292742` -> `lanelet_2292973`, `lanelet_2292975`
+- `lanelet_2292744` -> `lanelet_2292974`, `lanelet_2292976`
+- `lanelet_2292745` -> `lanelet_2292977`
+- `lanelet_2292746` -> `lanelet_2292978`
+- `lanelet_2292747` -> (none)
+- `lanelet_2292749` -> `lanelet_2292745`
+- `lanelet_2292750` -> `lanelet_2292746`
+- `lanelet_2292752` -> `lanelet_2292987`, `lanelet_2292988`, `lanelet_2292989`
+- `lanelet_2292753` -> `lanelet_2292990`
+- `lanelet_2292754` -> `lanelet_2292992`, `lanelet_2292993`
+- `lanelet_2292755` -> `lanelet_2292991`
+- `lanelet_2292757` -> (none)
+- `lanelet_2292758` -> (none)
+- `lanelet_2292760` -> `lanelet_2293001`, `lanelet_2293002`
+- `lanelet_2292761` -> `lanelet_2293007`
+- `lanelet_2292762` -> `lanelet_2293003`
+- `lanelet_2292763` -> `lanelet_2293004`, `lanelet_2293005`, `lanelet_2293006`
+- `lanelet_2292764` -> `lanelet_2292766`
+- `lanelet_2292765` -> (none)
+- `lanelet_2292766` -> `lanelet_2292980`
+- `lanelet_2292767` -> `lanelet_2292765`
+- `lanelet_2292768` -> `lanelet_2292763`
+- `lanelet_2292769` -> `lanelet_2292762`
+- `lanelet_2292770` -> `lanelet_2292761`
+- `lanelet_2292771` -> `lanelet_2292760`
+- `lanelet_2292773` -> (none)
+- `lanelet_2292774` -> `lanelet_2292780`
+- `lanelet_2292775` -> `lanelet_2292779`
+- `lanelet_2292776` -> `lanelet_2292742`
+- `lanelet_2292777` -> `lanelet_2292744`
+- `lanelet_2292779` -> `lanelet_2292786`
+- `lanelet_2292780` -> `lanelet_2292787`
+- `lanelet_2292781` -> `lanelet_2292749`, `lanelet_2292750`
+- `lanelet_2292783` -> `lanelet_2292776`
+- `lanelet_2292784` -> `lanelet_2292777`
+- `lanelet_2292786` -> `lanelet_2292794`, `lanelet_2292795`
+- `lanelet_2292787` -> `lanelet_2292793`
+- `lanelet_2292788` -> `lanelet_2292781`
+- `lanelet_2292789` -> `lanelet_2292783`, `lanelet_2292784`
+- `lanelet_2292791` -> `lanelet_2292789`
+- `lanelet_2292792` -> `lanelet_2292788`
+- `lanelet_2292793` -> (none)
+- `lanelet_2292794` -> (none)
+- `lanelet_2292795` -> `lanelet_2292797`
+- `lanelet_2292797` -> (none)
+- `lanelet_2292798` -> (none)
+- `lanelet_2292799` -> (none)
+- `lanelet_2292800` -> (none)
+- `lanelet_2292801` -> `lanelet_2292791`
+- `lanelet_2292803` -> (none)
+- `lanelet_2292804` -> `lanelet_2292884`
+- `lanelet_2292807` -> `lanelet_2292985`, `lanelet_2292986`
+- `lanelet_2292808` -> `lanelet_2292981`, `lanelet_2292982`
+- `lanelet_2292809` -> `lanelet_2292983`, `lanelet_2292984`
+- `lanelet_2292811` -> `lanelet_2292882`
+- `lanelet_2292813` -> (none)
+- `lanelet_2292816` -> (none)
+- `lanelet_2292817` -> (none)
+- `lanelet_2292819` -> `lanelet_2292816`
+- `lanelet_2292820` -> (none)
+- `lanelet_2292824` -> `lanelet_2292828`
+- `lanelet_2292825` -> `lanelet_2292819`
+- `lanelet_2292827` -> `lanelet_2292825`
+- `lanelet_2292828` -> `lanelet_2292832`
+- `lanelet_2292831` -> `lanelet_2292827`
+- `lanelet_2292832` -> `lanelet_2292837`
+- `lanelet_2292836` -> (none)
+- `lanelet_2292837` -> `lanelet_2292629`
+- `lanelet_2292839` -> `lanelet_2292636`
+- `lanelet_2292840` -> `lanelet_2292638`
+- `lanelet_2292843` -> `lanelet_2292839`
+- `lanelet_2292844` -> `lanelet_2292840`
+- `lanelet_2292847` -> `lanelet_2292843`
+- `lanelet_2292849` -> `lanelet_2292844`
+- `lanelet_2292851` -> `lanelet_2292847`
+- `lanelet_2292852` -> `lanelet_2292849`
+- `lanelet_2292855` -> `lanelet_2292851`
+- `lanelet_2292856` -> `lanelet_2292852`
+- `lanelet_2292859` -> (none)
+- `lanelet_2292860` -> (none)
+- `lanelet_2292861` -> `lanelet_2292999`, `lanelet_2293000`
+- `lanelet_2292862` -> `lanelet_2292994`, `lanelet_2292995`, `lanelet_2292996`, `lanelet_2292997`, `lanelet_2292998`
+- `lanelet_2292865` -> (none)
+- `lanelet_2292866` -> (none)
+- `lanelet_2292867` -> `lanelet_2292957`, `lanelet_2292959`
+- `lanelet_2292868` -> `lanelet_2292958`
+- `lanelet_2292871` -> `lanelet_2292937`, `lanelet_2292938`
+- `lanelet_2292872` -> `lanelet_2292948`, `lanelet_2292949`
+- `lanelet_2292873` -> `lanelet_2292950`
+- `lanelet_2292875` -> (none)
+- `lanelet_2292876` -> (none)
+- `lanelet_2292877` -> (none)
+- `lanelet_2292878` -> (none)
+- `lanelet_2292879` -> `lanelet_2292931`, `lanelet_2292934`, `lanelet_2292936`, `lanelet_2292945`, `lanelet_2293008`
+- `lanelet_2292880` -> (none)
+- `lanelet_2292882` -> (none)
+- `lanelet_2292883` -> (none)
+- `lanelet_2292884` -> (none)
+- `lanelet_2292886` -> (none)
+- `lanelet_2292887` -> (none)
+- `lanelet_2292889` -> (none)
+- `lanelet_2292890` -> (none)
+- `lanelet_2292891` -> `lanelet_2292935`, `lanelet_2292940`
+- `lanelet_2292892` -> `lanelet_2292923`, `lanelet_2292939`
+- `lanelet_2292895` -> `lanelet_2292889`
+- `lanelet_2292896` -> `lanelet_2292926`, `lanelet_2292928`
+- `lanelet_2292897` -> `lanelet_2292891`
+- `lanelet_2292898` -> `lanelet_2292892`
+- `lanelet_2292900` -> (none)
+- `lanelet_2292901` -> `lanelet_2292919`, `lanelet_2292920`, `lanelet_2292921`, `lanelet_2292922`
+- `lanelet_2292903` -> (none)
+- `lanelet_2292904` -> `lanelet_2292925`
+- `lanelet_2292905` -> (none)
+- `lanelet_2292906` -> (none)
+- `lanelet_2292917` -> (none)
+- `lanelet_2292918` -> `lanelet_2292966`, `lanelet_2292967`, `lanelet_2292968`, `lanelet_2292969`, `lanelet_2292970`, `lanelet_2292971`
+- `lanelet_2292919` -> `lanelet_2292898`
+- `lanelet_2292920` -> `lanelet_2292897`
+- `lanelet_2292921` -> (none)
+- `lanelet_2292922` -> `lanelet_2292906`
+- `lanelet_2292923` -> (none)
+- `lanelet_2292924` -> `lanelet_2292898`
+- `lanelet_2292925` -> `lanelet_2292897`
+- `lanelet_2292926` -> (none)
+- `lanelet_2292927` -> `lanelet_2292906`
+- `lanelet_2292928` -> (none)
+- `lanelet_2292929` -> (none)
+- `lanelet_2292930` -> (none)
+- `lanelet_2292931` -> `lanelet_2292873`
+- `lanelet_2292932` -> (none)
+- `lanelet_2292933` -> `lanelet_2292872`
+- `lanelet_2292934` -> (none)
+- `lanelet_2292935` -> `lanelet_2292887`
+- `lanelet_2292936` -> `lanelet_2292872`
+- `lanelet_2292937` -> (none)
+- `lanelet_2292938` -> (none)
+- `lanelet_2292939` -> `lanelet_2292873`
+- `lanelet_2292940` -> `lanelet_2292872`
+- `lanelet_2292941` -> (none)
+- `lanelet_2292942` -> `lanelet_2292887`
+- `lanelet_2292943` -> (none)
+- `lanelet_2292944` -> (none)
+- `lanelet_2292945` -> `lanelet_2292887`
+- `lanelet_2292946` -> (none)
+- `lanelet_2292947` -> `lanelet_2292871`
+- `lanelet_2292948` -> `lanelet_2292878`
+- `lanelet_2292949` -> `lanelet_2292867`
+- `lanelet_2292950` -> `lanelet_2292868`
+- `lanelet_2292951` -> `lanelet_2292871`
+- `lanelet_2292952` -> (none)
+- `lanelet_2292953` -> `lanelet_2292878`
+- `lanelet_2292954` -> (none)
+- `lanelet_2292955` -> (none)
+- `lanelet_2292956` -> `lanelet_2292876`
+- `lanelet_2292957` -> `lanelet_2292876`
+- `lanelet_2292958` -> `lanelet_2292862`
+- `lanelet_2292959` -> `lanelet_2292861`
+- `lanelet_2292960` -> (none)
+- `lanelet_2292961` -> (none)
+- `lanelet_2292962` -> `lanelet_2292861`
+- `lanelet_2292963` -> `lanelet_2292862`
+- `lanelet_2292964` -> `lanelet_2292867`
+- `lanelet_2292965` -> `lanelet_2292868`
+- `lanelet_2292966` -> (none)
+- `lanelet_2292967` -> (none)
+- `lanelet_2292968` -> `lanelet_2292771`
+- `lanelet_2292969` -> `lanelet_2292770`
+- `lanelet_2292970` -> `lanelet_2292769`
+- `lanelet_2292971` -> `lanelet_2292768`
+- `lanelet_2292972` -> (none)
+- `lanelet_2292973` -> (none)
+- `lanelet_2292974` -> (none)
+- `lanelet_2292975` -> `lanelet_2292771`
+- `lanelet_2292976` -> `lanelet_2292770`
+- `lanelet_2292977` -> `lanelet_2292769`
+- `lanelet_2292978` -> `lanelet_2292768`
+- `lanelet_2292979` -> (none)
+- `lanelet_2292980` -> (none)
+- `lanelet_2292981` -> (none)
+- `lanelet_2292982` -> (none)
+- `lanelet_2292983` -> `lanelet_2292764`
+- `lanelet_2292984` -> (none)
+- `lanelet_2292985` -> (none)
+- `lanelet_2292986` -> (none)
+- `lanelet_2292987` -> (none)
+- `lanelet_2292988` -> (none)
+- `lanelet_2292989` -> (none)
+- `lanelet_2292990` -> `lanelet_2292764`
+- `lanelet_2292991` -> (none)
+- `lanelet_2292992` -> (none)
+- `lanelet_2292993` -> (none)
+- `lanelet_2292994` -> (none)
+- `lanelet_2292995` -> (none)
+- `lanelet_2292996` -> (none)
+- `lanelet_2292997` -> (none)
+- `lanelet_2292998` -> (none)
+- `lanelet_2292999` -> (none)
+- `lanelet_2293000` -> `lanelet_2292764`
+- `lanelet_2293001` -> (none)
+- `lanelet_2293002` -> (none)
+- `lanelet_2293003` -> (none)
+- `lanelet_2293004` -> (none)
+- `lanelet_2293005` -> (none)
+- `lanelet_2293006` -> (none)
+- `lanelet_2293007` -> (none)
+- `lanelet_2293008` -> (none)
+- `lanelet_2293009` -> `lanelet_2292873`
+- `lanelet_2293010` -> `lanelet_2292808`
+- `lanelet_2293011` -> `lanelet_2292807`
+- `lanelet_2293012` -> `lanelet_2292809`
+- `lanelet_2293020` -> `lanelet_2292807`
+- `lanelet_2293021` -> `lanelet_2292808`
+- `lanelet_2293022` -> `lanelet_2292809`
+- `lanelet_2293023` -> `lanelet_2293028`
+- `lanelet_2293024` -> (none)
+- `lanelet_2293028` -> (none)
+- `lanelet_2293029` -> (none)
+- `lanelet_2293030` -> `lanelet_2293024`
+- `lanelet_2293032` -> `lanelet_2293030`
+- `lanelet_2293036` -> `lanelet_2293042`
+- `lanelet_2293037` -> `lanelet_2293032`
+- `lanelet_2293039` -> `lanelet_2293043`
+- `lanelet_2293042` -> `lanelet_2293046`
+- `lanelet_2293043` -> `lanelet_2293047`
+- `lanelet_2293045` -> (none)
+- `lanelet_2293046` -> `lanelet_2293050`
+- `lanelet_2293047` -> `lanelet_2293051`
+- `lanelet_2293049` -> `lanelet_2293045`
+- `lanelet_2293050` -> `lanelet_2293054`
+- `lanelet_2293051` -> `lanelet_2293055`
+- `lanelet_2293053` -> `lanelet_2293058`
+- `lanelet_2293054` -> `lanelet_2293059`
+- `lanelet_2293055` -> `lanelet_2293060`
+- `lanelet_2293058` -> `lanelet_2293062`
+- `lanelet_2293059` -> `lanelet_2293063`
+- `lanelet_2293060` -> `lanelet_2293064`
+- `lanelet_2293062` -> `lanelet_2293065`
+- `lanelet_2293063` -> `lanelet_2293066`
+- `lanelet_2293064` -> `lanelet_2293067`
+- `lanelet_2293065` -> `lanelet_2293158`
+- `lanelet_2293066` -> `lanelet_2293157`
+- `lanelet_2293067` -> `lanelet_2293163`, `lanelet_2293165`
+- `lanelet_2293069` -> `lanelet_2293073`
+- `lanelet_2293070` -> `lanelet_2293074`
+- `lanelet_2293071` -> `lanelet_2293075`
+- `lanelet_2293073` -> `lanelet_2293077`
+- `lanelet_2293074` -> (none)
+- `lanelet_2293075` -> (none)
+- `lanelet_2293077` -> `lanelet_2295722`
+- `lanelet_2293078` -> (none)
+- `lanelet_2293079` -> (none)
+- `lanelet_2293081` -> `lanelet_2293084`
+- `lanelet_2293082` -> `lanelet_2293079`
+- `lanelet_2293084` -> `lanelet_2293087`
+- `lanelet_2293085` -> `lanelet_2293088`
+- `lanelet_2293086` -> `lanelet_2295589`
+- `lanelet_2293087` -> `lanelet_2295591`
+- `lanelet_2293088` -> `lanelet_2295590`
+- `lanelet_2293090` -> `lanelet_2293094`
+- `lanelet_2293091` -> `lanelet_2293095`
+- `lanelet_2293092` -> `lanelet_2293096`
+- `lanelet_2293094` -> (none)
+- `lanelet_2293095` -> (none)
+- `lanelet_2293096` -> (none)
+- `lanelet_2293098` -> `lanelet_2293101`
+- `lanelet_2293099` -> `lanelet_2294187`
+- `lanelet_2293101` -> `lanelet_2293104`
+- `lanelet_2293102` -> `lanelet_2293105`
+- `lanelet_2293104` -> `lanelet_2293145`, `lanelet_2293146`
+- `lanelet_2293105` -> `lanelet_2293147`
+- `lanelet_2293107` -> (none)
+- `lanelet_2293108` -> `lanelet_2293150`
+- `lanelet_2293109` -> (none)
+- `lanelet_2293111` -> (none)
+- `lanelet_2293112` -> (none)
+- `lanelet_2293113` -> (none)
+- `lanelet_2293115` -> (none)
+- `lanelet_2293116` -> (none)
+- `lanelet_2293117` -> (none)
+- `lanelet_2293119` -> (none)
+- `lanelet_2293120` -> (none)
+- `lanelet_2293121` -> (none)
+- `lanelet_2293123` -> (none)
+- `lanelet_2293124` -> (none)
+- `lanelet_2293125` -> (none)
+- `lanelet_2293127` -> (none)
+- `lanelet_2293128` -> `lanelet_2293124`
+- `lanelet_2293129` -> `lanelet_2293125`
+- `lanelet_2293132` -> `lanelet_2293136`
+- `lanelet_2293133` -> `lanelet_2293174`
+- `lanelet_2293136` -> (none)
+- `lanelet_2293137` -> `lanelet_2293133`
+- `lanelet_2293138` -> (none)
+- `lanelet_2293139` -> `lanelet_2293137`
+- `lanelet_2293142` -> `lanelet_2293138`
+- `lanelet_2293143` -> `lanelet_2293139`
+- `lanelet_2293144` -> `lanelet_2293148`, `lanelet_2293176`, `lanelet_2293177`, `lanelet_2295593`, `lanelet_2295594`, `lanelet_2295595`
+- `lanelet_2293145` -> (none)
+- `lanelet_2293146` -> `lanelet_2293108`
+- `lanelet_2293147` -> (none)
+- `lanelet_2293148` -> (none)
+- `lanelet_2293149` -> (none)
+- `lanelet_2293150` -> (none)
+- `lanelet_2293151` -> (none)
+- `lanelet_2293152` -> (none)
+- `lanelet_2293153` -> (none)
+- `lanelet_2293154` -> (none)
+- `lanelet_2293155` -> (none)
+- `lanelet_2293156` -> (none)
+- `lanelet_2293157` -> `lanelet_2293070`
+- `lanelet_2293158` -> `lanelet_2293069`
+- `lanelet_2293159` -> `lanelet_2293166`, `lanelet_2293181`, `lanelet_2293182`, `lanelet_2293183`, `lanelet_2293184`, `lanelet_2293185`, `lanelet_2293191`
+- `lanelet_2293160` -> (none)
+- `lanelet_2293161` -> (none)
+- `lanelet_2293162` -> (none)
+- `lanelet_2293163` -> (none)
+- `lanelet_2293164` -> `lanelet_2293071`
+- `lanelet_2293165` -> `lanelet_2293071`
+- `lanelet_2293166` -> `lanelet_2293071`
+- `lanelet_2293167` -> (none)
+- `lanelet_2293168` -> (none)
+- `lanelet_2293169` -> (none)
+- `lanelet_2293170` -> (none)
+- `lanelet_2293171` -> (none)
+- `lanelet_2293172` -> (none)
+- `lanelet_2293173` -> `lanelet_2293132`
+- `lanelet_2293174` -> `lanelet_2293129`
+- `lanelet_2293175` -> `lanelet_2293029`
+- `lanelet_2293176` -> `lanelet_2293108`
+- `lanelet_2293177` -> (none)
+- `lanelet_2293178` -> (none)
+- `lanelet_2293179` -> (none)
+- `lanelet_2293180` -> (none)
+- `lanelet_2293181` -> (none)
+- `lanelet_2293182` -> (none)
+- `lanelet_2293183` -> (none)
+- `lanelet_2293184` -> `lanelet_2293070`
+- `lanelet_2293185` -> `lanelet_2293069`
+- `lanelet_2293186` -> (none)
+- `lanelet_2293187` -> (none)
+- `lanelet_2293188` -> (none)
+- `lanelet_2293189` -> `lanelet_2293070`
+- `lanelet_2293190` -> `lanelet_2293069`
+- `lanelet_2293191` -> (none)
+- `lanelet_2293192` -> `lanelet_2293158`
+- `lanelet_2293193` -> `lanelet_2293157`
+- `lanelet_2293194` -> `lanelet_2293163`, `lanelet_2293165`
+- `lanelet_2293195` -> `lanelet_2293170`
+- `lanelet_2293196` -> (none)
+- `lanelet_2293205` -> (none)
+- `lanelet_2293206` -> `lanelet_2293344`, `lanelet_2293351`, `lanelet_2293352`
+- `lanelet_2293207` -> (none)
+- `lanelet_2293208` -> (none)
+- `lanelet_2293209` -> (none)
+- `lanelet_2293211` -> (none)
+- `lanelet_2293213` -> (none)
+- `lanelet_2293214` -> (none)
+- `lanelet_2293216` -> (none)
+- `lanelet_2293217` -> `lanelet_2293332`
+- `lanelet_2293218` -> `lanelet_2293343`
+- `lanelet_2293219` -> `lanelet_2293342`
+- `lanelet_2293220` -> `lanelet_2293341`, `lanelet_2293346`, `lanelet_2293347`
+- `lanelet_2293222` -> (none)
+- `lanelet_2293225` -> (none)
+- `lanelet_2293226` -> (none)
+- `lanelet_2293228` -> `lanelet_2293328`
+- `lanelet_2293229` -> `lanelet_2293329`
+- `lanelet_2293230` -> (none)
+- `lanelet_2293233` -> `lanelet_2293225`
+- `lanelet_2293234` -> `lanelet_2293226`
+- `lanelet_2293236` -> `lanelet_2293228`
+- `lanelet_2293237` -> `lanelet_2293229`, `lanelet_2293327`
+- `lanelet_2293238` -> (none)
+- `lanelet_2293239` -> (none)
+- `lanelet_2293241` -> `lanelet_2293374`
+- `lanelet_2293243` -> `lanelet_2293238`
+- `lanelet_2293244` -> `lanelet_2293360`
+- `lanelet_2293245` -> `lanelet_2293239`
+- `lanelet_2293247` -> `lanelet_2293372`
+- `lanelet_2293248` -> `lanelet_2293241`
+- `lanelet_2293249` -> (none)
+- `lanelet_2293252` -> (none)
+- `lanelet_2293254` -> (none)
+- `lanelet_2293255` -> (none)
+- `lanelet_2293256` -> (none)
+- `lanelet_2293258` -> `lanelet_2293314`, `lanelet_2293315`
+- `lanelet_2293259` -> `lanelet_2293316`
+- `lanelet_2293265` -> (none)
+- `lanelet_2293267` -> `lanelet_2293300`, `lanelet_2293301`, `lanelet_2293307`
+- `lanelet_2293268` -> `lanelet_2293312`, `lanelet_2293313`
+- `lanelet_2293270` -> (none)
+- `lanelet_2293271` -> (none)
+- `lanelet_2293273` -> `lanelet_2293296`, `lanelet_2293302`
+- `lanelet_2293274` -> `lanelet_2293303`
+- `lanelet_2293275` -> `lanelet_2293308`
+- `lanelet_2293277` -> `lanelet_2293282`
+- `lanelet_2293279` -> (none)
+- `lanelet_2293280` -> `lanelet_2293310`, `lanelet_2293311`
+- `lanelet_2293282` -> `lanelet_2293293`
+- `lanelet_2293284` -> (none)
+- `lanelet_2293285` -> `lanelet_2293280`
+- `lanelet_2293287` -> `lanelet_2293290`
+- `lanelet_2293288` -> `lanelet_2293285`
+- `lanelet_2293290` -> `lanelet_2293291`
+- `lanelet_2293291` -> `lanelet_2293288`
+- `lanelet_2293293` -> `lanelet_2293295`
+- `lanelet_2293295` -> (none)
+- `lanelet_2293296` -> `lanelet_2293277`
+- `lanelet_2293297` -> `lanelet_2293258`
+- `lanelet_2293298` -> `lanelet_2293265`
+- `lanelet_2293299` -> `lanelet_2293259`
+- `lanelet_2293300` -> (none)
+- `lanelet_2293301` -> (none)
+- `lanelet_2293302` -> `lanelet_2293258`
+- `lanelet_2293303` -> `lanelet_2293259`
+- `lanelet_2293304` -> `lanelet_2293265`
+- `lanelet_2293305` -> (none)
+- `lanelet_2293306` -> (none)
+- `lanelet_2293307` -> `lanelet_2293277`
+- `lanelet_2293308` -> `lanelet_2293265`
+- `lanelet_2293309` -> `lanelet_2293277`
+- `lanelet_2293310` -> (none)
+- `lanelet_2293311` -> (none)
+- `lanelet_2293312` -> `lanelet_2293258`
+- `lanelet_2293313` -> `lanelet_2293259`
+- `lanelet_2293314` -> `lanelet_2293249`
+- `lanelet_2293315` -> `lanelet_2293247`
+- `lanelet_2293316` -> `lanelet_2293248`
+- `lanelet_2293317` -> `lanelet_2293249`
+- `lanelet_2293318` -> (none)
+- `lanelet_2293319` -> (none)
+- `lanelet_2293320` -> (none)
+- `lanelet_2293321` -> (none)
+- `lanelet_2293322` -> (none)
+- `lanelet_2293323` -> (none)
+- `lanelet_2293324` -> `lanelet_2293249`
+- `lanelet_2293325` -> `lanelet_2293247`
+- `lanelet_2293326` -> `lanelet_2293248`
+- `lanelet_2293327` -> `lanelet_2293330`, `lanelet_2293331`
+- `lanelet_2293328` -> `lanelet_2293220`
+- `lanelet_2293329` -> `lanelet_2293219`
+- `lanelet_2293330` -> `lanelet_2293218`
+- `lanelet_2293331` -> `lanelet_2293222`
+- `lanelet_2293332` -> (none)
+- `lanelet_2293333` -> (none)
+- `lanelet_2293334` -> `lanelet_2293222`
+- `lanelet_2293335` -> `lanelet_2293220`
+- `lanelet_2293336` -> `lanelet_2293219`
+- `lanelet_2293337` -> `lanelet_2293218`
+- `lanelet_2293338` -> `lanelet_2293222`
+- `lanelet_2293339` -> (none)
+- `lanelet_2293340` -> (none)
+- `lanelet_2293341` -> `lanelet_2293209`
+- `lanelet_2293342` -> `lanelet_2293208`
+- `lanelet_2293343` -> `lanelet_2293207`
+- `lanelet_2293344` -> `lanelet_2293217`
+- `lanelet_2293345` -> (none)
+- `lanelet_2293346` -> `lanelet_2293213`
+- `lanelet_2293347` -> `lanelet_2293211`
+- `lanelet_2293348` -> `lanelet_2293211`
+- `lanelet_2293349` -> `lanelet_2293209`
+- `lanelet_2293350` -> `lanelet_2293208`
+- `lanelet_2293351` -> `lanelet_2293211`
+- `lanelet_2293352` -> `lanelet_2293213`
+- `lanelet_2293353` -> `lanelet_2293217`
+- `lanelet_2293354` -> (none)
+- `lanelet_2293355` -> `lanelet_2293207`
+- `lanelet_2293356` -> `lanelet_2293233`
+- `lanelet_2293357` -> `lanelet_2293234`
+- `lanelet_2293359` -> `lanelet_2293234`
+- `lanelet_2293360` -> (none)
+- `lanelet_2293362` -> (none)
+- `lanelet_2293363` -> (none)
+- `lanelet_2293364` -> (none)
+- `lanelet_2293365` -> `lanelet_2293366`, `lanelet_2293367`, `lanelet_2293368`, `lanelet_2293377`, `lanelet_2293378`
+- `lanelet_2293366` -> (none)
+- `lanelet_2293367` -> (none)
+- `lanelet_2293368` -> (none)
+- `lanelet_2293370` -> `lanelet_2293237`
+- `lanelet_2293372` -> `lanelet_2293373`
+- `lanelet_2293373` -> `lanelet_2293376`
+- `lanelet_2293374` -> `lanelet_2293370`
+- `lanelet_2293376` -> `lanelet_2293236`
+- `lanelet_2293377` -> `lanelet_2293370`
+- `lanelet_2293378` -> `lanelet_2293376`
+- `lanelet_2293379` -> (none)
+- `lanelet_2293380` -> `lanelet_2293291`
+- `lanelet_2293383` -> (none)
+- `lanelet_2293384` -> `lanelet_2293398`
+- `lanelet_2293388` -> `lanelet_2293459`
+- `lanelet_2293390` -> `lanelet_2293485`, `lanelet_2293486`
+- `lanelet_2293392` -> `lanelet_2293396`
+- `lanelet_2293395` -> (none)
+- `lanelet_2293396` -> `lanelet_2293384`
+- `lanelet_2293398` -> `lanelet_2293460`
+- `lanelet_2293400` -> (none)
+- `lanelet_2293401` -> (none)
+- `lanelet_2293402` -> `lanelet_2293482`, `lanelet_2293497`
+- `lanelet_2293405` -> `lanelet_2293476`, `lanelet_2293479`
+- `lanelet_2293406` -> `lanelet_2293414`
+- `lanelet_2293409` -> (none)
+- `lanelet_2293412` -> `lanelet_2293413`
+- `lanelet_2293413` -> (none)
+- `lanelet_2293414` -> (none)
+- `lanelet_2293415` -> (none)
+- `lanelet_2293419` -> `lanelet_2293402`
+- `lanelet_2293422` -> (none)
+- `lanelet_2293423` -> (none)
+- `lanelet_2293426` -> (none)
+- `lanelet_2293427` -> (none)
+- `lanelet_2293428` -> (none)
+- `lanelet_2293429` -> `lanelet_2293428`
+- `lanelet_2293430` -> (none)
+- `lanelet_2293431` -> `lanelet_2293478`, `lanelet_2293489`
+- `lanelet_2293436` -> (none)
+- `lanelet_2293437` -> (none)
+- `lanelet_2293439` -> `lanelet_2293463`, `lanelet_2293467`
+- `lanelet_2293441` -> `lanelet_2293439`
+- `lanelet_2293443` -> `lanelet_2293437`
+- `lanelet_2293445` -> `lanelet_2293441`
+- `lanelet_2293447` -> `lanelet_2293445`
+- `lanelet_2293451` -> `lanelet_2295226`
+- `lanelet_2293452` -> `lanelet_2295563`
+- `lanelet_2293454` -> (none)
+- `lanelet_2293455` -> (none)
+- `lanelet_2293456` -> (none)
+- `lanelet_2293457` -> (none)
+- `lanelet_2293458` -> (none)
+- `lanelet_2293459` -> (none)
+- `lanelet_2293460` -> `lanelet_2293491`, `lanelet_2293496`
+- `lanelet_2293463` -> `lanelet_2293456`
+- `lanelet_2293464` -> `lanelet_2293456`
+- `lanelet_2293465` -> (none)
+- `lanelet_2293466` -> (none)
+- `lanelet_2293467` -> (none)
+- `lanelet_2293468` -> (none)
+- `lanelet_2293470` -> `lanelet_2293473`
+- `lanelet_2293471` -> `lanelet_2293472`
+- `lanelet_2293472` -> `lanelet_2293475`, `lanelet_2293499`
+- `lanelet_2293473` -> `lanelet_2293487`
+- `lanelet_2293474` -> `lanelet_2293457`
+- `lanelet_2293475` -> `lanelet_2293455`, `lanelet_2293501`, `lanelet_2293502`, `lanelet_2295660`, `lanelet_2295661`
+- `lanelet_2293476` -> `lanelet_2293423`
+- `lanelet_2293477` -> `lanelet_2293406`
+- `lanelet_2293478` -> `lanelet_2293406`
+- `lanelet_2293479` -> (none)
+- `lanelet_2293480` -> (none)
+- `lanelet_2293481` -> `lanelet_2293406`
+- `lanelet_2293482` -> `lanelet_2293392`
+- `lanelet_2293483` -> (none)
+- `lanelet_2293484` -> `lanelet_2293392`
+- `lanelet_2293485` -> `lanelet_2293400`, `lanelet_2293458`, `lanelet_2293483`, `lanelet_2293484`
+- `lanelet_2293486` -> (none)
+- `lanelet_2293487` -> `lanelet_2293457`
+- `lanelet_2293488` -> `lanelet_2293447`
+- `lanelet_2293489` -> `lanelet_2293423`
+- `lanelet_2293490` -> `lanelet_2293423`
+- `lanelet_2293491` -> `lanelet_2293454`
+- `lanelet_2293492` -> `lanelet_2293380`
+- `lanelet_2293493` -> `lanelet_2293454`
+- `lanelet_2293494` -> (none)
+- `lanelet_2293495` -> (none)
+- `lanelet_2293496` -> `lanelet_2293380`
+- `lanelet_2293497` -> `lanelet_2293400`, `lanelet_2293458`, `lanelet_2293483`, `lanelet_2293484`
+- `lanelet_2293498` -> (none)
+- `lanelet_2293499` -> `lanelet_2295564`
+- `lanelet_2293501` -> (none)
+- `lanelet_2293502` -> `lanelet_2295564`
+- `lanelet_2293508` -> `lanelet_2295690`
+- `lanelet_2293509` -> `lanelet_2295692`
+- `lanelet_2293510` -> `lanelet_2295691`
+- `lanelet_2293513` -> `lanelet_2293509`
+- `lanelet_2293514` -> `lanelet_2293510`
+- `lanelet_2293516` -> `lanelet_2295568`
+- `lanelet_2293517` -> `lanelet_2295570`
+- `lanelet_2293519` -> `lanelet_2293516`
+- `lanelet_2293520` -> `lanelet_2293517`
+- `lanelet_2293523` -> (none)
+- `lanelet_2293524` -> (none)
+- `lanelet_2293527` -> `lanelet_2293523`
+- `lanelet_2293528` -> `lanelet_2293524`
+- `lanelet_2293530` -> `lanelet_2293788`
+- `lanelet_2293531` -> `lanelet_2293786`, `lanelet_2293791`
+- `lanelet_2293534` -> (none)
+- `lanelet_2293535` -> (none)
+- `lanelet_2293537` -> (none)
+- `lanelet_2293540` -> `lanelet_2293757`, `lanelet_2293758`, `lanelet_2306975`
+- `lanelet_2293541` -> `lanelet_2293519`
+- `lanelet_2293542` -> `lanelet_2293520`
+- `lanelet_2293544` -> `lanelet_2293540`
+- `lanelet_2293545` -> `lanelet_2293544`, `lanelet_2293548`
+- `lanelet_2293546` -> `lanelet_2293542`
+- `lanelet_2293548` -> (none)
+- `lanelet_2293549` -> (none)
+- `lanelet_2293552` -> `lanelet_2293785`
+- `lanelet_2293553` -> `lanelet_2293784`
+- `lanelet_2293555` -> `lanelet_2293552`
+- `lanelet_2293556` -> `lanelet_2293553`
+- `lanelet_2293558` -> `lanelet_2293555`
+- `lanelet_2293559` -> `lanelet_2293556`
+- `lanelet_2293562` -> `lanelet_2293772`, `lanelet_2293800`
+- `lanelet_2293568` -> `lanelet_2293572`
+- `lanelet_2293569` -> `lanelet_2293773`, `lanelet_2293775`
+- `lanelet_2293572` -> (none)
+- `lanelet_2293573` -> `lanelet_2293569`
+- `lanelet_2293577` -> (none)
+- `lanelet_2293580` -> `lanelet_2293583`
+- `lanelet_2293581` -> `lanelet_2293582`
+- `lanelet_2293582` -> `lanelet_2293588`
+- `lanelet_2293583` -> `lanelet_2293589`
+- `lanelet_2293584` -> `lanelet_2293586`
+- `lanelet_2293586` -> `lanelet_2293594`
+- `lanelet_2293588` -> `lanelet_2293593`
+- `lanelet_2293589` -> `lanelet_2293592`
+- `lanelet_2293592` -> `lanelet_2293597`
+- `lanelet_2293593` -> `lanelet_2293598`
+- `lanelet_2293594` -> `lanelet_2293599`
+- `lanelet_2293597` -> `lanelet_2293600`
+- `lanelet_2293598` -> `lanelet_2293601`
+- `lanelet_2293599` -> `lanelet_2293601`
+- `lanelet_2293600` -> `lanelet_2293610`
+- `lanelet_2293601` -> `lanelet_2293609`
+- `lanelet_2293603` -> `lanelet_2293534`
+- `lanelet_2293604` -> `lanelet_2293535`
+- `lanelet_2293605` -> `lanelet_2293603`
+- `lanelet_2293606` -> `lanelet_2293604`
+- `lanelet_2293607` -> `lanelet_2293605`
+- `lanelet_2293608` -> `lanelet_2293606`
+- `lanelet_2293609` -> `lanelet_2293611`
+- `lanelet_2293610` -> `lanelet_2293612`
+- `lanelet_2293611` -> (none)
+- `lanelet_2293612` -> (none)
+- `lanelet_2293613` -> (none)
+- `lanelet_2293614` -> (none)
+- `lanelet_2293615` -> `lanelet_2293613`
+- `lanelet_2293616` -> `lanelet_2293614`
+- `lanelet_2293620` -> `lanelet_2293615`, `lanelet_2293616`
+- `lanelet_2293621` -> (none)
+- `lanelet_2293622` -> (none)
+- `lanelet_2293625` -> `lanelet_2293620`
+- `lanelet_2293626` -> `lanelet_2293621`
+- `lanelet_2293627` -> `lanelet_2293622`
+- `lanelet_2293629` -> `lanelet_2293625`
+- `lanelet_2293630` -> `lanelet_2293626`
+- `lanelet_2293631` -> `lanelet_2293627`
+- `lanelet_2293633` -> `lanelet_2293629`
+- `lanelet_2293634` -> `lanelet_2293630`
+- `lanelet_2293635` -> `lanelet_2293631`
+- `lanelet_2293638` -> `lanelet_2295724`
+- `lanelet_2293639` -> `lanelet_2293641`
+- `lanelet_2293641` -> `lanelet_2293633`
+- `lanelet_2293644` -> `lanelet_2292557`
+- `lanelet_2293645` -> `lanelet_2293649`
+- `lanelet_2293648` -> `lanelet_2293653`
+- `lanelet_2293649` -> `lanelet_2293652`
+- `lanelet_2293652` -> `lanelet_2293655`
+- `lanelet_2293653` -> `lanelet_2293654`
+- `lanelet_2293654` -> `lanelet_2293657`
+- `lanelet_2293655` -> `lanelet_2293658`
+- `lanelet_2293657` -> `lanelet_2293676`
+- `lanelet_2293658` -> `lanelet_2293677`
+- `lanelet_2293661` -> `lanelet_2293665`
+- `lanelet_2293662` -> `lanelet_2293666`
+- `lanelet_2293663` -> `lanelet_2293667`
+- `lanelet_2293665` -> `lanelet_2293669`
+- `lanelet_2293666` -> `lanelet_2293670`
+- `lanelet_2293667` -> `lanelet_2293671`
+- `lanelet_2293669` -> `lanelet_2293673`
+- `lanelet_2293670` -> `lanelet_2293674`
+- `lanelet_2293671` -> `lanelet_2293675`
+- `lanelet_2293673` -> `lanelet_2293681`
+- `lanelet_2293674` -> `lanelet_2293682`
+- `lanelet_2293675` -> `lanelet_2293683`
+- `lanelet_2293676` -> `lanelet_2293684`
+- `lanelet_2293677` -> `lanelet_2293685`
+- `lanelet_2293678` -> `lanelet_2293686`
+- `lanelet_2293681` -> `lanelet_2293689`
+- `lanelet_2293682` -> `lanelet_2293690`
+- `lanelet_2293683` -> `lanelet_2293691`
+- `lanelet_2293684` -> `lanelet_2293692`
+- `lanelet_2293685` -> `lanelet_2293693`
+- `lanelet_2293686` -> `lanelet_2293694`
+- `lanelet_2293689` -> `lanelet_2293697`
+- `lanelet_2293690` -> `lanelet_2293698`
+- `lanelet_2293691` -> `lanelet_2293699`
+- `lanelet_2293692` -> `lanelet_2293700`
+- `lanelet_2293693` -> `lanelet_2293701`
+- `lanelet_2293694` -> (none)
+- `lanelet_2293697` -> `lanelet_2293704`
+- `lanelet_2293698` -> `lanelet_2293705`
+- `lanelet_2293699` -> `lanelet_2293706`
+- `lanelet_2293700` -> `lanelet_2293716`
+- `lanelet_2293701` -> `lanelet_2293716`
+- `lanelet_2293704` -> `lanelet_2293707`
+- `lanelet_2293705` -> `lanelet_2293710`
+- `lanelet_2293706` -> `lanelet_2293713`
+- `lanelet_2293707` -> `lanelet_2293708`
+- `lanelet_2293708` -> `lanelet_2293709`
+- `lanelet_2293709` -> `lanelet_2293717`
+- `lanelet_2293710` -> `lanelet_2293711`
+- `lanelet_2293711` -> `lanelet_2293712`
+- `lanelet_2293712` -> `lanelet_2293717`
+- `lanelet_2293713` -> `lanelet_2293714`
+- `lanelet_2293714` -> `lanelet_2293715`
+- `lanelet_2293715` -> `lanelet_2293718`
+- `lanelet_2293716` -> (none)
+- `lanelet_2293717` -> `lanelet_2293720`
+- `lanelet_2293718` -> `lanelet_2293721`
+- `lanelet_2293720` -> `lanelet_2293722`
+- `lanelet_2293721` -> `lanelet_2293723`
+- `lanelet_2293722` -> `lanelet_2295571`
+- `lanelet_2293723` -> `lanelet_2295572`
+- `lanelet_2293725` -> (none)
+- `lanelet_2293727` -> (none)
+- `lanelet_2293728` -> `lanelet_2293798`
+- `lanelet_2293729` -> `lanelet_2293799`, `lanelet_2293803`
+- `lanelet_2293731` -> `lanelet_2293735`
+- `lanelet_2293732` -> `lanelet_2293736`
+- `lanelet_2293733` -> `lanelet_2293737`
+- `lanelet_2293735` -> `lanelet_2293739`
+- `lanelet_2293736` -> `lanelet_2293740`
+- `lanelet_2293737` -> `lanelet_2293741`
+- `lanelet_2293739` -> `lanelet_2293742`
+- `lanelet_2293740` -> `lanelet_2293743`
+- `lanelet_2293741` -> `lanelet_2293744`
+- `lanelet_2293742` -> `lanelet_2293749`
+- `lanelet_2293743` -> `lanelet_2293745`
+- `lanelet_2293744` -> `lanelet_2293746`
+- `lanelet_2293745` -> `lanelet_2293747`
+- `lanelet_2293746` -> `lanelet_2293748`
+- `lanelet_2293747` -> `lanelet_2293605`
+- `lanelet_2293748` -> `lanelet_2293606`
+- `lanelet_2293749` -> `lanelet_2293747`
+- `lanelet_2293751` -> `lanelet_2293755`
+- `lanelet_2293752` -> (none)
+- `lanelet_2293755` -> `lanelet_2293608`
+- `lanelet_2293756` -> `lanelet_2293752`
+- `lanelet_2293757` -> (none)
+- `lanelet_2293758` -> (none)
+- `lanelet_2293768` -> (none)
+- `lanelet_2293772` -> (none)
+- `lanelet_2293773` -> `lanelet_2293562`
+- `lanelet_2293775` -> (none)
+- `lanelet_2293777` -> (none)
+- `lanelet_2293778` -> `lanelet_2293562`
+- `lanelet_2293779` -> (none)
+- `lanelet_2293780` -> (none)
+- `lanelet_2293781` -> (none)
+- `lanelet_2293782` -> `lanelet_2293573`
+- `lanelet_2293783` -> (none)
+- `lanelet_2293784` -> (none)
+- `lanelet_2293785` -> (none)
+- `lanelet_2293786` -> (none)
+- `lanelet_2293788` -> (none)
+- `lanelet_2293790` -> `lanelet_2293751`
+- `lanelet_2293791` -> `lanelet_2293792`, `lanelet_2293793`
+- `lanelet_2293792` -> `lanelet_2293573`
+- `lanelet_2293793` -> (none)
+- `lanelet_2293794` -> (none)
+- `lanelet_2293795` -> (none)
+- `lanelet_2293796` -> `lanelet_2293727`
+- `lanelet_2293797` -> (none)
+- `lanelet_2293798` -> `lanelet_2293727`
+- `lanelet_2293799` -> (none)
+- `lanelet_2293800` -> (none)
+- `lanelet_2293802` -> (none)
+- `lanelet_2293803` -> (none)
+- `lanelet_2293807` -> `lanelet_2293822`
+- `lanelet_2293808` -> `lanelet_2293824`
+- `lanelet_2293809` -> `lanelet_2293995`
+- `lanelet_2293810` -> `lanelet_2292755`
+- `lanelet_2293811` -> `lanelet_2293993`
+- `lanelet_2293812` -> `lanelet_2292752`
+- `lanelet_2293815` -> `lanelet_2294083`, `lanelet_2294095`
+- `lanelet_2293816` -> `lanelet_2294096`, `lanelet_2294118`
+- `lanelet_2293818` -> `lanelet_2295640`
+- `lanelet_2293819` -> `lanelet_2295641`
+- `lanelet_2293822` -> `lanelet_2293823`
+- `lanelet_2293823` -> `lanelet_2294108`, `lanelet_2294109`
+- `lanelet_2293824` -> `lanelet_2293825`
+- `lanelet_2293825` -> `lanelet_2294110`
+- `lanelet_2293826` -> (none)
+- `lanelet_2293827` -> (none)
+- `lanelet_2293828` -> (none)
+- `lanelet_2293829` -> (none)
+- `lanelet_2293833` -> `lanelet_2293834`
+- `lanelet_2293834` -> `lanelet_2293835`
+- `lanelet_2293835` -> `lanelet_2293840`
+- `lanelet_2293836` -> (none)
+- `lanelet_2293837` -> `lanelet_2293836`
+- `lanelet_2293838` -> `lanelet_2293841`
+- `lanelet_2293840` -> `lanelet_2294073`, `lanelet_2294090`
+- `lanelet_2293841` -> `lanelet_2294091`, `lanelet_2294115`
+- `lanelet_2293842` -> (none)
+- `lanelet_2293843` -> (none)
+- `lanelet_2293845` -> `lanelet_2293853`
+- `lanelet_2293846` -> `lanelet_2293854`
+- `lanelet_2293848` -> `lanelet_2293856`
+- `lanelet_2293849` -> `lanelet_2293857`
+- `lanelet_2293850` -> (none)
+- `lanelet_2293851` -> `lanelet_2293850`
+- `lanelet_2293853` -> `lanelet_2294059`, `lanelet_2294060`
+- `lanelet_2293854` -> `lanelet_2294061`, `lanelet_2295608`
+- `lanelet_2293856` -> `lanelet_2293859`
+- `lanelet_2293857` -> `lanelet_2293860`, `lanelet_2293861`
+- `lanelet_2293859` -> `lanelet_2293863`
+- `lanelet_2293860` -> `lanelet_2293864`
+- `lanelet_2293861` -> `lanelet_2293865`
+- `lanelet_2293863` -> `lanelet_2293867`
+- `lanelet_2293864` -> `lanelet_2293868`
+- `lanelet_2293865` -> `lanelet_2293869`
+- `lanelet_2293867` -> `lanelet_2294042`, `lanelet_2294045`
+- `lanelet_2293868` -> `lanelet_2294043`
+- `lanelet_2293869` -> `lanelet_2294021`
+- `lanelet_2293870` -> (none)
+- `lanelet_2293871` -> `lanelet_2294046`, `lanelet_2294047`, `lanelet_2294050`, `lanelet_2294054`, `lanelet_2294056`
+- `lanelet_2293873` -> `lanelet_2294035`, `lanelet_2294037`
+- `lanelet_2293874` -> `lanelet_2294036`
+- `lanelet_2293876` -> (none)
+- `lanelet_2293877` -> `lanelet_2294038`, `lanelet_2294039`
+- `lanelet_2293879` -> (none)
+- `lanelet_2293880` -> `lanelet_2293888`
+- `lanelet_2293887` -> (none)
+- `lanelet_2293888` -> `lanelet_2293890`
+- `lanelet_2293889` -> `lanelet_2293887`
+- `lanelet_2293890` -> `lanelet_2293893`
+- `lanelet_2293892` -> `lanelet_2294016`, `lanelet_2294017`
+- `lanelet_2293893` -> `lanelet_2294018`, `lanelet_2294030`
+- `lanelet_2293894` -> (none)
+- `lanelet_2293895` -> (none)
+- `lanelet_2293897` -> (none)
+- `lanelet_2293898` -> (none)
+- `lanelet_2293901` -> `lanelet_2293897`
+- `lanelet_2293902` -> `lanelet_2293898`
+- `lanelet_2293905` -> `lanelet_2293909`
+- `lanelet_2293906` -> (none)
+- `lanelet_2293909` -> `lanelet_2293913`
+- `lanelet_2293910` -> `lanelet_2293914`
+- `lanelet_2293913` -> `lanelet_2294025`, `lanelet_2294026`
+- `lanelet_2293914` -> `lanelet_2294024`, `lanelet_2294034`
+- `lanelet_2293916` -> (none)
+- `lanelet_2293918` -> (none)
+- `lanelet_2293921` -> (none)
+- `lanelet_2293922` -> `lanelet_2295577`
+- `lanelet_2293925` -> (none)
+- `lanelet_2293926` -> `lanelet_2293927`
+- `lanelet_2293927` -> (none)
+- `lanelet_2293929` -> (none)
+- `lanelet_2293930` -> `lanelet_2293926`
+- `lanelet_2293931` -> (none)
+- `lanelet_2293935` -> `lanelet_2293929`
+- `lanelet_2293936` -> `lanelet_2293930`
+- `lanelet_2293937` -> (none)
+- `lanelet_2293939` -> `lanelet_2293935`
+- `lanelet_2293940` -> `lanelet_2293945`
+- `lanelet_2293941` -> (none)
+- `lanelet_2293944` -> `lanelet_2293939`
+- `lanelet_2293945` -> `lanelet_2294052`
+- `lanelet_2293946` -> `lanelet_2293941`
+- `lanelet_2293948` -> (none)
+- `lanelet_2293949` -> (none)
+- `lanelet_2293951` -> (none)
+- `lanelet_2293952` -> `lanelet_2293956`
+- `lanelet_2293953` -> `lanelet_2293957`
+- `lanelet_2293955` -> `lanelet_2293951`
+- `lanelet_2293956` -> (none)
+- `lanelet_2293957` -> (none)
+- `lanelet_2293959` -> `lanelet_2293955`
+- `lanelet_2293960` -> (none)
+- `lanelet_2293961` -> (none)
+- `lanelet_2293962` -> `lanelet_2294062`, `lanelet_2294066`
+- `lanelet_2293963` -> `lanelet_2293960`
+- `lanelet_2293964` -> `lanelet_2293961`
+- `lanelet_2293966` -> (none)
+- `lanelet_2293967` -> (none)
+- `lanelet_2293968` -> (none)
+- `lanelet_2293970` -> `lanelet_2293966`
+- `lanelet_2293971` -> `lanelet_2293967`
+- `lanelet_2293972` -> (none)
+- `lanelet_2293973` -> (none)
+- `lanelet_2293974` -> (none)
+- `lanelet_2293976` -> `lanelet_2293980`
+- `lanelet_2293977` -> (none)
+- `lanelet_2293978` -> (none)
+- `lanelet_2293980` -> `lanelet_2294084`, `lanelet_2294100`
+- `lanelet_2293981` -> (none)
+- `lanelet_2293982` -> `lanelet_2294098`, `lanelet_2294114`
+- `lanelet_2293983` -> (none)
+- `lanelet_2293984` -> `lanelet_2295610`
+- `lanelet_2293985` -> `lanelet_2295611`
+- `lanelet_2293986` -> `lanelet_2294130`, `lanelet_2295618`
+- `lanelet_2293987` -> `lanelet_2295635`
+- `lanelet_2293988` -> `lanelet_2295625`
+- `lanelet_2293989` -> `lanelet_2295637`
+- `lanelet_2293990` -> `lanelet_2295627`
+- `lanelet_2293992` -> (none)
+- `lanelet_2293993` -> `lanelet_2293988`
+- `lanelet_2293994` -> `lanelet_2293810`
+- `lanelet_2293995` -> `lanelet_2293990`
+- `lanelet_2294006` -> (none)
+- `lanelet_2294007` -> (none)
+- `lanelet_2294016` -> (none)
+- `lanelet_2294017` -> (none)
+- `lanelet_2294018` -> (none)
+- `lanelet_2294019` -> `lanelet_2293922`
+- `lanelet_2294020` -> `lanelet_2295578`
+- `lanelet_2294021` -> `lanelet_2293948`
+- `lanelet_2294022` -> `lanelet_2293916`
+- `lanelet_2294023` -> (none)
+- `lanelet_2294024` -> (none)
+- `lanelet_2294025` -> `lanelet_2295578`
+- `lanelet_2294026` -> `lanelet_2293916`
+- `lanelet_2294027` -> (none)
+- `lanelet_2294028` -> `lanelet_2295578`
+- `lanelet_2294029` -> (none)
+- `lanelet_2294030` -> `lanelet_2293916`
+- `lanelet_2294031` -> `lanelet_2293922`
+- `lanelet_2294032` -> (none)
+- `lanelet_2294033` -> (none)
+- `lanelet_2294034` -> `lanelet_2293922`
+- `lanelet_2294035` -> `lanelet_2293879`
+- `lanelet_2294036` -> `lanelet_2293880`
+- `lanelet_2294037` -> (none)
+- `lanelet_2294038` -> `lanelet_2293879`
+- `lanelet_2294039` -> `lanelet_2293880`
+- `lanelet_2294040` -> `lanelet_2293848`
+- `lanelet_2294041` -> `lanelet_2293849`
+- `lanelet_2294042` -> `lanelet_2293873`
+- `lanelet_2294043` -> `lanelet_2293874`
+- `lanelet_2294044` -> `lanelet_2293870`
+- `lanelet_2294045` -> `lanelet_2293870`
+- `lanelet_2294046` -> `lanelet_2293953`
+- `lanelet_2294047` -> `lanelet_2293952`
+- `lanelet_2294048` -> `lanelet_2293873`
+- `lanelet_2294049` -> `lanelet_2293874`
+- `lanelet_2294050` -> `lanelet_2293948`
+- `lanelet_2294051` -> `lanelet_2293870`
+- `lanelet_2294052` -> `lanelet_2293953`
+- `lanelet_2294053` -> `lanelet_2293952`
+- `lanelet_2294054` -> `lanelet_2293873`
+- `lanelet_2294055` -> `lanelet_2293948`
+- `lanelet_2294056` -> `lanelet_2293874`
+- `lanelet_2294057` -> (none)
+- `lanelet_2294058` -> `lanelet_2293953`
+- `lanelet_2294059` -> (none)
+- `lanelet_2294060` -> `lanelet_2293848`
+- `lanelet_2294061` -> `lanelet_2293849`
+- `lanelet_2294062` -> `lanelet_2294006`
+- `lanelet_2294063` -> (none)
+- `lanelet_2294064` -> (none)
+- `lanelet_2294065` -> `lanelet_2293968`
+- `lanelet_2294066` -> (none)
+- `lanelet_2294067` -> (none)
+- `lanelet_2294068` -> `lanelet_2293968`
+- `lanelet_2294069` -> (none)
+- `lanelet_2294070` -> `lanelet_2293977`
+- `lanelet_2294071` -> `lanelet_2293976`
+- `lanelet_2294072` -> `lanelet_2293845`
+- `lanelet_2294073` -> `lanelet_2293842`
+- `lanelet_2294074` -> `lanelet_2293973`
+- `lanelet_2294075` -> `lanelet_2293845`
+- `lanelet_2294076` -> `lanelet_2293846`
+- `lanelet_2294077` -> `lanelet_2293976`
+- `lanelet_2294078` -> (none)
+- `lanelet_2294079` -> `lanelet_2293977`
+- `lanelet_2294080` -> (none)
+- `lanelet_2294081` -> (none)
+- `lanelet_2294082` -> (none)
+- `lanelet_2294083` -> (none)
+- `lanelet_2294084` -> `lanelet_2293983`
+- `lanelet_2294085` -> `lanelet_2293833`
+- `lanelet_2294086` -> `lanelet_2293833`
+- `lanelet_2294087` -> (none)
+- `lanelet_2294088` -> `lanelet_2293973`
+- `lanelet_2294089` -> `lanelet_2293842`
+- `lanelet_2294090` -> `lanelet_2293845`
+- `lanelet_2294091` -> `lanelet_2293846`
+- `lanelet_2294092` -> `lanelet_2293976`
+- `lanelet_2294093` -> `lanelet_2293977`
+- `lanelet_2294094` -> (none)
+- `lanelet_2294095` -> `lanelet_2293833`
+- `lanelet_2294096` -> (none)
+- `lanelet_2294097` -> `lanelet_2293984`
+- `lanelet_2294098` -> `lanelet_2293986`
+- `lanelet_2294099` -> `lanelet_2293985`
+- `lanelet_2294100` -> `lanelet_2293984`
+- `lanelet_2294101` -> `lanelet_2293983`
+- `lanelet_2294102` -> (none)
+- `lanelet_2294103` -> `lanelet_2293815`
+- `lanelet_2294104` -> `lanelet_2293816`
+- `lanelet_2294105` -> `lanelet_2294081`
+- `lanelet_2294106` -> `lanelet_2293815`
+- `lanelet_2294107` -> `lanelet_2293816`
+- `lanelet_2294108` -> `lanelet_2293826`, `lanelet_2294082`, `lanelet_2295628`, `lanelet_2295629`, `lanelet_2295630`, `lanelet_2295631`, `lanelet_2295632`, `lanelet_2295633`
+- `lanelet_2294109` -> `lanelet_2293818`
+- `lanelet_2294110` -> `lanelet_2293819`
+- `lanelet_2294111` -> `lanelet_2293984`
+- `lanelet_2294112` -> `lanelet_2293985`
+- `lanelet_2294113` -> `lanelet_2293986`
+- `lanelet_2294114` -> (none)
+- `lanelet_2294115` -> `lanelet_2293973`
+- `lanelet_2294116` -> `lanelet_2293986`
+- `lanelet_2294117` -> `lanelet_2293985`
+- `lanelet_2294118` -> `lanelet_2293983`
+- `lanelet_2294119` -> (none)
+- `lanelet_2294120` -> `lanelet_2293846`
+- `lanelet_2294121` -> `lanelet_2293842`
+- `lanelet_2294122` -> `lanelet_2294123`, `lanelet_2294124`, `lanelet_2294125`, `lanelet_2294126`, `lanelet_2294127`, `lanelet_2294128`
+- `lanelet_2294123` -> `lanelet_2294062`, `lanelet_2294066`
+- `lanelet_2294124` -> `lanelet_2293963`, `lanelet_2294067`
+- `lanelet_2294125` -> `lanelet_2293964`, `lanelet_2294068`, `lanelet_2295609`
+- `lanelet_2294126` -> `lanelet_2293865`
+- `lanelet_2294127` -> `lanelet_2293864`
+- `lanelet_2294128` -> `lanelet_2293863`
+- `lanelet_2294130` -> `lanelet_2293989`
+- `lanelet_2294131` -> `lanelet_2294132`, `lanelet_2294133`, `lanelet_2295612`, `lanelet_2295613`, `lanelet_2295614`
+- `lanelet_2294132` -> `lanelet_2293816`
+- `lanelet_2294133` -> `lanelet_2293815`
+- `lanelet_2294137` -> (none)
+- `lanelet_2294138` -> (none)
+- `lanelet_2294139` -> (none)
+- `lanelet_2294141` -> `lanelet_2294147`
+- `lanelet_2294142` -> `lanelet_2294138`
+- `lanelet_2294144` -> `lanelet_2294139`
+- `lanelet_2294147` -> `lanelet_2294160`
+- `lanelet_2294148` -> `lanelet_2294161`
+- `lanelet_2294149` -> `lanelet_2294162`
+- `lanelet_2294151` -> (none)
+- `lanelet_2294152` -> (none)
+- `lanelet_2294154` -> (none)
+- `lanelet_2294155` -> `lanelet_2294178`
+- `lanelet_2294156` -> `lanelet_2294177`
+- `lanelet_2294157` -> `lanelet_2294176`
+- `lanelet_2294160` -> `lanelet_2294166`
+- `lanelet_2294161` -> `lanelet_2294167`
+- `lanelet_2294162` -> `lanelet_2294168`
+- `lanelet_2294166` -> `lanelet_2294264`, `lanelet_2294283`, `lanelet_2294296`
+- `lanelet_2294167` -> `lanelet_2294295`
+- `lanelet_2294168` -> `lanelet_2294297`, `lanelet_2294314`
+- `lanelet_2294171` -> `lanelet_2294319`
+- `lanelet_2294172` -> `lanelet_2294318`
+- `lanelet_2294173` -> `lanelet_2294317`
+- `lanelet_2294176` -> `lanelet_2294171`
+- `lanelet_2294177` -> `lanelet_2294172`
+- `lanelet_2294178` -> `lanelet_2294173`
+- `lanelet_2294181` -> `lanelet_2294284`, `lanelet_2294290`, `lanelet_2294291`
+- `lanelet_2294182` -> (none)
+- `lanelet_2294184` -> (none)
+- `lanelet_2294185` -> (none)
+- `lanelet_2294186` -> (none)
+- `lanelet_2294187` -> (none)
+- `lanelet_2294188` -> `lanelet_2293098`
+- `lanelet_2294190` -> (none)
+- `lanelet_2294191` -> (none)
+- `lanelet_2294193` -> (none)
+- `lanelet_2294194` -> `lanelet_2293206`
+- `lanelet_2294195` -> (none)
+- `lanelet_2294197` -> (none)
+- `lanelet_2294198` -> `lanelet_2294332`
+- `lanelet_2294199` -> `lanelet_2294330`
+- `lanelet_2294200` -> `lanelet_2294329`
+- `lanelet_2294201` -> `lanelet_2294328`
+- `lanelet_2294204` -> `lanelet_2294208`
+- `lanelet_2294205` -> `lanelet_2294206`, `lanelet_2294209`
+- `lanelet_2294206` -> (none)
+- `lanelet_2294208` -> (none)
+- `lanelet_2294209` -> (none)
+- `lanelet_2294210` -> `lanelet_2294212`
+- `lanelet_2294211` -> `lanelet_2294213`
+- `lanelet_2294212` -> `lanelet_2294214`, `lanelet_2295664`
+- `lanelet_2294213` -> `lanelet_2294215`
+- `lanelet_2294214` -> `lanelet_2294219`
+- `lanelet_2294215` -> `lanelet_2294220`
+- `lanelet_2294217` -> `lanelet_2294281`, `lanelet_2294282`, `lanelet_2295598`, `lanelet_2295663`
+- `lanelet_2294218` -> (none)
+- `lanelet_2294219` -> `lanelet_2294226`, `lanelet_2295665`
+- `lanelet_2294220` -> `lanelet_2294227`
+- `lanelet_2294221` -> (none)
+- `lanelet_2294222` -> (none)
+- `lanelet_2294224` -> (none)
+- `lanelet_2294225` -> (none)
+- `lanelet_2294226` -> `lanelet_2294228`
+- `lanelet_2294227` -> `lanelet_2294229`
+- `lanelet_2294228` -> `lanelet_2294233`
+- `lanelet_2294229` -> `lanelet_2294234`
+- `lanelet_2294230` -> `lanelet_2294345`
+- `lanelet_2294231` -> `lanelet_2294346`
+- `lanelet_2294232` -> `lanelet_2294344`
+- `lanelet_2294233` -> `lanelet_2294232`
+- `lanelet_2294234` -> `lanelet_2294235`
+- `lanelet_2294235` -> `lanelet_2294343`
+- `lanelet_2294238` -> (none)
+- `lanelet_2294239` -> (none)
+- `lanelet_2294243` -> `lanelet_2294248`
+- `lanelet_2294244` -> `lanelet_2294247`
+- `lanelet_2294247` -> `lanelet_2294254`
+- `lanelet_2294248` -> `lanelet_2294255`
+- `lanelet_2294249` -> `lanelet_2294256`
+- `lanelet_2294250` -> `lanelet_2294257`
+- `lanelet_2294254` -> `lanelet_2293905`
+- `lanelet_2294255` -> (none)
+- `lanelet_2294256` -> `lanelet_2293902`
+- `lanelet_2294257` -> `lanelet_2293901`
+- `lanelet_2294263` -> `lanelet_2294195`
+- `lanelet_2294264` -> `lanelet_2294198`
+- `lanelet_2294265` -> `lanelet_2294239`
+- `lanelet_2294266` -> `lanelet_2294194`
+- `lanelet_2294267` -> `lanelet_2294188`
+- `lanelet_2294268` -> (none)
+- `lanelet_2294269` -> (none)
+- `lanelet_2294270` -> (none)
+- `lanelet_2294271` -> (none)
+- `lanelet_2294272` -> (none)
+- `lanelet_2294273` -> (none)
+- `lanelet_2294274` -> `lanelet_2294225`
+- `lanelet_2294275` -> (none)
+- `lanelet_2294276` -> (none)
+- `lanelet_2294277` -> (none)
+- `lanelet_2294278` -> (none)
+- `lanelet_2294279` -> (none)
+- `lanelet_2294280` -> (none)
+- `lanelet_2294281` -> (none)
+- `lanelet_2294282` -> (none)
+- `lanelet_2294283` -> (none)
+- `lanelet_2294284` -> `lanelet_2294154`
+- `lanelet_2294285` -> `lanelet_2294182`
+- `lanelet_2294286` -> `lanelet_2294151`
+- `lanelet_2294287` -> `lanelet_2294152`
+- `lanelet_2294288` -> (none)
+- `lanelet_2294289` -> `lanelet_2294154`
+- `lanelet_2294290` -> `lanelet_2294152`
+- `lanelet_2294291` -> `lanelet_2294151`
+- `lanelet_2294292` -> `lanelet_2294198`
+- `lanelet_2294293` -> (none)
+- `lanelet_2294294` -> (none)
+- `lanelet_2294295` -> `lanelet_2294194`
+- `lanelet_2294296` -> `lanelet_2294195`
+- `lanelet_2294297` -> (none)
+- `lanelet_2294298` -> `lanelet_2294194`
+- `lanelet_2294299` -> (none)
+- `lanelet_2294300` -> (none)
+- `lanelet_2294301` -> `lanelet_2294188`
+- `lanelet_2294303` -> `lanelet_2294198`
+- `lanelet_2294304` -> (none)
+- `lanelet_2294305` -> (none)
+- `lanelet_2294306` -> (none)
+- `lanelet_2294307` -> (none)
+- `lanelet_2294309` -> (none)
+- `lanelet_2294310` -> (none)
+- `lanelet_2294311` -> (none)
+- `lanelet_2294312` -> (none)
+- `lanelet_2294313` -> (none)
+- `lanelet_2294314` -> `lanelet_2294188`
+- `lanelet_2294315` -> `lanelet_2294195`
+- `lanelet_2294316` -> (none)
+- `lanelet_2294317` -> `lanelet_2294305`
+- `lanelet_2294318` -> `lanelet_2294306`
+- `lanelet_2294319` -> `lanelet_2294307`
+- `lanelet_2294321` -> `lanelet_2294322`, `lanelet_2294323`, `lanelet_2294324`
+- `lanelet_2294322` -> `lanelet_2294317`
+- `lanelet_2294323` -> `lanelet_2294318`
+- `lanelet_2294324` -> `lanelet_2294319`
+- `lanelet_2294326` -> `lanelet_2294333`, `lanelet_2294334`
+- `lanelet_2294328` -> `lanelet_2294204`
+- `lanelet_2294329` -> `lanelet_2294205`
+- `lanelet_2294330` -> (none)
+- `lanelet_2294331` -> `lanelet_2294197`
+- `lanelet_2294332` -> `lanelet_2294211`
+- `lanelet_2294333` -> `lanelet_2294332`
+- `lanelet_2294334` -> `lanelet_2294197`
+- `lanelet_2294337` -> (none)
+- `lanelet_2294338` -> (none)
+- `lanelet_2294340` -> `lanelet_2294244`
+- `lanelet_2294341` -> `lanelet_2294243`
+- `lanelet_2294343` -> `lanelet_2294340`
+- `lanelet_2294344` -> `lanelet_2294341`
+- `lanelet_2294345` -> `lanelet_2294337`
+- `lanelet_2294346` -> `lanelet_2294338`
+- `lanelet_2294347` -> `lanelet_2294348`, `lanelet_2294349`, `lanelet_2294350`, `lanelet_2294351`
+- `lanelet_2294348` -> `lanelet_2294345`
+- `lanelet_2294349` -> `lanelet_2294346`
+- `lanelet_2294350` -> `lanelet_2294341`
+- `lanelet_2294351` -> `lanelet_2294340`
+- `lanelet_2294353` -> `lanelet_2294354`
+- `lanelet_2294354` -> `lanelet_2294355`
+- `lanelet_2294355` -> `lanelet_2294356`
+- `lanelet_2294356` -> `lanelet_2294357`
+- `lanelet_2294357` -> `lanelet_2294358`
+- `lanelet_2294358` -> `lanelet_2294359`
+- `lanelet_2294359` -> `lanelet_2294364`
+- `lanelet_2294360` -> `lanelet_2294361`
+- `lanelet_2294361` -> `lanelet_2294362`
+- `lanelet_2294362` -> `lanelet_2294363`
+- `lanelet_2294363` -> `lanelet_2294365`
+- `lanelet_2294364` -> `lanelet_2294365`
+- `lanelet_2294365` -> `lanelet_2313054`
+- `lanelet_2294367` -> `lanelet_2294368`
+- `lanelet_2294368` -> `lanelet_2294369`
+- `lanelet_2294369` -> `lanelet_2294370`
+- `lanelet_2294370` -> `lanelet_2294371`
+- `lanelet_2294371` -> `lanelet_2294372`
+- `lanelet_2294372` -> `lanelet_2294373`
+- `lanelet_2294373` -> `lanelet_2294374`
+- `lanelet_2294374` -> `lanelet_2294375`
+- `lanelet_2294375` -> `lanelet_2313055`
+- `lanelet_2294381` -> `lanelet_2294383`
+- `lanelet_2294382` -> (none)
+- `lanelet_2294383` -> `lanelet_2294385`
+- `lanelet_2294384` -> `lanelet_2294382`
+- `lanelet_2294385` -> `lanelet_2294387`
+- `lanelet_2294386` -> `lanelet_2294384`
+- `lanelet_2294387` -> `lanelet_2294389`
+- `lanelet_2294388` -> `lanelet_2294386`
+- `lanelet_2294389` -> `lanelet_2294391`
+- `lanelet_2294390` -> `lanelet_2294388`
+- `lanelet_2294391` -> `lanelet_2294393`
+- `lanelet_2294392` -> `lanelet_2294390`
+- `lanelet_2294393` -> `lanelet_2294395`
+- `lanelet_2294394` -> `lanelet_2294392`
+- `lanelet_2294395` -> `lanelet_2294397`
+- `lanelet_2294396` -> `lanelet_2294394`
+- `lanelet_2294397` -> `lanelet_2294399`
+- `lanelet_2294398` -> `lanelet_2294396`
+- `lanelet_2294399` -> `lanelet_2224260`
+- `lanelet_2294400` -> `lanelet_2294398`
+- `lanelet_2294442` -> `lanelet_2294446`
+- `lanelet_2294443` -> `lanelet_2294447`
+- `lanelet_2294444` -> `lanelet_2294448`
+- `lanelet_2294446` -> `lanelet_2294451`
+- `lanelet_2294447` -> `lanelet_2294452`
+- `lanelet_2294448` -> `lanelet_2294453`
+- `lanelet_2294451` -> `lanelet_2294454`
+- `lanelet_2294452` -> `lanelet_2294455`, `lanelet_2294456`
+- `lanelet_2294453` -> `lanelet_2294455`, `lanelet_2294456`
+- `lanelet_2294454` -> `lanelet_2294459`
+- `lanelet_2294455` -> `lanelet_2294460`
+- `lanelet_2294456` -> `lanelet_2294461`
+- `lanelet_2294459` -> `lanelet_2294863`
+- `lanelet_2294460` -> `lanelet_2294864`, `lanelet_2294866`
+- `lanelet_2294461` -> `lanelet_2294865`
+- `lanelet_2294462` -> `lanelet_2294872`, `lanelet_2294873`, `lanelet_2294874`, `lanelet_2294875`, `lanelet_2294876`, `lanelet_2294877`, `lanelet_2294878`
+- `lanelet_2294464` -> `lanelet_2294467`
+- `lanelet_2294465` -> `lanelet_2294468`
+- `lanelet_2294466` -> `lanelet_2294469`
+- `lanelet_2294467` -> `lanelet_2294472`
+- `lanelet_2294468` -> `lanelet_2294473`
+- `lanelet_2294469` -> `lanelet_2294474`
+- `lanelet_2294472` -> `lanelet_2294476`
+- `lanelet_2294473` -> `lanelet_2294477`
+- `lanelet_2294474` -> `lanelet_2294478`
+- `lanelet_2294476` -> `lanelet_2294480`
+- `lanelet_2294477` -> `lanelet_2294481`
+- `lanelet_2294478` -> `lanelet_2294482`
+- `lanelet_2294480` -> `lanelet_2294879`, `lanelet_2294881`
+- `lanelet_2294481` -> `lanelet_2294882`
+- `lanelet_2294482` -> `lanelet_2294883`
+- `lanelet_2294483` -> (none)
+- `lanelet_2294484` -> (none)
+- `lanelet_2294486` -> `lanelet_2294490`
+- `lanelet_2294487` -> `lanelet_2294491`
+- `lanelet_2294488` -> `lanelet_2294492`
+- `lanelet_2294490` -> `lanelet_2294494`
+- `lanelet_2294491` -> `lanelet_2294495`
+- `lanelet_2294492` -> `lanelet_2294496`
+- `lanelet_2294494` -> `lanelet_2294498`
+- `lanelet_2294495` -> `lanelet_2294499`
+- `lanelet_2294496` -> `lanelet_2294500`
+- `lanelet_2294498` -> `lanelet_2294502`
+- `lanelet_2294499` -> `lanelet_2294503`
+- `lanelet_2294500` -> `lanelet_2294504`
+- `lanelet_2294502` -> `lanelet_2294899`, `lanelet_2294911`
+- `lanelet_2294503` -> `lanelet_2294901`
+- `lanelet_2294504` -> `lanelet_2294900`
+- `lanelet_2294505` -> `lanelet_2294512`
+- `lanelet_2294506` -> `lanelet_2294513`
+- `lanelet_2294507` -> `lanelet_2294514`
+- `lanelet_2294508` -> (none)
+- `lanelet_2294509` -> (none)
+- `lanelet_2294510` -> `lanelet_2294912`, `lanelet_2294913`, `lanelet_2294914`
+- `lanelet_2294512` -> `lanelet_2294516`
+- `lanelet_2294513` -> `lanelet_2294517`
+- `lanelet_2294514` -> `lanelet_2294518`
+- `lanelet_2294516` -> `lanelet_2294520`
+- `lanelet_2294517` -> `lanelet_2294521`
+- `lanelet_2294518` -> `lanelet_2294522`, `lanelet_2294523`
+- `lanelet_2294520` -> `lanelet_2294525`
+- `lanelet_2294521` -> `lanelet_2294526`
+- `lanelet_2294522` -> `lanelet_2294527`
+- `lanelet_2294523` -> `lanelet_2294528`
+- `lanelet_2294525` -> `lanelet_2294530`
+- `lanelet_2294526` -> `lanelet_2294531`
+- `lanelet_2294527` -> `lanelet_2294532`
+- `lanelet_2294528` -> `lanelet_2294533`
+- `lanelet_2294530` -> `lanelet_2294922`, `lanelet_2294923`
+- `lanelet_2294531` -> `lanelet_2294924`
+- `lanelet_2294532` -> `lanelet_2294940`
+- `lanelet_2294533` -> `lanelet_2294941`
+- `lanelet_2294535` -> (none)
+- `lanelet_2294536` -> (none)
+- `lanelet_2294537` -> (none)
+- `lanelet_2294539` -> (none)
+- `lanelet_2294540` -> (none)
+- `lanelet_2294541` -> (none)
+- `lanelet_2294542` -> (none)
+- `lanelet_2294544` -> `lanelet_2294539`
+- `lanelet_2294545` -> `lanelet_2294540`
+- `lanelet_2294546` -> `lanelet_2294541`
+- `lanelet_2294547` -> `lanelet_2294542`
+- `lanelet_2294549` -> (none)
+- `lanelet_2294550` -> (none)
+- `lanelet_2294551` -> (none)
+- `lanelet_2294552` -> `lanelet_2294895`, `lanelet_2294896`, `lanelet_2294897`
+- `lanelet_2294554` -> `lanelet_2294823`
+- `lanelet_2294555` -> `lanelet_2294824`
+- `lanelet_2294556` -> `lanelet_2294825`
+- `lanelet_2294557` -> `lanelet_2294889`, `lanelet_2294893`, `lanelet_2294894`
+- `lanelet_2294558` -> (none)
+- `lanelet_2294559` -> (none)
+- `lanelet_2294561` -> (none)
+- `lanelet_2294562` -> (none)
+- `lanelet_2294563` -> (none)
+- `lanelet_2294564` -> `lanelet_2294886`, `lanelet_2294887`, `lanelet_2294888`
+- `lanelet_2294565` -> `lanelet_2294561`
+- `lanelet_2294566` -> `lanelet_2294562`
+- `lanelet_2294567` -> `lanelet_2294563`
+- `lanelet_2294569` -> `lanelet_2294565`
+- `lanelet_2294570` -> `lanelet_2294566`
+- `lanelet_2294571` -> `lanelet_2294567`
+- `lanelet_2294573` -> `lanelet_2294569`
+- `lanelet_2294574` -> `lanelet_2294570`
+- `lanelet_2294575` -> `lanelet_2294571`
+- `lanelet_2294577` -> `lanelet_2294573`
+- `lanelet_2294578` -> `lanelet_2294574`
+- `lanelet_2294579` -> `lanelet_2294575`
+- `lanelet_2294580` -> `lanelet_2294577`
+- `lanelet_2294581` -> `lanelet_2294578`
+- `lanelet_2294582` -> `lanelet_2294579`
+- `lanelet_2294585` -> `lanelet_2294580`
+- `lanelet_2294586` -> `lanelet_2294581`
+- `lanelet_2294587` -> `lanelet_2294582`
+- `lanelet_2294589` -> `lanelet_2294585`
+- `lanelet_2294590` -> `lanelet_2294586`
+- `lanelet_2294591` -> `lanelet_2294587`
+- `lanelet_2294593` -> `lanelet_2294589`
+- `lanelet_2294594` -> `lanelet_2294590`
+- `lanelet_2294595` -> `lanelet_2294591`
+- `lanelet_2294596` -> (none)
+- `lanelet_2294598` -> (none)
+- `lanelet_2294599` -> (none)
+- `lanelet_2294600` -> (none)
+- `lanelet_2294602` -> `lanelet_2294598`
+- `lanelet_2294603` -> `lanelet_2294599`
+- `lanelet_2294604` -> `lanelet_2294600`
+- `lanelet_2294606` -> `lanelet_2294602`
+- `lanelet_2294607` -> `lanelet_2294603`
+- `lanelet_2294608` -> `lanelet_2294604`
+- `lanelet_2294610` -> `lanelet_2294606`
+- `lanelet_2294611` -> `lanelet_2294607`
+- `lanelet_2294612` -> `lanelet_2294608`
+- `lanelet_2294614` -> `lanelet_2294610`
+- `lanelet_2294615` -> `lanelet_2294611`
+- `lanelet_2294616` -> `lanelet_2294612`
+- `lanelet_2294640` -> `lanelet_2294945`
+- `lanelet_2294641` -> `lanelet_2294944`
+- `lanelet_2294642` -> `lanelet_2294946`, `lanelet_2295662`
+- `lanelet_2294644` -> `lanelet_2294958`, `lanelet_2294960`
+- `lanelet_2294645` -> `lanelet_2294961`
+- `lanelet_2294646` -> `lanelet_2294959`
+- `lanelet_2294647` -> (none)
+- `lanelet_2294648` -> (none)
+- `lanelet_2294650` -> `lanelet_2294654`
+- `lanelet_2294651` -> `lanelet_2294656`
+- `lanelet_2294652` -> `lanelet_2294657`
+- `lanelet_2294654` -> `lanelet_2294659`
+- `lanelet_2294656` -> `lanelet_2294659`
+- `lanelet_2294657` -> `lanelet_2294660`
+- `lanelet_2294659` -> `lanelet_2294662`
+- `lanelet_2294660` -> `lanelet_2294663`
+- `lanelet_2294662` -> `lanelet_2294666`
+- `lanelet_2294663` -> `lanelet_2294667`
+- `lanelet_2294666` -> `lanelet_2294670`
+- `lanelet_2294667` -> `lanelet_2294671`
+- `lanelet_2294670` -> `lanelet_2295035`
+- `lanelet_2294671` -> `lanelet_2295033`, `lanelet_2295034`
+- `lanelet_2294674` -> `lanelet_2294677`
+- `lanelet_2294675` -> `lanelet_2294679`
+- `lanelet_2294676` -> `lanelet_2294680`
+- `lanelet_2294677` -> (none)
+- `lanelet_2294679` -> (none)
+- `lanelet_2294680` -> (none)
+- `lanelet_2294682` -> (none)
+- `lanelet_2294683` -> (none)
+- `lanelet_2294684` -> (none)
+- `lanelet_2294686` -> `lanelet_2294682`
+- `lanelet_2294687` -> `lanelet_2294683`
+- `lanelet_2294688` -> `lanelet_2294684`
+- `lanelet_2294690` -> `lanelet_2294686`
+- `lanelet_2294691` -> `lanelet_2294687`
+- `lanelet_2294692` -> `lanelet_2294688`
+- `lanelet_2294694` -> `lanelet_2294690`
+- `lanelet_2294695` -> `lanelet_2294691`
+- `lanelet_2294696` -> `lanelet_2294692`
+- `lanelet_2294698` -> `lanelet_2294694`
+- `lanelet_2294699` -> `lanelet_2294695`
+- `lanelet_2294700` -> `lanelet_2294696`
+- `lanelet_2294702` -> `lanelet_2294698`
+- `lanelet_2294703` -> `lanelet_2294699`
+- `lanelet_2294704` -> `lanelet_2294700`
+- `lanelet_2294706` -> `lanelet_2294702`
+- `lanelet_2294707` -> `lanelet_2294703`
+- `lanelet_2294708` -> `lanelet_2294704`
+- `lanelet_2294709` -> `lanelet_2294704`
+- `lanelet_2294711` -> `lanelet_2294706`
+- `lanelet_2294712` -> `lanelet_2294707`
+- `lanelet_2294713` -> `lanelet_2294708`
+- `lanelet_2294714` -> `lanelet_2294709`
+- `lanelet_2294716` -> (none)
+- `lanelet_2294717` -> (none)
+- `lanelet_2294718` -> (none)
+- `lanelet_2294719` -> (none)
+- `lanelet_2294720` -> (none)
+- `lanelet_2294721` -> (none)
+- `lanelet_2294724` -> (none)
+- `lanelet_2294725` -> (none)
+- `lanelet_2294726` -> (none)
+- `lanelet_2294727` -> (none)
+- `lanelet_2294728` -> `lanelet_2294947`
+- `lanelet_2294730` -> (none)
+- `lanelet_2294731` -> (none)
+- `lanelet_2294732` -> (none)
+- `lanelet_2294733` -> (none)
+- `lanelet_2294734` -> (none)
+- `lanelet_2294735` -> (none)
+- `lanelet_2294737` -> (none)
+- `lanelet_2294738` -> (none)
+- `lanelet_2294739` -> (none)
+- `lanelet_2294740` -> `lanelet_2294983`, `lanelet_2294989`
+- `lanelet_2294742` -> (none)
+- `lanelet_2294743` -> (none)
+- `lanelet_2294745` -> (none)
+- `lanelet_2294746` -> (none)
+- `lanelet_2294747` -> (none)
+- `lanelet_2294748` -> `lanelet_2294974`, `lanelet_2294980`
+- `lanelet_2294751` -> `lanelet_2294745`
+- `lanelet_2294752` -> `lanelet_2294746`
+- `lanelet_2294753` -> `lanelet_2294747`
+- `lanelet_2294754` -> `lanelet_2294748`
+- `lanelet_2294756` -> `lanelet_2294751`
+- `lanelet_2294757` -> `lanelet_2294752`
+- `lanelet_2294758` -> `lanelet_2294753`
+- `lanelet_2294759` -> `lanelet_2294754`
+- `lanelet_2294761` -> `lanelet_2294969`, `lanelet_2294970`, `lanelet_2294971`, `lanelet_2295096`
+- `lanelet_2294762` -> `lanelet_2294756`
+- `lanelet_2294764` -> `lanelet_2294757`
+- `lanelet_2294765` -> `lanelet_2294758`
+- `lanelet_2294766` -> `lanelet_2294759`
+- `lanelet_2294768` -> `lanelet_2294772`
+- `lanelet_2294769` -> `lanelet_2294773`
+- `lanelet_2294772` -> `lanelet_2294776`
+- `lanelet_2294773` -> `lanelet_2294777`
+- `lanelet_2294776` -> `lanelet_2294780`
+- `lanelet_2294777` -> `lanelet_2294781`
+- `lanelet_2294780` -> `lanelet_2294784`
+- `lanelet_2294781` -> `lanelet_2294785`
+- `lanelet_2294784` -> `lanelet_2295000`, `lanelet_2295004`
+- `lanelet_2294785` -> `lanelet_2295001`, `lanelet_2295714`
+- `lanelet_2294787` -> (none)
+- `lanelet_2294788` -> (none)
+- `lanelet_2294790` -> `lanelet_2294787`
+- `lanelet_2294791` -> `lanelet_2294788`
+- `lanelet_2294794` -> `lanelet_2294790`
+- `lanelet_2294795` -> `lanelet_2294791`
+- `lanelet_2294797` -> `lanelet_2294992`, `lanelet_2294993`
+- `lanelet_2294799` -> (none)
+- `lanelet_2294800` -> `lanelet_2294995`
+- `lanelet_2294801` -> `lanelet_2294995`
+- `lanelet_2294804` -> `lanelet_2294799`
+- `lanelet_2294805` -> `lanelet_2294800`
+- `lanelet_2294806` -> `lanelet_2294801`
+- `lanelet_2294808` -> `lanelet_2294925`, `lanelet_2294926`
+- `lanelet_2294809` -> `lanelet_2294927`
+- `lanelet_2294810` -> `lanelet_2294932`, `lanelet_2294933`, `lanelet_2294934`
+- `lanelet_2294811` -> `lanelet_2295022`, `lanelet_2295023`, `lanelet_2295024`
+- `lanelet_2294813` -> `lanelet_2295005`, `lanelet_2295006`, `lanelet_2295657`, `lanelet_2295658`
+- `lanelet_2294814` -> `lanelet_2294813`
+- `lanelet_2294815` -> `lanelet_2294997`, `lanelet_2294998`, `lanelet_2295653`, `lanelet_2295654`, `lanelet_2295655`
+- `lanelet_2294816` -> `lanelet_2295083`, `lanelet_2295084`, `lanelet_2295101`, `lanelet_2295651`, `lanelet_2295652`
+- `lanelet_2294818` -> `lanelet_2295007`, `lanelet_2295018`
+- `lanelet_2294819` -> `lanelet_2295009`
+- `lanelet_2294821` -> (none)
+- `lanelet_2294822` -> (none)
+- `lanelet_2294823` -> `lanelet_2294549`
+- `lanelet_2294824` -> `lanelet_2294550`
+- `lanelet_2294825` -> `lanelet_2294551`
+- `lanelet_2294826` -> `lanelet_2294827`, `lanelet_2295016`, `lanelet_2295017`
+- `lanelet_2294827` -> (none)
+- `lanelet_2294828` -> `lanelet_2294829`, `lanelet_2295019`, `lanelet_2295020`
+- `lanelet_2294829` -> `lanelet_2294828`
+- `lanelet_2294830` -> `lanelet_2295013`, `lanelet_2295014`
+- `lanelet_2294831` -> (none)
+- `lanelet_2294833` -> `lanelet_2295026`
+- `lanelet_2294834` -> `lanelet_2295025`, `lanelet_2295037`, `lanelet_2295587`
+- `lanelet_2294836` -> (none)
+- `lanelet_2294837` -> (none)
+- `lanelet_2294839` -> `lanelet_2294836`
+- `lanelet_2294840` -> `lanelet_2294837`
+- `lanelet_2294841` -> `lanelet_2295031`, `lanelet_2295032`, `lanelet_2295036`, `lanelet_2295099`, `lanelet_2295100`, `lanelet_2295588`
+- `lanelet_2294842` -> (none)
+- `lanelet_2294844` -> `lanelet_2294850`
+- `lanelet_2294845` -> `lanelet_2294851`
+- `lanelet_2294847` -> `lanelet_2295027`, `lanelet_2295029`, `lanelet_2295030`
+- `lanelet_2294848` -> `lanelet_2294854`
+- `lanelet_2294850` -> `lanelet_2294856`
+- `lanelet_2294851` -> `lanelet_2294857`, `lanelet_2294858`
+- `lanelet_2294853` -> `lanelet_2294847`
+- `lanelet_2294854` -> `lanelet_2294861`
+- `lanelet_2294856` -> `lanelet_2293273`
+- `lanelet_2294857` -> `lanelet_2293274`
+- `lanelet_2294858` -> `lanelet_2293275`
+- `lanelet_2294860` -> `lanelet_2294853`
+- `lanelet_2294861` -> `lanelet_2293271`
+- `lanelet_2294862` -> (none)
+- `lanelet_2294863` -> `lanelet_2294464`
+- `lanelet_2294864` -> `lanelet_2294465`
+- `lanelet_2294865` -> `lanelet_2294596`
+- `lanelet_2294866` -> `lanelet_2294466`
+- `lanelet_2294867` -> (none)
+- `lanelet_2294868` -> (none)
+- `lanelet_2294869` -> `lanelet_2294596`
+- `lanelet_2294871` -> (none)
+- `lanelet_2294872` -> `lanelet_2294464`
+- `lanelet_2294873` -> `lanelet_2294465`
+- `lanelet_2294874` -> `lanelet_2294466`
+- `lanelet_2294875` -> (none)
+- `lanelet_2294876` -> (none)
+- `lanelet_2294877` -> (none)
+- `lanelet_2294878` -> `lanelet_2294596`
+- `lanelet_2294879` -> `lanelet_2294483`
+- `lanelet_2294880` -> `lanelet_2294486`
+- `lanelet_2294881` -> `lanelet_2294486`
+- `lanelet_2294882` -> `lanelet_2294487`
+- `lanelet_2294883` -> `lanelet_2294488`
+- `lanelet_2294884` -> `lanelet_2294487`
+- `lanelet_2294885` -> `lanelet_2294488`
+- `lanelet_2294886` -> `lanelet_2294565`
+- `lanelet_2294887` -> `lanelet_2294566`
+- `lanelet_2294888` -> `lanelet_2294567`
+- `lanelet_2294889` -> (none)
+- `lanelet_2294890` -> (none)
+- `lanelet_2294891` -> (none)
+- `lanelet_2294892` -> (none)
+- `lanelet_2294893` -> (none)
+- `lanelet_2294894` -> (none)
+- `lanelet_2294895` -> `lanelet_2294823`
+- `lanelet_2294896` -> `lanelet_2294824`
+- `lanelet_2294897` -> `lanelet_2294825`
+- `lanelet_2294898` -> `lanelet_2294508`
+- `lanelet_2294899` -> `lanelet_2294505`
+- `lanelet_2294900` -> `lanelet_2294507`
+- `lanelet_2294901` -> `lanelet_2294506`
+- `lanelet_2294902` -> `lanelet_2294507`
+- `lanelet_2294903` -> `lanelet_2294506`
+- `lanelet_2294904` -> `lanelet_2294505`
+- `lanelet_2294905` -> (none)
+- `lanelet_2294906` -> (none)
+- `lanelet_2294907` -> (none)
+- `lanelet_2294908` -> (none)
+- `lanelet_2294909` -> (none)
+- `lanelet_2294910` -> (none)
+- `lanelet_2294911` -> `lanelet_2294508`
+- `lanelet_2294912` -> `lanelet_2294512`
+- `lanelet_2294913` -> `lanelet_2294513`
+- `lanelet_2294914` -> `lanelet_2294514`
+- `lanelet_2294915` -> `lanelet_2294559`
+- `lanelet_2294916` -> (none)
+- `lanelet_2294917` -> (none)
+- `lanelet_2294918` -> (none)
+- `lanelet_2294919` -> (none)
+- `lanelet_2294920` -> (none)
+- `lanelet_2294921` -> (none)
+- `lanelet_2294922` -> `lanelet_2294768`
+- `lanelet_2294923` -> `lanelet_2294769`
+- `lanelet_2294924` -> `lanelet_2294641`
+- `lanelet_2294925` -> `lanelet_2294640`
+- `lanelet_2294926` -> `lanelet_2294766`
+- `lanelet_2294927` -> `lanelet_2294766`
+- `lanelet_2294928` -> `lanelet_2294766`
+- `lanelet_2294929` -> (none)
+- `lanelet_2294930` -> (none)
+- `lanelet_2294931` -> (none)
+- `lanelet_2294932` -> (none)
+- `lanelet_2294933` -> (none)
+- `lanelet_2294934` -> (none)
+- `lanelet_2294935` -> `lanelet_2294641`
+- `lanelet_2294936` -> `lanelet_2294642`
+- `lanelet_2294937` -> (none)
+- `lanelet_2294938` -> `lanelet_2294769`
+- `lanelet_2294939` -> `lanelet_2294768`
+- `lanelet_2294940` -> `lanelet_2294642`
+- `lanelet_2294941` -> `lanelet_2294766`
+- `lanelet_2294942` -> `lanelet_2294769`
+- `lanelet_2294943` -> `lanelet_2294768`
+- `lanelet_2294944` -> `lanelet_2294645`
+- `lanelet_2294945` -> `lanelet_2294644`
+- `lanelet_2294946` -> `lanelet_2294646`
+- `lanelet_2294947` -> `lanelet_2294719`, `lanelet_2294949`
+- `lanelet_2294948` -> (none)
+- `lanelet_2294949` -> (none)
+- `lanelet_2294950` -> (none)
+- `lanelet_2294951` -> (none)
+- `lanelet_2294952` -> `lanelet_2294721`
+- `lanelet_2294953` -> (none)
+- `lanelet_2294954` -> (none)
+- `lanelet_2294955` -> (none)
+- `lanelet_2294956` -> (none)
+- `lanelet_2294957` -> `lanelet_2294947`
+- `lanelet_2294958` -> `lanelet_2294648`
+- `lanelet_2294959` -> `lanelet_2294652`
+- `lanelet_2294960` -> `lanelet_2294650`
+- `lanelet_2294961` -> `lanelet_2294651`
+- `lanelet_2294962` -> `lanelet_2294650`
+- `lanelet_2294963` -> `lanelet_2294651`
+- `lanelet_2294964` -> `lanelet_2294652`
+- `lanelet_2294965` -> `lanelet_2294648`
+- `lanelet_2294966` -> (none)
+- `lanelet_2294967` -> (none)
+- `lanelet_2294968` -> (none)
+- `lanelet_2294969` -> `lanelet_2294756`
+- `lanelet_2294970` -> `lanelet_2294757`
+- `lanelet_2294971` -> `lanelet_2294758`
+- `lanelet_2294972` -> (none)
+- `lanelet_2294973` -> (none)
+- `lanelet_2294974` -> `lanelet_2294743`
+- `lanelet_2294975` -> (none)
+- `lanelet_2294976` -> `lanelet_2294743`
+- `lanelet_2294977` -> `lanelet_2294740`
+- `lanelet_2294978` -> (none)
+- `lanelet_2294979` -> (none)
+- `lanelet_2294980` -> `lanelet_2294740`
+- `lanelet_2294981` -> (none)
+- `lanelet_2294982` -> `lanelet_2294735`
+- `lanelet_2294983` -> `lanelet_2294733`
+- `lanelet_2294984` -> `lanelet_2294733`
+- `lanelet_2294985` -> (none)
+- `lanelet_2294986` -> (none)
+- `lanelet_2294987` -> (none)
+- `lanelet_2294988` -> (none)
+- `lanelet_2294989` -> `lanelet_2294735`
+- `lanelet_2294990` -> (none)
+- `lanelet_2294991` -> (none)
+- `lanelet_2294992` -> (none)
+- `lanelet_2294993` -> `lanelet_2294995`
+- `lanelet_2294994` -> (none)
+- `lanelet_2294995` -> `lanelet_2294795`
+- `lanelet_2294996` -> (none)
+- `lanelet_2294997` -> (none)
+- `lanelet_2294998` -> (none)
+- `lanelet_2294999` -> (none)
+- `lanelet_2295000` -> `lanelet_2294818`
+- `lanelet_2295001` -> `lanelet_2294819`
+- `lanelet_2295002` -> (none)
+- `lanelet_2295003` -> `lanelet_2294996`, `lanelet_2295656`
+- `lanelet_2295004` -> `lanelet_2294814`
+- `lanelet_2295005` -> `lanelet_2294818`
+- `lanelet_2295006` -> `lanelet_2294819`
+- `lanelet_2295007` -> `lanelet_2295008`, `lanelet_2295021`
+- `lanelet_2295008` -> `lanelet_2294833`
+- `lanelet_2295009` -> `lanelet_2295010`
+- `lanelet_2295010` -> `lanelet_2294834`
+- `lanelet_2295011` -> (none)
+- `lanelet_2295012` -> (none)
+- `lanelet_2295013` -> (none)
+- `lanelet_2295014` -> (none)
+- `lanelet_2295015` -> `lanelet_2294831`
+- `lanelet_2295016` -> `lanelet_2295008`, `lanelet_2295021`
+- `lanelet_2295017` -> `lanelet_2295010`
+- `lanelet_2295018` -> `lanelet_2294827`, `lanelet_2295016`, `lanelet_2295017`
+- `lanelet_2295019` -> `lanelet_2294833`
+- `lanelet_2295020` -> `lanelet_2294834`
+- `lanelet_2295021` -> `lanelet_2294829`, `lanelet_2295019`, `lanelet_2295020`
+- `lanelet_2295022` -> `lanelet_2294925`, `lanelet_2294926`
+- `lanelet_2295023` -> `lanelet_2294927`
+- `lanelet_2295024` -> `lanelet_2294932`, `lanelet_2294933`, `lanelet_2294934`
+- `lanelet_2295025` -> `lanelet_2294845`
+- `lanelet_2295026` -> `lanelet_2294844`
+- `lanelet_2295027` -> (none)
+- `lanelet_2295028` -> (none)
+- `lanelet_2295029` -> `lanelet_2294862`
+- `lanelet_2295030` -> `lanelet_2294842`
+- `lanelet_2295031` -> `lanelet_2294844`
+- `lanelet_2295032` -> `lanelet_2294845`
+- `lanelet_2295033` -> `lanelet_2294676`
+- `lanelet_2295034` -> `lanelet_2294675`
+- `lanelet_2295035` -> `lanelet_2294674`
+- `lanelet_2295036` -> `lanelet_2294842`
+- `lanelet_2295037` -> `lanelet_2294842`
+- `lanelet_2295038` -> (none)
+- `lanelet_2295039` -> (none)
+- `lanelet_2295040` -> `lanelet_2294640`
+- `lanelet_2295041` -> (none)
+- `lanelet_2295042` -> (none)
+- `lanelet_2295043` -> (none)
+- `lanelet_2295044` -> (none)
+- `lanelet_2295083` -> (none)
+- `lanelet_2295084` -> (none)
+- `lanelet_2295089` -> (none)
+- `lanelet_2295090` -> `lanelet_2294759`
+- `lanelet_2295091` -> `lanelet_2294765`, `lanelet_2294935`, `lanelet_2294936`, `lanelet_2295040`
+- `lanelet_2295092` -> `lanelet_2294764`, `lanelet_2294938`
+- `lanelet_2295093` -> `lanelet_2294762`, `lanelet_2294937`, `lanelet_2294939`, `lanelet_2295038`, `lanelet_2295039`
+- `lanelet_2295096` -> `lanelet_2294754`
+- `lanelet_2295099` -> (none)
+- `lanelet_2295100` -> (none)
+- `lanelet_2295101` -> `lanelet_2294996`, `lanelet_2295656`
+- `lanelet_2295102` -> `lanelet_2295106`
+- `lanelet_2295103` -> (none)
+- `lanelet_2295106` -> `lanelet_2295109`
+- `lanelet_2295107` -> `lanelet_2295103`
+- `lanelet_2295109` -> `lanelet_2295113`
+- `lanelet_2295110` -> `lanelet_2295107`
+- `lanelet_2295113` -> `lanelet_2295116`
+- `lanelet_2295114` -> `lanelet_2295110`
+- `lanelet_2295116` -> `lanelet_2295120`, `lanelet_2295121`
+- `lanelet_2295117` -> `lanelet_2295114`
+- `lanelet_2295120` -> `lanelet_2295129`
+- `lanelet_2295121` -> `lanelet_2295130`
+- `lanelet_2295123` -> `lanelet_2295117`
+- `lanelet_2295125` -> `lanelet_2295401`, `lanelet_2295415`, `lanelet_2295416`
+- `lanelet_2295126` -> (none)
+- `lanelet_2295127` -> (none)
+- `lanelet_2295128` -> `lanelet_2295123`
+- `lanelet_2295129` -> `lanelet_2295137`, `lanelet_2295138`
+- `lanelet_2295130` -> `lanelet_2295136`
+- `lanelet_2295132` -> (none)
+- `lanelet_2295133` -> `lanelet_2295143`
+- `lanelet_2295134` -> `lanelet_2295142`
+- `lanelet_2295135` -> `lanelet_2295144`
+- `lanelet_2295136` -> `lanelet_2295135`
+- `lanelet_2295137` -> `lanelet_2295134`
+- `lanelet_2295138` -> `lanelet_2295133`
+- `lanelet_2295140` -> `lanelet_2295128`
+- `lanelet_2295142` -> `lanelet_2295147`
+- `lanelet_2295143` -> `lanelet_2295148`
+- `lanelet_2295144` -> `lanelet_2295149`
+- `lanelet_2295147` -> `lanelet_2295405`, `lanelet_2295406`
+- `lanelet_2295148` -> `lanelet_2295417`
+- `lanelet_2295149` -> `lanelet_2295411`
+- `lanelet_2295153` -> `lanelet_2295158`
+- `lanelet_2295154` -> `lanelet_2295159`
+- `lanelet_2295158` -> `lanelet_2295161`
+- `lanelet_2295159` -> `lanelet_2295162`
+- `lanelet_2295161` -> `lanelet_2295140`
+- `lanelet_2295162` -> `lanelet_2295140`
+- `lanelet_2295163` -> `lanelet_2295153`
+- `lanelet_2295164` -> `lanelet_2295154`
+- `lanelet_2295167` -> `lanelet_2295169`
+- `lanelet_2295169` -> `lanelet_2295170`
+- `lanelet_2295170` -> `lanelet_2295171`
+- `lanelet_2295171` -> `lanelet_2295172`
+- `lanelet_2295172` -> `lanelet_2295174`
+- `lanelet_2295173` -> `lanelet_2295440`, `lanelet_2295441`
+- `lanelet_2295174` -> `lanelet_2295442`, `lanelet_2295445`, `lanelet_2295448`
+- `lanelet_2295176` -> `lanelet_2295178`
+- `lanelet_2295178` -> `lanelet_2295179`
+- `lanelet_2295179` -> `lanelet_2295180`, `lanelet_2295181`
+- `lanelet_2295180` -> `lanelet_2295183`
+- `lanelet_2295181` -> `lanelet_2295182`
+- `lanelet_2295182` -> `lanelet_2295184`
+- `lanelet_2295183` -> `lanelet_2295185`
+- `lanelet_2295184` -> `lanelet_2295408`, `lanelet_2295423`, `lanelet_2295424`
+- `lanelet_2295185` -> `lanelet_2295419`, `lanelet_2295421`
+- `lanelet_2295187` -> `lanelet_2295438`, `lanelet_2295439`
+- `lanelet_2295188` -> `lanelet_2295435`, `lanelet_2295436`, `lanelet_2295437`
+- `lanelet_2295189` -> `lanelet_2295429`, `lanelet_2295430`, `lanelet_2295431`
+- `lanelet_2295190` -> `lanelet_2295432`, `lanelet_2295433`, `lanelet_2295434`
+- `lanelet_2295191` -> `lanelet_2295195`
+- `lanelet_2295193` -> `lanelet_2295667`
+- `lanelet_2295195` -> `lanelet_2295199`
+- `lanelet_2295197` -> `lanelet_2295193`
+- `lanelet_2295199` -> `lanelet_2295466`, `lanelet_2295467`, `lanelet_2295470`, `lanelet_2295471`, `lanelet_2295476`, `lanelet_2295553`
+- `lanelet_2295201` -> `lanelet_2295197`
+- `lanelet_2295205` -> (none)
+- `lanelet_2295206` -> `lanelet_2295488`, `lanelet_2295489`, `lanelet_2295490`, `lanelet_2295491`
+- `lanelet_2295207` -> `lanelet_2295209`
+- `lanelet_2295208` -> `lanelet_2295210`
+- `lanelet_2295209` -> `lanelet_2295211`
+- `lanelet_2295210` -> `lanelet_2295212`
+- `lanelet_2295211` -> `lanelet_2295461`, `lanelet_2295462`
+- `lanelet_2295212` -> `lanelet_2295474`, `lanelet_2295475`, `lanelet_2295486`
+- `lanelet_2295213` -> `lanelet_2295443`
+- `lanelet_2295214` -> `lanelet_2295449`
+- `lanelet_2295215` -> `lanelet_2295213`
+- `lanelet_2295216` -> `lanelet_2295214`
+- `lanelet_2295217` -> `lanelet_2295215`
+- `lanelet_2295218` -> `lanelet_2295216`
+- `lanelet_2295219` -> `lanelet_2295715`
+- `lanelet_2295220` -> `lanelet_2295222`
+- `lanelet_2295222` -> `lanelet_2295223`
+- `lanelet_2295223` -> `lanelet_2293452`
+- `lanelet_2295225` -> `lanelet_2295228`
+- `lanelet_2295226` -> `lanelet_2295229`
+- `lanelet_2295228` -> `lanelet_2295231`
+- `lanelet_2295229` -> `lanelet_2295232`
+- `lanelet_2295231` -> `lanelet_2295463`, `lanelet_2295464`
+- `lanelet_2295232` -> `lanelet_2295465`, `lanelet_2295472`, `lanelet_2295473`
+- `lanelet_2295235` -> (none)
+- `lanelet_2295237` -> `lanelet_2295477`, `lanelet_2295478`, `lanelet_2295479`, `lanelet_2295480`, `lanelet_2295487`, `lanelet_2295552`
+- `lanelet_2295238` -> (none)
+- `lanelet_2295239` -> `lanelet_2295243`
+- `lanelet_2295240` -> `lanelet_2295427`, `lanelet_2295428`
+- `lanelet_2295243` -> `lanelet_2295245`
+- `lanelet_2295245` -> `lanelet_2295251`
+- `lanelet_2295246` -> `lanelet_2295252`
+- `lanelet_2295247` -> `lanelet_2295253`
+- `lanelet_2295251` -> `lanelet_2295407`
+- `lanelet_2295252` -> `lanelet_2295422`
+- `lanelet_2295253` -> `lanelet_2295412`, `lanelet_2295420`
+- `lanelet_2295256` -> `lanelet_2295260`
+- `lanelet_2295257` -> `lanelet_2295261`
+- `lanelet_2295260` -> `lanelet_2295264`
+- `lanelet_2295261` -> `lanelet_2295265`
+- `lanelet_2295264` -> `lanelet_2295268`
+- `lanelet_2295265` -> `lanelet_2295269`
+- `lanelet_2295266` -> `lanelet_2295534`, `lanelet_2295535`
+- `lanelet_2295268` -> `lanelet_2295272`
+- `lanelet_2295269` -> `lanelet_2295273`
+- `lanelet_2295272` -> (none)
+- `lanelet_2295273` -> (none)
+- `lanelet_2295276` -> `lanelet_2295278`
+- `lanelet_2295278` -> `lanelet_2295280`
+- `lanelet_2295280` -> `lanelet_2295282`
+- `lanelet_2295282` -> `lanelet_2295284`
+- `lanelet_2295284` -> `lanelet_2295285`
+- `lanelet_2295285` -> `lanelet_2295286`
+- `lanelet_2295286` -> `lanelet_2295316`, `lanelet_2295317`
+- `lanelet_2295289` -> `lanelet_2295291`
+- `lanelet_2295291` -> `lanelet_2295293`
+- `lanelet_2295293` -> `lanelet_2295295`, `lanelet_2295296`
+- `lanelet_2295295` -> `lanelet_2295300`
+- `lanelet_2295296` -> `lanelet_2295298`
+- `lanelet_2295298` -> `lanelet_2295301`
+- `lanelet_2295300` -> `lanelet_2295302`, `lanelet_2295304`
+- `lanelet_2295301` -> `lanelet_2295305`
+- `lanelet_2295302` -> `lanelet_2295306`
+- `lanelet_2295304` -> `lanelet_2295307`
+- `lanelet_2295305` -> `lanelet_2295409`, `lanelet_2295410`, `lanelet_2295425`
+- `lanelet_2295306` -> `lanelet_2295426`
+- `lanelet_2295307` -> `lanelet_2295418`
+- `lanelet_2295310` -> `lanelet_2295314`, `lanelet_2295315`
+- `lanelet_2295311` -> (none)
+- `lanelet_2295312` -> `lanelet_2295511`, `lanelet_2295512`
+- `lanelet_2295313` -> `lanelet_2295509`, `lanelet_2295513`, `lanelet_2295514`
+- `lanelet_2295314` -> `lanelet_2295312`
+- `lanelet_2295315` -> `lanelet_2295313`
+- `lanelet_2295316` -> `lanelet_2295312`
+- `lanelet_2295317` -> `lanelet_2295313`
+- `lanelet_2295318` -> `lanelet_2295289`
+- `lanelet_2295319` -> `lanelet_2295311`
+- `lanelet_2295320` -> `lanelet_2295325`
+- `lanelet_2295321` -> `lanelet_2295326`
+- `lanelet_2295325` -> `lanelet_2295330`
+- `lanelet_2295326` -> `lanelet_2295331`, `lanelet_2295332`
+- `lanelet_2295328` -> (none)
+- `lanelet_2295329` -> (none)
+- `lanelet_2295330` -> `lanelet_2295526`, `lanelet_2295527`
+- `lanelet_2295331` -> `lanelet_2295528`
+- `lanelet_2295332` -> `lanelet_2295529`
+- `lanelet_2295334` -> `lanelet_2295339`
+- `lanelet_2295335` -> `lanelet_2295340`
+- `lanelet_2295336` -> `lanelet_2295341`
+- `lanelet_2295339` -> `lanelet_2295343`
+- `lanelet_2295340` -> `lanelet_2295344`
+- `lanelet_2295341` -> `lanelet_2295345`, `lanelet_2295346`
+- `lanelet_2295343` -> `lanelet_2295347`
+- `lanelet_2295344` -> `lanelet_2295348`
+- `lanelet_2295345` -> `lanelet_2295349`
+- `lanelet_2295346` -> `lanelet_2295350`
+- `lanelet_2295347` -> `lanelet_2295519`
+- `lanelet_2295348` -> `lanelet_2295520`
+- `lanelet_2295349` -> `lanelet_2295518`
+- `lanelet_2295350` -> `lanelet_2295469`
+- `lanelet_2295353` -> `lanelet_2295357`
+- `lanelet_2295354` -> `lanelet_2295358`
+- `lanelet_2295355` -> `lanelet_2295359`
+- `lanelet_2295357` -> `lanelet_2295360`
+- `lanelet_2295358` -> `lanelet_2295361`
+- `lanelet_2295359` -> `lanelet_2295362`
+- `lanelet_2295360` -> `lanelet_2295375`, `lanelet_2295507`, `lanelet_2295536`
+- `lanelet_2295361` -> `lanelet_2295376`
+- `lanelet_2295362` -> `lanelet_2295377`
+- `lanelet_2295363` -> `lanelet_2295510`
+- `lanelet_2295364` -> `lanelet_2295517`
+- `lanelet_2295365` -> `lanelet_2295516`
+- `lanelet_2295368` -> `lanelet_2295363`
+- `lanelet_2295369` -> `lanelet_2295364`
+- `lanelet_2295370` -> `lanelet_2295365`
+- `lanelet_2295372` -> `lanelet_2295368`
+- `lanelet_2295373` -> `lanelet_2295369`
+- `lanelet_2295374` -> `lanelet_2295370`
+- `lanelet_2295375` -> `lanelet_2295500`
+- `lanelet_2295376` -> `lanelet_2295499`
+- `lanelet_2295377` -> `lanelet_2295501`
+- `lanelet_2295378` -> `lanelet_2295372`
+- `lanelet_2295379` -> `lanelet_2295373`
+- `lanelet_2295380` -> `lanelet_2295374`
+- `lanelet_2295381` -> (none)
+- `lanelet_2295382` -> (none)
+- `lanelet_2295385` -> `lanelet_2295389`
+- `lanelet_2295386` -> `lanelet_2295390`, `lanelet_2295392`
+- `lanelet_2295389` -> `lanelet_2295560`, `lanelet_2295561`
+- `lanelet_2295390` -> `lanelet_2295496`, `lanelet_2295497`, `lanelet_2295498`
+- `lanelet_2295392` -> `lanelet_2295505`, `lanelet_2295506`
+- `lanelet_2295393` -> `lanelet_2295698`
+- `lanelet_2295394` -> `lanelet_2295699`
+- `lanelet_2295395` -> `lanelet_2295700`
+- `lanelet_2295396` -> `lanelet_2295492`
+- `lanelet_2295397` -> `lanelet_2295494`, `lanelet_2295495`
+- `lanelet_2295398` -> `lanelet_2295522`, `lanelet_2295523`, `lanelet_2295524`, `lanelet_2295525`
+- `lanelet_2295399` -> `lanelet_2295109`
+- `lanelet_2295400` -> `lanelet_2295116`
+- `lanelet_2295401` -> `lanelet_2295123`
+- `lanelet_2295402` -> `lanelet_2295142`
+- `lanelet_2295403` -> `lanelet_2295143`
+- `lanelet_2295404` -> `lanelet_2295144`
+- `lanelet_2295405` -> `lanelet_2295256`
+- `lanelet_2295406` -> `lanelet_2295257`
+- `lanelet_2295407` -> `lanelet_2295167`
+- `lanelet_2295408` -> `lanelet_2295276`
+- `lanelet_2295409` -> `lanelet_2295163`
+- `lanelet_2295410` -> `lanelet_2295164`
+- `lanelet_2295411` -> `lanelet_2295276`
+- `lanelet_2295412` -> `lanelet_2295164`
+- `lanelet_2295413` -> `lanelet_2295103`
+- `lanelet_2295414` -> `lanelet_2295110`
+- `lanelet_2295415` -> `lanelet_2295136`
+- `lanelet_2295416` -> `lanelet_2295137`, `lanelet_2295138`
+- `lanelet_2295417` -> `lanelet_2295167`
+- `lanelet_2295418` -> `lanelet_2295167`
+- `lanelet_2295419` -> `lanelet_2295257`
+- `lanelet_2295420` -> `lanelet_2295163`
+- `lanelet_2295421` -> `lanelet_2295256`
+- `lanelet_2295422` -> `lanelet_2295276`
+- `lanelet_2295423` -> `lanelet_2295164`
+- `lanelet_2295424` -> `lanelet_2295163`
+- `lanelet_2295425` -> `lanelet_2295256`
+- `lanelet_2295426` -> `lanelet_2295257`
+- `lanelet_2295427` -> `lanelet_2295246`
+- `lanelet_2295428` -> `lanelet_2295247`
+- `lanelet_2295429` -> `lanelet_2295171`
+- `lanelet_2295430` -> `lanelet_2295185`
+- `lanelet_2295431` -> `lanelet_2295184`
+- `lanelet_2295432` -> `lanelet_2295184`
+- `lanelet_2295433` -> `lanelet_2295185`
+- `lanelet_2295434` -> `lanelet_2295171`
+- `lanelet_2295435` -> `lanelet_2295183`
+- `lanelet_2295436` -> `lanelet_2295182`
+- `lanelet_2295437` -> `lanelet_2295171`
+- `lanelet_2295438` -> `lanelet_2295180`, `lanelet_2295181`
+- `lanelet_2295439` -> `lanelet_2295172`
+- `lanelet_2295440` -> `lanelet_2295174`
+- `lanelet_2295441` -> `lanelet_2295179`
+- `lanelet_2295442` -> `lanelet_2295208`
+- `lanelet_2295443` -> `lanelet_2295176`
+- `lanelet_2295444` -> `lanelet_2295176`
+- `lanelet_2295445` -> `lanelet_2223590`
+- `lanelet_2295446` -> `lanelet_2295207`
+- `lanelet_2295447` -> `lanelet_2295208`
+- `lanelet_2295448` -> `lanelet_2295207`
+- `lanelet_2295449` -> `lanelet_2223590`
+- `lanelet_2295457` -> `lanelet_2295209`
+- `lanelet_2295458` -> `lanelet_2295210`
+- `lanelet_2295459` -> `lanelet_2295449`
+- `lanelet_2295460` -> `lanelet_2295443`
+- `lanelet_2295461` -> `lanelet_2295219`
+- `lanelet_2295462` -> `lanelet_2295220`
+- `lanelet_2295463` -> `lanelet_2295235`
+- `lanelet_2295464` -> `lanelet_2295238`
+- `lanelet_2295465` -> `lanelet_2295201`
+- `lanelet_2295466` -> `lanelet_2295217`
+- `lanelet_2295467` -> `lanelet_2295218`
+- `lanelet_2295468` -> `lanelet_2295318`
+- `lanelet_2295469` -> `lanelet_2295468`, `lanelet_2295515`
+- `lanelet_2295470` -> `lanelet_2295219`
+- `lanelet_2295471` -> `lanelet_2295220`
+- `lanelet_2295472` -> `lanelet_2295217`
+- `lanelet_2295473` -> `lanelet_2295218`
+- `lanelet_2295474` -> `lanelet_2295235`
+- `lanelet_2295475` -> `lanelet_2295201`
+- `lanelet_2295476` -> `lanelet_2295235`
+- `lanelet_2295477` -> `lanelet_2295220`
+- `lanelet_2295478` -> `lanelet_2295219`
+- `lanelet_2295479` -> `lanelet_2295235`
+- `lanelet_2295480` -> `lanelet_2295217`
+- `lanelet_2295486` -> `lanelet_2295238`
+- `lanelet_2295487` -> `lanelet_2295218`
+- `lanelet_2295488` -> `lanelet_2295215`
+- `lanelet_2295489` -> `lanelet_2295216`
+- `lanelet_2295490` -> `lanelet_2295461`, `lanelet_2295462`
+- `lanelet_2295491` -> `lanelet_2295474`, `lanelet_2295475`, `lanelet_2295486`
+- `lanelet_2295492` -> `lanelet_2295378`
+- `lanelet_2295494` -> `lanelet_2295379`
+- `lanelet_2295495` -> `lanelet_2295380`
+- `lanelet_2295496` -> `lanelet_2295378`
+- `lanelet_2295497` -> `lanelet_2295379`
+- `lanelet_2295498` -> `lanelet_2295380`
+- `lanelet_2295499` -> `lanelet_2295394`
+- `lanelet_2295500` -> `lanelet_2295393`
+- `lanelet_2295501` -> `lanelet_2295395`
+- `lanelet_2295502` -> `lanelet_2295698`
+- `lanelet_2295505` -> `lanelet_2295382`
+- `lanelet_2295506` -> `lanelet_2295381`
+- `lanelet_2295507` -> `lanelet_2295382`
+- `lanelet_2295509` -> `lanelet_2295354`
+- `lanelet_2295510` -> `lanelet_2295468`, `lanelet_2295515`
+- `lanelet_2295511` -> `lanelet_2295320`
+- `lanelet_2295512` -> `lanelet_2295321`
+- `lanelet_2295513` -> `lanelet_2295355`
+- `lanelet_2295514` -> `lanelet_2295353`
+- `lanelet_2295515` -> `lanelet_2295319`
+- `lanelet_2295516` -> `lanelet_2295321`
+- `lanelet_2295517` -> `lanelet_2295320`
+- `lanelet_2295518` -> `lanelet_2295355`
+- `lanelet_2295519` -> `lanelet_2295353`
+- `lanelet_2295520` -> `lanelet_2295354`
+- `lanelet_2295522` -> `lanelet_2295347`
+- `lanelet_2295523` -> `lanelet_2295348`
+- `lanelet_2295524` -> `lanelet_2295349`
+- `lanelet_2295525` -> `lanelet_2295350`
+- `lanelet_2295526` -> `lanelet_2295329`
+- `lanelet_2295527` -> `lanelet_2294442`
+- `lanelet_2295528` -> `lanelet_2294443`
+- `lanelet_2295529` -> `lanelet_2294444`
+- `lanelet_2295531` -> `lanelet_2295526`, `lanelet_2295527`
+- `lanelet_2295532` -> `lanelet_2295528`
+- `lanelet_2295533` -> `lanelet_2295529`
+- `lanelet_2295534` -> `lanelet_2295268`
+- `lanelet_2295535` -> `lanelet_2295269`
+- `lanelet_2295536` -> `lanelet_2295381`
+- `lanelet_2295552` -> `lanelet_2295201`
+- `lanelet_2295553` -> `lanelet_2295238`
+- `lanelet_2295560` -> `lanelet_2295502`
+- `lanelet_2295561` -> `lanelet_2295393`
+- `lanelet_2295563` -> `lanelet_2293474`, `lanelet_2293488`, `lanelet_2295659`
+- `lanelet_2295564` -> `lanelet_2293451`
+- `lanelet_2295566` -> `lanelet_2293451`
+- `lanelet_2295568` -> `lanelet_2293513`
+- `lanelet_2295570` -> `lanelet_2293514`
+- `lanelet_2295571` -> (none)
+- `lanelet_2295572` -> (none)
+- `lanelet_2295573` -> `lanelet_2295574`, `lanelet_2295575`
+- `lanelet_2295574` -> `lanelet_2295571`
+- `lanelet_2295575` -> `lanelet_2295572`
+- `lanelet_2295577` -> `lanelet_2293927`
+- `lanelet_2295578` -> (none)
+- `lanelet_2295584` -> `lanelet_2294646`
+- `lanelet_2295585` -> `lanelet_2294645`
+- `lanelet_2295586` -> `lanelet_2294644`
+- `lanelet_2295587` -> `lanelet_2294862`
+- `lanelet_2295588` -> `lanelet_2294862`
+- `lanelet_2295589` -> `lanelet_2293088`
+- `lanelet_2295590` -> `lanelet_2293091`
+- `lanelet_2295591` -> `lanelet_2293090`
+- `lanelet_2295593` -> `lanelet_2295589`
+- `lanelet_2295594` -> `lanelet_2295590`
+- `lanelet_2295595` -> `lanelet_2295591`
+- `lanelet_2295598` -> `lanelet_2294219`
+- `lanelet_2295599` -> `lanelet_2294228`
+- `lanelet_2295600` -> `lanelet_2294229`
+- `lanelet_2295601` -> `lanelet_2293849`
+- `lanelet_2295602` -> `lanelet_2293848`
+- `lanelet_2295603` -> (none)
+- `lanelet_2295604` -> (none)
+- `lanelet_2295605` -> `lanelet_2293968`
+- `lanelet_2295606` -> `lanelet_2294006`
+- `lanelet_2295607` -> (none)
+- `lanelet_2295608` -> `lanelet_2294006`
+- `lanelet_2295609` -> (none)
+- `lanelet_2295610` -> `lanelet_2293987`
+- `lanelet_2295611` -> (none)
+- `lanelet_2295612` -> `lanelet_2293989`
+- `lanelet_2295613` -> (none)
+- `lanelet_2295614` -> `lanelet_2293987`
+- `lanelet_2295615` -> `lanelet_2293987`
+- `lanelet_2295616` -> (none)
+- `lanelet_2295617` -> `lanelet_2293989`
+- `lanelet_2295618` -> `lanelet_2294081`
+- `lanelet_2295619` -> `lanelet_2295626`
+- `lanelet_2295620` -> `lanelet_2295636`
+- `lanelet_2295621` -> `lanelet_2295624`
+- `lanelet_2295622` -> `lanelet_2295638`
+- `lanelet_2295624` -> (none)
+- `lanelet_2295625` -> `lanelet_2295620`
+- `lanelet_2295626` -> `lanelet_2293994`
+- `lanelet_2295627` -> `lanelet_2295622`, `lanelet_2295634`
+- `lanelet_2295628` -> `lanelet_2293818`
+- `lanelet_2295629` -> `lanelet_2293819`
+- `lanelet_2295630` -> `lanelet_2295627`
+- `lanelet_2295631` -> `lanelet_2295626`
+- `lanelet_2295632` -> `lanelet_2295625`
+- `lanelet_2295633` -> `lanelet_2295624`
+- `lanelet_2295634` -> `lanelet_2293826`, `lanelet_2294082`, `lanelet_2295628`, `lanelet_2295629`, `lanelet_2295630`, `lanelet_2295631`, `lanelet_2295632`, `lanelet_2295633`
+- `lanelet_2295635` -> `lanelet_2295621`
+- `lanelet_2295636` -> (none)
+- `lanelet_2295637` -> `lanelet_2295619`
+- `lanelet_2295638` -> `lanelet_2293989`
+- `lanelet_2295640` -> `lanelet_2294105`, `lanelet_2294106`
+- `lanelet_2295641` -> `lanelet_2294107`
+- `lanelet_2295642` -> `lanelet_2295643`, `lanelet_2295644`, `lanelet_2295645`, `lanelet_2295646`, `lanelet_2295647`, `lanelet_2295648`
+- `lanelet_2295643` -> `lanelet_2295635`
+- `lanelet_2295644` -> `lanelet_2295636`
+- `lanelet_2295645` -> `lanelet_2295637`
+- `lanelet_2295646` -> `lanelet_2295638`
+- `lanelet_2295647` -> `lanelet_2294107`
+- `lanelet_2295648` -> `lanelet_2294105`, `lanelet_2294106`
+- `lanelet_2295651` -> `lanelet_2294819`
+- `lanelet_2295652` -> `lanelet_2294818`
+- `lanelet_2295653` -> `lanelet_2294819`
+- `lanelet_2295654` -> `lanelet_2294818`
+- `lanelet_2295655` -> `lanelet_2294814`
+- `lanelet_2295656` -> `lanelet_2295005`, `lanelet_2295006`, `lanelet_2295657`, `lanelet_2295658`
+- `lanelet_2295657` -> (none)
+- `lanelet_2295658` -> (none)
+- `lanelet_2295659` -> `lanelet_2293455`, `lanelet_2293501`, `lanelet_2293502`, `lanelet_2295660`, `lanelet_2295661`
+- `lanelet_2295660` -> `lanelet_2293457`
+- `lanelet_2295661` -> `lanelet_2293447`
+- `lanelet_2295662` -> `lanelet_2294721`
+- `lanelet_2295663` -> `lanelet_2294220`
+- `lanelet_2295664` -> (none)
+- `lanelet_2295665` -> `lanelet_2294225`
+- `lanelet_2295667` -> `lanelet_2295670`
+- `lanelet_2295669` -> (none)
+- `lanelet_2295670` -> (none)
+- `lanelet_2295671` -> (none)
+- `lanelet_2295675` -> (none)
+- `lanelet_2295676` -> (none)
+- `lanelet_2295677` -> (none)
+- `lanelet_2295680` -> (none)
+- `lanelet_2295681` -> (none)
+- `lanelet_2295682` -> (none)
+- `lanelet_2295684` -> (none)
+- `lanelet_2295686` -> (none)
+- `lanelet_2295690` -> `lanelet_2295684`
+- `lanelet_2295691` -> `lanelet_2295686`
+- `lanelet_2295692` -> `lanelet_2295684`
+- `lanelet_2295695` -> (none)
+- `lanelet_2295696` -> (none)
+- `lanelet_2295698` -> `lanelet_2295702`
+- `lanelet_2295699` -> `lanelet_2295703`
+- `lanelet_2295700` -> `lanelet_2295704`
+- `lanelet_2295702` -> (none)
+- `lanelet_2295703` -> (none)
+- `lanelet_2295704` -> (none)
+- `lanelet_2295706` -> `lanelet_2295709`
+- `lanelet_2295707` -> `lanelet_2295710`
+- `lanelet_2295709` -> (none)
+- `lanelet_2295710` -> (none)
+- `lanelet_2295713` -> `lanelet_2294814`
+- `lanelet_2295714` -> `lanelet_2294996`, `lanelet_2295656`
+- `lanelet_2295715` -> (none)
+- `lanelet_2295719` -> (none)
+- `lanelet_2295720` -> (none)
+- `lanelet_2295721` -> (none)
+- `lanelet_2295722` -> `lanelet_2295723`
+- `lanelet_2295723` -> (none)
+- `lanelet_2295724` -> (none)
+- `lanelet_2295726` -> `lanelet_2295727`
+- `lanelet_2295727` -> (none)
+- `lanelet_2295735` -> (none)
+- `lanelet_2295736` -> `lanelet_2295735`
+- `lanelet_2295737` -> `lanelet_2295736`
+- `lanelet_2297018` -> (none)
+- `lanelet_2297026` -> `lanelet_2294353`
+- `lanelet_2300540` -> `lanelet_2224262`
+- `lanelet_2300545` -> `lanelet_2224262`
+- `lanelet_2300578` -> (none)
+- `lanelet_2300631` -> (none)
+- `lanelet_2300633` -> `lanelet_2300631`
+- `lanelet_2301888` -> `lanelet_322`
+- `lanelet_2301893` -> `lanelet_323`
+- `lanelet_2301898` -> `lanelet_324`
+- `lanelet_2301903` -> `lanelet_325`
+- `lanelet_2302662` -> `lanelet_1185`
+- `lanelet_2303249` -> `lanelet_2303259`
+- `lanelet_2303254` -> `lanelet_2303264`
+- `lanelet_2303259` -> `lanelet_2303274`
+- `lanelet_2303264` -> `lanelet_2224840`, `lanelet_2303269`
+- `lanelet_2303269` -> `lanelet_2224842`
+- `lanelet_2303274` -> `lanelet_2223218`, `lanelet_2224841`
+- `lanelet_2303279` -> `lanelet_2303290`
+- `lanelet_2303284` -> `lanelet_2303295`
+- `lanelet_2303290` -> `lanelet_2303301`
+- `lanelet_2303295` -> `lanelet_2303306`
+- `lanelet_2303301` -> `lanelet_2223204`
+- `lanelet_2303306` -> `lanelet_2223205`
+- `lanelet_2303311` -> `lanelet_2303321`
+- `lanelet_2303316` -> `lanelet_2303327`
+- `lanelet_2303321` -> `lanelet_2303332`
+- `lanelet_2303327` -> `lanelet_2303337`
+- `lanelet_2303332` -> `lanelet_2303342`
+- `lanelet_2303337` -> `lanelet_2303347`
+- `lanelet_2303342` -> `lanelet_2303352`
+- `lanelet_2303347` -> `lanelet_2303357`
+- `lanelet_2303352` -> `lanelet_2303362`
+- `lanelet_2303357` -> `lanelet_2303367`
+- `lanelet_2303362` -> `lanelet_2303372`
+- `lanelet_2303367` -> `lanelet_2303377`
+- `lanelet_2303372` -> `lanelet_2303382`
+- `lanelet_2303377` -> `lanelet_2303387`
+- `lanelet_2303382` -> `lanelet_2303392`
+- `lanelet_2303387` -> `lanelet_2303397`
+- `lanelet_2303392` -> `lanelet_2303402`
+- `lanelet_2303397` -> `lanelet_2303407`
+- `lanelet_2303402` -> `lanelet_2303412`
+- `lanelet_2303407` -> `lanelet_2303417`
+- `lanelet_2303412` -> `lanelet_2303422`
+- `lanelet_2303417` -> `lanelet_2303427`
+- `lanelet_2303422` -> `lanelet_2223439`
+- `lanelet_2303427` -> `lanelet_2223439`
+- `lanelet_2303432` -> `lanelet_2223583`, `lanelet_2223584`
+- `lanelet_2303437` -> `lanelet_2303457`
+- `lanelet_2303442` -> `lanelet_2303462`
+- `lanelet_2303447` -> `lanelet_2303437`
+- `lanelet_2303452` -> `lanelet_2303442`
+- `lanelet_2303457` -> `lanelet_2303467`
+- `lanelet_2303462` -> `lanelet_2303472`
+- `lanelet_2303467` -> `lanelet_2303477`
+- `lanelet_2303472` -> `lanelet_2303482`
+- `lanelet_2303477` -> `lanelet_2303487`
+- `lanelet_2303482` -> `lanelet_2303492`
+- `lanelet_2303487` -> `lanelet_2303497`
+- `lanelet_2303492` -> `lanelet_2303502`
+- `lanelet_2303497` -> `lanelet_2303507`
+- `lanelet_2303502` -> `lanelet_2303512`
+- `lanelet_2303507` -> `lanelet_2303517`
+- `lanelet_2303512` -> `lanelet_2303522`
+- `lanelet_2303517` -> `lanelet_2303527`
+- `lanelet_2303522` -> `lanelet_2303532`
+- `lanelet_2303527` -> `lanelet_2303537`
+- `lanelet_2303532` -> `lanelet_2303542`
+- `lanelet_2303537` -> `lanelet_2303547`
+- `lanelet_2303542` -> `lanelet_2303552`
+- `lanelet_2303547` -> `lanelet_2223619`
+- `lanelet_2303552` -> `lanelet_2223618`
+- `lanelet_2303557` -> `lanelet_2309484`
+- `lanelet_2303563` -> `lanelet_2309489`
+- `lanelet_2303577` -> `lanelet_1245`
+- `lanelet_2303582` -> `lanelet_2304241`
+- `lanelet_2303587` -> `lanelet_2304246`
+- `lanelet_2303592` -> `lanelet_2304251`
+- `lanelet_2303597` -> `lanelet_2304256`
+- `lanelet_2303618` -> `lanelet_175748`
+- `lanelet_2303631` -> `lanelet_2223374`, `lanelet_2223379`
+- `lanelet_2303651` -> `lanelet_2223551`, `lanelet_2223552`
+- `lanelet_2303656` -> `lanelet_2223550`, `lanelet_2223553`
+- `lanelet_2303661` -> `lanelet_2303671`
+- `lanelet_2303666` -> `lanelet_2303676`
+- `lanelet_2303671` -> `lanelet_2303681`
+- `lanelet_2303676` -> `lanelet_2303686`
+- `lanelet_2303681` -> `lanelet_2303691`
+- `lanelet_2303686` -> `lanelet_2303696`
+- `lanelet_2303691` -> `lanelet_2303701`
+- `lanelet_2303696` -> `lanelet_2303706`
+- `lanelet_2303701` -> `lanelet_2303711`
+- `lanelet_2303706` -> `lanelet_2303716`
+- `lanelet_2303711` -> `lanelet_2303721`
+- `lanelet_2303716` -> `lanelet_2303726`
+- `lanelet_2303721` -> `lanelet_2303731`
+- `lanelet_2303726` -> `lanelet_2223607`
+- `lanelet_2303731` -> `lanelet_2223610`
+- `lanelet_2303736` -> `lanelet_2303746`
+- `lanelet_2303741` -> `lanelet_2303751`
+- `lanelet_2303746` -> `lanelet_2303756`
+- `lanelet_2303751` -> `lanelet_2303761`
+- `lanelet_2303756` -> `lanelet_2303766`
+- `lanelet_2303761` -> `lanelet_2303771`
+- `lanelet_2303766` -> `lanelet_2303776`
+- `lanelet_2303771` -> `lanelet_2303781`
+- `lanelet_2303776` -> `lanelet_2303786`
+- `lanelet_2303781` -> `lanelet_2303791`
+- `lanelet_2303786` -> `lanelet_2303796`
+- `lanelet_2303791` -> `lanelet_2303801`
+- `lanelet_2303796` -> `lanelet_2223460`
+- `lanelet_2303801` -> `lanelet_2223461`
+- `lanelet_2303806` -> `lanelet_2303851`
+- `lanelet_2303811` -> `lanelet_2303856`
+- `lanelet_2303816` -> `lanelet_2303861`
+- `lanelet_2303821` -> `lanelet_2303836`
+- `lanelet_2303826` -> `lanelet_2303841`
+- `lanelet_2303831` -> `lanelet_2303846`
+- `lanelet_2303836` -> `lanelet_1067`, `lanelet_1198`
+- `lanelet_2303841` -> `lanelet_1199`
+- `lanelet_2303846` -> `lanelet_1069`, `lanelet_1070`
+- `lanelet_2303851` -> `lanelet_2303821`
+- `lanelet_2303856` -> `lanelet_2303826`
+- `lanelet_2303861` -> `lanelet_2303831`
+- `lanelet_2303866` -> `lanelet_2303881`
+- `lanelet_2303871` -> `lanelet_2303886`
+- `lanelet_2303876` -> `lanelet_2303891`
+- `lanelet_2303881` -> `lanelet_2303896`
+- `lanelet_2303886` -> `lanelet_2303901`
+- `lanelet_2303891` -> `lanelet_2303906`
+- `lanelet_2303896` -> `lanelet_334`
+- `lanelet_2303901` -> `lanelet_335`
+- `lanelet_2303906` -> `lanelet_336`, `lanelet_337`
+- `lanelet_2303911` -> `lanelet_2303916`
+- `lanelet_2303916` -> `lanelet_2303926`
+- `lanelet_2303921` -> `lanelet_384`
+- `lanelet_2303926` -> `lanelet_2303921`
+- `lanelet_2303931` -> `lanelet_2303941`
+- `lanelet_2303936` -> `lanelet_2303946`
+- `lanelet_2303941` -> `lanelet_2303951`
+- `lanelet_2303946` -> `lanelet_2303956`
+- `lanelet_2303951` -> `lanelet_2303961`
+- `lanelet_2303956` -> `lanelet_2303966`
+- `lanelet_2303961` -> (none)
+- `lanelet_2303966` -> (none)
+- `lanelet_2303971` -> `lanelet_2303981`
+- `lanelet_2303976` -> `lanelet_2303986`
+- `lanelet_2303981` -> `lanelet_2303991`
+- `lanelet_2303986` -> `lanelet_2303996`
+- `lanelet_2303991` -> `lanelet_2304001`
+- `lanelet_2303996` -> `lanelet_2304006`
+- `lanelet_2304001` -> `lanelet_1187`, `lanelet_1188`
+- `lanelet_2304006` -> `lanelet_1189`
+- `lanelet_2304011` -> `lanelet_2223182`
+- `lanelet_2304016` -> `lanelet_2223183`
+- `lanelet_2304021` -> `lanelet_2223184`
+- `lanelet_2304026` -> `lanelet_2223834`, `lanelet_2223841`
+- `lanelet_2304031` -> `lanelet_2223833`
+- `lanelet_2304036` -> `lanelet_2223832`, `lanelet_2223840`
+- `lanelet_2304041` -> `lanelet_2223799`
+- `lanelet_2304046` -> `lanelet_2223800`
+- `lanelet_2304066` -> `lanelet_2223864`, `lanelet_2223865`
+- `lanelet_2304071` -> `lanelet_2223961`
+- `lanelet_2304076` -> `lanelet_2224133`
+- `lanelet_2304081` -> `lanelet_2224167`
+- `lanelet_2304086` -> `lanelet_2224146`
+- `lanelet_2304091` -> `lanelet_2304101`
+- `lanelet_2304096` -> `lanelet_2304091`
+- `lanelet_2304101` -> `lanelet_2224349`
+- `lanelet_2304106` -> `lanelet_2224174`, `lanelet_2224175`
+- `lanelet_2304111` -> `lanelet_1153`, `lanelet_2323500`
+- `lanelet_2304116` -> `lanelet_2304121`
+- `lanelet_2304121` -> `lanelet_2224338`
+- `lanelet_2304126` -> `lanelet_2224339`, `lanelet_2224343`
+- `lanelet_2304131` -> `lanelet_2224318`
+- `lanelet_2304136` -> `lanelet_2226187`
+- `lanelet_2304141` -> `lanelet_2304136`
+- `lanelet_2304146` -> `lanelet_2224334`
+- `lanelet_2304151` -> `lanelet_2224173`
+- `lanelet_2304156` -> `lanelet_2304161`
+- `lanelet_2304161` -> `lanelet_2304171`
+- `lanelet_2304166` -> `lanelet_2223852`, `lanelet_2223853`
+- `lanelet_2304171` -> `lanelet_2224394`
+- `lanelet_2304176` -> `lanelet_2304166`
+- `lanelet_2304182` -> `lanelet_2300545`
+- `lanelet_2304187` -> `lanelet_2300540`
+- `lanelet_2304193` -> `lanelet_2304198`
+- `lanelet_2304198` -> `lanelet_2224263`
+- `lanelet_2304202` -> `lanelet_2304203`
+- `lanelet_2304203` -> `lanelet_176191`
+- `lanelet_2304208` -> `lanelet_2292649`
+- `lanelet_2304221` -> `lanelet_2223197`, `lanelet_2223234`
+- `lanelet_2304226` -> `lanelet_2223196`
+- `lanelet_2304231` -> `lanelet_2224216`
+- `lanelet_2304241` -> `lanelet_2301888`
+- `lanelet_2304246` -> `lanelet_2301893`
+- `lanelet_2304251` -> `lanelet_2301898`
+- `lanelet_2304256` -> `lanelet_2301903`
+- `lanelet_2304265` -> `lanelet_2223426`
+- `lanelet_2304266` -> `lanelet_2223427`
+- `lanelet_2304267` -> `lanelet_2292509`
+- `lanelet_2304268` -> `lanelet_2304267`
+- `lanelet_2304339` -> `lanelet_2304367`
+- `lanelet_2304367` -> `lanelet_180`
+- `lanelet_2304971` -> (none)
+- `lanelet_2305022` -> (none)
+- `lanelet_2305067` -> (none)
+- `lanelet_2305090` -> (none)
+- `lanelet_2305095` -> (none)
+- `lanelet_2305101` -> `lanelet_1910786`
+- `lanelet_2305181` -> `lanelet_2305022`, `lanelet_2305067`, `lanelet_2305243`
+- `lanelet_2305243` -> `lanelet_2119822`, `lanelet_2307039`, `lanelet_2307052`
+- `lanelet_2305379` -> `lanelet_200`
+- `lanelet_2305420` -> (none)
+- `lanelet_2305421` -> (none)
+- `lanelet_2305422` -> (none)
+- `lanelet_2305423` -> (none)
+- `lanelet_2305434` -> (none)
+- `lanelet_2305435` -> (none)
+- `lanelet_2305436` -> (none)
+- `lanelet_2305437` -> (none)
+- `lanelet_2305438` -> `lanelet_1039`, `lanelet_1040`
+- `lanelet_2305439` -> `lanelet_2305435`
+- `lanelet_2305440` -> `lanelet_1239`
+- `lanelet_2305441` -> `lanelet_2305437`
+- `lanelet_2305452` -> (none)
+- `lanelet_2305453` -> (none)
+- `lanelet_2305454` -> (none)
+- `lanelet_2305455` -> (none)
+- `lanelet_2305475` -> `lanelet_2305496`
+- `lanelet_2305496` -> `lanelet_2223361`
+- `lanelet_2305553` -> `lanelet_2223513`
+- `lanelet_2305554` -> `lanelet_2223514`
+- `lanelet_2306116` -> `lanelet_2223432`
+- `lanelet_2306119` -> `lanelet_2223521`
+- `lanelet_2306201` -> (none)
+- `lanelet_2306272` -> `lanelet_1290`
+- `lanelet_2306282` -> `lanelet_96`
+- `lanelet_2306287` -> `lanelet_97`, `lanelet_98`
+- `lanelet_2306592` -> (none)
+- `lanelet_2306975` -> (none)
+- `lanelet_2307012` -> `lanelet_2015802`
+- `lanelet_2307039` -> `lanelet_2307012`
+- `lanelet_2307052` -> `lanelet_2119750`
+- `lanelet_2307062` -> `lanelet_1266`, `lanelet_1270`
+- `lanelet_2307067` -> `lanelet_1260`, `lanelet_1271`
+- `lanelet_2307132` -> (none)
+- `lanelet_2307139` -> (none)
+- `lanelet_2307146` -> (none)
+- `lanelet_2307310` -> `lanelet_1288`
+- `lanelet_2307884` -> `lanelet_2223762`, `lanelet_2223811`
+- `lanelet_2307889` -> `lanelet_2223763`
+- `lanelet_2307894` -> `lanelet_2223740`, `lanelet_2223812`
+- `lanelet_2307899` -> `lanelet_2223741`
+- `lanelet_2307904` -> `lanelet_2223742`
+- `lanelet_2307909` -> `lanelet_2307884`
+- `lanelet_2307914` -> `lanelet_2307889`
+- `lanelet_2308548` -> (none)
+- `lanelet_2308549` -> (none)
+- `lanelet_2308550` -> (none)
+- `lanelet_2308551` -> (none)
+- `lanelet_2308566` -> `lanelet_2017604`
+- `lanelet_2308629` -> `lanelet_178481`, `lanelet_178506`
+- `lanelet_2308866` -> `lanelet_2308953`
+- `lanelet_2308948` -> `lanelet_2308958`
+- `lanelet_2308953` -> `lanelet_2308963`
+- `lanelet_2308958` -> `lanelet_2308968`
+- `lanelet_2308963` -> `lanelet_2308973`
+- `lanelet_2308968` -> `lanelet_2308978`
+- `lanelet_2308973` -> `lanelet_2308983`
+- `lanelet_2308978` -> `lanelet_2308988`
+- `lanelet_2308983` -> `lanelet_2308993`
+- `lanelet_2308988` -> `lanelet_2308998`
+- `lanelet_2308993` -> `lanelet_2309003`
+- `lanelet_2308998` -> `lanelet_2309008`
+- `lanelet_2309003` -> `lanelet_2309013`
+- `lanelet_2309008` -> `lanelet_2309018`
+- `lanelet_2309013` -> `lanelet_2309023`
+- `lanelet_2309018` -> `lanelet_2309028`
+- `lanelet_2309023` -> `lanelet_2309033`
+- `lanelet_2309028` -> `lanelet_2309038`
+- `lanelet_2309033` -> `lanelet_2309043`
+- `lanelet_2309038` -> `lanelet_2309048`
+- `lanelet_2309043` -> `lanelet_2309053`
+- `lanelet_2309048` -> `lanelet_2309058`
+- `lanelet_2309053` -> `lanelet_2309063`
+- `lanelet_2309058` -> `lanelet_2309068`
+- `lanelet_2309063` -> `lanelet_2309073`
+- `lanelet_2309068` -> `lanelet_2309078`
+- `lanelet_2309073` -> `lanelet_2309083`
+- `lanelet_2309078` -> `lanelet_2309088`
+- `lanelet_2309083` -> `lanelet_2309093`
+- `lanelet_2309088` -> `lanelet_2309098`
+- `lanelet_2309093` -> `lanelet_2309103`
+- `lanelet_2309098` -> `lanelet_2309108`
+- `lanelet_2309103` -> `lanelet_2309113`
+- `lanelet_2309108` -> `lanelet_2309118`
+- `lanelet_2309113` -> `lanelet_2309123`
+- `lanelet_2309118` -> `lanelet_2309128`
+- `lanelet_2309123` -> `lanelet_2309133`
+- `lanelet_2309128` -> `lanelet_2309138`
+- `lanelet_2309133` -> `lanelet_2309143`
+- `lanelet_2309138` -> `lanelet_2309148`
+- `lanelet_2309143` -> `lanelet_2309153`
+- `lanelet_2309148` -> `lanelet_2309158`
+- `lanelet_2309153` -> `lanelet_2309164`
+- `lanelet_2309158` -> `lanelet_2309169`
+- `lanelet_2309164` -> `lanelet_2309174`
+- `lanelet_2309169` -> `lanelet_2309179`
+- `lanelet_2309174` -> `lanelet_2309184`
+- `lanelet_2309179` -> `lanelet_2309189`
+- `lanelet_2309184` -> `lanelet_2309194`
+- `lanelet_2309189` -> `lanelet_2309199`
+- `lanelet_2309194` -> `lanelet_2309204`
+- `lanelet_2309199` -> `lanelet_2309209`
+- `lanelet_2309204` -> `lanelet_2309214`
+- `lanelet_2309209` -> `lanelet_2309219`
+- `lanelet_2309214` -> `lanelet_2309224`
+- `lanelet_2309219` -> `lanelet_2309229`
+- `lanelet_2309224` -> `lanelet_2309234`
+- `lanelet_2309229` -> `lanelet_2309239`
+- `lanelet_2309234` -> `lanelet_2309244`
+- `lanelet_2309239` -> `lanelet_2309249`
+- `lanelet_2309244` -> `lanelet_2309254`
+- `lanelet_2309249` -> `lanelet_2309259`
+- `lanelet_2309254` -> `lanelet_2309264`
+- `lanelet_2309259` -> `lanelet_2309269`
+- `lanelet_2309264` -> `lanelet_2309274`
+- `lanelet_2309269` -> `lanelet_2309279`
+- `lanelet_2309274` -> `lanelet_2309284`
+- `lanelet_2309279` -> `lanelet_2309289`
+- `lanelet_2309284` -> `lanelet_2309294`
+- `lanelet_2309289` -> `lanelet_2309299`
+- `lanelet_2309294` -> `lanelet_2309304`
+- `lanelet_2309299` -> `lanelet_2309309`
+- `lanelet_2309304` -> `lanelet_2309314`
+- `lanelet_2309309` -> `lanelet_2309319`
+- `lanelet_2309314` -> `lanelet_2309324`
+- `lanelet_2309319` -> `lanelet_2309329`
+- `lanelet_2309324` -> `lanelet_2309334`
+- `lanelet_2309329` -> `lanelet_2309339`
+- `lanelet_2309334` -> `lanelet_2309344`
+- `lanelet_2309339` -> `lanelet_2309349`
+- `lanelet_2309344` -> `lanelet_2309354`
+- `lanelet_2309349` -> `lanelet_2309359`
+- `lanelet_2309354` -> `lanelet_2309364`
+- `lanelet_2309359` -> `lanelet_2309369`
+- `lanelet_2309364` -> `lanelet_2309374`
+- `lanelet_2309369` -> `lanelet_2309379`
+- `lanelet_2309374` -> `lanelet_2309384`
+- `lanelet_2309379` -> `lanelet_2309389`
+- `lanelet_2309384` -> `lanelet_2309394`
+- `lanelet_2309389` -> `lanelet_2309399`
+- `lanelet_2309394` -> `lanelet_2309404`
+- `lanelet_2309399` -> `lanelet_2309409`
+- `lanelet_2309404` -> `lanelet_2309414`
+- `lanelet_2309409` -> `lanelet_2309419`
+- `lanelet_2309414` -> `lanelet_2223597`
+- `lanelet_2309419` -> `lanelet_2223598`
+- `lanelet_2309424` -> `lanelet_2309434`
+- `lanelet_2309429` -> `lanelet_2309439`
+- `lanelet_2309434` -> `lanelet_2309444`
+- `lanelet_2309439` -> `lanelet_2309449`
+- `lanelet_2309444` -> `lanelet_2309454`
+- `lanelet_2309449` -> `lanelet_2309459`
+- `lanelet_2309454` -> `lanelet_2309464`
+- `lanelet_2309459` -> `lanelet_2309469`
+- `lanelet_2309464` -> `lanelet_2309474`
+- `lanelet_2309469` -> `lanelet_2309479`
+- `lanelet_2309474` -> `lanelet_2223600`
+- `lanelet_2309479` -> `lanelet_2223599`
+- `lanelet_2309484` -> `lanelet_2309494`
+- `lanelet_2309489` -> `lanelet_2309499`
+- `lanelet_2309494` -> `lanelet_2309504`
+- `lanelet_2309499` -> `lanelet_2309509`
+- `lanelet_2309504` -> `lanelet_2309514`
+- `lanelet_2309509` -> `lanelet_2309519`
+- `lanelet_2309514` -> `lanelet_2309529`
+- `lanelet_2309519` -> `lanelet_2309524`
+- `lanelet_2309524` -> `lanelet_2223496`
+- `lanelet_2309529` -> `lanelet_2223495`
+- `lanelet_2309534` -> `lanelet_2309549`
+- `lanelet_2309539` -> `lanelet_2309544`
+- `lanelet_2309544` -> `lanelet_2309559`
+- `lanelet_2309549` -> `lanelet_2309554`
+- `lanelet_2309554` -> `lanelet_2309564`
+- `lanelet_2309559` -> `lanelet_2309569`
+- `lanelet_2309564` -> `lanelet_2309579`
+- `lanelet_2309569` -> `lanelet_2309574`
+- `lanelet_2309574` -> `lanelet_2309589`
+- `lanelet_2309579` -> `lanelet_2309584`
+- `lanelet_2309584` -> `lanelet_2309594`
+- `lanelet_2309589` -> `lanelet_2309599`
+- `lanelet_2309594` -> `lanelet_2309604`
+- `lanelet_2309599` -> `lanelet_2309609`
+- `lanelet_2309604` -> `lanelet_2309614`
+- `lanelet_2309609` -> `lanelet_2309619`
+- `lanelet_2309614` -> `lanelet_2309624`
+- `lanelet_2309619` -> `lanelet_2309629`
+- `lanelet_2309624` -> `lanelet_2309634`
+- `lanelet_2309629` -> `lanelet_2309639`
+- `lanelet_2309634` -> `lanelet_2309644`
+- `lanelet_2309639` -> `lanelet_2309649`
+- `lanelet_2309644` -> `lanelet_2309654`
+- `lanelet_2309649` -> `lanelet_2309659`
+- `lanelet_2309654` -> `lanelet_2309664`
+- `lanelet_2309659` -> `lanelet_2309669`
+- `lanelet_2309664` -> `lanelet_2309674`
+- `lanelet_2309669` -> `lanelet_2309679`
+- `lanelet_2309674` -> `lanelet_2309684`
+- `lanelet_2309679` -> `lanelet_2309689`
+- `lanelet_2309684` -> `lanelet_2309694`
+- `lanelet_2309689` -> `lanelet_2309699`
+- `lanelet_2309694` -> `lanelet_2309704`
+- `lanelet_2309699` -> `lanelet_2309709`
+- `lanelet_2309704` -> `lanelet_2309714`
+- `lanelet_2309709` -> `lanelet_2309719`
+- `lanelet_2309714` -> `lanelet_2309724`
+- `lanelet_2309719` -> `lanelet_2309729`
+- `lanelet_2309724` -> `lanelet_2309734`
+- `lanelet_2309729` -> `lanelet_2309739`
+- `lanelet_2309734` -> `lanelet_2309744`
+- `lanelet_2309739` -> `lanelet_2309749`
+- `lanelet_2309744` -> `lanelet_2309754`
+- `lanelet_2309749` -> `lanelet_2309759`
+- `lanelet_2309754` -> `lanelet_2309764`
+- `lanelet_2309759` -> `lanelet_2309769`
+- `lanelet_2309764` -> `lanelet_2309774`
+- `lanelet_2309769` -> `lanelet_2309779`
+- `lanelet_2309774` -> `lanelet_2309784`
+- `lanelet_2309779` -> `lanelet_2309789`
+- `lanelet_2309784` -> `lanelet_2309794`
+- `lanelet_2309789` -> `lanelet_2309799`
+- `lanelet_2309794` -> `lanelet_2309804`
+- `lanelet_2309799` -> `lanelet_2309809`
+- `lanelet_2309804` -> `lanelet_2309814`
+- `lanelet_2309809` -> `lanelet_2309819`
+- `lanelet_2309814` -> `lanelet_2309824`
+- `lanelet_2309819` -> `lanelet_2309829`
+- `lanelet_2309824` -> `lanelet_2309834`
+- `lanelet_2309829` -> `lanelet_2309839`
+- `lanelet_2309834` -> `lanelet_2309844`
+- `lanelet_2309839` -> `lanelet_2309849`
+- `lanelet_2309844` -> `lanelet_2309854`
+- `lanelet_2309849` -> `lanelet_2309859`
+- `lanelet_2309854` -> `lanelet_2309864`
+- `lanelet_2309859` -> `lanelet_2309869`
+- `lanelet_2309864` -> `lanelet_2309874`
+- `lanelet_2309869` -> `lanelet_2309879`
+- `lanelet_2309874` -> `lanelet_2309884`
+- `lanelet_2309879` -> `lanelet_2309889`
+- `lanelet_2309884` -> `lanelet_2223621`
+- `lanelet_2309889` -> `lanelet_2223622`
+- `lanelet_2312958` -> (none)
+- `lanelet_2312959` -> `lanelet_2312961`
+- `lanelet_2312960` -> (none)
+- `lanelet_2312961` -> `lanelet_2312963`
+- `lanelet_2312962` -> (none)
+- `lanelet_2312963` -> `lanelet_2312965`
+- `lanelet_2312964` -> `lanelet_2312962`
+- `lanelet_2312965` -> `lanelet_2312967`
+- `lanelet_2312966` -> (none)
+- `lanelet_2312967` -> `lanelet_2312969`
+- `lanelet_2312968` -> (none)
+- `lanelet_2312969` -> `lanelet_2312971`
+- `lanelet_2312970` -> `lanelet_2312972`
+- `lanelet_2312971` -> `lanelet_2312973`
+- `lanelet_2312972` -> (none)
+- `lanelet_2312973` -> `lanelet_2312975`
+- `lanelet_2312974` -> (none)
+- `lanelet_2312975` -> `lanelet_2312977`
+- `lanelet_2312976` -> `lanelet_2312974`
+- `lanelet_2312977` -> `lanelet_2312979`
+- `lanelet_2312978` -> `lanelet_2312976`
+- `lanelet_2312979` -> `lanelet_2312981`
+- `lanelet_2312980` -> (none)
+- `lanelet_2312981` -> `lanelet_2312983`
+- `lanelet_2312982` -> (none)
+- `lanelet_2312983` -> `lanelet_2312985`
+- `lanelet_2312984` -> `lanelet_2312982`
+- `lanelet_2312985` -> `lanelet_2312987`
+- `lanelet_2312986` -> `lanelet_2312984`
+- `lanelet_2312987` -> `lanelet_2312989`
+- `lanelet_2312988` -> `lanelet_2312986`
+- `lanelet_2312989` -> `lanelet_2312991`
+- `lanelet_2312990` -> `lanelet_2312988`
+- `lanelet_2312991` -> `lanelet_2312993`
+- `lanelet_2312992` -> (none)
+- `lanelet_2312993` -> `lanelet_2312995`
+- `lanelet_2312994` -> (none)
+- `lanelet_2312995` -> `lanelet_2312997`
+- `lanelet_2312996` -> `lanelet_2312994`
+- `lanelet_2312997` -> `lanelet_2312999`
+- `lanelet_2312998` -> `lanelet_2312996`
+- `lanelet_2312999` -> `lanelet_2313001`
+- `lanelet_2313000` -> `lanelet_2313002`
+- `lanelet_2313001` -> `lanelet_2313003`
+- `lanelet_2313002` -> (none)
+- `lanelet_2313003` -> `lanelet_2313005`
+- `lanelet_2313004` -> (none)
+- `lanelet_2313005` -> (none)
+- `lanelet_2313053` -> `lanelet_2292444`
+- `lanelet_2313054` -> `lanelet_2313056`
+- `lanelet_2313055` -> `lanelet_2313057`
+- `lanelet_2313056` -> (none)
+- `lanelet_2313057` -> (none)
+- `lanelet_2313058` -> (none)
+- `lanelet_2313059` -> (none)
+- `lanelet_2313060` -> `lanelet_2313062`
+- `lanelet_2313061` -> `lanelet_2313059`
+- `lanelet_2313062` -> `lanelet_2313170`
+- `lanelet_2313063` -> `lanelet_2313061`
+- `lanelet_2313064` -> (none)
+- `lanelet_2313065` -> `lanelet_2313067`
+- `lanelet_2313066` -> `lanelet_2313064`
+- `lanelet_2313067` -> `lanelet_2313069`
+- `lanelet_2313068` -> (none)
+- `lanelet_2313069` -> `lanelet_2313071`
+- `lanelet_2313070` -> (none)
+- `lanelet_2313071` -> `lanelet_2313073`
+- `lanelet_2313072` -> `lanelet_2313070`
+- `lanelet_2313073` -> `lanelet_2313075`
+- `lanelet_2313074` -> `lanelet_2313072`
+- `lanelet_2313075` -> (none)
+- `lanelet_2313076` -> `lanelet_2313074`
+- `lanelet_2313077` -> (none)
+- `lanelet_2313078` -> `lanelet_2313076`
+- `lanelet_2313079` -> `lanelet_2313081`
+- `lanelet_2313080` -> (none)
+- `lanelet_2313081` -> (none)
+- `lanelet_2313082` -> (none)
+- `lanelet_2313083` -> (none)
+- `lanelet_2313084` -> `lanelet_2313082`
+- `lanelet_2313085` -> `lanelet_2313087`
+- `lanelet_2313086` -> `lanelet_2313088`
+- `lanelet_2313087` -> `lanelet_2313089`
+- `lanelet_2313088` -> (none)
+- `lanelet_2313089` -> `lanelet_2313091`
+- `lanelet_2313090` -> (none)
+- `lanelet_2313091` -> (none)
+- `lanelet_2313092` -> `lanelet_2313090`
+- `lanelet_2313093` -> (none)
+- `lanelet_2313094` -> `lanelet_2313096`
+- `lanelet_2313095` -> (none)
+- `lanelet_2313096` -> (none)
+- `lanelet_2313097` -> (none)
+- `lanelet_2313098` -> (none)
+- `lanelet_2313099` -> `lanelet_2313097`
+- `lanelet_2313100` -> (none)
+- `lanelet_2313101` -> `lanelet_2313103`
+- `lanelet_2313102` -> (none)
+- `lanelet_2313103` -> `lanelet_2313157`
+- `lanelet_2313104` -> `lanelet_2313156`
+- `lanelet_2313105` -> `lanelet_2313107`
+- `lanelet_2313106` -> `lanelet_2313111`
+- `lanelet_2313107` -> `lanelet_2313110`
+- `lanelet_2313108` -> `lanelet_2313053`
+- `lanelet_2313109` -> `lanelet_2313108`
+- `lanelet_2313110` -> `lanelet_2292442`
+- `lanelet_2313111` -> `lanelet_2292441`
+- `lanelet_2313156` -> `lanelet_2313102`
+- `lanelet_2313157` -> `lanelet_2313105`
+- `lanelet_2313169` -> `lanelet_2313063`
+- `lanelet_2313170` -> (none)
+- `lanelet_2313998` -> `lanelet_2313999`
+- `lanelet_2313999` -> `lanelet_2314000`
+- `lanelet_2314000` -> `lanelet_2314001`
+- `lanelet_2314001` -> `lanelet_2314002`
+- `lanelet_2314002` -> `lanelet_2314081`
+- `lanelet_2314037` -> `lanelet_176046`
+- `lanelet_2314038` -> `lanelet_2313999`
+- `lanelet_2314081` -> `lanelet_179335`
+- `lanelet_2314304` -> `lanelet_163`
+- `lanelet_2314392` -> `lanelet_191`
+- `lanelet_2314431` -> `lanelet_190`
+- `lanelet_2314474` -> `lanelet_176126`
+- `lanelet_2314486` -> `lanelet_2224586`
+- `lanelet_2314583` -> (none)
+- `lanelet_2314776` -> `lanelet_1508`
+- `lanelet_2314787` -> `lanelet_223`
+- `lanelet_2314804` -> `lanelet_223`
+- `lanelet_2314917` -> `lanelet_217`
+- `lanelet_2316344` -> `lanelet_203`
+- `lanelet_2316490` -> `lanelet_53`
+- `lanelet_2316558` -> `lanelet_2224373`
+- `lanelet_2323007` -> `lanelet_2306272`, `lanelet_2307310`
+- `lanelet_2323280` -> `lanelet_2223376`, `lanelet_2223377`, `lanelet_2223586`
+- `lanelet_2323304` -> `lanelet_2323305`
+- `lanelet_2323305` -> `lanelet_1290`
+- `lanelet_2323500` -> `lanelet_87`
+
+## netconvert warnings
+
+```text
+Warning: Found sharp turn with radius 3.63 at the start of edge 'lanelet_1121'.
+Warning: Found sharp turn with radius 4.40 at the end of edge 'lanelet_1124'.
+Warning: Found sharp turn with radius 4.63 at the start of edge 'lanelet_173833'.
+Warning: Found sharp turn with radius 4.00 at the end of edge 'lanelet_173833'.
+Warning: Found sharp turn with radius 6.24 at the start of edge 'lanelet_175066'.
+Warning: Shape for junction 'j_1424' has distance 98.50 to its given position.
+Warning: Shape for junction 'j_947' has distance 98.50 to its given position.
+Warning: Speed of straight connection 'lanelet_1176_0->lanelet_126_0' reduced by 5.13 due to turning radius of 24.20 (length=17.46, angle=57.75).
+Warning: Speed of straight connection 'lanelet_1172_0->lanelet_162_0' reduced by 5.56 due to turning radius of 22.45 (length=12.12, angle=47.07).
+Warning: Speed of straight connection 'lanelet_1282_0->lanelet_163_0' reduced by 5.61 due to turning radius of 22.26 (length=10.43, angle=42.86).
+Warning: Speed of straight connection 'lanelet_41_0->lanelet_1165_0' reduced by 5.26 due to turning radius of 23.66 (length=14.01, angle=50.12).
+Warning: Speed of straight connection 'lanelet_2224161_0->lanelet_2224163_0' reduced by 5.08 due to turning radius of 24.41 (length=13.40, angle=47.52).
+Warning: Intersecting left turns at junction 'j_2972' from lane 'lanelet_2295634_0' and lane 'lanelet_2294108_0' (increase junction radius to avoid this).
+Warning: 112 total messages of type: Found sharp turn with radius % at the % of edge '%'.
+Warning: 68 total messages of type: Speed of % connection '%' reduced by % due to turning radius of % (length=%, angle=%).
+```

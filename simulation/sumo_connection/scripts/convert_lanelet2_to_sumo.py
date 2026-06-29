@@ -29,6 +29,7 @@ DEFAULT_INPUT = (
 DEFAULT_OUTPUT_DIR = Path(__file__).resolve().parents[1] / "scenarios" / "lanelet2_simple_cross"
 DEFAULT_SPEED_MPS = 10.0 / 3.6
 POINT_KEY_RESOLUTION_M = 0.01
+BOUNDARY_ORIENTATION_EPSILON_M = 0.01
 
 
 @dataclass(frozen=True)
@@ -165,6 +166,7 @@ def interpolate(points: list[Point], fraction: float) -> Point:
 
 
 def centerline(left: list[Point], right: list[Point]) -> list[Point]:
+    left, right = orient_boundaries(left, right)
     sample_count = max(len(left), len(right), 2)
     result = []
     for index in range(sample_count):
@@ -179,6 +181,26 @@ def centerline(left: list[Point], right: list[Point]) -> list[Point]:
             )
         )
     return result
+
+
+def endpoint_width_sum(left: list[Point], right: list[Point]) -> float:
+    return distance(left[0], right[0]) + distance(left[-1], right[-1])
+
+
+def orient_boundaries(left: list[Point], right: list[Point]) -> tuple[list[Point], list[Point]]:
+    """Orient lanelet bounds consistently before averaging them into a centerline.
+
+    Some Autoware Lanelet2 OSM files store the left and right boundary ways in
+    opposite node order. Averaging opposite-oriented bounds produces long
+    diagonal artifacts instead of a lane centerline, so use the orientation that
+    minimizes the start/end boundary widths.
+    """
+    same_direction_width = endpoint_width_sum(left, right)
+    reversed_right = list(reversed(right))
+    reversed_width = endpoint_width_sum(left, reversed_right)
+    if reversed_width + BOUNDARY_ORIENTATION_EPSILON_M < same_direction_width:
+        return left, reversed_right
+    return left, right
 
 
 def build_lanelets(
@@ -317,11 +339,12 @@ def write_routes(path: Path, route_edge_ids: list[str]) -> None:
     write_xml(path, root)
 
 
-def write_sumocfg(path: Path) -> None:
+def write_sumocfg(path: Path, include_routes: bool = True) -> None:
     root = ET.Element("configuration")
     input_element = ET.SubElement(root, "input")
     ET.SubElement(input_element, "net-file", value="converted_map.net.xml")
-    ET.SubElement(input_element, "route-files", value="converted_map.rou.xml")
+    if include_routes:
+        ET.SubElement(input_element, "route-files", value="converted_map.rou.xml")
     time_element = ET.SubElement(root, "time")
     ET.SubElement(time_element, "begin", value="0.0")
     ET.SubElement(time_element, "end", value="60.0")
@@ -363,7 +386,7 @@ def write_report(
     input_map: Path,  # display path (repo-relative)
     lanelets: list[Lanelet],
     successors: dict[str, list[str]],
-    route_ids: list[str],
+    route_ids: list[str] | None,
     location: dict[str, str],
 ) -> None:
     all_points = [point for lanelet in lanelets for point in lanelet.centerline]
@@ -371,7 +394,7 @@ def write_report(
     min_y = min(point.y for point in all_points)
     max_x = max(point.x for point in all_points)
     max_y = max(point.y for point in all_points)
-    edge_ids = [f"lanelet_{lanelet_id}" for lanelet_id in route_ids]
+    edge_ids = [f"lanelet_{lanelet_id}" for lanelet_id in route_ids] if route_ids else []
     warnings_path = path.parent / "converted_map.netconvert.err.log"
     warnings = warnings_path.read_text(encoding="utf-8").strip() if warnings_path.exists() else ""
 
@@ -382,7 +405,7 @@ def write_report(
                 "",
                 f"- Input map: `{input_map}`",
                 f"- Road lanelets converted: {len(lanelets)}",
-                f"- Generated route: `{' '.join(edge_ids)}`",
+                f"- Generated route: `{' '.join(edge_ids)}`" if edge_ids else "- Generated route: not generated",
                 f"- Network coordinate bounds: x={min_x:.3f}..{max_x:.3f}, y={min_y:.3f}..{max_y:.3f}",
                 f"- SUMO location: `{location}`",
                 "- Coordinate handling: node `local_x`/`local_y` tags were copied into SUMO coordinates and "
@@ -411,20 +434,21 @@ def write_report(
     )
 
 
-def convert(input_map: Path, output_dir: Path) -> None:
+def convert(input_map: Path, output_dir: Path, generate_route: bool = True) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
     nodes, ways, lanelet_relations = parse_map(input_map)
     lanelets = build_lanelets(nodes, ways, lanelet_relations)
     successors = successor_map(lanelets)
-    route_ids = longest_route(lanelets, successors)
-    route_edge_ids = [f"lanelet_{lanelet_id}" for lanelet_id in route_ids]
+    route_ids = longest_route(lanelets, successors) if generate_route else None
+    route_edge_ids = [f"lanelet_{lanelet_id}" for lanelet_id in route_ids] if route_ids else []
 
     nod_root, node_ids = plain_nodes(lanelets)
     write_xml(output_dir / "converted_map.nod.xml", nod_root)
     write_xml(output_dir / "converted_map.edg.xml", plain_edges(lanelets, node_ids))
     write_xml(output_dir / "converted_map.con.xml", plain_connections(lanelets, successors))
-    write_routes(output_dir / "converted_map.rou.xml", route_edge_ids)
-    write_sumocfg(output_dir / "converted_map.sumocfg")
+    if generate_route:
+        write_routes(output_dir / "converted_map.rou.xml", route_edge_ids)
+    write_sumocfg(output_dir / "converted_map.sumocfg", include_routes=generate_route)
     run_netconvert(output_dir)
     repo_root = Path(__file__).resolve().parents[3]
     try:
@@ -445,12 +469,17 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input-map", type=Path, default=DEFAULT_INPUT)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
+    parser.add_argument(
+        "--map-only",
+        action="store_true",
+        help="Generate the SUMO network without converted_map.rou.xml, default routes, or npc_0.",
+    )
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
-    convert(args.input_map.resolve(), args.output_dir.resolve())
+    convert(args.input_map.resolve(), args.output_dir.resolve(), generate_route=not args.map_only)
     print(f"Wrote SUMO scenario to {args.output_dir.resolve()}")
 
 
